@@ -1,0 +1,18 @@
+.header{
+    background-color: #0D64FF;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    margin-bottom: 3em;
+    position: fixed;
+    width: 100%;
+}
+
+button{
+    height: 40px;
+    width: 150px;
+    background-color: #355789;
+    color: white;
+    border: none;
+}
