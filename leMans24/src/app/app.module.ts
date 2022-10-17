@@ -19,6 +19,7 @@ import { TeamDetailsComponent } from './components/team-details/team-details.com
 import { FormTeamComponent } from './components/form-team/form-team.component';
 import { FormPilotComponent } from './components/form-pilot/form-pilot.component';
 import { FormCarComponent } from './components/form-car/form-car.component';
+import {HttpClientModule} from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import { FormCarComponent } from './components/form-car/form-car.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

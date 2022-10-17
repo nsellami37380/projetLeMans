@@ -1,1 +1,26 @@
-<p>card works!</p>
+    <div *ngIf="url ==='cars'">
+        <div class="card">
+            <img [src]="car.picture" alt="f40">
+            <p> Model Name : {{car.modelName}}</p>
+            <p> Power : {{car.power}}</p>
+            <p>Max Speed : {{car.maxSpeed}}</p>
+            <p> Acceleration : {{car.acceleration}}</p>
+        </div>
+    </div>
+
+    <div *ngIf="url ==='pilots'">
+        <div class="card">
+            <img [src]="pilot.photoList[0]" alt="">
+            <p> Prénom : {{pilot.firstName}}</p>
+            <p> Nom : {{pilot.lastName}}</p>
+            <p> Date de naissance : {{pilot.birthday}}</p>
+        </div>
+    </div>
+
+    <div *ngIf="url ==='teams'">
+        <div class="card">
+            <img [src]="team.logo" alt="">
+            <p> Nom : {{team.name}}</p>
+            <p>{{team.budget}} Millions</p>
+        </div>
+    </div>

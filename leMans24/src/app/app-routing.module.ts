@@ -6,9 +6,9 @@ import { PageHomeComponent } from './pages/page-home/page-home.component';
 const routes: Routes = [
   {path:'', component: PageHomeComponent },
   {path:'home', component: PageHomeComponent },
-  {path:'pilots', component: PageContainerListComponent},
-  {path:'teams', component: PageContainerListComponent},
-  {path:'cars', component: PageContainerListComponent},
+  {path:'container-list/:var', component: PageContainerListComponent},
+  {path:'container-list/:var', component: PageContainerListComponent},
+  {path:'container-list/:var', component: PageContainerListComponent},
 
 ];
 
