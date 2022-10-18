@@ -1,26 +1,8 @@
 <h1>{{title}}</h1>
-
-<div *ngIf="url ==='pilots'">    
-        <div class="container">
-            <div *ngFor="let pilot of pilotList">
-                <app-card [pilot]="pilot"></app-card>
-            </div>
-        </div>
-</div>
-
-
-<div *ngIf="url ==='teams'">
+<div >    
     <div class="container">
-        <div *ngFor="let team of teamList">
-            <app-card [team]="team"></app-card>
-        </div>
-    </div>
-</div>
-
-<div *ngIf="url ==='cars'">
-    <div class="container">
-        <div *ngFor="let car of carList">
-            <app-card [car]="car"></app-card>
+        <div *ngFor="let ptc of $any(ptcList) ">
+            <app-card [ptc]="ptc"></app-card>
         </div>
     </div>
 </div>
