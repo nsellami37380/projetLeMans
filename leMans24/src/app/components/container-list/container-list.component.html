@@ -1,7 +1,8 @@
-<div *ngIf="url ==='pilots'">
-        <h1>Listes des pilotes</h1>
+<h1>{{title}}</h1>
+
+<div *ngIf="url ==='pilots'">    
         <div class="container">
-            <div *ngFor="let pilot of objectList.pilots">
+            <div *ngFor="let pilot of pilotList">
                 <app-card [pilot]="pilot"></app-card>
             </div>
         </div>
@@ -9,18 +10,16 @@
 
 
 <div *ngIf="url ==='teams'">
-    <h1>Listes des teams</h1>
     <div class="container">
-        <div *ngFor="let team of objectList.teams">
+        <div *ngFor="let team of teamList">
             <app-card [team]="team"></app-card>
         </div>
     </div>
 </div>
 
 <div *ngIf="url ==='cars'">
-    <h1>Listes des voitures</h1>
     <div class="container">
-        <div *ngFor="let car of objectList.cars">
+        <div *ngFor="let car of carList">
             <app-card [car]="car"></app-card>
         </div>
     </div>

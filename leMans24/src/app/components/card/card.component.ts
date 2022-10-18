@@ -22,6 +22,9 @@ export class CardComponent implements OnInit {
   @Input()
   team: Team = new Team(0,'','',[],[],0,'');
 
+  @Input()
+  ptc !: Car | Pilot | Team | null | undefined;
+
   constructor(private route: ActivatedRoute) { }
 
   ngOnInit(): void {
