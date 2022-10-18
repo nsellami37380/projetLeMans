@@ -14,11 +14,11 @@ export class ContainerListComponent implements OnInit {
 
   //objectList: any = [];
 
-  // pilotList: Pilot[] = [];
-  // teamList: Team[] = [];
-  // carList: Car[] = [];
+   pilotList: Pilot[] = [];
+   teamList: Team[] = [];
+   carList: Car[] = [];
 
-  ptcList: Pilot[] | Team[] | Car[] = [];
+  //ptcList: Pilot[] | Team[] | Car[] = [];
   title: string = "";
 
   url: string = '';
@@ -36,19 +36,19 @@ export class ContainerListComponent implements OnInit {
     
     getList(): void{
       if (this.url ==='pilots'){
-        // this.leMan24S.getPilots().subscribe(pilots  => this.pilotList = pilots)
-         this.leMan24S.getPilots().subscribe(pilots  => this.ptcList = pilots)
+         this.leMan24S.getPilots().subscribe(pilots  => this.pilotList = pilots)
+         //this.leMan24S.getPilots().subscribe(pilots  => this.ptcList = pilots)
         this.title = "Listes des pilotes";
       } else
       if (this.url ==='cars'){
-         this.leMan24S.getCars().subscribe(cars  => this.ptcList = cars)
+         //this.leMan24S.getCars().subscribe(cars  => this.ptcList = cars)
         this.title = "Listes des voitures";
-        // this.leMan24S.getCars().subscribe(cars  => this.carList = cars)
+         this.leMan24S.getCars().subscribe(cars  => this.carList = cars)
       } else
       if (this.url ==='teams'){
-        // this.leMan24S.getTeams().subscribe(teams  => this.teamList = teams)
+        this.leMan24S.getTeams().subscribe(teams  => this.teamList = teams)
         this.title = "Listes des écuries";
-         this.leMan24S.getTeams().subscribe(teams  => this.ptcList = teams)
+         //this.leMan24S.getTeams().subscribe(teams  => this.ptcList = teams)
       };
 
 
