@@ -20,7 +20,7 @@ import { FormTeamComponent } from './components/form-team/form-team.component';
 import { FormPilotComponent } from './components/form-pilot/form-pilot.component';
 import { FormCarComponent } from './components/form-car/form-car.component';
 import {HttpClientModule} from '@angular/common/http';
-import { PageSearchBarComponent } from './pages/page-search-bar/page-search-bar.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -41,12 +41,12 @@ import { PageSearchBarComponent } from './pages/page-search-bar/page-search-bar.
     FormTeamComponent,
     FormPilotComponent,
     FormCarComponent,
-    PageSearchBarComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

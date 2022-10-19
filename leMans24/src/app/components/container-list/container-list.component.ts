@@ -12,14 +12,10 @@ import { LeMan24Service } from 'src/app/shared/le-man24.service';
 })
 export class ContainerListComponent implements OnInit {
 
-  //objectList: any = [];
-
-   pilotList: Pilot[] = [];
-   teamList: Team[] = [];
-   carList: Car[] = [];
-
-  //ptcList: Pilot[] | Team[] | Car[] = [];
+  resultFilter: string = ''
+  ptcList: Pilot[] | Team[] | Car[] = [];
   title: string = "";
+  newPtcList: Pilot[] | Team[] | Car[] = this.ptcList;
 
   url: string = '';
 
@@ -31,26 +27,25 @@ export class ContainerListComponent implements OnInit {
       this.url = param.get('var') as string;
       this.getList();
     })    }
-
-
     
     getList(): void{
-      if (this.url ==='pilots'){
-         this.leMan24S.getPilots().subscribe(pilots  => this.pilotList = pilots)
-         //this.leMan24S.getPilots().subscribe(pilots  => this.ptcList = pilots)
+
+      if (this.url ==='pilots'){        
+         this.leMan24S.getPilots().subscribe(pilots  => this.ptcList = pilots)
         this.title = "Listes des pilotes";
       } else
       if (this.url ==='cars'){
-         //this.leMan24S.getCars().subscribe(cars  => this.ptcList = cars)
-        this.title = "Listes des voitures";
-         this.leMan24S.getCars().subscribe(cars  => this.carList = cars)
+         this.leMan24S.getCars().subscribe(cars  => this.ptcList = cars)
+        this.title = "Listes des voitures";        
       } else
-      if (this.url ==='teams'){
-        this.leMan24S.getTeams().subscribe(teams  => this.teamList = teams)
+      if (this.url ==='teams'){ 
+        this.leMan24S.getTeams().subscribe(teams  => this.ptcList = teams)       
         this.title = "Listes des écuries";
-         //this.leMan24S.getTeams().subscribe(teams  => this.ptcList = teams)
+
       };
 
 
   }
 }
+
+
