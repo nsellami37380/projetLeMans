@@ -45,6 +45,7 @@
 
     "cars": [{
         "id": 1,
+        "picture": "https://media.gqmagazine.fr/photos/620f60070a5411ba4594a3b6/4:3/w_3526,h_2644,c_limit/F1-75_JPG_SPONSOR_00001.jpg",
         "modelName" : "F40",
         "color" : "red",
         "engine": "V12",
@@ -57,6 +58,7 @@
     },
     {
         "id": 2,
+        "picture": "https://media.gqmagazine.fr/photos/620f60070a5411ba4594a3b6/4:3/w_3526,h_2644,c_limit/F1-75_JPG_SPONSOR_00001.jpg",
         "modelName" : "F40",
         "color" : "red",
         "engine": "V12",
@@ -72,7 +74,7 @@
     "teams":[{
             "id": 1,
             "name": "RedBull",
-            "logo": "https://www.google.com/imgres?imgurl=https%3A%2F%2Fcdn-3.motorsport.com%2Fimages%2Fmgl%2FY99JQRbY%2Fs8%2Fred-bull-racing-logo-1.jpg&imgrefurl=https%3A%2F%2Ffr.motorsport.com%2Fteam%2Fred-bull-racing%2F553%2F&tbnid=MijdFRDb-k0EqM&vet=12ahUKEwieyeHWtd_6AhUXZaQEHTopDvYQMygAegUIARCVAg..i&docid=xQdC4NSkDuNcoM&w=1080&h=720&q=Redbull%20racing&ved=2ahUKEwieyeHWtd_6AhUXZaQEHTopDvYQMygAegUIARCVAg",
+            "logo": "https://cdn-3.motorsport.com/images/mgl/Y99JQRbY/s8/red-bull-racing-logo-1.jpg",
             "pilotList": [1, 2],
             "carList": [1, 2],
             "budget": 87.4,
@@ -81,7 +83,7 @@
     {
         "id": 1,
         "name": "RedBull",
-        "logo": "https://www.google.com/imgres?imgurl=https%3A%2F%2Fcdn-3.motorsport.com%2Fimages%2Fmgl%2FY99JQRbY%2Fs8%2Fred-bull-racing-logo-1.jpg&imgrefurl=https%3A%2F%2Ffr.motorsport.com%2Fteam%2Fred-bull-racing%2F553%2F&tbnid=MijdFRDb-k0EqM&vet=12ahUKEwieyeHWtd_6AhUXZaQEHTopDvYQMygAegUIARCVAg..i&docid=xQdC4NSkDuNcoM&w=1080&h=720&q=Redbull%20racing&ved=2ahUKEwieyeHWtd_6AhUXZaQEHTopDvYQMygAegUIARCVAg",
+        "logo": "https://cdn-3.motorsport.com/images/mgl/Y99JQRbY/s8/red-bull-racing-logo-1.jpg",
         "pilotList": [1, 2],
         "carList": [1, 2],
         "budget": 87.4,
