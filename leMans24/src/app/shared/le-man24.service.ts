@@ -10,8 +10,8 @@ import { Team } from '../models/team.model';
 })
 export class LeMan24Service {
 
-  //private url = "assets/leMans24-db.json";
-  private url = "http://localhost:3000";
+   // private url = "assets/leMans24-db.json";
+   private url = "http://localhost:3000";
 
   private pilotList$ !: Observable<Pilot[]>;
   private teamList$ !: Observable<Team[]>;
