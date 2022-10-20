@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, convertToParamMap, ParamMap } from '@angular/router';
+import { Car } from 'src/app/models/car.model';
+import { Team } from 'src/app/models/team.model';
 
 @Component({
   selector: 'app-car-details',
@@ -7,9 +10,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CarDetailsComponent implements OnInit {
 
-  constructor() { }
+  carId: number = 0;
+  
+  
+
+  constructor(private route: ActivatedRoute) { }
 
   ngOnInit(): void {
+    this.route.paramMap.subscribe((params: ParamMap)=>{
+      if(params.get('id')){
+        this.carId = parseInt(params.get('id') as string);
+      } 
+    });
   }
 
 }
