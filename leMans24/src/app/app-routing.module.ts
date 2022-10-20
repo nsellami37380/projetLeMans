@@ -1,6 +1,7 @@
 import { Component, NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { PageContainerListComponent } from './pages/page-container-list/page-container-list.component';
+import { PageDetailsComponent } from './pages/page-details/page-details.component';
 import { PageHomeComponent } from './pages/page-home/page-home.component';
 
 const routes: Routes = [
@@ -9,6 +10,7 @@ const routes: Routes = [
   {path:'container-list/:var', component: PageContainerListComponent},
   {path:'container-list/:var', component: PageContainerListComponent},
   {path:'container-list/:var', component: PageContainerListComponent},
+  {path: 'team-detail/:id', component: PageDetailsComponent}
 
 ];
 
