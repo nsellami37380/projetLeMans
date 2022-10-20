@@ -1,65 +1,61 @@
+#my_fieldset{
+    display: grid;
+    grid-template-columns: 33% 33% 33%;
+    grid-template-rows: 200px 200px;
+    grid-gap: 1em;
+    padding: 1em;
+}
 fieldset{
     margin-bottom: 1em;
     border: 0px;
-    width: fit-content;
     padding: 1em;
     background-color: whitesmoke;
-
+    display: inline-block;
+    animation: mymovef 20s infinite;
+    margin-right: 5%;
 }
+
+@keyframes mymovef {
+    from {background-color: whitesmoke;}
+    to {background-color: grey;}
+  }
 label{
     display: block;
-    font-weight: bold;
-   
+    font-weight: bold;   
     margin-bottom: 1em;
 }
 input{
-    width: 70ch;
-    min-width: 15em;
-    max-width: 30em;
-
+    // width: 70ch;
+    // min-width: 15em;
+    // max-width: 30em;
+    width: 80%;
 }
 fieldset div{
     color: red;
 }
-
-.monFlex{
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-
-}
-
-fieldset{
-    width: 40%;
-    margin-right: 5%;
-
-}
-
 input[type=number]{
     width: 5em;
 }
 button{
-
     width: 150px;
     height: 50px;
-    margin-right: 8%;
-
-
+    margin-right: 1em;
+    background: red;
+    animation: mymove 5s infinite;
 }
+@keyframes mymove {
+    from {background-color: red;}
+    to {background-color: blue;}
+  }
 .btn{
     display: flex;
     justify-content: end;
     width: 100%;
 }
-.last{
-  position: relative;
-   left: 2.4%;
-}
-.dimg{
-    text-align: center;
-    display: flex;
-}
-
 input[type=file]{
     display: none;
+}   
+select
+{
+    padding: 0em 2em 0em 2em;
 }

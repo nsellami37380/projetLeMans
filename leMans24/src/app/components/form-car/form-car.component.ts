@@ -11,17 +11,19 @@ import { LeMan24Service } from 'src/app/shared/le-man24.service';
 export class FormCarComponent implements OnInit {
 
   car: Car = new Car(0,'','','','',0,0,'',(new Team(0,'','',[],[],0,'')),0);
+  teamList!: Team[];
 
   url="";
 
   constructor(private leman24S: LeMan24Service) { }
 
   ngOnInit(): void {
+    this.leman24S.getTeams().subscribe(team => {this.teamList = team})
   }
   
  selectfile(event: any): void{
   if (event.target.files){
-    var reader = new FileReader();
+    const reader = new FileReader();
     reader.readAsDataURL(event.target.files[0])
    
     reader.onload = (event: any) => {
