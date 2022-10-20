@@ -9,7 +9,7 @@
     </div>
 
     <div *ngIf="url ==='pilots'">
-        <div class="card" [routerLink]="['/container-list', 'pilots', pilot.id]">
+        <div class="card" [routerLink]="['/container-list', 'pilots', 'pilot-detail', pilot.id]">
             <img [src]="pilot.photoList[0]" alt="">
             <p> Prénom : {{pilot.firstName}}</p>
             <p> Nom : {{pilot.lastName}}</p>

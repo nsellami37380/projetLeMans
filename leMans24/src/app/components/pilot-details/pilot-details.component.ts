@@ -12,7 +12,8 @@ import { LeMan24Service } from 'src/app/shared/le-man24.service';
 export class PilotDetailsComponent implements OnInit {
   
   id:number = 0;
-  pilotDetail: Pilot = new Pilot (0,[],'','',(new Date),0,(new Team(0,'','',[],[],0,'')),'','');
+  pilotList: Pilot[] = [];
+  pilot: Pilot | undefined = new Pilot (0,[],'','',(new Date),0,(new Team(0,'','',[],[],0,'')),'','');
 
   constructor(private route: ActivatedRoute,
     private leMan24S: LeMan24Service) { }
@@ -20,10 +21,17 @@ export class PilotDetailsComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.paramMap.subscribe((param: ParamMap)=>{
-    if(param.get('id')){
       this.id = parseInt(param.get("id") as string);
-      console.log(this.id);
-    }
-  }) 
+      if(this.id){
+        this.leMan24S.getPilots().subscribe(pilots => {
+          this.pilotList = pilots;
+          this.pilot = this.pilotList.find(pilot => pilot.id === this.id)
+        });
+
+      }
+    }) 
+
+   
   }
+
 }
