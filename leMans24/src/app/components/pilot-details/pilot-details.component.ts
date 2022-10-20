@@ -22,6 +22,7 @@ export class PilotDetailsComponent implements OnInit {
     this.route.paramMap.subscribe((param: ParamMap)=>{
     if(param.get('id')){
       this.id = parseInt(param.get("id") as string);
+      console.log(this.id);
     }
   }) 
   }
