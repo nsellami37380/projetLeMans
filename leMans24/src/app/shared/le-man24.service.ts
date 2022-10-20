@@ -40,4 +40,11 @@ export class LeMan24Service {
     return this.teamList$;
   }
 
+  addCar(car: Car): void{ 
+    this.http.post<Car>(this.url + '/cars',car).subscribe({
+      next: data => {console.log("data id " + data.id)},
+      error: error => {console.log("Erreur " + error)}      
+    },);
+  }
+
 }

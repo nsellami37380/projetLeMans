@@ -1,0 +1,65 @@
+fieldset{
+    margin-bottom: 1em;
+    border: 0px;
+    width: fit-content;
+    padding: 1em;
+    background-color: whitesmoke;
+
+}
+label{
+    display: block;
+    font-weight: bold;
+   
+    margin-bottom: 1em;
+}
+input{
+    width: 70ch;
+    min-width: 15em;
+    max-width: 30em;
+
+}
+fieldset div{
+    color: red;
+}
+
+.monFlex{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+
+}
+
+fieldset{
+    width: 40%;
+    margin-right: 5%;
+
+}
+
+input[type=number]{
+    width: 5em;
+}
+button{
+
+    width: 150px;
+    height: 50px;
+    margin-right: 8%;
+
+
+}
+.btn{
+    display: flex;
+    justify-content: end;
+    width: 100%;
+}
+.last{
+  position: relative;
+   left: 2.4%;
+}
+.dimg{
+    text-align: center;
+    display: flex;
+}
+
+input[type=file]{
+    display: none;
+}
