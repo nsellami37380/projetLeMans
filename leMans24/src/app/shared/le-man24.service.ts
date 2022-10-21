@@ -22,10 +22,10 @@ export class LeMan24Service {
   private carList !: Car[];
 
   constructor(private http: HttpClient) { 
-    this.getDonnees()
+    this.getDataList()
   }
 
-  private getDonnees():  void{
+  private getDataList():  void{
     this.pilotList$ =  this.http.get<Pilot[]>(this.url + '/pilots');
     this.teamList$ =  this.http.get<Team[]>(this.url + '/teams');
     this.carList$ =  this.http.get<Car[]>(this.url + '/cars');

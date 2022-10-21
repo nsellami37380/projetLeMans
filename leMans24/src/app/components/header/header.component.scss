@@ -15,7 +15,7 @@ ul{
 }
 
 li{
-    background-color: #355789;
+    background-color: #fefefe;
     height: 50px;
     width: 150px;
     display: flex;
@@ -31,4 +31,9 @@ a{
 
 li:hover{
     transform: scale(1.1);
+}
+
+.menu{
+    color: aliceblue;
+   
 }
