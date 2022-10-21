@@ -21,7 +21,6 @@ export class LeMan24Service {
 
   contentDetailed: BehaviorSubject<any> = new BehaviorSubject<any>(null);
 
-
   constructor(private http: HttpClient) { 
     this.getDonnees()
   }
@@ -30,6 +29,9 @@ export class LeMan24Service {
     this.pilotList$ =  this.http.get<Pilot[]>(this.url + '/pilots');
     this.teamList$ =  this.http.get<Team[]>(this.url + '/teams');
     this.carList$ =  this.http.get<Car[]>(this.url + '/cars');
+
+    //this.carList$.subscribe(cars => this.carList$ = cars);
+ 
   }
 
   getPilots(): Observable<Pilot[]>{
@@ -42,5 +44,17 @@ export class LeMan24Service {
 
   getTeams(): Observable<Team[]>{
     return this.teamList$;
+  }
+
+  addCar(car: Car): void{ 
+
+    this.http.post<Car>(this.url + '/cars',car).subscribe({
+      next: data => {console.log("data id " + data.id)},
+      error: error => {console.log("Erreur " + error)}      
+    },);
+  }
+
+  getCarById(id: number): void {
+    //return  this.carList.find(car => car.id == id) as Car;
   }
 }

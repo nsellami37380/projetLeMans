@@ -1,1 +1,84 @@
-<p>form-car works!</p>
+<form #myForm="ngForm" (ngSubmit)="addCar()">
+    <div id="my_fieldset">
+    <fieldset>
+        <label for="modelName">Model*</label>
+        <input type="text" name="modelName" id="modelName" [(ngModel)]="car.modelName" #modelName="ngModel" required>
+        <div *ngIf="modelName.errors && myForm.submitted">
+            <span *ngIf="modelName.errors?.['required']">Le nom du model est requis</span>
+        </div>    
+    </fieldset>
+
+    <fieldset>
+        <label for="picture">Image*</label>
+        <div class="dimg">
+            <input type="file" #selectImage (change)="selectfile($event)">
+            <img [src]="url" width="100px" (click)="selectImage.click()"  height="100px" alt=""> 
+        </div>      
+    </fieldset>
+
+    <fieldset>
+        <label for="color">Couleur*</label>
+        <input type="color" name="color" id="color" [(ngModel)]="car.color" #color="ngModel" required>
+        <div *ngIf="color.errors && myForm.submitted">
+            <span *ngIf="color.errors?.['required']">La couleur est requise</span>
+        </div>  
+    </fieldset>
+
+    <fieldset>
+        <label for="engine">Moteur*</label>
+        <input type="text" name="engine" id="engine" [(ngModel)]="car.engine" #engine="ngModel" required>
+        <div *ngIf="engine.errors && myForm.submitted">
+            <span *ngIf="engine.errors?.['required']">Le nom du moteur est requis</span>
+        </div>    
+    </fieldset>
+
+    <fieldset>
+        <label for="power">Puissance*</label>
+        <input type="number" name="power" id="power" [(ngModel)]="car.power" #power="ngModel" required>
+        <div *ngIf="power.errors && myForm.submitted">
+            <span *ngIf="power.errors?.['required']">La puissance est requise</span>
+        </div>    
+    </fieldset>
+
+    <fieldset>
+        <label for="maxSpeed">Vitesse maximum*</label>
+        <input type="number" name="maxSpeed" id="maxSpeed" [(ngModel)]="car.maxSpeed" #maxSpeed="ngModel" required>
+        <div *ngIf="maxSpeed.errors && myForm.submitted">
+            <span *ngIf="maxSpeed.errors?.['required']">La puissance est requise</span>
+        </div>    
+    </fieldset>
+
+
+    <fieldset>
+        <label for="tire">Pneus*</label>
+        <input type="text" name="tire" id="tire" [(ngModel)]="car.tire" #tire="ngModel" required>
+        <div *ngIf="tire.errors && myForm.submitted">
+            <span *ngIf="tire.errors?.['required']">La marque des pneus est requise</span>
+        </div>    
+    </fieldset>
+
+    <fieldset>
+        <label for="team">Ecurie*</label>
+        <!-- <input type="number" name="team" id="team" [(ngModel)]="car.team" #team="ngModel" max=9 required> -->
+        <select name="team" id="team" [(ngModel)]="car.team" #team="ngModel">
+        <option *ngFor="let team of teamList" [value]="team.id">
+            {{team.name}}
+        </option>
+        </select>
+        <div *ngIf="team.errors && myForm.submitted">
+            <span *ngIf="team.errors?.['required']">Le nom de l'écurie est requise</span>
+        </div>    
+    </fieldset>
+
+    <fieldset>
+        <label for="acceleration">Acceleration*</label>
+        <input type="number" name="acceleration" id="acceleration" [(ngModel)]="car.acceleration" #acceleration="ngModel" required>
+        <div *ngIf="acceleration.errors && myForm.submitted">
+            <span *ngIf="acceleration.errors?.['required']">L'acceleration est requise</span>
+        </div>    
+    </fieldset>
+    </div>   
+    <div class = "btn">
+        <button type="submit">Ajouter</button>
+    </div>
+</form>
