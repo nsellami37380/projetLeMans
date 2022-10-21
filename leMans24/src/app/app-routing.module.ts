@@ -13,8 +13,8 @@ const routes: Routes = [
   {path:'container-list/:var', component: PageContainerListComponent},
   {path:'container-list/:var', component: PageContainerListComponent},
   {path:'container-list/:var/pilot-detail/:id', component: PilotDetailsComponent},
-  {path:'container-list/:var/:id', component: CarDetailsComponent},
-  {path:'container-list/:var/:id', component: TeamDetailsComponent},
+  {path:'container-list/:var/car-detail/:id', component: CarDetailsComponent},
+  {path:'container-list/:var/team-detail/:id', component: TeamDetailsComponent},
 
 ];
 

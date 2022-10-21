@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CarDetailsComponent implements OnInit {
 
+  id: number = 0;
+
   constructor() { }
 
   ngOnInit(): void {
