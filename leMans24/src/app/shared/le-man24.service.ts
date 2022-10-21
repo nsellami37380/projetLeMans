@@ -11,18 +11,12 @@ import { Team } from '../models/team.model';
 })
 export class LeMan24Service {
 
-  //private url = "assets/leMans24-db.json";
-   private url = "http://localhost:3000";
   //private url = "http://192.168.182.122:3000";
-
-
-  //getPilots(): Observable<any[]> {
-   // return this.http.get<any[]>("assets/leMans24-db.json");
+   private url = "http://localhost:3000";
 
   private pilotList$ !: Observable<Pilot[]>;
   private teamList$ !: Observable<Team[]>;
   private carList$ !: Observable<Car[]>;
-
 
   constructor(private http: HttpClient) { 
     this.getDonnees()
