@@ -3,6 +3,7 @@ import { ActivatedRoute, ParamMap } from '@angular/router';
 import { Car } from 'src/app/models/car.model';
 import { Pilot } from 'src/app/models/pilot.model';
 import { Team } from 'src/app/models/team.model';
+import { LeMan24Service } from 'src/app/shared/le-man24.service';
 
 @Component({
   selector: 'app-card',
@@ -25,7 +26,7 @@ export class CardComponent implements OnInit, OnChanges{
   @Input()
   ptc : Car | Pilot | Team = this.car;
 
-  constructor(private route: ActivatedRoute) { }
+  constructor(private route: ActivatedRoute, private carServ: LeMan24Service) { }
   
   ngOnChanges(changes: SimpleChanges): void {
    console.log("dans on changes");
@@ -62,6 +63,12 @@ export class CardComponent implements OnInit, OnChanges{
     return result;
 
 
+  }
+
+  getCarDetail(car: any):void{
+    this.carServ.getCarById(car.id).subscribe(dataStream=>{
+      this.carServ.carDetail.next(dataStream);
+    })
   }
 
 }

@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { BehaviorSubject } from 'rxjs/internal/BehaviorSubject';
 import { Observable } from 'rxjs/internal/Observable';
 
 import { Car } from '../models/car.model';
@@ -12,7 +13,7 @@ import { Team } from '../models/team.model';
 export class LeMan24Service {
 
   //private url = "assets/leMans24-db.json";
-  // private url = "http://localhost:3000";
+  //private url = "http://localhost:3000";
   private url = "http://192.168.182.122:3000";
 
 
@@ -23,12 +24,14 @@ export class LeMan24Service {
   private teamList$ !: Observable<Team[]>;
   private carList$ !: Observable<Car[]>;
 
+  carDetail: BehaviorSubject<any> = new BehaviorSubject<any>(null);
+
 
   constructor(private http: HttpClient) { 
-    this.getDonnees()
+    this.getData()
   }
 
-  private getDonnees():  void{
+  private getData():  void{
     this.pilotList$ =  this.http.get<Pilot[]>(this.url + '/pilots');
     this.teamList$ =  this.http.get<Team[]>(this.url + '/teams');
     this.carList$ =  this.http.get<Car[]>(this.url + '/cars');
@@ -44,5 +47,9 @@ export class LeMan24Service {
 
   getTeams(): Observable<Team[]>{
     return this.teamList$;
+  }
+
+  getCarById(url: string):Observable<any>{
+    return this.http.get(url);
   }
 }
