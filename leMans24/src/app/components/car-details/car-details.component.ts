@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, ParamMap } from '@angular/router';
+import { Car } from 'src/app/models/car.model';
+import { LeMan24Service } from 'src/app/shared/le-man24.service';
 
 @Component({
   selector: 'app-car-details',
@@ -7,11 +10,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CarDetailsComponent implements OnInit {
 
-  id: number = 0;
-
-  constructor() { }
+  car !: Car;
+  id: number= 0;
+  constructor(private route: ActivatedRoute,private leman24S: LeMan24Service) { }
 
   ngOnInit(): void {
+
+    this.route.paramMap.subscribe((param: ParamMap)=>{
+
+      // if (param.get('id') != null)
+      this.id =  parseInt( param.get('id') as string);
+     
+      this.car = this.leman24S.getCarById(this.id);
+
+      console.log(this.car);
+      
+    })
   }
+
+
 
 }

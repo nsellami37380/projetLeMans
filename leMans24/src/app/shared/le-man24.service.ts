@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { filter } from 'rxjs';
 import { Observable } from 'rxjs/internal/Observable';
 
 import { Car } from '../models/car.model';
@@ -18,6 +19,8 @@ export class LeMan24Service {
   private teamList$ !: Observable<Team[]>;
   private carList$ !: Observable<Car[]>;
 
+  private carList !: Car[];
+
   constructor(private http: HttpClient) { 
     this.getDonnees()
   }
@@ -26,6 +29,9 @@ export class LeMan24Service {
     this.pilotList$ =  this.http.get<Pilot[]>(this.url + '/pilots');
     this.teamList$ =  this.http.get<Team[]>(this.url + '/teams');
     this.carList$ =  this.http.get<Car[]>(this.url + '/cars');
+
+    this.carList$.subscribe(cars => this.carList = cars);
+ 
   }
 
   getPilots(): Observable<Pilot[]>{
@@ -38,5 +44,17 @@ export class LeMan24Service {
 
   getTeams(): Observable<Team[]>{
     return this.teamList$;
+  }
+
+  addCar(car: Car): void{ 
+
+    this.http.post<Car>(this.url + '/cars',car).subscribe({
+      next: data => {console.log("data id " + data.id)},
+      error: error => {console.log("Erreur " + error)}      
+    },);
+  }
+
+  getCarById(id: number): Car {
+    return  this.carList.find(car => car.id == id) as Car;
   }
 }

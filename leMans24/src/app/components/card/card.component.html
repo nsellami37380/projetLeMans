@@ -1,5 +1,5 @@
     <div *ngIf="url ==='cars'">
-        <div class="card" [routerLink]="['/container-list', 'cars', car.id]">
+        <div [routerLink]="['/car-detail',car.id ]" class="card">
             <img [src]="car.picture" alt="f40">
             <p> Model Name : {{car.modelName}}</p>
             <p> Power : {{car.power}}</p>
@@ -9,7 +9,7 @@
     </div>
 
     <div *ngIf="url ==='pilots'">
-        <div class="card" [routerLink]="['/container-list', 'pilots', 'pilot-detail', pilot.id]">
+        <div class="card" [routerLink]="['/pilot-detail', pilot.id]">
             <img [src]="pilot.photoList[0]" alt="">
             <p> Prénom : {{pilot.firstName}}</p>
             <p> Nom : {{pilot.lastName}}</p>
