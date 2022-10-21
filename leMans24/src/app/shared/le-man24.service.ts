@@ -20,6 +20,8 @@ export class LeMan24Service {
   private carList$ !: Observable<Car[]>;
 
   private carList !: Car[];
+  private PilotList !: Pilot[];
+  private TeamList !: Team[];
 
   constructor(private http: HttpClient) { 
     this.getDonnees()
@@ -31,6 +33,8 @@ export class LeMan24Service {
     this.carList$ =  this.http.get<Car[]>(this.url + '/cars');
 
     this.carList$.subscribe(cars => this.carList = cars);
+    this.pilotList$.subscribe(pilots => this.PilotList = pilots);
+    this.teamList$.subscribe(teams => this.TeamList = teams );
  
   }
 
@@ -56,5 +60,13 @@ export class LeMan24Service {
 
   getCarById(id: number): Car {
     return  this.carList.find(car => car.id == id) as Car;
+  }
+
+  getPilotByID (id:number): Pilot{
+    return this.PilotList.find(pilot => pilot.id == id)as Pilot;
+  }
+
+  getTeamByID (id: number): Team{
+  return this.TeamList.find(team => team.id == id) as Team;
   }
 }
