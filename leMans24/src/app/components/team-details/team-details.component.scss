@@ -8,15 +8,6 @@ section{
     margin-bottom: 50px;
 }
 
-.container-team h2{
-    display: flex;
-    justify-content: center;
-    color: white;
-    width: 80px;
-
-    margin: 20px;
-}
-
 .content-team{
     display: flex;
     flex-direction: row;
@@ -39,6 +30,13 @@ h1{
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     margin-bottom: 2em;
     color: white;
+}
+
+h2{
+    display: flex;
+    justify-content: center;
+    color: white;
+    margin: 20px;
 }
 
 h3{
