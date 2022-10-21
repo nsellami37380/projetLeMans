@@ -12,11 +12,8 @@ const routes: Routes = [
   {path:'home', component: PageHomeComponent },
   {path:'addCar', component: PageFormComponent },
   {path:'container-list/:var', component: PageContainerListComponent},
-  {path:'car-detail/:id', component: CarDetailsComponent}
-
-
-  {path:'pilot-detail/:id', component: PilotDetailsComponent},
   {path:'car-detail/:id', component: CarDetailsComponent},
+  {path:'pilot-detail/:id', component: PilotDetailsComponent},
   {path:'team-detail/:id', component: TeamDetailsComponent},
 ];
 
