@@ -1,3 +1,5 @@
+<div>
+    <img class="logo-delete-button" (click)="delete()" src="https://cdn-icons-png.flaticon.com/512/5974/5974771.png" alt="delete button">
     <div *ngIf="url ==='cars'">
         <div [routerLink]="['/car-detail',car.id ]" class="card">
             <img [src]="car.picture" alt="f40">
@@ -24,3 +26,4 @@
             <p>{{team.budget}} Millions</p>
         </div>
     </div>
+</div>

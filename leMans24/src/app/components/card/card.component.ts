@@ -3,6 +3,7 @@ import { ActivatedRoute, ParamMap } from '@angular/router';
 import { Car } from 'src/app/models/car.model';
 import { Pilot } from 'src/app/models/pilot.model';
 import { Team } from 'src/app/models/team.model';
+import { LeMan24Service } from 'src/app/shared/le-man24.service';
 
 @Component({
   selector: 'app-card',
@@ -25,7 +26,7 @@ export class CardComponent implements OnInit, OnChanges{
   @Input()
   ptc : Car | Pilot | Team = this.car;
 
-  constructor(private route: ActivatedRoute) { }
+  constructor(private route: ActivatedRoute,private leMan24S: LeMan24Service) { }
   
   ngOnChanges(changes: SimpleChanges): void {
     // todo url est vide ????
@@ -57,6 +58,10 @@ export class CardComponent implements OnInit, OnChanges{
     return result;
 
 
+  }
+
+  delete(): void {
+    this.leMan24S.deleteCar((this.ptc as Car).id)
   }
 
 }

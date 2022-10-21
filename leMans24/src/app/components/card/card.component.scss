@@ -12,6 +12,14 @@ p{
     margin-bottom: 1em;
 }
 
-.card:hover{
-    transform: scale(1.2);
+// .card:hover{
+//     transform: scale(1.2);
+// }
+
+.logo-delete-button{
+    position: relative;
+    width: 30px;
+    left: 89%;
+    top: 35px;
+    z-index: 1;
 }
