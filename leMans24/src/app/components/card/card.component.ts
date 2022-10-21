@@ -28,26 +28,21 @@ export class CardComponent implements OnInit, OnChanges{
   constructor(private route: ActivatedRoute) { }
   
   ngOnChanges(changes: SimpleChanges): void {
-   console.log("dans on changes");
     // todo url est vide ????
     if (this.getParam() === "pilots"){
-      console.log('pilot');
       this.pilot = (this.ptc as Pilot);
     } else
     if (this.getParam() === "teams"){
-      console.log('team');
       this.team = (this.ptc as Team);
     } else
     if (this.getParam() === "cars"){
-      console.log('cars');
       this.car = (this.ptc as Car);
     } 
   }
 
   ngOnInit(): void {
     this.route.paramMap.subscribe((param: ParamMap)=>{
-      this.url = param.get('var') as string;
-      console.log("url dans init " + this.url);      
+      this.url = param.get('var') as string;     
     })   
   }
 
