@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
 import { Observable } from 'rxjs/internal/Observable';
 
 import { Car } from '../models/car.model';
@@ -11,12 +12,15 @@ import { Team } from '../models/team.model';
 })
 export class LeMan24Service {
 
-  //private url = "http://192.168.182.122:3000";
-   private url = "http://localhost:3000";
+  private url = "http://192.168.182.122:3000";
+   //private url = "http://localhost:3000";
 
   private pilotList$ !: Observable<Pilot[]>;
   private teamList$ !: Observable<Team[]>;
   private carList$ !: Observable<Car[]>;
+
+  contentDetailed: BehaviorSubject<any> = new BehaviorSubject<any>(null);
+
 
   constructor(private http: HttpClient) { 
     this.getDonnees()
