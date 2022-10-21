@@ -26,9 +26,9 @@ export class PilotDetailsComponent implements OnInit {
     this.route.paramMap.subscribe((param: ParamMap)=>{
       this.id = parseInt(param.get("id") as string);
       if(this.id){
-       this.pilot = this.leMan24S.getPilotByID(this.id);
+       this.pilot = this.leMan24S.getPilotById(this.id);
        this.car = this.leMan24S.getCarById(this.id);
-       this.team = this.leMan24S.getTeamByID(this.id);
+       this.team = this.leMan24S.getTeamById(this.id);
       }
     }) 
 

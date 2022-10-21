@@ -62,11 +62,11 @@ export class LeMan24Service {
     return  this.carList.find(car => car.id == id) as Car;
   }
 
-  getPilotByID (id:number): Pilot{
+  getPilotById (id:number): Pilot{
     return this.PilotList.find(pilot => pilot.id == id)as Pilot;
   }
 
-  getTeamByID (id: number): Team{
+  getTeamById (id: number): Team{
   return this.TeamList.find(team => team.id == id) as Team;
   }
 }
