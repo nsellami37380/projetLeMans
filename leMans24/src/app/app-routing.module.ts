@@ -12,10 +12,10 @@ const routes: Routes = [
   {path:'container-list/:var', component: PageContainerListComponent},
   {path:'container-list/:var', component: PageContainerListComponent},
   {path:'container-list/:var', component: PageContainerListComponent},
-  {path:'container-list/:var/pilot-detail/:id', component: PilotDetailsComponent},
-  {path:'container-list/:var/car-detail/:id', component: CarDetailsComponent},
-  {path:'container-list/:var/team-detail/:id', component: TeamDetailsComponent},
 
+  {path:'pilot-detail/:id', component: PilotDetailsComponent},
+  {path:'car-detail/:id', component: CarDetailsComponent},
+  {path:'team-detail/:id', component: TeamDetailsComponent},
 ];
 
 @NgModule({

@@ -18,7 +18,7 @@
     </div>
 
     <div *ngIf="url ==='teams'">
-        <div class="card" [routerLink]="['/container-list', 'teams', team.id]">
+        <div class="card" [routerLink]="['/team-detail', team.id]">
             <img [src]="team.logo" alt="">
             <p> Nom : {{team.name}}</p>
             <p>{{team.budget}} Millions</p>
