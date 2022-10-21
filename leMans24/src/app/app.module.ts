@@ -9,7 +9,6 @@ import { PageHomeComponent } from './pages/page-home/page-home.component';
 import { HomeComponent } from './components/home/home.component';
 import { PageContainerListComponent } from './pages/page-container-list/page-container-list.component';
 import { PageFormComponent } from './pages/page-form/page-form.component';
-import { PageDetailsComponent } from './pages/page-details/page-details.component';
 import { SearchBarComponent } from './components/search-bar/search-bar.component';
 import { ContainerListComponent } from './components/container-list/container-list.component';
 import { CardComponent } from './components/card/card.component';
@@ -31,7 +30,6 @@ import { FormsModule } from '@angular/forms';
     HomeComponent,
     PageContainerListComponent,
     PageFormComponent,
-    PageDetailsComponent,
     SearchBarComponent,
     ContainerListComponent,
     CardComponent,
@@ -40,7 +38,7 @@ import { FormsModule } from '@angular/forms';
     TeamDetailsComponent,
     FormTeamComponent,
     FormPilotComponent,
-    FormCarComponent
+    FormCarComponent,
   ],
   imports: [
     BrowserModule,

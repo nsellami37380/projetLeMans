@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { filter } from 'rxjs';
 import { Observable } from 'rxjs/internal/Observable';
+
 import { Car } from '../models/car.model';
 import { Pilot } from '../models/pilot.model';
 import { Team } from '../models/team.model';
@@ -11,7 +12,7 @@ import { Team } from '../models/team.model';
 })
 export class LeMan24Service {
 
-   // private url = "assets/leMans24-db.json";
+  //private url = "http://192.168.182.122:3000";
    private url = "http://localhost:3000";
 
   private pilotList$ !: Observable<Pilot[]>;
@@ -19,7 +20,6 @@ export class LeMan24Service {
   private carList$ !: Observable<Car[]>;
 
   private carList !: Car[];
-
 
   constructor(private http: HttpClient) { 
     this.getDonnees()
@@ -57,5 +57,4 @@ export class LeMan24Service {
   getCarById(id: number): Car {
     return  this.carList.find(car => car.id == id) as Car;
   }
-
 }

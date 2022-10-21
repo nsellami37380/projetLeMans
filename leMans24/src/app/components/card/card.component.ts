@@ -26,14 +26,13 @@ export class CardComponent implements OnInit, OnChanges{
   ptc : Car | Pilot | Team = this.car;
 
   constructor(private route: ActivatedRoute) { }
+  
   ngOnChanges(changes: SimpleChanges): void {
-   
     // todo url est vide ????
     if (this.getParam() === "pilots"){
       this.pilot = (this.ptc as Pilot);
     } else
-
-      if (this.getParam() === "teams"){
+    if (this.getParam() === "teams"){
       this.team = (this.ptc as Team);
     } else
     if (this.getParam() === "cars"){
@@ -43,17 +42,10 @@ export class CardComponent implements OnInit, OnChanges{
 
   ngOnInit(): void {
     this.route.paramMap.subscribe((param: ParamMap)=>{
-      this.url = param.get('var') as string;
-
-      console.log("url dans init " + this.url);
-      
-    })
-
-
-
-
-   
+      this.url = param.get('var') as string;     
+    })   
   }
+
   getParam(): string{
 
     let result: string = "";

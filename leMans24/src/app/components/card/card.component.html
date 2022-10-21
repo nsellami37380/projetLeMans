@@ -9,7 +9,7 @@
     </div>
 
     <div *ngIf="url ==='pilots'">
-        <div  class="card">
+        <div class="card" [routerLink]="['/pilot-detail', pilot.id]">
             <img [src]="pilot.photoList[0]" alt="">
             <p> Prénom : {{pilot.firstName}}</p>
             <p> Nom : {{pilot.lastName}}</p>
@@ -18,7 +18,7 @@
     </div>
 
     <div *ngIf="url ==='teams'">
-        <div class="card">
+        <div class="card" [routerLink]="['/team-detail', team.id]">
             <img [src]="team.logo" alt="">
             <p> Nom : {{team.name}}</p>
             <p>{{team.budget}} Millions</p>
