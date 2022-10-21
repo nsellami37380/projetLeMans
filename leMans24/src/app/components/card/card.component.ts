@@ -12,7 +12,7 @@ import { Team } from 'src/app/models/team.model';
 export class CardComponent implements OnInit, OnChanges{
 
   url: string = ' a ';
-
+  
 
   car: Car = new Car(0,'','','','',0,0,'',(new Team(0,'','',[],[],0,'')),0);
 

@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
-
+  tab: string[] = ["aaa", "bbb", "ccc"]
   constructor() { }
 
   ngOnInit(): void {
