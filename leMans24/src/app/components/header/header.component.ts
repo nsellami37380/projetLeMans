@@ -20,10 +20,10 @@ export class HeaderComponent implements OnInit {
                 label:'Add New Car',  "routerLink": '/addCar'
               },
               {
-                label:'Add New Pilot'
+                label:'Add New Pilot', "routerLink": '/addPilot'
               },
               {
-                label:'Add New Team'
+                label:'Add New Team', "routerLink": '/addTeam'
               }],      
       }
     ];console.log(this.menu);
