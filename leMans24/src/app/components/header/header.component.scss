@@ -1,17 +1,34 @@
-.header{
+nav{
     background-color: #0D64FF;
     height: 70px;
-    display: flex;
     align-items: center;
-    justify-content: space-around;
+    display: flex;
     margin-bottom: 3em;
     width: 100%;
 }
 
-button{
-    height: 40px;
-    width: 150px;
+ul{
+    display: flex;
+    list-style-type: none;
+    width: 100%;
+    justify-content: space-around;
+}
+
+li{
     background-color: #355789;
-    color: white;
-    border: none;
+    height: 50px;
+    width: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+a{
+    font-size: 18px;
+    text-decoration: none;
+    color: black;
+}
+
+li:hover{
+    transform: scale(1.1);
 }

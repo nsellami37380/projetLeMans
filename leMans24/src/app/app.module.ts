@@ -9,7 +9,6 @@ import { PageHomeComponent } from './pages/page-home/page-home.component';
 import { HomeComponent } from './components/home/home.component';
 import { PageContainerListComponent } from './pages/page-container-list/page-container-list.component';
 import { PageFormComponent } from './pages/page-form/page-form.component';
-import { PageDetailsComponent } from './pages/page-details/page-details.component';
 import { SearchBarComponent } from './components/search-bar/search-bar.component';
 import { ContainerListComponent } from './components/container-list/container-list.component';
 import { CardComponent } from './components/card/card.component';
@@ -20,6 +19,7 @@ import { FormTeamComponent } from './components/form-team/form-team.component';
 import { FormPilotComponent } from './components/form-pilot/form-pilot.component';
 import { FormCarComponent } from './components/form-car/form-car.component';
 import {HttpClientModule} from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -30,7 +30,6 @@ import {HttpClientModule} from '@angular/common/http';
     HomeComponent,
     PageContainerListComponent,
     PageFormComponent,
-    PageDetailsComponent,
     SearchBarComponent,
     ContainerListComponent,
     CardComponent,
@@ -39,12 +38,13 @@ import {HttpClientModule} from '@angular/common/http';
     TeamDetailsComponent,
     FormTeamComponent,
     FormPilotComponent,
-    FormCarComponent
+    FormCarComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

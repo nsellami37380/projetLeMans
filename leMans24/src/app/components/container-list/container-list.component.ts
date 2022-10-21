@@ -12,8 +12,10 @@ import { LeMan24Service } from 'src/app/shared/le-man24.service';
 })
 export class ContainerListComponent implements OnInit {
 
+  resultFilter: string = ''
   ptcList: Pilot[] | Team[] | Car[] = [];
   title: string = "";
+  newPtcList: Pilot[] | Team[] | Car[] = this.ptcList;
 
   url: string = '';
 
@@ -27,19 +29,41 @@ export class ContainerListComponent implements OnInit {
     })    }
     
     getList(): void{
+
       if (this.url ==='pilots'){        
-         this.leMan24S.getPilots().subscribe(pilots  => this.ptcList = pilots)
+         this.leMan24S.getPilots().subscribe(pilots  => {this.ptcList = pilots; this.newPtcList = this.ptcList;} )
         this.title = "Listes des pilotes";
+        
       } else
       if (this.url ==='cars'){
-         this.leMan24S.getCars().subscribe(cars  => this.ptcList = cars)
-        this.title = "Listes des voitures";        
+         this.leMan24S.getCars().subscribe(cars  => {this.ptcList = cars, this.newPtcList = this.ptcList;})
+        this.title = "Listes des voitures";  
+     
       } else
-      if (this.url ==='teams'){        
+      if (this.url ==='teams'){ 
+        this.leMan24S.getTeams().subscribe(teams  => {this.ptcList = teams, this.newPtcList = this.ptcList;})       
         this.title = "Listes des écuries";
-         this.leMan24S.getTeams().subscribe(teams  => this.ptcList = teams)
+        
       };
 
 
+
+  }
+
+  filterList(event: string): void {
+    this.resultFilter = event.toLowerCase();
+    if (this.url ==='pilots'){          
+      this.newPtcList = (this.ptcList as Pilot[]).filter(pilot => pilot.firstName.toLowerCase().includes(this.resultFilter));
+    } else
+    if (this.url ==='cars'){
+      this.newPtcList = (this.ptcList as Car[]).filter(text => text.modelName.toLowerCase().includes(this.resultFilter));       
+    } else
+    if (this.url ==='teams'){ 
+      this.newPtcList = (this.ptcList as Team[]).filter(text => text.name.toLowerCase().includes(this.resultFilter));  
+    }
+    console.log(this.newPtcList);
+    
   }
 }
+
+
