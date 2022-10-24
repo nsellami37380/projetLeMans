@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import {MenuItem} from 'primeng/api';
 
 
@@ -10,27 +11,32 @@ import {MenuItem} from 'primeng/api';
 export class HeaderComponent implements OnInit {
 
   menu: MenuItem[] = [];
-  constructor() {}
+  constructor(private router: Router) {}
 
   ngOnInit(): void {
     this.menu=[
       {
         label: 'Gestion',
         items:[{
-                label:'Car',
-                items:[{label:'Add New Car'}]
+                label:'Add New Car',
+                //command: () => this.addCar()
               },
               {
-                label:'Pilot',
-                items:[{label:'Add New Pilot'}]
+                label:'Add New Pilot'
               },
               {
-                label:'Team',
-                items:[{label:'Add New Team'}]
+                label:'Add New Team'
+                
               }],
               
       }
     ]
 }
+//   addCar(): void {
+//     this.router.navigate(['/addCar']);
+ 
+// }
 }
+
+
 

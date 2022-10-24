@@ -11,6 +11,7 @@ const routes: Routes = [
   {path:'', component: PageHomeComponent },
   {path:'home', component: PageHomeComponent },
   {path:'addCar', component: PageFormComponent },
+  {path:'updateCar/:id', component: PageFormComponent },
   {path:'container-list/:var', component: PageContainerListComponent},
   {path:'car-detail/:id', component: CarDetailsComponent},
   {path:'pilot-detail/:id', component: PilotDetailsComponent},
