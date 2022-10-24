@@ -1,6 +1,5 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { filter } from 'rxjs';
 import { Observable } from 'rxjs/internal/Observable';
 
 import { Car } from '../models/car.model';
@@ -12,14 +11,15 @@ import { Team } from '../models/team.model';
 })
 export class LeMan24Service {
 
-  //private url = "http://192.168.182.122:3000";
-   private url = "http://localhost:3000";
+  private url = "http://localhost:3000";
 
   private pilotList$ !: Observable<Pilot[]>;
   private teamList$ !: Observable<Team[]>;
   private carList$ !: Observable<Car[]>;
 
   private carList !: Car[];
+  private PilotList !: Pilot[];
+  private TeamList !: Team[];
 
   constructor(private http: HttpClient) { 
     this.getDonnees()
@@ -31,6 +31,8 @@ export class LeMan24Service {
     this.carList$ =  this.http.get<Car[]>(this.url + '/cars');
 
     this.carList$.subscribe(cars => this.carList = cars);
+    this.pilotList$.subscribe(pilots => this.PilotList = pilots);
+    this.teamList$.subscribe(teams => this.TeamList = teams );
  
   }
 
@@ -63,7 +65,32 @@ export class LeMan24Service {
   }
   
 
+  addTeam(team: Team): void{ 
+
+    this.http.post<Team>(this.url + '/teams',team).subscribe({
+      next: data => {console.log("data id " + data.id)},
+      error: error => {console.log("Erreur " + error)}      
+    },);
+  }
+
+  addPilot(pilot: Pilot): void{ 
+
+    this.http.post<Pilot>(this.url + '/pilots',pilot).subscribe({
+      next: data => {console.log("data id " + data.id)},
+      error: error => {console.log("Erreur " + error)}      
+    },);
+  }
+
   getCarById(id: number): Car {
     return  this.carList.find(car => car.id == id) as Car;
+  }
+
+
+  getPilotById (id:number): Pilot{
+    return this.PilotList.find(pilot => pilot.id == id)as Pilot;
+  }
+
+  getTeamById (id: number): Team{
+  return this.TeamList.find(team => team.id == id) as Team;
   }
 }

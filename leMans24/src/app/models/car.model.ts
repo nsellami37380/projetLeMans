@@ -13,7 +13,8 @@ export class Car{
         public maxSpeed: number,
         public tire : string,
         public team: Team,
-        public acceleration: number
+        public acceleration: number,
+        public description:string
 
     ) {
         
