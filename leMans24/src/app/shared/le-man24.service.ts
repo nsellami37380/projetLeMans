@@ -29,11 +29,9 @@ export class LeMan24Service {
     this.pilotList$ =  this.http.get<Pilot[]>(this.url + '/pilots');
     this.teamList$ =  this.http.get<Team[]>(this.url + '/teams');
     this.carList$ =  this.http.get<Car[]>(this.url + '/cars');
-
     this.carList$.subscribe(cars => this.carList = cars);
     this.pilotList$.subscribe(pilots => this.PilotList = pilots);
-    this.teamList$.subscribe(teams => this.TeamList = teams );
- 
+    this.teamList$.subscribe(teams => this.TeamList = teams ); 
   }
 
   getPilots(): Observable<Pilot[]>{
@@ -65,8 +63,7 @@ export class LeMan24Service {
   }
   
 
-  addTeam(team: Team): void{ 
-
+  addTeam(team: Team): void{
     this.http.post<Team>(this.url + '/teams',team).subscribe({
       next: data => {console.log("data id " + data.id)},
       error: error => {console.log("Erreur " + error)}      
@@ -74,7 +71,6 @@ export class LeMan24Service {
   }
 
   addPilot(pilot: Pilot): void{ 
-
     this.http.post<Pilot>(this.url + '/pilots',pilot).subscribe({
       next: data => {console.log("data id " + data.id)},
       error: error => {console.log("Erreur " + error)}      
@@ -85,12 +81,16 @@ export class LeMan24Service {
     return  this.carList.find(car => car.id == id) as Car;
   }
 
-
   getPilotById (id:number): Pilot{
     return this.PilotList.find(pilot => pilot.id == id)as Pilot;
   }
 
   getTeamById (id: number): Team{
   return this.TeamList.find(team => team.id == id) as Team;
+  }
+  
+  deleteCar(id: number): void{
+    this.http.delete(this.url + '/cars/'+id)
+    .subscribe(() => window.location.reload());
   }
 }
