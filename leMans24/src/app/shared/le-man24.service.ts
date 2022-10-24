@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { filter } from 'rxjs';
+import { BehaviorSubject, filter } from 'rxjs';
 import { Observable } from 'rxjs/internal/Observable';
 
 import { Car } from '../models/car.model';
@@ -20,6 +20,7 @@ export class LeMan24Service {
   private carList$ !: Observable<Car[]>;
 
   private carList !: Car[];
+ 
 
   constructor(private http: HttpClient) { 
     this.getDataList()
@@ -57,4 +58,5 @@ export class LeMan24Service {
   getCarById(id: number): Car {
     return  this.carList.find(car => car.id == id) as Car;
   }
+  
 }

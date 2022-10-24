@@ -21,6 +21,9 @@ li{
     display: flex;
     justify-content: center;
     align-items: center;
+    box-sizing: border-box;
+    border-radius: 5px;
+    padding: 29px;
 }
 
 a{
