@@ -16,16 +16,16 @@ export class HeaderComponent implements OnInit {
   ngOnInit(): void {
     this.menu=[
       {
-        label: 'Gestion',
+        label: 'Add',
         items:[{
-                label:'Add New Car',
-                //command: () => this.addCar()
+                label:'Add New Car', "routerLink": '/addCar'
+                
               },
               {
-                label:'Add New Pilot'
+                label:'Add New Pilot', "routerLink": '/addPilot'
               },
               {
-                label:'Add New Team'
+                label:'Add New Team', "routerLink": '/addTeam'
                 
               }],
               
