@@ -1,5 +1,5 @@
 import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
-import { ActivatedRoute, ParamMap } from '@angular/router';
+import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { Car } from 'src/app/models/car.model';
 import { Pilot } from 'src/app/models/pilot.model';
 import { Team } from 'src/app/models/team.model';
@@ -12,22 +12,21 @@ import { LeMan24Service } from 'src/app/shared/le-man24.service';
 })
 export class CardComponent implements OnInit, OnChanges{
 
+  url: string = ' a '; 
 
-  url: string = ' a ';
-  
-
-  car: Car = new Car(0,'','','','',0,0,'',(new Team(0,'','',[],[],0,'')),0,'');
-
+  car: Car = new Car(0,'','','','',0,0,'',0,0,'');
  
-  pilot: Pilot = new Pilot (0,[],'','',(new Date),0,(new Team(0,'','',[],[],0,'')),'','');
-
+  pilot: Pilot = new Pilot (0,[],'','',(new Date),0,0,'','');
 
   team: Team = new Team(0,'','',[],[],0,'');
 
   @Input()
   ptc : Car | Pilot | Team = this.car;
 
-  constructor(private route: ActivatedRoute,private leMan24S: LeMan24Service) { }
+  constructor(
+    private route: ActivatedRoute,
+    private leMan24S: LeMan24Service,
+    private router: Router) { }
   
   ngOnChanges(changes: SimpleChanges): void {
     // todo url est vide ????
@@ -77,22 +76,19 @@ export class CardComponent implements OnInit, OnChanges{
         }
         break;
     }
-
-    if (this.getParam() === "pilots"){
-      this.pilot = (this.ptc as Pilot);
-    } else
-    if (this.getParam() === "teams"){
-      this.team = (this.ptc as Team);
-    } else
-    if (this.getParam() === "cars"){
-      this.car = (this.ptc as Car);
-    } 
-    
-    this.leMan24S.deleteCar((this.ptc as Car).id)
   }
 
-  Modify() {
-      alert(" la carte " + this.ptc.id)
+  modify(): void {
+    switch(this.getParam()){
+      case "pilots":
+        this.router.navigate(['/updateCar',(this.ptc as Pilot).id]);
+        break;
+      case "teams":
+        this.router.navigate(['/updateCar',(this.ptc as Pilot).id]);
+        break;
+      case "cars":
+        this.router.navigate(['/updateCar',(this.ptc as Pilot).id]);
+        break;
     }
-    
+  }
 }

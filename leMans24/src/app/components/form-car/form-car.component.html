@@ -18,7 +18,7 @@
 
     <fieldset>
         <label for="color">Couleur*</label>
-        <input type="color" name="color" id="color" [(ngModel)]="car.color" #color="ngModel" required>
+        <input type="color" name="color" id="color" [(ngModel)]="car.color" value="car.color" #color="ngModel" required>
         <div *ngIf="color.errors && myForm.submitted">
             <span *ngIf="color.errors?.['required']">La couleur est requise</span>
         </div>  
@@ -61,7 +61,7 @@
         <label for="team">Ecurie*</label>
         <!-- <input type="number" name="team" id="team" [(ngModel)]="car.team" #team="ngModel" max=9 required> -->
         <select name="team" id="team" [(ngModel)]="car.team" #team="ngModel">
-        <option *ngFor="let team of teamList" [value]="team.id">
+        <option *ngFor="let team of teamList" [value]="team.id" [selected]="team.id == car.team">
             {{team.name}}
         </option>
         </select>

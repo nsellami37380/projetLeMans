@@ -1,1 +1,4 @@
-<app-form-car></app-form-car>
+ 
+<app-form-car *ngIf="isCar"></app-form-car>
+<app-form-pilot *ngIf="isPilot"></app-form-pilot>
+<app-form-team *ngIf="isPilot"></app-form-team>

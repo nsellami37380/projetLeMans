@@ -14,7 +14,9 @@ export class CarDetailsComponent implements OnInit {
 
   car !: Car;
   id: number= 0;
-  constructor(private route: ActivatedRoute,private leman24S: LeMan24Service) { }
+  constructor(
+    private route: ActivatedRoute,
+    private leman24S: LeMan24Service) { }
 
   ngOnInit(): void {
 

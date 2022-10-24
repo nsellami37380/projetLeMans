@@ -8,7 +8,7 @@ export class Pilot{
         public lastName: string,
         public birthday: Date,
         public height: number,
-        public team: Team,
+        public team: number,
         public palmares: string,
         public bio: string
         ) {

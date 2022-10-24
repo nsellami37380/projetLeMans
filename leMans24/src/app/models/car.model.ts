@@ -12,7 +12,7 @@ export class Car{
         public power: number,
         public maxSpeed: number,
         public tire : string,
-        public team: Team,
+        public team: number,
         public acceleration: number,
         public description:string
 
