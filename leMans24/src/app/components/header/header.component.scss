@@ -15,12 +15,14 @@ ul{
 }
 
 li{
-    background-color: #355789;
+    background-color: #f5f6f7;
     height: 50px;
     width: 150px;
     display: flex;
     justify-content: center;
     align-items: center;
+    border-radius: 5px;
+    padding: 29px;
 }
 
 a{
