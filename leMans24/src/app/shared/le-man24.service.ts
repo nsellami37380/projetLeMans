@@ -11,8 +11,7 @@ import { Team } from '../models/team.model';
 })
 export class LeMan24Service {
 
-  //private url = "http://192.168.182.122:3000";
-   private url = "http://localhost:3000";
+  private url = "http://localhost:3000";
 
   private pilotList$ !: Observable<Pilot[]>;
   private teamList$ !: Observable<Team[]>;
@@ -50,12 +49,21 @@ export class LeMan24Service {
   }
 
   addCar(car: Car): void{ 
-
+    if (car.id == 0)
+    {
     this.http.post<Car>(this.url + '/cars',car).subscribe({
       next: data => {console.log("data id " + data.id)},
       error: error => {console.log("Erreur " + error)}      
     },);
+    } else
+    {
+      this.http.patch<Car>(this.url + '/cars',car).subscribe({
+        next: data => {console.log("data id " + data.id)},
+        error: error => {console.log("Erreur " + error)}      
+      },);
+    } 
   }
+  
 
   addTeam(team: Team): void{ 
 
@@ -76,6 +84,7 @@ export class LeMan24Service {
   getCarById(id: number): Car {
     return  this.carList.find(car => car.id == id) as Car;
   }
+
 
   getPilotById (id:number): Pilot{
     return this.PilotList.find(pilot => pilot.id == id)as Pilot;

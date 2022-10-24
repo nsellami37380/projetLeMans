@@ -1,4 +1,10 @@
+    
+    <div>
+
+        
+    
     <div *ngIf="url ==='cars'">
+        <a [routerLink]="['/updateCar', car.id]">Modifier</a>
         <div [routerLink]="['/car-detail',car.id ]" class="card">
             <img [src]="car.picture" alt="f40">
             <p> Model Name : {{car.modelName}}</p>
@@ -24,3 +30,4 @@
             <p>{{team.budget}} Millions</p>
         </div>
     </div>
+</div>
