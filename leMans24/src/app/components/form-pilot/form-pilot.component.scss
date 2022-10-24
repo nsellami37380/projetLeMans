@@ -1,0 +1,16 @@
+#my_fieldset{
+    display: grid;
+    grid-template-columns: 33% 33% 33%;
+    grid-template-rows: 200px 200px;
+    grid-gap: 1em;
+    padding: 1em;
+}
+fieldset{
+    margin-bottom: 1em;
+    border: 0px;
+    padding: 1em;
+    background-color: whitesmoke;
+    display: inline-block;
+    animation: mymovef 20s infinite;
+    margin-right: 5%;
+}

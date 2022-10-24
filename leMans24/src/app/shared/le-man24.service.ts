@@ -1,6 +1,5 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { filter } from 'rxjs';
 import { Observable } from 'rxjs/internal/Observable';
 
 import { Car } from '../models/car.model';
@@ -58,15 +57,31 @@ export class LeMan24Service {
     },);
   }
 
+  addTeam(team: Team): void{ 
+
+    this.http.post<Team>(this.url + '/teams',team).subscribe({
+      next: data => {console.log("data id " + data.id)},
+      error: error => {console.log("Erreur " + error)}      
+    },);
+  }
+
+  addPilot(pilot: Pilot): void{ 
+
+    this.http.post<Pilot>(this.url + '/pilots',pilot).subscribe({
+      next: data => {console.log("data id " + data.id)},
+      error: error => {console.log("Erreur " + error)}      
+    },);
+  }
+
   getCarById(id: number): Car {
     return  this.carList.find(car => car.id == id) as Car;
   }
 
-  getPilotByID (id:number): Pilot{
+  getPilotById (id:number): Pilot{
     return this.PilotList.find(pilot => pilot.id == id)as Pilot;
   }
 
-  getTeamByID (id: number): Team{
+  getTeamById (id: number): Team{
   return this.TeamList.find(team => team.id == id) as Team;
   }
 }
