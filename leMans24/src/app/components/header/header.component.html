@@ -6,14 +6,19 @@
             <li>
                 <a [routerLink]="['/container-list', 'teams' ]">Teams</a>
             </li>
+                <a >
+                    <p-menubar [model]="menu">
+                    
+                    </p-menubar>
+                </a>
             <li>
                 <a [routerLink]="['/container-list', 'pilots']">Pilots</a>
             </li>
             <li>
                 <a [routerLink]="['/container-list', 'cars']">Cars</a>
             </li>
-            <li>
-                <a >Gestion</a>
-            </li>
+        
         </ul>
+        
     </nav>
+    

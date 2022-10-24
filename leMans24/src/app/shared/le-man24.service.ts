@@ -47,12 +47,21 @@ export class LeMan24Service {
   }
 
   addCar(car: Car): void{ 
-
+    if (car.id == 0)
+    {
     this.http.post<Car>(this.url + '/cars',car).subscribe({
       next: data => {console.log("data id " + data.id)},
       error: error => {console.log("Erreur " + error)}      
     },);
+    } else
+    {
+      this.http.patch<Car>(this.url + '/cars',car).subscribe({
+        next: data => {console.log("data id " + data.id)},
+        error: error => {console.log("Erreur " + error)}      
+      },);
+    } 
   }
+  
 
   getCarById(id: number): Car {
     return  this.carList.find(car => car.id == id) as Car;
