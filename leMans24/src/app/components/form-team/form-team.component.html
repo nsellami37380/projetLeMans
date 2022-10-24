@@ -1,1 +1,52 @@
-<p>form-team works!</p>
+<form #myForm="ngForm" (ngSubmit)="addTeam()">
+    <div id="my_fieldset">
+    <fieldset>
+        <label for="name">Name*</label>
+        <input type="text" name="name" id="name" [(ngModel)]="team.name" #name="ngModel" required>
+        <div *ngIf="name.errors && myForm.submitted">
+            <span *ngIf="name.errors?.['required']">Le nom de la team est requis</span>
+        </div>    
+    </fieldset>
+
+    <fieldset>
+        <label for="picture">Image*</label>
+        <div class="dimg">
+            <input type="file" #selectImage (change)="selectfile($event)">
+            <img [src]="url" width="100px" (click)="selectImage.click()"  height="100px" alt=""> 
+        </div>      
+    </fieldset>
+
+    <!-- <fieldset>
+        <label for="pilot">Pilot*</label>
+        <input type="number" name="team" id="team" [(ngModel)]="car.team" #team="ngModel" max=9 required>
+        <select name="pilot" id="team" [(ngModel)]="team.pilotList" #pilot="ngModel">
+        <option *ngFor="let pilot of pilotList" [value]="pilot.id">
+            {{pilot.firstName}}
+        </option>
+        </select>
+        <div *ngIf="pilot.errors && myForm.submitted">
+            <span *ngIf="pilot.errors?.['required']">Le nom du pilote est requis</span>
+        </div>    
+    </fieldset> -->
+
+    <fieldset>
+        <label for="budget">Budget*</label>
+        <input type="number" name="budget" id="budget" [(ngModel)]="team.budget" #budget="ngModel" required>
+        <div *ngIf="budget.errors && myForm.submitted">
+            <span *ngIf="budget.errors?.['required']">Le Budget est requis</span>
+        </div>    
+    </fieldset>
+
+    <fieldset>
+        <label for="story">Histoire*</label>
+        <input type="text" name="story" id="story" [(ngModel)]="team.story" #story="ngModel" required>
+        <div *ngIf="story.errors && myForm.submitted">
+            <span *ngIf="story.errors?.['required']">L'histoire est requise'</span>
+        </div>    
+    </fieldset>
+
+    </div>   
+    <div class = "btn">
+        <button type="submit">Ajouter</button>
+    </div>
+</form>

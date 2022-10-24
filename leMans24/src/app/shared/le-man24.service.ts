@@ -1,6 +1,5 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { filter } from 'rxjs';
 import { Observable } from 'rxjs/internal/Observable';
 
 import { Car } from '../models/car.model';
@@ -12,8 +11,7 @@ import { Team } from '../models/team.model';
 })
 export class LeMan24Service {
 
-  //private url = "http://192.168.182.122:3000";
-   private url = "http://localhost:3000";
+  private url = "http://localhost:3000";
 
   private pilotList$ !: Observable<Pilot[]>;
   private teamList$ !: Observable<Team[]>;
@@ -31,11 +29,9 @@ export class LeMan24Service {
     this.pilotList$ =  this.http.get<Pilot[]>(this.url + '/pilots');
     this.teamList$ =  this.http.get<Team[]>(this.url + '/teams');
     this.carList$ =  this.http.get<Car[]>(this.url + '/cars');
-
     this.carList$.subscribe(cars => this.carList = cars);
     this.pilotList$.subscribe(pilots => this.PilotList = pilots);
-    this.teamList$.subscribe(teams => this.TeamList = teams );
- 
+    this.teamList$.subscribe(teams => this.TeamList = teams ); 
   }
 
   getPilots(): Observable<Pilot[]>{
@@ -51,8 +47,31 @@ export class LeMan24Service {
   }
 
   addCar(car: Car): void{ 
-
+    if (car.id == 0)
+    {
     this.http.post<Car>(this.url + '/cars',car).subscribe({
+      next: data => {console.log("data id " + data.id)},
+      error: error => {console.log("Erreur " + error)}      
+    },);
+    } else
+    {
+      this.http.patch<Car>(this.url + '/cars',car).subscribe({
+        next: data => {console.log("data id " + data.id)},
+        error: error => {console.log("Erreur " + error)}      
+      },);
+    } 
+  }
+  
+
+  addTeam(team: Team): void{
+    this.http.post<Team>(this.url + '/teams',team).subscribe({
+      next: data => {console.log("data id " + data.id)},
+      error: error => {console.log("Erreur " + error)}      
+    },);
+  }
+
+  addPilot(pilot: Pilot): void{ 
+    this.http.post<Pilot>(this.url + '/pilots',pilot).subscribe({
       next: data => {console.log("data id " + data.id)},
       error: error => {console.log("Erreur " + error)}      
     },);
@@ -69,7 +88,7 @@ export class LeMan24Service {
   getTeamById (id: number): Team{
   return this.TeamList.find(team => team.id == id) as Team;
   }
-
+  
   deleteCar(id: number): void{
     this.http.delete(this.url + '/cars/'+id)
     .subscribe(() => window.location.reload());

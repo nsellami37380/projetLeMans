@@ -1,7 +1,10 @@
-<p>car-details works!</p>
 <div>
-{{car.modelName}}
-<img [src]="car.picture" alt="" width="300" height="300">
-{{car.modelName}}
-{{car.acceleration}}
+<h1>{{car.modelName}}</h1>
+<img [src]="car.picture" alt="">
+
+<div class="text-detail">
+    <p>{{car.modelName}}</p>
+    <p>{{car.acceleration}}</p>
+    <p>{{car.description}}</p>
+</div>
 </div>

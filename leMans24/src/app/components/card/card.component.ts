@@ -12,10 +12,11 @@ import { LeMan24Service } from 'src/app/shared/le-man24.service';
 })
 export class CardComponent implements OnInit, OnChanges{
 
+
   url: string = ' a ';
   
 
-  car: Car = new Car(0,'','','','',0,0,'',(new Team(0,'','',[],[],0,'')),0);
+  car: Car = new Car(0,'','','','',0,0,'',(new Team(0,'','',[],[],0,'')),0,'');
 
  
   pilot: Pilot = new Pilot (0,[],'','',(new Date),0,(new Team(0,'','',[],[],0,'')),'','');
@@ -48,20 +49,19 @@ export class CardComponent implements OnInit, OnChanges{
   }
 
   getParam(): string{
-
     let result: string = "";
     this.route.paramMap.subscribe((param: ParamMap)=>{
-      result =  param.get('var') as string;
-     
+      result =  param.get('var') as string;     
     })
-
     return result;
-
-
   }
 
   delete(): void {
     this.leMan24S.deleteCar((this.ptc as Car).id)
   }
 
+  Modify() {
+      alert(" la carte " + this.ptc.id)
+    }
+    
 }
