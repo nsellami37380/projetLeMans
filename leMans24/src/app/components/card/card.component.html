@@ -1,11 +1,12 @@
 <div>
     <img class="logo-delete-button" (click)="delete()" src="https://cdn-icons-png.flaticon.com/512/5974/5974771.png" alt="delete button">
+    <img class="logo-update-button"  src="https://cdn-icons-png.flaticon.com/512/5973/5973787.png" alt="update button">
     <div *ngIf="url ==='cars'">
         <div [routerLink]="['/car-detail',car.id ]" class="card">
             <img [src]="car.picture" alt="f40">
             <p> Model Name : {{car.modelName}}</p>
             <p> Power : {{car.power}}</p>
-            <p>Max Speed : {{car.maxSpeed}}</p>
+            <p> Max Speed : {{car.maxSpeed}}</p>
             <p> Acceleration : {{car.acceleration}}</p>
         </div>
     </div>
