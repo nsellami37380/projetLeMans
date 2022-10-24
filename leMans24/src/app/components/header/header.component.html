@@ -4,9 +4,18 @@
                 <a [routerLink]="['/home']" >Home</a>
             </li>
             <li>
-                <a [routerLink]="['/container-list', 'teams' ]">Teams</a>
+                <a [routerLink]="['/category', 'teams' ]">Teams</a>
+            </li>
+                <a >
+                    <p-menubar [model]="menu">
+                    
+                    </p-menubar>
+                </a>
+            <li>
+                <a [routerLink]="['/category', 'pilots']">Pilots</a>
             </li>
             <li>
+<<<<<<< HEAD
                 <a [routerLink]="['/container-list', 'pilots']">Pilots</a>
             </li>
                 <a><p-menubar class="menu" [model]="menu"></p-menubar></a>
@@ -14,6 +23,11 @@
                 <a [routerLink]="['/container-list', 'cars']">Cars</a>
             </li>
             
+=======
+                <a [routerLink]="['/category', 'cars']">Cars</a>
+            </li>
+        
+>>>>>>> 5d986f56ad77eeb74e1b9a981ef1963022e5da54
         </ul>
         
     </nav>

@@ -3,6 +3,7 @@ import { ActivatedRoute, ParamMap } from '@angular/router';
 import { Car } from 'src/app/models/car.model';
 import { Pilot } from 'src/app/models/pilot.model';
 import { Team } from 'src/app/models/team.model';
+import { LeMan24Service } from 'src/app/shared/le-man24.service';
 
 @Component({
   selector: 'app-card',
@@ -11,10 +12,11 @@ import { Team } from 'src/app/models/team.model';
 })
 export class CardComponent implements OnInit, OnChanges{
 
+
   url: string = ' a ';
   
 
-  car: Car = new Car(0,'','','','',0,0,'',(new Team(0,'','',[],[],0,'')),0);
+  car: Car = new Car(0,'','','','',0,0,'',(new Team(0,'','',[],[],0,'')),0,'');
 
  
   pilot: Pilot = new Pilot (0,[],'','',(new Date),0,(new Team(0,'','',[],[],0,'')),'','');
@@ -25,7 +27,7 @@ export class CardComponent implements OnInit, OnChanges{
   @Input()
   ptc : Car | Pilot | Team = this.car;
 
-  constructor(private route: ActivatedRoute) { }
+  constructor(private route: ActivatedRoute,private leMan24S: LeMan24Service) { }
   
   ngOnChanges(changes: SimpleChanges): void {
     // todo url est vide ????
@@ -47,16 +49,19 @@ export class CardComponent implements OnInit, OnChanges{
   }
 
   getParam(): string{
-
     let result: string = "";
     this.route.paramMap.subscribe((param: ParamMap)=>{
-      result =  param.get('var') as string;
-     
+      result =  param.get('var') as string;     
     })
-
     return result;
-
-
   }
 
+  delete(): void {
+    this.leMan24S.deleteCar((this.ptc as Car).id)
+  }
+
+  Modify() {
+      alert(" la carte " + this.ptc.id)
+    }
+    
 }

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import {MenuItem} from 'primeng/api';
 
 
@@ -10,7 +11,7 @@ import {MenuItem} from 'primeng/api';
 export class HeaderComponent implements OnInit {
 
   menu: MenuItem[] = [];
-  constructor() {}
+  constructor(private router: Router) {}
 
   ngOnInit(): void {
     this.menu=[
@@ -31,4 +32,6 @@ export class HeaderComponent implements OnInit {
 
 
 }
+
+
 

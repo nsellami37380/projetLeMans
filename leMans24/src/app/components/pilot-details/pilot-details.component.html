@@ -1,3 +1,29 @@
-<p>{{pilot?.firstName}}</p>
-<p>{{pilot?.lastName}}</p>
-<p>{{pilot?.id}}</p>
+<div class="container">
+        <img [src]="pilot.photoList[0]" alt="">
+    <div class="text">
+        <h3>DESCRIPTION DU PILOTE : </h3>
+        <p>{{pilot.firstName}}</p>
+        <p>{{pilot.lastName}}</p>
+        <p>{{pilot.bio}}</p>
+    </div>
+</div>
+
+<div class="car-container">
+    <div class="text">
+        <h3>DESCRIPTION DE LA VOITURE : </h3>
+        <p>{{car.modelName}}</p>
+        <p>{{car.power}}</p>
+        <p>{{car.description}}</p>
+    </div>
+        <img [src]="car.picture" alt="">
+</div>
+
+<div class="container">
+        <img [src]="team.logo" alt="">
+    <div class="text">
+        <h3>DESCRIPTION DE LA TEAM : </h3>
+        <p>{{team.name}}</p>
+        <p>{{team.budget}}</p>
+        <p>{{team.story}}</p>
+    </div>
+    </div>
