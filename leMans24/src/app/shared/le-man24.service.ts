@@ -92,7 +92,26 @@ export class LeMan24Service {
  
   deleteCar(id: number): void{
     this.http.delete(this.url + '/cars/'+id)
-    .subscribe(() => window.location.reload());
+    .subscribe(() => {
+      alert("Voiture supprimé");
+      window.location.reload();
+    })
+  }
+    
+  deletePilot(id: number): void{
+    this.http.delete(this.url + '/pilots/'+id)
+    .subscribe(() => {
+      alert("Pilote supprimé");
+      window.location.reload();
+    })
+  }
+    
+  deleteTeam(id: number): void{
+    this.http.delete(this.url + '/teams/'+id)
+    .subscribe(() => {
+      alert("Equipe supprimé");
+      window.location.reload();
+    })
   }
   
 }

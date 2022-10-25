@@ -57,6 +57,37 @@ export class CardComponent implements OnInit, OnChanges{
   }
 
   delete(): void {
+    switch(this.getParam()){
+      case "pilots":
+        if (window.confirm("Voulez vraiment supprimer le pilote " +(this.ptc as Pilot).lastName +" ?"))
+        {
+          this.leMan24S.deletePilot((this.ptc as Pilot).id) ;          
+        }
+        break;
+      case "teams":
+        if (window.confirm("Voulez vraiment supprimer l'équipe " +(this.ptc as Team).name +" ?"))
+        {
+          this.leMan24S.deleteTeam((this.ptc as Team).id) ;         
+        }
+        break;
+      case "cars":
+        if (window.confirm("Voulez vraiment supprimer la voiture " +(this.ptc as Car).modelName +" ?"))
+        {
+          this.leMan24S.deleteCar((this.ptc as Car).id) ;        
+        }
+        break;
+    }
+
+    if (this.getParam() === "pilots"){
+      this.pilot = (this.ptc as Pilot);
+    } else
+    if (this.getParam() === "teams"){
+      this.team = (this.ptc as Team);
+    } else
+    if (this.getParam() === "cars"){
+      this.car = (this.ptc as Car);
+    } 
+    
     this.leMan24S.deleteCar((this.ptc as Car).id)
   }
 
