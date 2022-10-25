@@ -17,10 +17,6 @@ p{
     color: white;
 }
 
-.card:hover{
-    transform: scale(1.1);
-}
-
 .card-text{
     border-top: 4px solid yellow;
     background-color: black;
@@ -30,15 +26,25 @@ p{
 .logo-delete-button{
     position: relative;
     width: 30px;
-    left: 89%;
-    top: 35px;
+    height: 30px;
+    left: 85%;
+    top: 50px;
     z-index: 1;
 }
 
 .logo-update-button{
     position: relative;
     width: 30px;
-    left: -8%;
-    top: 35px;
+    height: 30px;
+    right: 10px;
+    top: 50px;
     z-index: 1;
+}
+
+.logo-delete-button:hover{
+    scale: (1.2);
+}
+
+.logo-update-button:hover{
+    scale:(1.2);
 }
