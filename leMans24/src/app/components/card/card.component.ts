@@ -90,5 +90,6 @@ export class CardComponent implements OnInit, OnChanges{
         this.router.navigate(['/updateCar',(this.ptc as Pilot).id]);
         break;
     }
+  }
 
 }

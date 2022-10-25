@@ -95,8 +95,7 @@ export class LeMan24Service {
   deleteCar(id: number): void{
     this.http.delete(this.url + '/cars/'+id)
     .subscribe(() => {
-      alert("Voiture supprimé");
-      window.location.reload();
+         window.location.reload();
     })
   }
     
