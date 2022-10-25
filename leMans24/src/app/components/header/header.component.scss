@@ -3,8 +3,9 @@ nav{
     height: 70px;
     align-items: center;
     display: flex;
-    margin-bottom: 3em;
     width: 100%;
+    position: fixed;
+    background-color: black;
 }
 
 ul{
@@ -27,5 +28,9 @@ li:hover{
 }
 
 a:hover{
+    color: yellow;
+}
+
+.color-link-active{
     color: yellow;
 }
