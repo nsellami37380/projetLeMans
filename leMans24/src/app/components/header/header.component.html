@@ -1,24 +1,19 @@
-    <nav>
-        <ul>
-            <li>
-                <a [routerLink]="['/home']" >Home</a>
-            </li>
-            <li>
-                <a [routerLink]="['/category', 'teams' ]">Teams</a>
-            </li>
-                <a >
-                    <p-menubar [model]="menu">
-                    
-                    </p-menubar>
-                </a>
-            <li>
-                <a [routerLink]="['/category', 'pilots']">Pilots</a>
-            </li>
-            <li>
-                <a [routerLink]="['/category', 'cars']">Cars</a>
-            </li>
-        
-        </ul>
-        
-    </nav>
-    
+<nav>
+      <ul>
+          <li>
+              <a [routerLink]="['/home']" routerLinkActive="color-link-active" >Home</a>
+          </li>
+          <li>
+              <a [routerLink]="['/category', 'teams' ]" routerLinkActive="color-link-active">Teams</a>
+          </li>
+          <li>
+              <a [routerLink]="['/category', 'pilots']" routerLinkActive="color-link-active">Pilots</a>
+          </li>
+          <li>
+              <a [routerLink]="['/category', 'cars']" routerLinkActive="color-link-active">Cars</a>
+          </li>
+          <li>
+             <a><p-menubar [model]="menu"></p-menubar></a>
+          </li>
+      </ul>
+  </nav>
