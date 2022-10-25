@@ -21,12 +21,24 @@ p{
     transform: scale(1.1);
 }
 
-.card:hover{
-    opacity: 1;
-}
-
 .card-text{
     border-top: 4px solid yellow;
     background-color: black;
     padding-bottom: 5px;
+}
+
+.logo-delete-button{
+    position: relative;
+    width: 30px;
+    left: 89%;
+    top: 35px;
+    z-index: 1;
+}
+
+.logo-update-button{
+    position: relative;
+    width: 30px;
+    left: -8%;
+    top: 35px;
+    z-index: 1;
 }

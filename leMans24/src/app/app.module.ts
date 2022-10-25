@@ -19,6 +19,9 @@ import { FormPilotComponent } from './components/form-pilot/form-pilot.component
 import { FormCarComponent } from './components/form-car/form-car.component';
 import {HttpClientModule} from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+import {DropdownModule} from 'primeng/dropdown';
+import {MenubarModule} from 'primeng/menubar';
+
 
 
 @NgModule({
@@ -45,6 +48,8 @@ import { FormsModule } from '@angular/forms';
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
+    DropdownModule,
+    MenubarModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
