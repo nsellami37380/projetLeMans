@@ -1,9 +1,9 @@
 <div>
     <img class="logo-delete-button" (click)="delete()" src="https://cdn-icons-png.flaticon.com/512/5974/5974771.png" alt="delete button">
-    <img class="logo-update-button"  src="https://cdn-icons-png.flaticon.com/512/5973/5973787.png" alt="update button">
-
     <div *ngIf="url ==='cars'">
-        <a [routerLink]="['/updateCar', car.id]">Modifier</a>
+        <a [routerLink]="['/updateCar', car.id]">
+            <img class="logo-update-button" src="https://cdn-icons-png.flaticon.com/512/5973/5973787.png" alt="update button">
+        </a>
         <div [routerLink]="['/car-detail',car.id ]" class="card">
             <img [src]="car.picture" alt="f40">
           
@@ -18,6 +18,9 @@
     </div>
 
     <div *ngIf="url ==='pilots'">
+        <a [routerLink]="['/updatePilot', pilot.id]">
+            <img class="logo-update-button" src="https://cdn-icons-png.flaticon.com/512/5973/5973787.png" alt="update button">
+        </a>
         <div class="card" [routerLink]="['/pilot-detail', pilot.id]">
             <img [src]="pilot.photoList[0]" alt="">
             <div class="card-text">
@@ -29,6 +32,9 @@
     </div>
 
     <div *ngIf="url ==='teams'">
+        <a [routerLink]="['/updateTeam', team.id]">
+            <img class="logo-update-button" src="https://cdn-icons-png.flaticon.com/512/5973/5973787.png" alt="update button">
+        </a>
         <div class="card" [routerLink]="['/team-detail', team.id]">
             <img [src]="team.logo" alt="">
             <div class="card-text">
