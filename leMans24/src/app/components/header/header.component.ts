@@ -18,19 +18,17 @@ export class HeaderComponent implements OnInit {
       {
         label: 'Gestion',
         items:[{
-                label:'Add New Car',
-                //command: () => this.addCar()
-              },
-              {
-                label:'Add New Pilot'
-              },
-              {
-                label:'Add New Team'
-                
-              }],
-              
-      }
-    ]
+          label:'Add New Car',  "routerLink": '/addCar'
+        },
+        {
+          label:'Add New Pilot', "routerLink": '/addPilot'
+        },
+        {
+          label:'Add New Team', "routerLink": '/addTeam'
+        }],      
+}
+];
+
 }
 //   addCar(): void {
 //     this.router.navigate(['/addCar']);

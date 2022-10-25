@@ -9,7 +9,7 @@ import { ActivatedRoute, ParamMap } from '@angular/router';
 export class PageFormComponent implements OnInit {
 
   id: number = 0;
-  isCar = false;
+  isCar = true;
   isPilot = false;
   isTeam = false;
   constructor(private route: ActivatedRoute) { }

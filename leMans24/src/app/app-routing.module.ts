@@ -13,7 +13,7 @@ import { PageHomeComponent } from './pages/page-home/page-home.component';
 const routes: Routes = [
   {path:'', component: PageHomeComponent },
   {path:'home', component: PageHomeComponent },
-  {path:'addCar', component: PageFormComponent },
+  {path:'addCar', component: FormCarComponent },
   {path:'addTeam', component: FormTeamComponent },
   {path:'addPilot', component: FormPilotComponent },
   {path:'category/:var', component: PageContainerListComponent},
