@@ -1,19 +1,17 @@
 img{
-    width: 300px;
-    height: 300px;
+    width: 600px;
+    height: 600px;
     margin-right: 3em;
     margin-left: 3em;
 }
 .container{
     display: flex;
-    background-color: #355789;
     margin-bottom: 3em;
     padding-right: 3em;
 }
 
 .car-container{
     display: flex;
-    background-color: #0D64FF;
     margin-bottom: 3em;
     justify-content: end;
     padding-left: 3em;
@@ -25,13 +23,23 @@ img{
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    color: white;
+    font-family: 'Montserrat', sans-serif;
+    border: 5px solid yellow;
+    border-radius: 10px;
+    background-color: black;
 }
 
 p{
     margin-bottom: 1em;
+    margin-left: 2em;
+    margin-right: 2em;
 }
 
 h3{
     text-decoration: underline;
+    text-decoration-color: yellow;
+    text-underline-offset: 0.5em;
     margin-bottom: 3em;
+
 }

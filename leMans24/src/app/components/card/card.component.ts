@@ -63,5 +63,4 @@ export class CardComponent implements OnInit, OnChanges{
   Modify() {
       alert(" la carte " + this.ptc.id)
     }
-    
 }

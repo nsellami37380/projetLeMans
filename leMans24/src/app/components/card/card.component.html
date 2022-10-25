@@ -6,27 +6,35 @@
         <a [routerLink]="['/updateCar', car.id]">Modifier</a>
         <div [routerLink]="['/car-detail',car.id ]" class="card">
             <img [src]="car.picture" alt="f40">
-            <p> Model Name : {{car.modelName}}</p>
-            <p> Power : {{car.power}}</p>
-            <p> Max Speed : {{car.maxSpeed}}</p>
-            <p> Acceleration : {{car.acceleration}}</p>
+          
+            <div class="card-text">
+                <p> Model Name : {{car.modelName}}</p>
+                <p> Power : {{car.power}}</p>
+                <p>Max Speed : {{car.maxSpeed}}</p>
+                <p> Acceleration : {{car.acceleration}}</p>
+            </div>
+
         </div>
     </div>
 
     <div *ngIf="url ==='pilots'">
         <div class="card" [routerLink]="['/pilot-detail', pilot.id]">
             <img [src]="pilot.photoList[0]" alt="">
-            <p> Prénom : {{pilot.firstName}}</p>
-            <p> Nom : {{pilot.lastName}}</p>
-            <p> Date de naissance : {{pilot.birthday}}</p>
+            <div class="card-text">
+                <p> Prénom : {{pilot.firstName}}</p>
+                <p> Nom : {{pilot.lastName}}</p>
+                <p> Date de naissance : {{pilot.birthday}}</p>
+            </div>
         </div>
     </div>
 
     <div *ngIf="url ==='teams'">
         <div class="card" [routerLink]="['/team-detail', team.id]">
             <img [src]="team.logo" alt="">
-            <p> Nom : {{team.name}}</p>
-            <p>{{team.budget}} Millions</p>
+            <div class="card-text">
+                <p> Nom : {{team.name}}</p>
+                <p>{{team.budget}} Millions</p>
+            </div>
         </div>
     </div>
 </div>

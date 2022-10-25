@@ -81,6 +81,7 @@ export class LeMan24Service {
     return  this.carList.find(car => car.id == id) as Car;
   }
 
+
   getPilotById (id:number): Pilot{
     return this.PilotList.find(pilot => pilot.id == id)as Pilot;
   }
@@ -88,9 +89,10 @@ export class LeMan24Service {
   getTeamById (id: number): Team{
   return this.TeamList.find(team => team.id == id) as Team;
   }
-  
+ 
   deleteCar(id: number): void{
     this.http.delete(this.url + '/cars/'+id)
     .subscribe(() => window.location.reload());
   }
+  
 }

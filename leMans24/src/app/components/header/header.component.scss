@@ -1,10 +1,10 @@
 nav{
-    background-color: #0D64FF;
     height: 70px;
     align-items: center;
     display: flex;
-    margin-bottom: 3em;
     width: 100%;
+    position: fixed;
+    background-color: black;
 }
 
 ul{
@@ -14,23 +14,21 @@ ul{
     justify-content: space-around;
 }
 
-li{
-    background-color: #f5f6f7;
-    height: 50px;
-    width: 150px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 5px;
-    padding: 29px;
-}
-
 a{
     font-size: 18px;
     text-decoration: none;
-    color: black;
+    color: white;
+    font-family: 'Montserrat', sans-serif;
 }
 
 li:hover{
     transform: scale(1.1);
+}
+
+a:hover{
+    color: yellow;
+}
+
+.color-link-active{
+    color: yellow;
 }
