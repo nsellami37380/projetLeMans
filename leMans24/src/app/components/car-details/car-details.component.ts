@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+
 import { ActivatedRoute, ParamMap } from '@angular/router';
 import { Car } from 'src/app/models/car.model';
+
 import { LeMan24Service } from 'src/app/shared/le-man24.service';
 
 @Component({

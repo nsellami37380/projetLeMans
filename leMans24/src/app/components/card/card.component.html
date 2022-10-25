@@ -1,4 +1,10 @@
+    
+    <div>
+
+        
+    
     <div *ngIf="url ==='cars'">
+        <a [routerLink]="['/updateCar', car.id]">Modifier</a>
         <div [routerLink]="['/car-detail',car.id ]" class="card">
             <img [src]="car.picture" alt="f40">
             <div class="card-text">
@@ -30,3 +36,4 @@
             </div>
         </div>
     </div>
+</div>

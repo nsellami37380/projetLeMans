@@ -16,6 +16,8 @@ const routes: Routes = [
   {path:'addTeam', component: FormTeamComponent },
   {path:'addPilot', component: FormPilotComponent },
   {path:'category/:var', component: PageContainerListComponent},
+  {path:'updateCar/:id', component: PageFormComponent },
+  {path:'container-list/:var', component: PageContainerListComponent},
   {path:'car-detail/:id', component: CarDetailsComponent},
   {path:'pilot-detail/:id', component: PilotDetailsComponent},
   {path:'team-detail/:id', component: TeamDetailsComponent},

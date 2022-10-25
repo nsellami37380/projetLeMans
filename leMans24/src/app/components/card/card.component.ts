@@ -11,6 +11,7 @@ import { Team } from 'src/app/models/team.model';
 })
 export class CardComponent implements OnInit, OnChanges{
 
+
   url: string = ' a ';
   
 
@@ -58,5 +59,9 @@ export class CardComponent implements OnInit, OnChanges{
 
 
   }
+
+  Modify() {
+      alert(" la carte " + this.ptc.id)
+    }
 
 }

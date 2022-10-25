@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FooterComponent } from './pages/footer/footer.component';
@@ -20,6 +19,7 @@ import { FormPilotComponent } from './components/form-pilot/form-pilot.component
 import { FormCarComponent } from './components/form-car/form-car.component';
 import {HttpClientModule} from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+
 
 @NgModule({
   declarations: [
