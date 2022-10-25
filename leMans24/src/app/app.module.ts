@@ -21,6 +21,7 @@ import {HttpClientModule} from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import {DropdownModule} from 'primeng/dropdown';
 import {MenubarModule} from 'primeng/menubar';
+import {CarouselModule} from 'primeng/carousel';
 
 
 
@@ -50,6 +51,7 @@ import {MenubarModule} from 'primeng/menubar';
     FormsModule,
     DropdownModule,
     MenubarModule,
+    CarouselModule
   ],
   providers: [],
   bootstrap: [AppComponent]
