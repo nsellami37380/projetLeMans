@@ -12,7 +12,7 @@ import { LeMan24Service } from 'src/app/shared/le-man24.service';
 })
 export class CarDetailsComponent implements OnInit {
 
-  car !: Car;
+  car: any;
   id: number= 0;
   constructor(
     private route: ActivatedRoute,
@@ -24,11 +24,18 @@ export class CarDetailsComponent implements OnInit {
 
       this.id = parseInt(param.get('id') as string);
      if(this.id){
-      this.car = this.leman24S.getCarById(this.id);  
+      this.car = this.leman24S.getCarById(this.id);
+      this.setFont();  
      }    
-    })
+    });
+
+    this.leman24S.getCars().subscribe(carList =>{
+      this.car = carList;
+    });
   }
 
-
-
+  setFont(): void{
+    document.getElementsByTagName("h2")[0].style.fontSize = 
+    Math.min(200, 600 /(this.car.modelName.length * 0.8)).toString() + "px"; 
+  }
 }

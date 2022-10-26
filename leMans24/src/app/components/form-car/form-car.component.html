@@ -1,3 +1,5 @@
+<h1>Ajouter une voiture</h1>
+
 <form #myForm="ngForm" (ngSubmit)="addCar()">
     <div id="my_fieldset">
     <fieldset>
@@ -10,10 +12,13 @@
 
     <fieldset>
         <label for="picture">Image*</label>
-        <div class="dimg">
-            <input type="file" #selectImage (change)="selectfile($event)">
-            <img [src]="url" width="100px" (click)="selectImage.click()"  height="100px" alt=""> 
-        </div>      
+        <input type="file" #selectImage (change)="selectfile($event)">
+        <div *ngFor="let img of car.pictureList" class="dimg">
+
+            <img [src]=img width="100px" (click)="selectImage.click()"  height="100px" alt=""> 
+            <!-- <button (click)="deleteImage()">Supprimer</button> -->
+        </div>  
+
     </fieldset>
 
     <fieldset>
@@ -77,8 +82,10 @@
             <span *ngIf="acceleration.errors?.['required']">L'acceleration est requise</span>
         </div>    
     </fieldset>
-    </div>   
+
     <div class = "btn">
         <button type="submit">{{textBtnSubmit}}</button>
     </div>
+
+    </div>   
 </form>

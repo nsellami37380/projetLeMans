@@ -1,9 +1,9 @@
+<h1>{{pilot.firstName}} {{pilot.lastName}}</h1>
+
 <div class="container">
-        <img [src]="pilot.photoList[0]" alt="">
+        <img [src]="pilot.picture" alt="">
     <div class="text">
         <h3>DESCRIPTION DU PILOTE : </h3>
-        <p>{{pilot.firstName}}</p>
-        <p>{{pilot.lastName}}</p>
         <p>{{pilot.bio}}</p>
     </div>
 </div>
@@ -15,7 +15,7 @@
         <p>{{car.power}}</p>
         <p>{{car.description}}</p>
     </div>
-        <img [src]="car.picture" alt="">
+        <img [src]="car.pictureList[0]" alt="">
 </div>
 
 <div class="container">
