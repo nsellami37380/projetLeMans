@@ -14,8 +14,8 @@ export class FormTeamComponent implements OnInit {
 team: Team = new Team(0,'','',[],[],0,'');
 url:string ='';
 pilotList!: Pilot[];
-  id: number = 0;
-  textBtnSubmit: string = "";
+id: number = 0;
+textBtnSubmit: string = "Ajouter";
 
   constructor(
     private leMans24S: LeMan24Service,
