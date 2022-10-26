@@ -91,5 +91,4 @@ export class CardComponent implements OnInit, OnChanges{
         break;
     }
   }
-
 }

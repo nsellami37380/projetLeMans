@@ -1,6 +1,7 @@
 <div>
-    <img class="logo-delete-button" (click)="delete()" src="https://cdn-icons-png.flaticon.com/512/5974/5974771.png" alt="delete button">
+
     <div *ngIf="url ==='cars'">
+        <img class="logo-delete-button" (click)="delete()" src="https://cdn-icons-png.flaticon.com/512/5974/5974771.png" alt="delete button">
         <a [routerLink]="['/updateCar', car.id]">
             <img class="logo-update-button" src="https://cdn-icons-png.flaticon.com/512/5973/5973787.png" alt="update button">
         </a>
@@ -18,6 +19,7 @@
     </div>
 
     <div *ngIf="url ==='pilots'">
+        <img class="logo-delete-button" (click)="delete()" src="https://cdn-icons-png.flaticon.com/512/5974/5974771.png" alt="delete button">
         <a [routerLink]="['/updatePilot', pilot.id]">
             <img class="logo-update-button" src="https://cdn-icons-png.flaticon.com/512/5973/5973787.png" alt="update button">
         </a>
@@ -32,6 +34,7 @@
     </div>
 
     <div *ngIf="url ==='teams'">
+        <img class="logo-delete-button" (click)="delete()" src="https://cdn-icons-png.flaticon.com/512/5974/5974771.png" alt="delete button">
         <a [routerLink]="['/updateTeam', team.id]">
             <img class="logo-update-button" src="https://cdn-icons-png.flaticon.com/512/5973/5973787.png" alt="update button">
         </a>
