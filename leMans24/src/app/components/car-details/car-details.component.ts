@@ -24,8 +24,14 @@ export class CarDetailsComponent implements OnInit {
 
       this.id = parseInt(param.get('id') as string);
      if(this.id){
-      this.car = this.leman24S.getCarById(this.id);  
+      this.car = this.leman24S.getCarById(this.id);
+      this.setFont();  
      }    
     })
+  }
+
+  setFont(): void{
+    document.getElementsByTagName("h2")[0].style.fontSize = 
+    Math.min(200, 600 /(this.car.modelName.length * 0.8)).toString() + "px"; 
   }
 }
