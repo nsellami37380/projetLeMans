@@ -12,7 +12,7 @@ import { LeMan24Service } from 'src/app/shared/le-man24.service';
 })
 export class CarDetailsComponent implements OnInit {
 
-  car !: Car;
+  car: any;
   id: number= 0;
   constructor(
     private route: ActivatedRoute,
@@ -26,7 +26,11 @@ export class CarDetailsComponent implements OnInit {
      if(this.id){
       this.car = this.leman24S.getCarById(this.id);  
      }    
-    })
+    });
+
+    this.leman24S.getCars().subscribe(carList =>{
+      this.car = carList;
+    });
   }
 
 

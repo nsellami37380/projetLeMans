@@ -131,46 +131,6 @@
       "tire": "erreur",
       "team": 1,
       "acceleration": 3.4
-    },
-    {
-      "id": 5,
-      "picture": "",
-      "modelName": "",
-      "color": "",
-      "engine": "",
-      "power": 0,
-      "maxSpeed": 0,
-      "tire": "",
-      "team": {
-        "id": 0,
-        "name": "",
-        "logo": "",
-        "pilotList": [],
-        "carList": [],
-        "budget": 0,
-        "story": ""
-      },
-      "acceleration": 0
-    },
-    {
-      "id": 6,
-      "picture": "",
-      "modelName": "",
-      "color": "",
-      "engine": "",
-      "power": 0,
-      "maxSpeed": 0,
-      "tire": "",
-      "team": {
-        "id": 0,
-        "name": "",
-        "logo": "",
-        "pilotList": [],
-        "carList": [],
-        "budget": 0,
-        "story": ""
-      },
-      "acceleration": 0
     }
   ],
   "teams": [
