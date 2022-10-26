@@ -28,7 +28,4 @@ export class CarDetailsComponent implements OnInit {
      }    
     })
   }
-
-
-
 }

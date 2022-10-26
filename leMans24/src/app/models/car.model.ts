@@ -5,7 +5,7 @@ export class Car{
     constructor(
 
         public id: number, 
-        public picture: string,
+        public pictureList: string[],
         public modelName: string,
         public color: string,
         public engine: string,
