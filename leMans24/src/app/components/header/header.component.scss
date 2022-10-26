@@ -6,6 +6,9 @@ nav{
     position: fixed;
     background-color: black;
 }
+.li-simple{
+    padding-top: 1em;
+}
 
 ul{
     display: flex;
@@ -15,14 +18,20 @@ ul{
 }
 
 a{
+
     font-size: 18px;
     text-decoration: none;
     color: white;
     font-family: 'Montserrat', sans-serif;
 }
 
+li{
+    transition: 0.3s ease-in-out;
+}
+
 li:hover{
     transform: scale(1.1);
+    transition: 0.3s ease-in-out;
 }
 
 a:hover{
@@ -31,4 +40,37 @@ a:hover{
 
 .color-link-active{
     color: yellow;
+}
+
+// :host ::ng-deep {    
+//     .p-menubar{
+//     background-color: black;
+//     border: none;
+//     padding: 0;
+//     }
+//     .p-menubar .p-menubar-root-list  .p-menuitem  .p-menuitem-link .p-menuitem-text {
+//         color: white;
+//     }
+//     .p-menubar .p-menuitem-link {
+//         background-color: black;
+//     }
+//     .p-menubar .p-menuitem-link :hover{
+//         background-color: black;
+//         color: yellow;
+//     }
+// }
+
+:host ::ng-deep { 
+    .p-menubar{
+        background-color: black;
+        border: none;
+    }
+    .p-menubar .p-menubar-root-list  .p-menuitem  .p-menuitem-link .p-menuitem-text {
+        color: white;
+        font-family: 'Montserrat', sans-serif;
+        font-size: 18px;
+        }
+    a.p-ripple.p-element.p-menuitem-link :hover{
+        color: yellow;
+    }
 }
