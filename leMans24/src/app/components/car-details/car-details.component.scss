@@ -26,13 +26,14 @@ h1{
 }
 
 h2{
-    padding-top: 0.5em;
-    margin-bottom: 3em;
     color: yellow;
-    font-size: 200px;
+    font-size: 100px;
     text-align: center;
     font-family: 'Montserrat', sans-serif;
-    writing-mode: vertical-lr;
+    writing-mode: vertical-rl;
+
+    text-size-adjust: auto;
+
 }
 
 h3{
@@ -61,6 +62,13 @@ p{
     width: 40%;
     display: flex;
     justify-content: center;
+
+    overflow-wrap: reverse;
+    white-space: pre-wrap;
+
+    // word-wrap: reverse;
+    // overflow: break-word;
+
 }
 
 .text-detail{

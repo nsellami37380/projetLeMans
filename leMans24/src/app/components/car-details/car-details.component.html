@@ -4,7 +4,7 @@
         <img [src]="car.picture" alt="">
 
         <div class="model-name">
-            <h2>{{car.modelName}}</h2>
+            <h2>{{car.modelName | slice:0:10  }}</h2>
         </div>
     </div>
 
@@ -14,3 +14,5 @@
     <p>Acceleration : {{car.acceleration}} secondes</p>
     <p>{{car.description}}</p>
 </div>
+
+<!--  -->
