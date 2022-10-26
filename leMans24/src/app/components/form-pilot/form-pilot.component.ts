@@ -15,7 +15,7 @@ export class FormPilotComponent implements OnInit {
   pilot: Pilot = new Pilot (0,'','','',(new Date),0,0,'','');
   teamList!:Team[];
   id: number = 0;
-  textBtnSubmit: string = "";
+  textBtnSubmit: string = "Ajouter";
   
   constructor(
     private leMans24S: LeMan24Service,
