@@ -2,22 +2,21 @@ section{
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: #355789 ;
     min-height: 500px;
     font-size: 18px;
-    margin-bottom: 50px;
 }
 
 .content-team{
     display: flex;
     flex-direction: row;
-    width: 100%;
 }
 
 .content-team img{
     width: 600px;
     border-radius: 30px;
-    margin: 10px 50px 50px 50px;
+    margin-left: 2em;
+    margin-top: 1em;
+    margin-bottom: 1em;
 }
 
 .text-team{
@@ -26,21 +25,51 @@ section{
 
 
 h1{
-    text-align: center;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    margin-bottom: 2em;
+    font-size: 50px;
+    margin-bottom: 3em;
     color: white;
+    text-align: center;
+    text-decoration: underline;
+    text-decoration-color: yellow;
+    text-underline-offset: 0.5em;
+    font-family: 'Montserrat', sans-serif;
 }
 
 h2{
-    display: flex;
-    justify-content: center;
+
+    font-size: 30px;
+    margin-bottom: 3em;
     color: white;
-    margin: 20px;
+    text-align: center;
+    text-decoration: underline;
+    text-decoration-color: yellow;
+    text-underline-offset: 0.5em;
+    font-family: 'Montserrat', sans-serif;
 }
 
 h3{
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    margin: 2em 0 0.5em 0;
+    font-family: 'Montserrat', sans-serif;
+    margin-bottom: 2em;
     color: white;
+    font-size: 24px ;
+    text-decoration: underline;
+    text-decoration-color: yellow;
+    text-underline-offset: 0.5em;
+}
+
+p{
+    font-family: 'Montserrat', sans-serif; 
+    margin-bottom: 2em;
+}
+
+.content-team {
+    border: 5px solid yellow;
+    margin-bottom: 3em;
+    margin-left: 2em;
+    margin-right: 2em;
+}
+
+.container-carrousselle{
+    border: 5px solid yellow;
+    margin-bottom: 3em;
 }
