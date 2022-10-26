@@ -40,7 +40,8 @@ export class FormCarComponent implements OnInit {
     reader.readAsDataURL(event.target.files[0])   
     reader.onload = (event: any) => {
       this.url = event.target.result;
-      this.car.pictureList[0] = this.url;     
+      //this.car.pictureList[0] = this.url;  
+      this.car.pictureList.unshift(this.url);   
     }
   }
  }
