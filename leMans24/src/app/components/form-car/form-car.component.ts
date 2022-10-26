@@ -11,7 +11,7 @@ import { LeMan24Service } from 'src/app/shared/le-man24.service';
 })
 export class FormCarComponent implements OnInit {
   id: number= 0;
-  car: Car = new Car(0,'','','','',0,0,'',0,0,'');
+  car: Car = new Car(0,[],'','','',0,0,'',0,0,'');
   teamList!: Team[];
   textBtnSubmit: string = "Ajouter";
   url="";
@@ -29,7 +29,7 @@ export class FormCarComponent implements OnInit {
         this.id =  parseInt( param.get('id') as string);
         this.textBtnSubmit = "Modifier"
         this.car = this.leman24S.getCarById(this.id);
-        this.url = this.car.picture;
+        this.url = this.car.pictureList[0];
          }      
     })
   }
@@ -40,7 +40,7 @@ export class FormCarComponent implements OnInit {
     reader.readAsDataURL(event.target.files[0])   
     reader.onload = (event: any) => {
       this.url = event.target.result;
-      this.car.picture = this.url;     
+      this.car.pictureList[0] = this.url;     
     }
   }
  }
