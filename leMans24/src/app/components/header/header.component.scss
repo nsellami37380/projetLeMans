@@ -87,5 +87,24 @@ a:hover{
     .pi-bars{
         font-size: 2em;
     }
+
+    @media screen and (max-width: 426px){
+
+        .p-button.p-button-icon-only{
+            padding: 1em;
+        }
+    
+        .pi-bars{
+            font-size: 1em;
+        }
+    }
+
 }
+
+.logo{
+    width: 100px;
+    height: 100px;
+}
+
+
 

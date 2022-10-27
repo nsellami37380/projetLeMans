@@ -73,3 +73,51 @@ p{
     border: 5px solid yellow;
     margin-bottom: 3em;
 }
+
+@media screen and (max-width:1024px){
+    img{
+        width: 600px;
+    }
+
+    .content-team{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .text-team {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+@media screen and (max-width:450px){
+    img{
+        width: 300px;
+    }
+
+    .content-team{
+        width: 80%;
+    };
+
+    .content-team img{
+        width: 80%;
+        margin-left: 0;
+    };
+
+    h1{
+        font-size: 30px;
+        text-underline-offset: 0.3em;
+    }
+
+    h2{
+        font-size: 30px;
+        text-underline-offset: 0.3em;
+    }
+
+    h3{
+        font-size: 30px;
+        text-underline-offset: 0.3em;
+    }
+}
