@@ -11,8 +11,9 @@
     </fieldset>
 
     <fieldset>
-        <label for="picture">Image*</label>
+        <label for="pictureselectImage">Image*</label>
         <input type="file" #selectImage (change)="selectfile($event)">
+        <button type="button" (click)="selectImage.click()" id="button-img">Ajouter image</button>
         <div id="ListImgCar">
             <div *ngFor="let img of car.pictureList" class="dimg">
                 <img [src]=img width="100px"  height="100px" alt=""> 
