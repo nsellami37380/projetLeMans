@@ -14,3 +14,10 @@ h1{
     justify-content: space-around;
     flex-wrap: wrap;
 }
+
+@media screen and (max-width: 426px){
+    h1{
+        font-size: 30px;
+        text-underline-offset: 0.3em; 
+    }
+}

@@ -11,20 +11,22 @@ import {MenuItem} from 'primeng/api';
 export class HeaderComponent implements OnInit {
 
   menu: MenuItem[] = [];
+  visibleSidebar1: boolean = false;
+
   constructor(private router: Router) {}
 
   ngOnInit(): void {
     this.menu=[
       {
-        label: 'Add',
+        label: 'Ajouter',
         items:[{
-                label:'Add New Car', "routerLink": '/addCar'                
+                label:'Ajouter une Voiture', "routerLink": '/addCar'                
               },
               {
-                label:'Add New Pilot', "routerLink": '/addPilot'
+                label:'Ajouter une Pilote', "routerLink": '/addPilot'
               },
               {
-                label:'Add New Team', "routerLink": '/addTeam'
+                label:'Ajouter une Écurie', "routerLink": '/addTeam'
               }],              
        }
     ]
