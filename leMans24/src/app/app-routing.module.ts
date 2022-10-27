@@ -24,6 +24,7 @@ const routes: Routes = [
   {path:'car-detail/:id', component: CarDetailsComponent},
   {path:'pilot-detail/:id', component: PilotDetailsComponent},
   {path:'team-detail/:id', component: TeamDetailsComponent},
+  {path:'**', component: PageHomeComponent},
 ];
 
 @NgModule({

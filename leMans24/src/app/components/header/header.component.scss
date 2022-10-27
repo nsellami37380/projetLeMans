@@ -100,6 +100,9 @@ a:hover{
         .pi-bars{
             font-size: 1em;
         }
+        .p-menubar .p-menubar-root-list  .p-menuitem  .p-menuitem-link .p-menuitem-text {
+            font-size: 18px;
+            }
     }
 
 }
@@ -110,11 +113,19 @@ a:hover{
     margin-left: 2em;
 }
 
+.logo:hover{
+    cursor: pointer;
+}
+
 @media screen and (max-width: 426px){
     .logo{
         width: 100px;
         height: 70px;
         margin-left: 1em;
+    }
+
+    a{
+        font-size: 18px;
     }
 }
 
