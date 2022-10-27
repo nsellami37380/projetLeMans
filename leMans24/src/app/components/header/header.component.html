@@ -1,19 +1,34 @@
-<nav>
-      <ul>
-          <li class="li-simple">
-              <a [routerLink]="['/home']" routerLinkActive="color-link-active" >Home</a>
-          </li>
-          <li class="li-simple">
-              <a [routerLink]="['/category', 'teams' ]" routerLinkActive="color-link-active">Teams</a>
-          </li>
-          <li class="li-simple">
-              <a [routerLink]="['/category', 'pilots']" routerLinkActive="color-link-active">Pilots</a>
-          </li >
-          <li class="li-simple">
-              <a [routerLink]="['/category', 'cars']" routerLinkActive="color-link-active">Cars</a>
-          </li>
-          <li>
-             <a><p-menubar [model]="menu"></p-menubar></a>
-          </li>
-      </ul>
-  </nav>
+<header>
+
+    <div class="container-logo">
+        <img src="/assets/logo leMans.png" alt="Logo le Mans" class="logo">
+    </div>
+   
+
+    <p-sidebar [(visible)]="visibleSidebar1" position="right" [baseZIndex]="10000">
+        <nav>
+            <ul>
+                <li>
+                  <a><p-menubar [model]="menu"></p-menubar></a>
+                </li>
+                <li class="li-simple">
+                    <a [routerLink]="['/home']" routerLinkActive="color-link-active" >Home</a>
+                </li>
+                <li class="li-simple">
+                    <a [routerLink]="['/category', 'teams' ]" routerLinkActive="color-link-active">Teams</a>
+                </li>
+                <li class="li-simple">
+                    <a [routerLink]="['/category', 'pilots']" routerLinkActive="color-link-active">Pilots</a>
+                </li >
+                <li class="li-simple">
+                    <a [routerLink]="['/category', 'cars']" routerLinkActive="color-link-active">Cars</a>
+                </li>
+            </ul>
+        </nav>
+    </p-sidebar>
+    
+    <p-button type="button" class="mr-2" (click)="visibleSidebar1 = true" icon="pi pi-bars"></p-button>
+</header>
+
+
+

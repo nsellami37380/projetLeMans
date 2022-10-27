@@ -11,6 +11,8 @@ import {MenuItem} from 'primeng/api';
 export class HeaderComponent implements OnInit {
 
   menu: MenuItem[] = [];
+  visibleSidebar1: boolean = false;
+
   constructor(private router: Router) {}
 
   ngOnInit(): void {

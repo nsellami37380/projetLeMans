@@ -22,6 +22,9 @@ import { FormsModule } from '@angular/forms';
 import {DropdownModule} from 'primeng/dropdown';
 import {MenubarModule} from 'primeng/menubar';
 import {CarouselModule} from 'primeng/carousel';
+import {SidebarModule} from 'primeng/sidebar';
+import {ButtonModule} from 'primeng/button';
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 
 
 
@@ -51,7 +54,10 @@ import {CarouselModule} from 'primeng/carousel';
     FormsModule,
     DropdownModule,
     MenubarModule,
-    CarouselModule
+    CarouselModule,
+    SidebarModule,
+    ButtonModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,17 +1,23 @@
 nav{
-    height: 70px;
-    align-items: center;
     display: flex;
-    width: 100%;
     position: fixed;
-    background-color: black;
 }
+
+header{
+    display: flex;
+    justify-content: end;
+    margin-right: 2em;
+    padding-top: 2em;
+}
+
 .li-simple{
     padding-top: 1em;
 }
 
 ul{
     display: flex;
+    flex-direction: column;
+    align-items: center;
     list-style-type: none;
     width: 100%;
     justify-content: space-around;
@@ -19,10 +25,11 @@ ul{
 
 a{
 
-    font-size: 18px;
+    font-size: 24px;
     text-decoration: none;
     color: white;
     font-family: 'Montserrat', sans-serif;
+    margin-bottom: 2em;
 }
 
 li{
@@ -62,15 +69,42 @@ a:hover{
 
 :host ::ng-deep { 
     .p-menubar{
-        background-color: black;
         border: none;
     }
     .p-menubar .p-menubar-root-list  .p-menuitem  .p-menuitem-link .p-menuitem-text {
         color: white;
         font-family: 'Montserrat', sans-serif;
-        font-size: 18px;
+        font-size: 24px;
         }
     a.p-ripple.p-element.p-menuitem-link :hover{
         color: yellow;
     }
+
+    .p-button.p-button-icon-only{
+        padding: 2em;
+    }
+
+    .pi-bars{
+        font-size: 2em;
+    }
+
+    @media screen and (max-width: 426px){
+
+        .p-button.p-button-icon-only{
+            padding: 1em;
+        }
+    
+        .pi-bars{
+            font-size: 1em;
+        }
+    }
+
 }
+
+.logo{
+    width: 100px;
+    height: 100px;
+}
+
+
+
