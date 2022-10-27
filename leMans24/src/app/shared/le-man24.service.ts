@@ -23,7 +23,7 @@ export class LeMan24Service {
   private PilotList !: Pilot[];
   private TeamList !: Team[];
 
-  carPictureList: BehaviorSubject<any> = new BehaviorSubject<any>(null);
+  
 
   constructor(
     private http: HttpClient,
@@ -137,7 +137,5 @@ export class LeMan24Service {
     },);
   }
 
-  getCarPic(id: number):Observable<any>{
-    return this.http.get(this.url + '/car-details/' + id);
-  }
+  
 }

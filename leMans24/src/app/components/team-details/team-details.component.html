@@ -22,7 +22,7 @@
 <section class="container-list-pilot">
    <h2>Liste de pilotes</h2>
    <div class="container-carrousselle">
-<p-carousel [value]="pilotPicture">
+<p-carousel [value]="pilotListFilteredByTeam">
     <ng-template let-pilotPhotoList pTemplate="item">
         <img [src]="pilotPhotoList.photoList" alt="image pilot">
    
@@ -38,9 +38,9 @@
     <h2>Lite de voitures</h2>
 
     <div class="container-carrousselle">
-        <p-carousel [value]="carPicture">
+        <p-carousel [value]="carListFilteredByTeam">
             <ng-template let-carPictureList pTemplate="item">
-                <img [src]="carPictureList.teams.id.carList" alt="">
+                <img [src]="carPictureList.pictureList" alt="">
             </ng-template>
         </p-carousel>
     </div>

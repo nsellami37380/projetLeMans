@@ -1,19 +1,19 @@
     <h1>Détail de la voiture</h1>
+    <div class="model-name">
+        <h2 id="idModelName">{{car.modelName}}</h2>
+    </div>
     <p-carousel [value]="carPics">
         <ng-template let-carToDisplay pTemplate="item">
             <div class="presentation-car">
-                <img [src]="carToDisplay.pictureList" alt="">
-                <div class="model-name">
-                    <h2>{{carToDisplay.modelName}}</h2>
-                </div>
-            </div>
-            <div class="text-detail">
-
-                <h3>Description de la voiture</h3>
-                <p>Acceleration : {{carToDisplay.acceleration}} secondes</p>
-                <p>{{carToDisplay.description}}</p>
+                <img [src]="carToDisplay" alt="">
+                
             </div>
         </ng-template>
     </p-carousel>
-    
+    <div class="text-detail">
+
+        <h3>Description de la voiture</h3>
+        <p>Acceleration : {{car.acceleration}} secondes</p>
+        <p>{{car.description}}</p>
+    </div>
 

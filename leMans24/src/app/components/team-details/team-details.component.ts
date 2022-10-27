@@ -15,8 +15,9 @@ export class TeamDetailsComponent implements OnInit {
   teamId: number = 0;
   team!: Team;
   pilot!: Pilot;
-  pilotPicture: Pilot[] = [];
-  carPicture: Car[] = [];
+  pilotListFilteredByTeam: Pilot[] = [];
+  carListFilteredByTeam: Car [] = [];
+
   constructor(private route: ActivatedRoute, private leMans24S: LeMan24Service) { }
 
   ngOnInit(): void {
@@ -25,14 +26,17 @@ export class TeamDetailsComponent implements OnInit {
       if(this.teamId){
         this.team=this.leMans24S.getTeamById(this.teamId);
       }
-    });
-    this.leMans24S.getPilots().subscribe(pilotPictureList =>{
-      this.pilotPicture = pilotPictureList;
+
+      this.leMans24S.getCars().subscribe(carList=>{
+        this.carListFilteredByTeam = carList.filter(car=>car.team==this.teamId);
+      });
+
+      this.leMans24S.getPilots().subscribe(pilotList=>{
+        this.pilotListFilteredByTeam = pilotList.filter(pilot=>pilot.team==this.teamId);
+      });
     });
     
-    this.leMans24S.getCars().subscribe(carPictureList =>{
-      this.carPicture = carPictureList;
-    });
   }
+
 
 }
