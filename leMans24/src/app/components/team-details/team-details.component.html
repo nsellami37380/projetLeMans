@@ -21,29 +21,29 @@
 
 <section class="container-list-pilot">
    <h2>Liste de pilotes</h2>
-   <div class="container-carrousselle">
-<p-carousel [value]="pilotListFilteredByTeam">
+   <!-- <div class="container-carousel">
+</div>  -->
+<p-carousel [value]="pilotListFilteredByTeam" [autoplayInterval]="3000" class="caRousel" [responsiveOptions]="responsiveOptions" [circular]="true" [style]="{'max-width':'500px', 'max-height':'500px','margin-top':'2em'}">
     <ng-template let-pilotPhotoList pTemplate="item">
         <img [src]="pilotPhotoList.photoList" alt="image pilot">
    
     </ng-template>
 </p-carousel>
-</div> 
-    
    
 
 </section>
 
 <section class="container-list-car">
-    <h2>Lite de voitures</h2>
+    <h2>Liste de voitures</h2>
 
-    <div class="container-carrousselle">
-        <p-carousel [value]="carListFilteredByTeam">
-            <ng-template let-carPictureList pTemplate="item">
-                <img [src]="carPictureList.pictureList" alt="">
-            </ng-template>
-        </p-carousel>
-    </div>
+    <!-- <div class="container-carousel">
+        
+    </div> -->
+    <p-carousel [value]="carListFilteredByTeam" [autoplayInterval]="3000" class="caRousel" [responsiveOptions]="responsiveOptions" [circular]="true" [style]="{'max-width':'500px', 'max-height':'500px','margin-top':'2em'}">
+        <ng-template let-carPictureList pTemplate="item">
+            <img [src]="carPictureList.pictureList" alt="">
+        </ng-template>
+    </p-carousel>
    
 
 </section>
