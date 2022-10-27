@@ -65,7 +65,7 @@ input[type=number]{
     width: 5em;
 }
 button{
-    width: 100%;
+    width: 30%;
     height: 70px;
     font-size: 18px;
     font-family: 'Montserrat', sans-serif;
@@ -104,11 +104,8 @@ textarea{
     align-items: center;
 }
 
-
-@media screen and (max-width:1024px){
-    #button-img{
-        width: 100px;
-    }
+#button-img{
+    width: 100px;
 }
 
 @media screen and (max-width:450px){
