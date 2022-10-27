@@ -22,6 +22,10 @@ import { FormsModule } from '@angular/forms';
 import {DropdownModule} from 'primeng/dropdown';
 import {MenubarModule} from 'primeng/menubar';
 import {CarouselModule} from 'primeng/carousel';
+import {SidebarModule} from 'primeng/sidebar';
+import {ButtonModule} from 'primeng/button';
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
+import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
 
 
 
@@ -43,6 +47,7 @@ import {CarouselModule} from 'primeng/carousel';
     FormTeamComponent,
     FormPilotComponent,
     FormCarComponent,
+    PageNotFoundComponent,
   ],
   imports: [
     BrowserModule,
@@ -51,7 +56,10 @@ import {CarouselModule} from 'primeng/carousel';
     FormsModule,
     DropdownModule,
     MenubarModule,
-    CarouselModule
+    CarouselModule,
+    SidebarModule,
+    ButtonModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
