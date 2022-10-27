@@ -51,24 +51,6 @@ a:hover{
     color: yellow;
 }
 
-// :host ::ng-deep {    
-//     .p-menubar{
-//     background-color: black;
-//     border: none;
-//     padding: 0;
-//     }
-//     .p-menubar .p-menubar-root-list  .p-menuitem  .p-menuitem-link .p-menuitem-text {
-//         color: white;
-//     }
-//     .p-menubar .p-menuitem-link {
-//         background-color: black;
-//     }
-//     .p-menubar .p-menuitem-link :hover{
-//         background-color: black;
-//         color: yellow;
-//     }
-// }
-
 :host ::ng-deep { 
     .p-menubar{
         border: none;
@@ -123,7 +105,7 @@ a:hover{
         height: 70px;
         margin-left: 1em;
     }
-
+    
     a{
         font-size: 18px;
     }

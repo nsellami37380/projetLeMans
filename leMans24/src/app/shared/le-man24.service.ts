@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
+import { BehaviorSubject } from 'rxjs';
 import { Observable } from 'rxjs/internal/Observable';
 
 import { Car } from '../models/car.model';
@@ -21,6 +22,8 @@ export class LeMan24Service {
   private carList !: Car[];
   private PilotList !: Pilot[];
   private TeamList !: Team[];
+
+  
 
   constructor(
     private http: HttpClient,
@@ -133,4 +136,6 @@ export class LeMan24Service {
       error: error => {console.log("Erreur " + error + team.name)}      
     },);
   }
+
+  
 }
