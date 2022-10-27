@@ -56,29 +56,29 @@ export class LeMan24Service {
     if (car.id == 0)
     {
     this.http.post<Car>(this.url + '/cars',car).subscribe({
-      next: data => {console.log("data id " + data.id)},
+      next: data => {this.router.navigate(['/container-list',"cars"]);},
       error: error => {console.log("Erreur " + error)}      
     },);
     } else
     {
       this.http.patch<Car>(this.url + '/cars',car).subscribe({
-        next: data => {console.log("data id " + data.id)},
-        error: error => {console.log("Erreur " + error)}      
+        next: data => {this.router.navigate(['/container-list',"cars"]);},
+        error: error => {alert("Erreur " + error)}      
       },);
     } 
   }  
 
   addTeam(team: Team): void{
     this.http.post<Team>(this.url + '/teams',team).subscribe({
-      next: data => {console.log("data id " + data.id)},
-      error: error => {console.log("Erreur " + error)}      
+      next: data => {this.router.navigate(['/container-list',"teams"]);},
+      error: error => {alert("Erreur " + error)}      
     },);
   }
 
   addPilot(pilot: Pilot): void{ 
     this.http.post<Pilot>(this.url + '/pilots',pilot).subscribe({
-      next: data => {console.log("data id " + data.id)},
-      error: error => {console.log("Erreur " + error)}      
+      next: data => {this.router.navigate(['/container-list',"pilots"]);},
+      error: error => {alert("Erreur " + error)}      
     },);
   }
 

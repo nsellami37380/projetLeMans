@@ -13,14 +13,11 @@
     <fieldset>
         <label for="picture">Image*</label>
         <input type="file" #selectImage (change)="selectfile($event)">
-        <!-- <img src="" width="100px" (click)="selectImage.click()"  height="100px" alt="">  -->
-        <button id="addIMage" (click)="selectImage.click()" >Ajouter une image</button>
-        <div *ngFor="let img of car.pictureList" class="dimg">
-
-            <img [src]=img width="100px"  height="100px" alt=""> 
-            <!-- <button (click)="deleteImage()">Supprimer</button> -->
-        </div>  
-
+        <div id="ListImgCar">
+            <div *ngFor="let img of car.pictureList" class="dimg">
+                <img [src]=img width="100px"  height="100px" alt=""> 
+            </div> 
+        </div>
     </fieldset>
 
     <fieldset>

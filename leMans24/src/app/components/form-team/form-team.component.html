@@ -41,7 +41,8 @@
 
     <fieldset>
         <label for="story">Histoire*</label>
-        <input type="text" name="story" id="story" [(ngModel)]="team.story" #story="ngModel" required>
+        <textarea name="story" id="story" cols="130" rows="10" [(ngModel)]="team.story" #story="ngModel" required></textarea>
+        <!-- <input type="text" name="story" id="story" [(ngModel)]="team.story" #story="ngModel" required> -->
         <div *ngIf="story.errors && myForm.submitted">
             <span *ngIf="story.errors?.['required']">L'histoire est requise'</span>
         </div>    
