@@ -23,7 +23,7 @@ export class HeaderComponent implements OnInit {
                 label:'Ajouter une Voiture', "routerLink": '/addCar'                
               },
               {
-                label:'Ajouter une Pilote', "routerLink": '/addPilot'
+                label:'Ajouter un Pilote', "routerLink": '/addPilot'
               },
               {
                 label:'Ajouter une Écurie', "routerLink": '/addTeam'
