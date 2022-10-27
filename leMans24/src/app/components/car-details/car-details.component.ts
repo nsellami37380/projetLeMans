@@ -14,6 +14,7 @@ export class CarDetailsComponent implements OnInit {
 
   car: any;
   id: number= 0;
+  carPics: String[] = [];
   constructor(
     private route: ActivatedRoute,
     private leman24S: LeMan24Service) { }
@@ -29,13 +30,18 @@ export class CarDetailsComponent implements OnInit {
      }    
     });
 
-    this.leman24S.getCars().subscribe(carList =>{
-      this.car = carList;
-    });
+    // this.leman24S.getCars().subscribe(carList =>{
+    //   this.carPics = carList
+    //   console.log(carList)
+    // });
+    this.carPics = this.leman24S.getCarById(this.car.id).pictureList;
   }
 
   setFont(): void{
+    if (document.getElementsByTagName("h2")[0])
+    {
     document.getElementsByTagName("h2")[0].style.fontSize = 
     Math.min(200, 600 /(this.car.modelName.length * 0.8)).toString() + "px"; 
+    }
   }
 }

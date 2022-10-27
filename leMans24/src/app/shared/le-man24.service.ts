@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
+import { BehaviorSubject } from 'rxjs';
 import { Observable } from 'rxjs/internal/Observable';
 
 import { Car } from '../models/car.model';
@@ -21,6 +22,8 @@ export class LeMan24Service {
   private carList !: Car[];
   private PilotList !: Pilot[];
   private TeamList !: Team[];
+
+  carPictureList: BehaviorSubject<any> = new BehaviorSubject<any>(null);
 
   constructor(
     private http: HttpClient,
@@ -132,5 +135,9 @@ export class LeMan24Service {
       next: () => {this.router.navigate(['/container-list',"teams"]);},
       error: error => {console.log("Erreur " + error + team.name)}      
     },);
+  }
+
+  getCarPic(id: number):Observable<any>{
+    return this.http.get(this.url + '/car-details/' + id);
   }
 }

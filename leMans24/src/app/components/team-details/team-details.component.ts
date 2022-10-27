@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, ParamMap } from '@angular/router';
+import { Car } from 'src/app/models/car.model';
 import { Pilot } from 'src/app/models/pilot.model';
 import { Team } from 'src/app/models/team.model';
 import { LeMan24Service } from 'src/app/shared/le-man24.service';
@@ -14,7 +15,8 @@ export class TeamDetailsComponent implements OnInit {
   teamId: number = 0;
   team!: Team;
   pilot!: Pilot;
-
+  pilotPicture: Pilot[] = [];
+  carPicture: Car[] = [];
   constructor(private route: ActivatedRoute, private leMans24S: LeMan24Service) { }
 
   ngOnInit(): void {
@@ -23,6 +25,13 @@ export class TeamDetailsComponent implements OnInit {
       if(this.teamId){
         this.team=this.leMans24S.getTeamById(this.teamId);
       }
+    });
+    this.leMans24S.getPilots().subscribe(pilotPictureList =>{
+      this.pilotPicture = pilotPictureList;
+    });
+    
+    this.leMans24S.getCars().subscribe(carPictureList =>{
+      this.carPicture = carPictureList;
     });
   }
 
