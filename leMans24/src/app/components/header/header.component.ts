@@ -18,15 +18,15 @@ export class HeaderComponent implements OnInit {
   ngOnInit(): void {
     this.menu=[
       {
-        label: 'Add',
+        label: 'Ajouter',
         items:[{
-                label:'Add New Car', "routerLink": '/addCar'                
+                label:'Ajouter une Voiture', "routerLink": '/addCar'                
               },
               {
-                label:'Add New Pilot', "routerLink": '/addPilot'
+                label:'Ajouter une Pilote', "routerLink": '/addPilot'
               },
               {
-                label:'Add New Team', "routerLink": '/addTeam'
+                label:'Ajouter une Écurie', "routerLink": '/addTeam'
               }],              
        }
     ]
