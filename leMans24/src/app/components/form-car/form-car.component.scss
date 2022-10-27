@@ -78,7 +78,6 @@ input[type=number]{
 button{
     width: 20%;
     height: 70px;
-    margin-right: 1em;
     font-size: 18px;
     font-family: 'Montserrat', sans-serif;
     transition: 0.3s ease-in-out;
@@ -98,8 +97,66 @@ button:hover{
     margin-bottom: 2em;
 }
 input[type=file]{
-    // display: none;
-    width: auto;
+    display: none;
 }   
+
+
+@media screen and (max-width:1024px){
+    #button-img{
+        width: 100px;
+    }
+}
+
+@media screen and (max-width:450px){
+h1{
+    font-size: 30px;
+    text-underline-offset: 0.3em;
+
+}
+
+#my_fieldset{
+    margin-left: 2em;
+    margin-right: 2em;
+}
+
+label{
+    font-size: 18px;
+    text-underline-offset: 0.3em;
+}
+
+input{
+    width: 100%;
+}
+
+img{
+    margin: 0;
+}
+
+#ListImgCar{
+    display: flex;
+    flex-direction: column;
+}
+
+button{
+    width: 30%;
+}
+
+}
+
+@media screen and (max-width:780px){
+    label {
+        font-size: 20px;
+    }
+
+    h1{
+        font-size: 30px;
+    }
+}
+
+@media screen and (max-width:330px){
+    button{
+        width: 40%;
+    }
+}
 
 
