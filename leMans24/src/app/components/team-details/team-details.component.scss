@@ -69,13 +69,21 @@ p{
     margin-right: 2em;
 }
 
-.container-carrousselle{
+// .container-carousel{
+//     border: 5px solid yellow;
+//     margin-bottom: 3em;
+   
+// }
+.caRousel{
     border: 5px solid yellow;
     margin-bottom: 3em;
     width: 90%;
     height: 600px;
     margin-left: 2em;
     margin-right: 2em;
+}
+img{
+    width: 50%;
 }
 
 @media screen and (max-width:1024px){
