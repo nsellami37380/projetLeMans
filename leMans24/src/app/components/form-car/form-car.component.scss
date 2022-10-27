@@ -43,10 +43,14 @@ label{
 img{
     width: 100%;
     height: 300px;
-    background-image: url("https://store-images.s-microsoft.com/image/apps.46116.70628353720390187.c5ec2284-1a6e-4ed0-a094-b54b14b8d466.f01d3b8d-41e1-42bc-b322-443ee5b1f390?q=90&w=480&h=270");
+    // background-image: url("https://store-images.s-microsoft.com/image/apps.46116.70628353720390187.c5ec2284-1a6e-4ed0-a094-b54b14b8d466.f01d3b8d-41e1-42bc-b322-443ee5b1f390?q=90&w=480&h=270");
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
+}
+#addIMage{
+    width: auto;
+    margin-bottom: 1em;
 }
 
 input{
