@@ -27,7 +27,7 @@ export class HeaderComponent implements OnInit {
               },
               {
                 label:'Ajouter une Écurie', "routerLink": '/addTeam'
-              }],              
+              }],
        }
     ]
   }
