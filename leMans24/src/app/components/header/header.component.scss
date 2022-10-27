@@ -5,9 +5,11 @@ nav{
 
 header{
     display: flex;
-    justify-content: end;
-    margin-right: 2em;
+    justify-content: space-between;
     padding-top: 2em;
+    padding-bottom: 2em;
+    background-color: black;
+    width: 100%;
 }
 
 .li-simple{
@@ -82,6 +84,7 @@ a:hover{
 
     .p-button.p-button-icon-only{
         padding: 2em;
+        margin-right: 2em;
     }
 
     .pi-bars{
@@ -102,8 +105,17 @@ a:hover{
 }
 
 .logo{
-    width: 100px;
+    width: 150px;
     height: 100px;
+    margin-left: 2em;
+}
+
+@media screen and (max-width: 426px){
+    .logo{
+        width: 100px;
+        height: 70px;
+        margin-left: 1em;
+    }
 }
 
 
