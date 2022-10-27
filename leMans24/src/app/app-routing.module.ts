@@ -9,6 +9,7 @@ import { TeamDetailsComponent } from './components/team-details/team-details.com
 import { PageContainerListComponent } from './pages/page-container-list/page-container-list.component';
 import { PageFormComponent } from './pages/page-form/page-form.component';
 import { PageHomeComponent } from './pages/page-home/page-home.component';
+import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
 
 const routes: Routes = [
   {path:'', component: PageHomeComponent },
@@ -24,7 +25,7 @@ const routes: Routes = [
   {path:'car-detail/:id', component: CarDetailsComponent},
   {path:'pilot-detail/:id', component: PilotDetailsComponent},
   {path:'team-detail/:id', component: TeamDetailsComponent},
-  {path:'**', component: PageHomeComponent},
+  {path:'**', component: PageNotFoundComponent},
 ];
 
 @NgModule({
