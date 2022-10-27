@@ -46,7 +46,8 @@
 
     <fieldset>
         <label for="bio">Biographie*</label>
-        <input type="text-area" name="bio" id="bio" [(ngModel)]="pilot.bio" #bio="ngModel" required>
+        <textarea name="bio" id="bio" cols="130" rows="10" [(ngModel)]="pilot.bio" #bio="ngModel" required></textarea>
+        <!-- <input type="text-area" cols="130" rows="10" name="bio" id="bio" [(ngModel)]="pilot.bio" #bio="ngModel" required> -->
         <div *ngIf="bio.errors && myForm.submitted">
             <span *ngIf="bio.errors?.['required']">La biograpie du pilote est requise</span>
         </div>    
@@ -54,7 +55,9 @@
 
     <fieldset>
         <label for="palmares">Palmares*</label>
-        <input type="text-area" name="palmares" id="palmares" [(ngModel)]="pilot.palmares" #palmares="ngModel" required>
+        <!-- <input type="text-area" cols="130" rows="10" name="palmares" id="palmares" [(ngModel)]="pilot.palmares" #palmares="ngModel" required> -->
+        <textarea  name="palmares" id="palmares" cols="130" rows="10"  [(ngModel)]="pilot.palmares" #palmares="ngModel"  required></textarea>
+        
         <div *ngIf="palmares.errors && myForm.submitted">
             <span *ngIf="palmares.errors?.['required']">Le palmares du pilote est requis</span>
         </div>    
