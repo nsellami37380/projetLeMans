@@ -17,8 +17,28 @@ export class TeamDetailsComponent implements OnInit {
   pilot!: Pilot;
   pilotListFilteredByTeam: Pilot[] = [];
   carListFilteredByTeam: Car [] = [];
+  responsiveOptions: any;
 
-  constructor(private route: ActivatedRoute, private leMans24S: LeMan24Service) { }
+  constructor(private route: ActivatedRoute, private leMans24S: LeMan24Service) { 
+
+      this.responsiveOptions = [
+        {
+            breakpoint: '1024px',
+            numVisible: 3,
+            numScroll: 3
+        },
+        {
+            breakpoint: '768px',
+            numVisible: 2,
+            numScroll: 2
+        },
+        {
+            breakpoint: '560px',
+            numVisible: 1,
+            numScroll: 1
+        }
+    ];
+  }
 
   ngOnInit(): void {
     this.route.paramMap.subscribe((params: ParamMap ) => {
@@ -33,6 +53,7 @@ export class TeamDetailsComponent implements OnInit {
 
       this.leMans24S.getPilots().subscribe(pilotList=>{
         this.pilotListFilteredByTeam = pilotList.filter(pilot=>pilot.team==this.teamId);
+  
       });
     });
     
