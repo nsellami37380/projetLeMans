@@ -1,6 +1,7 @@
     <h1>Détail de la voiture</h1>
     <div class="car-title">
-        <p-carousel [value]="carPics" class="caRousel" [autoplayInterval]="3000" [responsiveOptions]="responsiveOptions" [circular]="true">
+        <p-carousel [value]="carPics" [autoplayInterval]="3000" class="caRousel" 
+            [responsiveOptions]="responsiveOptions" [circular]="true">
             <ng-template let-carToDisplay pTemplate="item">
                     <img [src]="carToDisplay" alt="">           
             </ng-template>
