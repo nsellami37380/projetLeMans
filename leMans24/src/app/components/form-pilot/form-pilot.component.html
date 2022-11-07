@@ -40,6 +40,7 @@
         <label for="picture">Image*</label>
         <div class="dimg">
             <input type="file" #selectImage (change)="selectfile($event)">
+            <button type="button" (click)="selectImage.click()" id="button-img">Ajouter image</button>
             <img [src]="url" width="100px" (click)="selectImage.click()"  height="100px" alt="">
         </div>      
     </fieldset>

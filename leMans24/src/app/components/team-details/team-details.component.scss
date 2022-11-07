@@ -9,6 +9,8 @@ section{
 .content-team{
     display: flex;
     flex-direction: row;
+    align-items: center;
+
 }
 
 .content-team img{
@@ -68,10 +70,32 @@ p{
     margin-left: 2em;
     margin-right: 2em;
 }
+label{
+    color: white;
+    font-size: 2em; 
+    margin-bottom: 30%; 
+    text-decoration: underline;
+}
 
-.container-carrousselle{
+.caRousel{
     border: 5px solid yellow;
-    margin-bottom: 3em;
+    // margin-bottom: 3em;
+    width: 90%;
+    height: fit-content;
+    margin-left: 2em;
+    margin-right: 2em; 
+    max-width: 800px; 
+    margin-bottom:3em; 
+ 
+}
+img{
+    width: auto;
+    height: 30vh;
+    // margin-left: 20%;
+    margin-top: 1em;
+    max-width: 80%;
+    max-height: 80%;
+
 }
 
 @media screen and (max-width:1024px){
@@ -124,4 +148,16 @@ p{
     p{
         font-size:16px;
     }
+    p-carousel-container, p-carousel{
+        overflow: hidden;
+    }
 }
+.label{
+    height: 100%;
+    vertical-align: middle;
+    display: inline;
+}
+.idImg{
+     text-align: center;
+}
+

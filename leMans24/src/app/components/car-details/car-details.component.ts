@@ -15,10 +15,30 @@ export class CarDetailsComponent implements OnInit {
   car: any;
   id: number= 0;
   carPics: String[] = [];
+  responsiveOptions: any;
   
   constructor(
     private route: ActivatedRoute,
-    private leman24S: LeMan24Service) { }
+    private leman24S: LeMan24Service) {
+      
+      this.responsiveOptions = [
+        {
+            breakpoint: '1024px',
+            numVisible: 3,
+            numScroll: 3
+        },
+        {
+            breakpoint: '768px',
+            numVisible: 2,
+            numScroll: 2
+        },
+        {
+            breakpoint: '560px',
+            numVisible: 1,
+            numScroll: 1
+        }
+    ];
+     }
 
   ngOnInit(): void {
 
@@ -46,7 +66,7 @@ export class CarDetailsComponent implements OnInit {
       var monObj= document.getElementById("idModelName");
       if (monObj != null) 
       {monObj.style.fontSize = 
-         Math.min(200, 600 /(this.car.modelName.length * 0.8)).toString() + "px"; 
+         Math.min(200, 600 /(this.car.modelName.length * 1.3)).toString() + "px"; 
       }
     }
   }
