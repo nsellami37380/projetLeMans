@@ -1,4 +1,6 @@
 package com.lemans24.Project.team;
+import com.lemans24.Project.car.Car;
+import com.lemans24.Project.pilot.Pilot;
 import com.lemans24.Project.sponsor.Sponsor;
 
 import javax.persistence.*;

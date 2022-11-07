@@ -1,7 +1,12 @@
 package com.lemans24.Project.pilot;
 
+import com.lemans24.Project.car.Car;
+import com.lemans24.Project.pilotphoto.PilotPhoto;
+import com.lemans24.Project.team.Team;
+
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 public class Pilot {

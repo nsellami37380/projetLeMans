@@ -2,6 +2,9 @@ package com.lemans24.Project.car;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+import com.lemans24.Project.carphoto.CarPhoto;
+import com.lemans24.Project.pilot.Pilot;
+import com.lemans24.Project.team.Team;
 
 import javax.persistence.*;
 import java.util.List;
@@ -17,7 +20,7 @@ public class Car {
     @Column(nullable = false, updatable = false)
 
     private Long id;
-    private List<PhotoCar> photoList;
+    private List<CarPhoto> photoList;
     private String modelName;
     private String engine;
     private float power;
@@ -28,7 +31,7 @@ public class Car {
     private Pilot pilot;
 
     public Car(Long id,
-               List<PhotoCar> photoList,
+               List<CarPhoto> photoList,
                String modelName,
                String engine,
                float power,
@@ -60,11 +63,11 @@ public class Car {
         this.id = id;
     }
 
-    public List<PhotoCar> getPhotoList() {
+    public List<CarPhoto> getPhotoList() {
         return photoList;
     }
 
-    public void setPhotoList(List<PhotoCar> photoList) {
+    public void setPhotoList(List<CarPhoto> photoList) {
         this.photoList = photoList;
     }
 
