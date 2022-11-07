@@ -31,7 +31,7 @@ public class CarService {
         Car carFoundToUpdate = carRepository.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("id " + id + " not found"));
 
-        carFoundToUpdate.setPhotoList(car.getPhotoList());
+        carFoundToUpdate.setCarPhotoList(car.getCarPhotoList());
         carFoundToUpdate.setModelName(car.getModelName());
         carFoundToUpdate.setEngine(car.getEngine());
         carFoundToUpdate.setPower(car.getPower());

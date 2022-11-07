@@ -1,4 +1,6 @@
 package com.lemans24.Project.team;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import com.lemans24.Project.car.Car;
 import com.lemans24.Project.pilot.Pilot;
 import com.lemans24.Project.sponsor.Sponsor;
@@ -6,6 +8,9 @@ import com.lemans24.Project.sponsor.Sponsor;
 import javax.persistence.*;
 import java.util.List;
 @Entity
+@JsonIdentityInfo(
+        generator = ObjectIdGenerators.PropertyGenerator.class,
+        property = "id")
 public class Team {
 
     @Id
@@ -16,9 +21,14 @@ public class Team {
     private String logoUrl;
     private float budget;
     private String bio;
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "team_id", referencedColumnName = "id")
     private List<Pilot> pilotList;
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "team_id", referencedColumnName = "id")
     private List<Car> carList;
-    private List<Sponsor> sponsorList;
+   @ManyToMany(cascade = CascadeType.ALL)
+    private List<Sponsor> sponsorList;// Set instead of list ???
 
     public Team(Long id, String name, String logoUrl, float budget, String bio, List<Pilot> pilotList, List<Car> carList, List<Sponsor> sponsorList) {
         this.id = id;

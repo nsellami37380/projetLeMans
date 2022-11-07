@@ -20,14 +20,18 @@ public class Car {
     @Column(nullable = false, updatable = false)
 
     private Long id;
-    private List<CarPhoto> photoList;
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "car_id", referencedColumnName = "id")
+    private List<CarPhoto> carPhotoList;
     private String modelName;
     private String engine;
     private float power;
     private float maxSpeed;
     private float acceleration;
     private String bio;
+    @ManyToOne()
     private Team team;
+    @OneToOne(mappedBy = "car")
     private Pilot pilot;
 
     public Car(Long id,
@@ -41,7 +45,7 @@ public class Car {
                Team team,
                Pilot pilot) {
         this.id = id;
-        this.photoList = photoList;
+        this.carPhotoList = photoList;
         this.modelName = modelName;
         this.engine = engine;
         this.power = power;
@@ -63,12 +67,12 @@ public class Car {
         this.id = id;
     }
 
-    public List<CarPhoto> getPhotoList() {
-        return photoList;
+    public List<CarPhoto> getCarPhotoList() {
+        return carPhotoList;
     }
 
-    public void setPhotoList(List<CarPhoto> photoList) {
-        this.photoList = photoList;
+    public void setCarPhotoList(List<CarPhoto> carPhotoList) {
+        this.carPhotoList = carPhotoList;
     }
 
     public String getModelName() {
