@@ -26,6 +26,10 @@ fieldset{
     flex-direction: column;
     align-items: center;
 }
+input[type=file][_ngcontent-nul-c55] {
+    width: 100%;
+    flex-wrap: wrap;
+}
 
 label{
     display: block;
