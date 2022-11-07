@@ -9,3 +9,17 @@ input{
     width: 40%;
     height: 50px;
 }
+
+input::placeholder {
+    font-weight: bold;
+    font-size: 26px;
+    margin-top: 2em;
+}
+
+input[type="search" i] {
+    appearance: auto;
+    padding-top: 2em;
+    padding-bottom: 1.5em;
+    padding-left: 1em;
+
+}
