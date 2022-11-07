@@ -1,8 +1,8 @@
-package com.lemans24.Project.CarPhoto;
+package com.lemans24.Project.team;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface CarPhotoRepository extends JpaRepository<CarPhoto, Long> {
+public interface TeamRepository extends JpaRepository<Team, Long> {
 }
