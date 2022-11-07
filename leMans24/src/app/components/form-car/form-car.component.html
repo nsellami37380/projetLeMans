@@ -11,9 +11,14 @@
     </fieldset>
 
     <fieldset>
+<<<<<<< HEAD
+        <label for="picture">Image*</label>
+        <input type="file" id="choix-image" #selectImage (change)="selectfile($event)">
+=======
         <label for="pictureselectImage">Image*</label>
         <input type="file" #selectImage (change)="selectfile($event)">
         <button type="button" (click)="selectImage.click()" id="button-img">Ajouter image</button>
+>>>>>>> 29366bd4c63e8a0a1310c96c500e9fca2686a8c7
         <div id="ListImgCar">
             <div *ngFor="let img of car.pictureList" class="dimg">
                 <img [src]=img width="100px"  height="100px" alt=""> 
@@ -62,6 +67,23 @@
         </div>    
     </fieldset>
 
+
+    <fieldset>
+        <label for="acceleration">Acceleration*</label>
+        <input type="number" name="acceleration" id="acceleration" [(ngModel)]="car.acceleration" #acceleration="ngModel" required>
+        <div *ngIf="acceleration.errors && myForm.submitted">
+            <span *ngIf="acceleration.errors?.['required']">L'acceleration est requise</span>
+        </div>    
+    </fieldset>
+
+    <fieldset>
+        <label for="description">Description*</label>
+        <textarea name="description" id="description" cols="130" rows="10" [(ngModel)]="car.description" #description="ngModel" required></textarea>
+        <div *ngIf="description.errors && myForm.submitted">
+            <span *ngIf="description.errors?.['required']">La description est requise</span>
+        </div>    
+    </fieldset>
+
     <fieldset>
         <label for="team">Ecurie*</label>
         <!-- <input type="number" name="team" id="team" [(ngModel)]="car.team" #team="ngModel" max=9 required> -->
@@ -75,13 +97,6 @@
         </div>    
     </fieldset>
 
-    <fieldset>
-        <label for="acceleration">Acceleration*</label>
-        <input type="number" name="acceleration" id="acceleration" [(ngModel)]="car.acceleration" #acceleration="ngModel" required>
-        <div *ngIf="acceleration.errors && myForm.submitted">
-            <span *ngIf="acceleration.errors?.['required']">L'acceleration est requise</span>
-        </div>    
-    </fieldset>
 
     <div class = "btn">
         <button type="submit">{{textBtnSubmit}}</button>
