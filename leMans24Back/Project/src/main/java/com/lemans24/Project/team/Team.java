@@ -1,5 +1,5 @@
-package com.lemans24.Project.Team;
-import com.lemans24.Project.Sponsor.Sponsor;
+package com.lemans24.Project.team;
+import com.lemans24.Project.sponsor.Sponsor;
 
 import javax.persistence.*;
 import java.util.List;

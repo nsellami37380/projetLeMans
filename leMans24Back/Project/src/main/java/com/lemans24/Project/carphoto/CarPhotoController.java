@@ -1,4 +1,4 @@
-package com.lemans24.Project.CarPhoto;
+package com.lemans24.Project.carphoto;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

@@ -1,4 +1,4 @@
-package com.lemans24.Project.CarPhoto;
+package com.lemans24.Project.carphoto;
 
 import javax.persistence.Entity;
 

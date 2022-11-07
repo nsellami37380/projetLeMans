@@ -1,4 +1,4 @@
-package com.lemans24.Project.Sponsor;
+package com.lemans24.Project.sponsor;
 
 import javax.persistence.Entity;
 
