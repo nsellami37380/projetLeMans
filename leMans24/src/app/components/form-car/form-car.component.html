@@ -11,27 +11,14 @@
     </fieldset>
 
     <fieldset>
-<<<<<<< HEAD
-        <label for="picture">Image*</label>
-        <input type="file" id="choix-image" #selectImage (change)="selectfile($event)">
-=======
         <label for="pictureselectImage">Image*</label>
         <input type="file" #selectImage (change)="selectfile($event)">
         <button type="button" (click)="selectImage.click()" id="button-img">Ajouter image</button>
->>>>>>> 29366bd4c63e8a0a1310c96c500e9fca2686a8c7
         <div id="ListImgCar">
-            <div *ngFor="let img of car.pictureList" class="dimg">
+            <div *ngFor="let img of car.carPhotoList" class="dimg">
                 <img [src]=img width="100px"  height="100px" alt=""> 
             </div> 
         </div>
-    </fieldset>
-
-    <fieldset>
-        <label for="color">Couleur*</label>
-        <input type="color" name="color" id="color" [(ngModel)]="car.color" value="car.color" #color="ngModel" required>
-        <div *ngIf="color.errors && myForm.submitted">
-            <span *ngIf="color.errors?.['required']">La couleur est requise</span>
-        </div>  
     </fieldset>
 
     <fieldset>
@@ -58,16 +45,6 @@
         </div>    
     </fieldset>
 
-
-    <fieldset>
-        <label for="tire">Pneus*</label>
-        <input type="text" name="tire" id="tire" [(ngModel)]="car.tire" #tire="ngModel" required>
-        <div *ngIf="tire.errors && myForm.submitted">
-            <span *ngIf="tire.errors?.['required']">La marque des pneus est requise</span>
-        </div>    
-    </fieldset>
-
-
     <fieldset>
         <label for="acceleration">Acceleration*</label>
         <input type="number" name="acceleration" id="acceleration" [(ngModel)]="car.acceleration" #acceleration="ngModel" required>
@@ -78,7 +55,7 @@
 
     <fieldset>
         <label for="description">Description*</label>
-        <textarea name="description" id="description" cols="130" rows="10" [(ngModel)]="car.description" #description="ngModel" required></textarea>
+        <textarea name="description" id="description" cols="130" rows="10" [(ngModel)]="car.bio" #description="ngModel" required></textarea>
         <div *ngIf="description.errors && myForm.submitted">
             <span *ngIf="description.errors?.['required']">La description est requise</span>
         </div>    
@@ -88,7 +65,7 @@
         <label for="team">Ecurie*</label>
         <!-- <input type="number" name="team" id="team" [(ngModel)]="car.team" #team="ngModel" max=9 required> -->
         <select name="team" id="team" [(ngModel)]="car.team" #team="ngModel">
-        <option *ngFor="let team of teamList" [value]="team.id" [selected]="team.id == car.team">
+        <option *ngFor="let team of teamList" [value]="team.id" [selected]="car.team">
             {{team.name}}
         </option>
         </select>

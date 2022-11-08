@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { ActivatedRoute, ParamMap } from '@angular/router';
 import { Car } from 'src/app/models/car.model';
+import { CarPhoto } from 'src/app/models/carPhoto.model';
 
 import { LeMan24Service } from 'src/app/shared/le-man24.service';
 
@@ -14,7 +15,7 @@ export class CarDetailsComponent implements OnInit {
 
   car: any;
   id: number= 0;
-  carPics: String[] = [];
+  carPics: CarPhoto[] = [];
   responsiveOptions: any;
   
   constructor(
@@ -55,7 +56,7 @@ export class CarDetailsComponent implements OnInit {
     //   this.carPics = carList
     //   console.log(carList)
     // });
-    this.carPics = this.leman24S.getCarById(this.car.id).pictureList;
+    this.carPics = this.leman24S.getCarById(this.car.id).carPhotoList;
     console.log("carPics " + this.carPics);
     
   }
