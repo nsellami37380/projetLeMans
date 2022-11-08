@@ -12,7 +12,6 @@
                 <p> Nom du modele : {{car.modelName}}</p>
                 <p> Puissance : {{car.power}} chevaux</p>
                 <p>Vitesse max : {{car.maxSpeed}} km/h</p>
-               <!-- <p> Acceleration : {{car.acceleration}}</p> -->
             </div>
 
         </div>
@@ -24,8 +23,7 @@
             <img class="logo-update-button" src="https://cdn-icons-png.flaticon.com/512/5973/5973787.png" alt="update button">
         </a>
         <div class="card" [routerLink]="['/pilot-detail', pilot.id]">
-            <img [src]="pilot.photoList" alt="">
-            <img [src]="pilot.photoList[0]" alt="">
+            <img [src]="pilot.photoList[0].urlPhoto" alt="">
 
             <div class="card-text">
                 <p> Prénom : {{pilot.firstName}}</p>

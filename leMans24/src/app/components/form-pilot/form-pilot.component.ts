@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, ParamMap } from '@angular/router';
+import { Car } from 'src/app/models/car.model';
 import { Pilot } from 'src/app/models/pilot.model';
 import { Team } from 'src/app/models/team.model';
 import { LeMan24Service } from 'src/app/shared/le-man24.service';
@@ -12,7 +13,7 @@ import { LeMan24Service } from 'src/app/shared/le-man24.service';
 export class FormPilotComponent implements OnInit {
 
   url:String='';
-  pilot!: Pilot; //= new Pilot (0,[],'','',(new Date),0,null,'','',null);
+  pilot : Pilot = new Pilot (0,[],'','', new Date,0,'','',{} as Car, {} as Team);
 
   teamList!:Team[];
   id: number = 0;

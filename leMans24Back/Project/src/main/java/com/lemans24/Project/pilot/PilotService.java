@@ -32,12 +32,12 @@ public class PilotService {
     public Pilot updatePilotById(Long id, Pilot pilot) {
         Pilot pilotFound = pilotRepository.findById(id)
                 .orElseThrow(() -> new IllegalStateException("No such"));
-        pilotFound.setFirstName(pilotFound.getFirstName());
-        pilotFound.setLastName(pilotFound.getLastName());
-        pilotFound.setDateOfBirth(pilotFound.getDateOfBirth());
-        pilotFound.setPalmares(pilotFound.getPalmares());
-        pilotFound.setBio(pilotFound.getBio());
-        pilotFound.setHeight(pilotFound.getHeight());
+        pilotFound.setFirstName(pilot.getFirstName());
+        pilotFound.setLastName(pilot.getLastName());
+        pilotFound.setDateOfBirth(pilot.getDateOfBirth());
+        pilotFound.setPalmares(pilot.getPalmares());
+        pilotFound.setBio(pilot.getBio());
+        pilotFound.setHeight(pilot.getHeight());
 
         return pilotRepository.save(pilotFound);
     }

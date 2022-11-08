@@ -11,7 +11,7 @@ import { LeMan24Service } from 'src/app/shared/le-man24.service';
 })
 export class FormTeamComponent implements OnInit {
 
-team!: Team //= new Team(0,'','',[],[],0,'');
+team : Team = new Team(0,'','',0,'',[],[],[]);
 url:string ='';
 pilotList!: Pilot[];
 id: number = 0;

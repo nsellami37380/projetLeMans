@@ -32,9 +32,9 @@ export class LeMan24Service {
   }
 
   private getData():  void{
-    this.pilotList$ =  this.http.get<Pilot[]>(this.url + '/pilots');
-    this.teamList$ =  this.http.get<Team[]>(this.url + '/teams');
-    this.carList$ =  this.http.get<Car[]>(this.url + '/cars');
+    this.pilotList$ =  this.http.get<Pilot[]>(this.url + '/pilots/all');
+    this.teamList$ =  this.http.get<Team[]>(this.url + '/teams/all');
+    this.carList$ =  this.http.get<Car[]>(this.url + '/cars/all');
     this.carList$.subscribe(cars => this.carList = cars);
     this.pilotList$.subscribe(pilots => this.PilotList = pilots);
     this.teamList$.subscribe(teams => this.TeamList = teams ); 
@@ -55,7 +55,7 @@ export class LeMan24Service {
   addCar(car: Car): void{ 
     if (car.id == 0)
     {
-    this.http.post<Car>(this.url + '/cars',car).subscribe({
+    this.http.post<Car>(this.url + '/cars/add',car).subscribe({
       next: data => {this.router.navigate(['/container-list',"cars"]);},
       error: error => {console.log("Erreur " + error)}      
     },);
@@ -69,14 +69,14 @@ export class LeMan24Service {
   }  
 
   addTeam(team: Team): void{
-    this.http.post<Team>(this.url + '/teams',team).subscribe({
+    this.http.post<Team>(this.url + '/teams/add',team).subscribe({
       next: data => {this.router.navigate(['/container-list',"teams"]);},
       error: error => {alert("Erreur " + error)}      
     },);
   }
 
   addPilot(pilot: Pilot): void{ 
-    this.http.post<Pilot>(this.url + '/pilots',pilot).subscribe({
+    this.http.post<Pilot>(this.url + '/pilots/add',pilot).subscribe({
       next: data => {this.router.navigate(['/container-list',"pilots"]);},
       error: error => {alert("Erreur " + error)}      
     },);
@@ -96,42 +96,42 @@ export class LeMan24Service {
   }
  
   deleteCar(id: number): void{
-    this.http.delete(this.url + '/cars/'+id)
+    this.http.delete(this.url + '/cars/delete/'+id)
     .subscribe(() => {
          window.location.reload();
     })
   }
     
   deletePilot(id: number): void{
-    this.http.delete<Pilot>(this.url + '/pilots/'+id)
+    this.http.delete<Pilot>(this.url + '/pilots/delete/'+id)
     .subscribe(() => {
         window.location.reload();
     })
   }
     
   deleteTeam(id: number): void{
-    this.http.delete(this.url + '/teams/'+id)
+    this.http.delete(this.url + '/teams/delete/'+id)
     .subscribe(() => {
       window.location.reload();
     })
   }
 
   updateCar(car: Car): void{
-    this.http.patch(this.url + '/cars/' + car.id, car).subscribe({
+    this.http.patch(this.url + '/cars/update/' + car.id, car).subscribe({
       next: () => {this.router.navigate(['/container-list',"cars"]);},
       error: error => {console.log("Erreur " + error)}      
     },);
   }
 
   updatePilote(pilot: Pilot): void{
-    this.http.patch<Pilot>(this.url + '/pilots/' + pilot.id, pilot).subscribe({
+    this.http.put<Pilot>(this.url + '/pilots/update/' + pilot.id, pilot).subscribe({
       next: () => {this.router.navigate(['/container-list',"pilots"]);},
       error: error => {console.log("Erreur " + error.message + "\n" + pilot.id)}  
     });
   }
 
   updateTeam(team: Team): void{
-    this.http.patch(this.url + '/teams/' + team.id, team ).subscribe({
+    this.http.patch(this.url + '/teams/update/' + team.id, team ).subscribe({
       next: () => {this.router.navigate(['/container-list',"teams"]);},
       error: error => {console.log("Erreur " + error + team.name)}      
     },);
