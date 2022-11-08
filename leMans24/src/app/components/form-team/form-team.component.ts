@@ -11,7 +11,7 @@ import { LeMan24Service } from 'src/app/shared/le-man24.service';
 })
 export class FormTeamComponent implements OnInit {
 
-team!: Team //= new Team(0,'','',[],[],0,'');
+team: Team = new Team(0, '','', 0, '', [], [], []);
 url:string ='';
 pilotList!: Pilot[];
 id: number = 0;
@@ -49,6 +49,8 @@ textBtnSubmit: string = "Ajouter";
    }
 
   addTeam(): void{
+    console.log(this.team);
+    
     if (this.id != 0)
       this.leMans24S.updateTeam(this.team);
     else
