@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
@@ -23,7 +23,11 @@ export class LeMan24Service {
   private PilotList !: Pilot[];
   private TeamList !: Team[];
 
-  
+  private optionRequete = {
+    headers: new HttpHeaders({ 
+      'Access-Control-Allow-Origin':'*',
+    })
+  }
 
   constructor(
     private http: HttpClient,
@@ -76,9 +80,10 @@ export class LeMan24Service {
   }
 
   addPilot(pilot: Pilot): void{ 
-    this.http.post<Pilot>(this.url + '/pilots/add',pilot).subscribe({
+    this.http.post<Pilot>(this.url + '/pilots/add',pilot, this.optionRequete).subscribe({
       next: data => {this.router.navigate(['/container-list',"pilots"]);},
-      error: error => {alert("Erreur " + error)}      
+      error: error => {alert("Erreur " + error)
+      console.log(pilot);}      
     },);
   }
 
