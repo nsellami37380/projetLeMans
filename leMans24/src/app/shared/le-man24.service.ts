@@ -13,7 +13,7 @@ import { Team } from '../models/team.model';
 })
 export class LeMan24Service {
 
-  private url = "http://localhost:3000";
+  private url = "http://localhost:8080";
 
   private pilotList$ !: Observable<Pilot[]>;
   private teamList$ !: Observable<Team[]>;

@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 import { Car } from 'src/app/models/car.model';
+import { CarPhoto } from 'src/app/models/carPhoto.model';
+import { Pilot } from 'src/app/models/pilot.model';
 import { Team } from 'src/app/models/team.model';
 import { LeMan24Service } from 'src/app/shared/le-man24.service';
 
@@ -11,10 +13,12 @@ import { LeMan24Service } from 'src/app/shared/le-man24.service';
 })
 export class FormCarComponent implements OnInit {
   id: number= 0;
-  car: Car = new Car(0,[],'','','',0,0,'',0,0,'');
+
+  car !: Car;  //= new Car(0,[],'','',0,0,0,'',(new Team(0,'','',0,'',[],[],[])),(new Pilot(0,[],'','',(new Date),0,'','',null,null)));
+
   teamList!: Team[];
   textBtnSubmit: string = "Ajouter";
-  url="";
+  url: string = '' ;
 
   constructor(
     private leman24S: LeMan24Service,
@@ -29,7 +33,7 @@ export class FormCarComponent implements OnInit {
         this.id =  parseInt( param.get('id') as string);
         this.textBtnSubmit = "Modifier"
         this.car = this.leman24S.getCarById(this.id);
-        this.url = this.car.pictureList[0];
+        this.url = this.car.carPhotoList[0].urlPhoto;
          }      
     })
   }
@@ -41,7 +45,7 @@ export class FormCarComponent implements OnInit {
     reader.onload = (event: any) => {
       this.url = event.target.result;
       //this.car.pictureList[0] = this.url;  
-      this.car.pictureList.unshift(this.url);   
+      this.car.carPhotoList.unshift(new CarPhoto (this.id,this.car,this.url));   
     }
   }
  }

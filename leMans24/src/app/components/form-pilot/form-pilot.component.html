@@ -21,7 +21,7 @@
 
     <fieldset>
         <label for="birthday">Date de naissance*</label>
-        <input type="date" name="birthday" id="birthday" [(ngModel)]="pilot.birthday" #birthday="ngModel" required>
+        <input type="date" name="birthday" id="birthday" [(ngModel)]="pilot.dateOfBirth" #birthday="ngModel" required>
         <div *ngIf="birthday.errors && myForm.submitted">
             <span *ngIf="birthday.errors?.['required']">La date de naissance du pilote est requise</span>
         </div>    
