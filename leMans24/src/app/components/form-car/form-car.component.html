@@ -11,6 +11,7 @@
     </fieldset>
 
     <fieldset>
+
         <label for="pictureselectImage">Image*</label>
         <input type="file" #selectImage (change)="selectfile($event)">
         <button type="button" (click)="selectImage.click()" id="button-img">Ajouter image</button>
@@ -65,7 +66,7 @@
         <label for="team">Ecurie*</label>
         <!-- <input type="number" name="team" id="team" [(ngModel)]="car.team" #team="ngModel" max=9 required> -->
         <select name="team" id="team" [(ngModel)]="car.team" #team="ngModel">
-        <option *ngFor="let team of teamList" [value]="team.id" [selected]="car.team">
+        <option *ngFor="let team of teamList" [value]="team.id" [selected]="team == car.team">
             {{team.name}}
         </option>
         </select>

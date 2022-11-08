@@ -1,19 +1,19 @@
 import { Car } from "./car.model";
-import { PilotPhoto } from "./pilotPhoto.model";
+import { PilotPhoto } from "./PilotPhoto";
 import { Team } from "./team.model";
 
 export class Pilot{
     constructor(
         public id: number,
+        public photoList: PilotPhoto[],
         public firstName: string,
         public lastName: string,
-        public photoList: PilotPhoto[],
         public dateOfBirth: Date,
+        public height: number,
+        public team: Team,
         public palmares: string,
         public bio: string,
-        public car: Car,
-        public team: Team,
-        public height?: number,
+        public car: Car
         ) {
 
         

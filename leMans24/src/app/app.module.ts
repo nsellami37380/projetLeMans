@@ -27,6 +27,9 @@ import {ButtonModule} from 'primeng/button';
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
 import { SponsorComponent } from './sponsor/sponsor.component';
+import { FormLoginComponent } from './components/form-login/form-login.component';
+import {InputTextModule} from 'primeng/inputtext';
+
 
 
 
@@ -50,6 +53,7 @@ import { SponsorComponent } from './sponsor/sponsor.component';
     FormCarComponent,
     PageNotFoundComponent,
     SponsorComponent,
+    FormLoginComponent,
   ],
   imports: [
     BrowserModule,
@@ -61,7 +65,8 @@ import { SponsorComponent } from './sponsor/sponsor.component';
     CarouselModule,
     SidebarModule,
     ButtonModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    InputTextModule
   ],
   providers: [],
   bootstrap: [AppComponent]
