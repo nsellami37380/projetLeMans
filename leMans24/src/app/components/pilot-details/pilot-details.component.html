@@ -1,7 +1,7 @@
 <h1>{{pilot.firstName}} {{pilot.lastName}}</h1>
 
 <div class="container">
-        <img [src]="pilot.picture" alt="">
+        <img [src]="pilot.photoList[0].urlPhoto" alt="">
     <div class="text">
         <h3>DESCRIPTION DU PILOTE : </h3>
         <p>{{pilot.bio}}</p>
