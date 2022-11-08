@@ -10,10 +10,10 @@ export class Pilot{
         public lastName: string,
         public dateOfBirth: Date,
         public height: number,
-        public team: Team,
         public palmares: string,
         public bio: string,
-        public car: Car
+        public car: Car,
+        public team?: Team
         ) {
 
         
