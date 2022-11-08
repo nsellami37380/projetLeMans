@@ -1,9 +1,19 @@
 package com.lemans24.Project.pilot;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+import com.lemans24.Project.car.Car;
+import com.lemans24.Project.pilotphoto.PilotPhoto;
+import com.lemans24.Project.team.Team;
+
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 @Entity
+@JsonIdentityInfo(
+        generator = ObjectIdGenerators.PropertyGenerator.class,
+        property = "id")
 public class Pilot {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -11,11 +21,16 @@ public class Pilot {
     private Long id;
     private String firstName;
     private String lastName;
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "pilot_id", referencedColumnName = "id")
     private List<PilotPhoto> photoList;
     private Date dateOfBirth;
     private String palmares;
     private String bio;
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "car_id", referencedColumnName = "id")
     private Car car;
+    @ManyToOne()
     private Team team;
     private float height;
 
