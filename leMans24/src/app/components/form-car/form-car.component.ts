@@ -14,13 +14,18 @@ import { LeMan24Service } from 'src/app/shared/le-man24.service';
 export class FormCarComponent implements OnInit {
   id: number= 0;
 
+<<<<<<< HEAD
   car : Car  = new Car(0,[],'','',0,0,0,'',new Team(0,'','',0,'',[],[],[]),{} as Pilot);
+=======
+  car : Car = new Car(0,[],'','',0,0,0,'',{} as Team,undefined);
+>>>>>>> 96bd30dac8bd9bfef2b64f5ea5c7700bfbd8dd2f
 
   teamList!: Team[];
+  teamId:number = 0;
   textBtnSubmit: string = "Ajouter";
   url: string = '' ;
 
-  constructor(
+  constructor(  
     private leman24S: LeMan24Service,
     private route: ActivatedRoute) { }
 
@@ -51,6 +56,13 @@ export class FormCarComponent implements OnInit {
  }
  
   addCar(): void{
+
+    if (this.teamId != 0)
+    {
+      this.car.team = this.leman24S.getTeamById(this.teamId);
+    }
+    let myString = JSON.stringify(this.car, null, '\t'); // tab
+    console.log(myString);
     if (this.id != 0)
      this.leman24S.updateCar(this.car);
     else
