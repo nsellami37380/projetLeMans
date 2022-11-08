@@ -18,7 +18,7 @@ export class CardComponent implements OnInit, OnChanges{
  
   pilot!: Pilot;// = new Pilot (0,'','','',(new Date),0,0,'','', null);
 
-  team: Team = new Team(0,'','',[],[],0,'');
+  team: Team = new Team(0,'','',0,'',[],[],[]);
 
   @Input()
   ptc : Car | Pilot | Team = this.car;

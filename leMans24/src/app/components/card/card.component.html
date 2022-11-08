@@ -24,7 +24,9 @@
             <img class="logo-update-button" src="https://cdn-icons-png.flaticon.com/512/5973/5973787.png" alt="update button">
         </a>
         <div class="card" [routerLink]="['/pilot-detail', pilot.id]">
+            <img [src]="pilot.photoList" alt="">
             <img [src]="pilot.photoList[0]" alt="">
+
             <div class="card-text">
                 <p> Prénom : {{pilot.firstName}}</p>
                 <p> Nom : {{pilot.lastName}}</p>

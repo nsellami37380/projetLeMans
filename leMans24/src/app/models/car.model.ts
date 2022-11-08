@@ -15,8 +15,7 @@ export class Car{
         public acceleration: number,
         public bio:string,
         public team: Team,
-        public pilot: Pilot,
-
+        public pilot: Pilot
     ) {
         
     }

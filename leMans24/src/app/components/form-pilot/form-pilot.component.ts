@@ -13,6 +13,7 @@ export class FormPilotComponent implements OnInit {
 
   url:String='';
   pilot!: Pilot; //= new Pilot (0,[],'','',(new Date),0,null,'','',null);
+
   teamList!:Team[];
   id: number = 0;
   textBtnSubmit: string = "Ajouter";
@@ -34,8 +35,7 @@ export class FormPilotComponent implements OnInit {
       this.url = this.pilot.photoList[0].urlPhoto;
     }
   })
-  
-  }
+ }
 
   selectfile(event: any): void{
     if (event.target.files){
@@ -46,6 +46,7 @@ export class FormPilotComponent implements OnInit {
         this.url = event.target.result;
   
         this.pilot.photoList[0].urlPhoto = this.url;    
+
       }  
     }
    }

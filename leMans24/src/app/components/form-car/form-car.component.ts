@@ -13,7 +13,9 @@ import { LeMan24Service } from 'src/app/shared/le-man24.service';
 })
 export class FormCarComponent implements OnInit {
   id: number= 0;
+
   car: Car = new Car(0,[],'','',0,0,0,'',(new Team(0,'','',[],[],0,'')),(new Pilot(0,'','','',(new Date),0,0,'','')));
+
   teamList!: Team[];
   textBtnSubmit: string = "Ajouter";
   url: string = '' ;
