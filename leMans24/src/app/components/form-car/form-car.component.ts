@@ -53,7 +53,6 @@ export class FormCarComponent implements OnInit {
  
   addCar(): void{
 
-    alert(this.teamId);
     if (this.teamId != 0)
     {
       this.car.team = this.leman24S.getTeamById(this.teamId);
