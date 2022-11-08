@@ -52,7 +52,7 @@ export class TeamDetailsComponent implements OnInit {
       });
 
       this.leMans24S.getPilots().subscribe(pilotList=>{
-        this.pilotListFilteredByTeam = pilotList.filter(pilot=>pilot.team==this.teamId);
+        this.pilotListFilteredByTeam = pilotList.filter(pilot=>pilot.team==this.team);
   
       });
     });

@@ -11,8 +11,8 @@ import { LeMan24Service } from 'src/app/shared/le-man24.service';
 })
 export class FormPilotComponent implements OnInit {
 
-  url:string='';
-  pilot: Pilot = new Pilot (0,'','','',(new Date),0,0,'','');
+  url:String='';
+  pilot!: Pilot; //= new Pilot (0,[],'','',(new Date),0,null,'','',null);
   teamList!:Team[];
   id: number = 0;
   textBtnSubmit: string = "Ajouter";
@@ -31,7 +31,7 @@ export class FormPilotComponent implements OnInit {
       this.id =  parseInt( param.get('id') as string);
       this.textBtnSubmit = "Modifier";
       this.pilot = this.leMans24S.getPilotById(this.id);
-      this.url = this.pilot.picture;
+      this.url = this.pilot.photoList[0].urlPhoto;
     }
   })
   
@@ -45,7 +45,7 @@ export class FormPilotComponent implements OnInit {
       reader.onload = (event: any) => {
         this.url = event.target.result;
   
-        this.pilot.picture = this.url;    
+        this.pilot.photoList[0].urlPhoto = this.url;    
       }  
     }
    }
