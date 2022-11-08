@@ -13,11 +13,8 @@ import { LeMan24Service } from 'src/app/shared/le-man24.service';
 export class FormPilotComponent implements OnInit {
 
   url:String='';
-<<<<<<< HEAD
-  pilot : Pilot = new Pilot (0,[],'','', new Date,0,'','',{} as Car, {} as Team);
-=======
+
   pilot: Pilot = new Pilot (0,[],'','',(new Date),0,'','',undefined,undefined);
->>>>>>> 96bd30dac8bd9bfef2b64f5ea5c7700bfbd8dd2f
 
   teamList!:Team[];
   id: number = 0;
