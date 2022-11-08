@@ -14,8 +14,8 @@ export class CardComponent implements OnInit, OnChanges{
 
   url: string = ' a '; 
 
-  car !: Car;  //= new Car(0,[],'','',0,0,0,'',(new Team(0,'','',0,'',[],[],[])),(new Pilot(0,[],'','',(new Date),0,'','',null,null)));
-  pilot!: Pilot;// = new Pilot (0,'','','',(new Date),0,0,'','', null);
+  car : Car= new Car(0,[],'','',0,0,0,'',(new Team(0,'','',0,'',[],[],[])),(new Pilot(0,[],'','',(new Date),0,'','',undefined,undefined)));
+  pilot: Pilot = new Pilot (0,[],'','',(new Date),0,'','',undefined,undefined);
 
   team: Team = new Team(0,'','',0,'',[],[],[]);
 
