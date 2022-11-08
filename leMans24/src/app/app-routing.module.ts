@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { CarDetailsComponent } from './components/car-details/car-details.component';
 import { FormCarComponent } from './components/form-car/form-car.component';
+import { FormLoginComponent } from './components/form-login/form-login.component';
 import { FormPilotComponent } from './components/form-pilot/form-pilot.component';
 import { FormTeamComponent } from './components/form-team/form-team.component';
 import { PilotDetailsComponent } from './components/pilot-details/pilot-details.component';
@@ -25,6 +26,7 @@ const routes: Routes = [
   {path:'car-detail/:id', component: CarDetailsComponent},
   {path:'pilot-detail/:id', component: PilotDetailsComponent},
   {path:'team-detail/:id', component: TeamDetailsComponent},
+  {path:"login", component: FormLoginComponent},
   {path:'**', component: PageNotFoundComponent},
 ];
 
