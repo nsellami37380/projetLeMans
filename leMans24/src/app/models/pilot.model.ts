@@ -12,7 +12,7 @@ export class Pilot{
         public height: number,
         public palmares: string,
         public bio: string,
-        public car: Car,
+        public car?: Car,
         public team?: Team
         ) {
 

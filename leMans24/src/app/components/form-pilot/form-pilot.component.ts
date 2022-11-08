@@ -12,10 +12,11 @@ import { LeMan24Service } from 'src/app/shared/le-man24.service';
 export class FormPilotComponent implements OnInit {
 
   url:String='';
-  pilot!: Pilot; //= new Pilot (0,[],'','',(new Date),0,null,'','',null);
+  pilot: Pilot = new Pilot (0,[],'','',(new Date),0,'','',undefined,undefined);
 
   teamList!:Team[];
   id: number = 0;
+  teamId:number = 0;
   textBtnSubmit: string = "Ajouter";
   
   constructor(
@@ -52,8 +53,19 @@ export class FormPilotComponent implements OnInit {
    }
    
    addPilot(){
+    if (this.teamId != 0){
+
+      this.pilot.team = this.leMans24S.getTeamById(this.teamId)
+    }
+
+    let myString = JSON.stringify(this.pilot.team, null, '\n'); // tab
+     console.log(myString);
+
+
     if (this.id != 0)
+    {
       this.leMans24S.updatePilote(this.pilot);
+    }
     else
       this.leMans24S.addPilot(this.pilot);
    }

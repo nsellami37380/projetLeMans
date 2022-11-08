@@ -66,7 +66,7 @@
 
     <fieldset>
         <label for="team">Team*</label>
-        <select name="team" id="team" [(ngModel)]="pilot.team" #team="ngModel">
+        <select name="team" id="team" [(ngModel)]="teamId" #team="ngModel">
         <option *ngFor="let team of teamList" [value]="team.id">
             {{team.name}}
         </option>
