@@ -65,7 +65,7 @@
     <fieldset>
         <label for="team">Ecurie*</label>
         <!-- <input type="number" name="team" id="team" [(ngModel)]="car.team" #team="ngModel" max=9 required> -->
-        <select name="team" id="team" [(ngModel)]="car.team" #team="ngModel">
+        <select name="team" id="team" [(ngModel)]="teamId" #team="ngModel">
         <option *ngFor="let team of teamList" [value]="team.id" [selected]="team == car.team">
             {{team.name}}
         </option>

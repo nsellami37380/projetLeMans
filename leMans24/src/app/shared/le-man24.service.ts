@@ -1,4 +1,5 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { ConditionalExpr } from '@angular/compiler';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
@@ -7,6 +8,8 @@ import { Observable } from 'rxjs/internal/Observable';
 import { Car } from '../models/car.model';
 import { Pilot } from '../models/pilot.model';
 import { Team } from '../models/team.model';
+
+
 
 @Injectable({
   providedIn: 'root'
@@ -23,12 +26,6 @@ export class LeMan24Service {
   private PilotList !: Pilot[];
   private TeamList !: Team[];
 
-  private optionRequete = {
-    headers: new HttpHeaders({ 
-      'Access-Control-Allow-Origin':'*',
-    })
-  }
-
   constructor(
     private http: HttpClient,
     private router: Router) { 
@@ -36,9 +33,10 @@ export class LeMan24Service {
   }
 
   private getData():  void{
+
     this.pilotList$ =  this.http.get<Pilot[]>(this.url + '/pilots/all');
-    this.teamList$ =  this.http.get<Team[]>(this.url + '/teams/all');
-    this.carList$ =  this.http.get<Car[]>(this.url + '/cars/all');
+    this.teamList$ =  this.http.get<Team[]>(this.url + '/teams/all' );
+    this.carList$ =  this.http.get<Car[]>(this.url + '/cars/all' );
     this.carList$.subscribe(cars => this.carList = cars);
     this.pilotList$.subscribe(pilots => this.PilotList = pilots);
     this.teamList$.subscribe(teams => this.TeamList = teams ); 
@@ -73,17 +71,18 @@ export class LeMan24Service {
   }  
 
   addTeam(team: Team): void{
+
     this.http.post<Team>(this.url + '/teams/add',team).subscribe({
       next: data => {this.router.navigate(['/container-list',"teams"]);},
-      error: error => {alert("Erreur " + error)}      
+      error: error => {alert("Erreur " + error.message);}      
     },);
   }
 
   addPilot(pilot: Pilot): void{ 
-    this.http.post<Pilot>(this.url + '/pilots/add',pilot, this.optionRequete).subscribe({
+
+    this.http.post<Pilot>(this.url + '/pilots/add',pilot).subscribe({
       next: data => {this.router.navigate(['/container-list',"pilots"]);},
-      error: error => {alert("Erreur " + error)
-      console.log(pilot);}      
+      error: error => {alert("Erreur " + error.message)}      
     },);
   }
 

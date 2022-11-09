@@ -36,14 +36,14 @@
     </fieldset>
 
 
-    <!-- <fieldset>
+    <fieldset>
         <label for="picture">Image*</label>
         <div class="dimg">
             <input type="file" #selectImage (change)="selectfile($event)">
             <button type="button" (click)="selectImage.click()" id="button-img">Ajouter image</button>
             <img [src]="url" width="100px" (click)="selectImage.click()"  height="100px" alt="">
         </div>      
-    </fieldset> -->
+    </fieldset>
 
     <fieldset>
         <label for="bio">Biographie*</label>
@@ -66,7 +66,7 @@
 
     <fieldset>
         <label for="team">Team*</label>
-        <select name="team" id="team" [(ngModel)]="pilot.team" #team="ngModel">
+        <select name="team" id="team" [(ngModel)]="teamId" #team="ngModel">
         <option *ngFor="let team of teamList" [value]="team.id">
             {{team.name}}
         </option>
