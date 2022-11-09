@@ -1,4 +1,5 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { ConditionalExpr } from '@angular/compiler';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
@@ -15,12 +16,6 @@ import { Team } from '../models/team.model';
 })
 export class LeMan24Service {
 
-  optionRequete = {
-    headers : new HttpHeaders({
-      'Access-Control-Allow-Origin':'*'
-    })
-  }
-
   private url = "http://localhost:8080";
 
   private pilotList$ !: Observable<Pilot[]>;
@@ -31,8 +26,6 @@ export class LeMan24Service {
   private PilotList !: Pilot[];
   private TeamList !: Team[];
 
-  
-
   constructor(
     private http: HttpClient,
     private router: Router) { 
@@ -40,20 +33,10 @@ export class LeMan24Service {
   }
 
   private getData():  void{
-    const headerDict = {
-      'Content-Type': 'application/json',
-      'Accept': 'application/json',
-      'Access-Control-Allow-Headers': 'Content-Type',
-    }
-    
- 
-    const requestOptions = {                                                                                                                                                                                 
-      headers: new HttpHeaders(headerDict), 
-    };
 
-    this.pilotList$ =  this.http.get<Pilot[]>(this.url + '/pilots/all', requestOptions);
-    this.teamList$ =  this.http.get<Team[]>(this.url + '/teams/all', requestOptions );
-    this.carList$ =  this.http.get<Car[]>(this.url + '/cars/all', requestOptions);
+    this.pilotList$ =  this.http.get<Pilot[]>(this.url + '/pilots/all');
+    this.teamList$ =  this.http.get<Team[]>(this.url + '/teams/all' );
+    this.carList$ =  this.http.get<Car[]>(this.url + '/cars/all' );
     this.carList$.subscribe(cars => this.carList = cars);
     this.pilotList$.subscribe(pilots => this.PilotList = pilots);
     this.teamList$.subscribe(teams => this.TeamList = teams ); 
@@ -88,15 +71,15 @@ export class LeMan24Service {
   }  
 
   addTeam(team: Team): void{
-    console.log(team);
-    (team)
+
     this.http.post<Team>(this.url + '/teams/add',team).subscribe({
       next: data => {this.router.navigate(['/container-list',"teams"]);},
-      error: error => {alert("Erreur " + error.message)}      
+      error: error => {alert("Erreur " + error.message);}      
     },);
   }
 
   addPilot(pilot: Pilot): void{ 
+
     this.http.post<Pilot>(this.url + '/pilots/add',pilot).subscribe({
       next: data => {this.router.navigate(['/container-list',"pilots"]);},
       error: error => {alert("Erreur " + error.message)}      
@@ -117,42 +100,42 @@ export class LeMan24Service {
   }
  
   deleteCar(id: number): void{
-    this.http.delete(this.url + '/cars/'+id)
+    this.http.delete(this.url + '/cars/delete/'+id)
     .subscribe(() => {
          window.location.reload();
     })
   }
     
   deletePilot(id: number): void{
-    this.http.delete<Pilot>(this.url + '/pilots/'+id)
+    this.http.delete<Pilot>(this.url + '/pilots/delete/'+id)
     .subscribe(() => {
         window.location.reload();
     })
   }
     
   deleteTeam(id: number): void{
-    this.http.delete(this.url + '/teams/'+id)
+    this.http.delete(this.url + '/teams/delete/'+id)
     .subscribe(() => {
       window.location.reload();
     })
   }
 
   updateCar(car: Car): void{
-    this.http.patch(this.url + '/cars/' + car.id, car).subscribe({
+    this.http.patch(this.url + '/cars/update/' + car.id, car).subscribe({
       next: () => {this.router.navigate(['/container-list',"cars"]);},
       error: error => {console.log("Erreur " + error)}      
     },);
   }
 
   updatePilote(pilot: Pilot): void{
-    this.http.patch<Pilot>(this.url + '/pilots/' + pilot.id, pilot).subscribe({
+    this.http.put<Pilot>(this.url + '/pilots/update/' + pilot.id, pilot).subscribe({
       next: () => {this.router.navigate(['/container-list',"pilots"]);},
       error: error => {console.log("Erreur " + error.message + "\n" + pilot.id)}  
     });
   }
 
   updateTeam(team: Team): void{
-    this.http.patch(this.url + '/teams/' + team.id, team ).subscribe({
+    this.http.patch(this.url + '/teams/update/' + team.id, team ).subscribe({
       next: () => {this.router.navigate(['/container-list',"teams"]);},
       error: error => {console.log("Erreur " + error + team.name)}      
     },);

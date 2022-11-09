@@ -3,6 +3,8 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 import { Car } from 'src/app/models/car.model';
 import { CarPhoto } from 'src/app/models/carPhoto.model';
+import { Pilot } from 'src/app/models/pilot.model';
+import { Team } from 'src/app/models/team.model';
 
 import { LeMan24Service } from 'src/app/shared/le-man24.service';
 
@@ -13,7 +15,7 @@ import { LeMan24Service } from 'src/app/shared/le-man24.service';
 })
 export class CarDetailsComponent implements OnInit {
 
-  car: any;
+  car: Car = new Car(0,[],'','',0,0,0,'',{} as Team,{} as Pilot);
   id: number= 0;
   carPics: CarPhoto[] = [];
   responsiveOptions: any;

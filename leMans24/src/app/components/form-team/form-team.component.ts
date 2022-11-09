@@ -31,7 +31,7 @@ textBtnSubmit: string = "Ajouter";
         this.id =  parseInt( param.get('id') as string);
         this.textBtnSubmit = "Modifier";
         this.team = this.leMans24S.getTeamById(this.id);
-        this.url = this.team.logo;
+        this.url = this.team.logoUrl;
       }
     })  
   }
@@ -43,14 +43,13 @@ textBtnSubmit: string = "Ajouter";
      
       reader.onload = (event: any) => {
         this.url = event.target.result;  
-        this.team.logo = this.url;     
+        this.team.logoUrl = this.url;     
       }  
     }
    }
 
   addTeam(): void{
     console.log(this.team);
-    
     if (this.id != 0)
       this.leMans24S.updateTeam(this.team);
     else

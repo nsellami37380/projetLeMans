@@ -31,7 +31,11 @@ export class ContainerListComponent implements OnInit {
     getList(): void{
 
       if (this.url ==='pilots'){        
-         this.leMan24S.getPilots().subscribe(pilots  => {this.ptcList = pilots; this.newPtcList = this.ptcList;} )
+         this.leMan24S.getPilots().subscribe(pilots  => {
+          this.ptcList = pilots;
+          this.newPtcList = this.ptcList;
+          console.log(this.ptcList);
+        });
         this.title = "Listes des pilotes";
         
       } else

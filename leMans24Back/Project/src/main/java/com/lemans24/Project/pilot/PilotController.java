@@ -9,6 +9,7 @@ import java.util.List;
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 @RestController
 @RequestMapping("/pilots")
+@CrossOrigin
 public class PilotController {
 
     private final PilotService pilotService;
@@ -31,7 +32,8 @@ public class PilotController {
     }
 
     @PutMapping("/update/{id}")
-    public ResponseEntity<Pilot> updatePilot(@PathVariable("id") Long id, @RequestBody Pilot pilot){
+    public ResponseEntity<Pilot> updatePilot(@PathVariable("id") Long id,
+                                             @RequestBody Pilot pilot){
         Pilot updatedpilot = pilotService.updatePilotById(id, pilot);
         return new ResponseEntity<>(updatedpilot, HttpStatus.OK);
     }
