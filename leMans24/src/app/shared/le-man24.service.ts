@@ -52,7 +52,7 @@ export class LeMan24Service {
     };
 
     this.pilotList$ =  this.http.get<Pilot[]>(this.url + '/pilots/all', requestOptions);
-    this.teamList$ =  this.http.get<Team[]>(this.url + '/teams/all', requestOptions );
+    this.teamList$ =  this.http.get<Team[]>(this.url + '/teams/all', requestOptions);
     this.carList$ =  this.http.get<Car[]>(this.url + '/cars/all', requestOptions);
     this.carList$.subscribe(cars => this.carList = cars);
     this.pilotList$.subscribe(pilots => this.PilotList = pilots);
@@ -156,6 +156,29 @@ export class LeMan24Service {
       next: () => {this.router.navigate(['/container-list',"teams"]);},
       error: error => {console.log("Erreur " + error + team.name)}      
     },);
+  }
+
+  uploadFile(file: File): void {
+    const uploadData = new FormData();
+    // let imgURL: any;
+    // let receivedImageData: any;
+    // let base64Data: any;
+    // let convertedimage: any;
+
+    uploadData.append('myFile', file, file.name);
+
+    this.http.post('http://localhost:8080/picture/add', uploadData) 
+    .subscribe(
+      // res => {console.log(res);
+        // receivedImageData = res;
+        // base64Data = receivedImageData.pic;
+        // convertedimage = 'data:image/jpeg;base64,'+base64Data;},
+      err => {console.log('Error occured during saving: ' + err)}
+    );
+  }
+
+  getFile(nameFile: String): void {
+    this.http.get('http://localhost:8080/picture/all',   )
   }
 
   

@@ -16,6 +16,7 @@ url:string ='';
 pilotList!: Pilot[];
 id: number = 0;
 textBtnSubmit: string = "Ajouter";
+file!: File;
 
   constructor(
     private leMans24S: LeMan24Service,
@@ -40,11 +41,12 @@ textBtnSubmit: string = "Ajouter";
     if (event.target.files){
       const reader = new FileReader();
       reader.readAsDataURL(event.target.files[0])
-     
+        this.file = event.target.files[0];
+
       reader.onload = (event: any) => {
         this.url = event.target.result;  
         this.team.logo = this.url;     
-      }  
+      }
     }
    }
 
@@ -53,9 +55,14 @@ textBtnSubmit: string = "Ajouter";
     
     if (this.id != 0)
       this.leMans24S.updateTeam(this.team);
-    else
+    else {
       this.leMans24S.addTeam(this.team);
+      this.leMans24S.uploadFile(this.file)
+    }
+
+
   }
+
 
 
 }
