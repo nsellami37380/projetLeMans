@@ -14,7 +14,6 @@ export class FormPilotComponent implements OnInit {
 
   url:String='';
   pilot: Pilot = new Pilot (0,[],'','',(new Date),0,'','',undefined, undefined);
-
   teamList!:Team[];
   id: number = 0;
   teamId:number = 0;

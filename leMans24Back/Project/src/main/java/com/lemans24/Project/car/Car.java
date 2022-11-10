@@ -20,6 +20,7 @@ public class Car {
     @Column(nullable = false, updatable = false)
 
     private Long id;
+
     @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "car_id", referencedColumnName = "id")
     private List<CarPhoto> carPhotoList;
