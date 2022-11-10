@@ -32,7 +32,7 @@ file!: File;
         this.id =  parseInt( param.get('id') as string);
         this.textBtnSubmit = "Modifier";
         this.team = this.leMans24S.getTeamById(this.id);
-        this.url = this.team.logo;
+        this.url = this.team.logoUrl;
       }
     })  
   }
@@ -40,29 +40,23 @@ file!: File;
   selectfile(event: any): void{
     if (event.target.files){
       const reader = new FileReader();
-      reader.readAsDataURL(event.target.files[0])
-        this.file = event.target.files[0];
-
+      reader.readAsDataURL(event.target.files[0]);
+      this.file = event.target.files[0];
       reader.onload = (event: any) => {
-        this.url = event.target.result;  
-        this.team.logo = this.url;     
-      }
+        this.url = event.target.result;
+        this.team.logoUrl = this.url;     
+      }  
     }
    }
 
   addTeam(): void{
     console.log(this.team);
-    
     if (this.id != 0)
       this.leMans24S.updateTeam(this.team);
     else {
       this.leMans24S.addTeam(this.team);
       this.leMans24S.uploadFile(this.file)
     }
-
-
   }
-
-
 
 }

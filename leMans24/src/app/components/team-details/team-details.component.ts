@@ -13,8 +13,8 @@ import { LeMan24Service } from 'src/app/shared/le-man24.service';
 export class TeamDetailsComponent implements OnInit {
 
   teamId: number = 0;
-  team!: Team;
-  pilot!: Pilot;
+  team : Team = new Team(0,'','',0,'',[],[],[]);
+  pilot: Pilot = new Pilot(0,[],'','', new Date,0,'','',{} as Car,{} as Team);
   pilotListFilteredByTeam: Pilot[] = [];
   carListFilteredByTeam: Car [] = [];
   responsiveOptions: any;
