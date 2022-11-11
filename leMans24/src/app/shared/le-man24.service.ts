@@ -33,6 +33,18 @@ export class LeMan24Service {
   }
 
   private getData():  void{
+
+    const headerDict = {
+      'Content-Type': 'application/json',
+      'Accept': 'application/json',
+      'Access-Control-Allow-Headers': 'Content-Type',
+    }
+
+
+    const requestOptions = {                                                                                                                                                                                 
+      headers: new HttpHeaders(headerDict), 
+    };
+
     this.pilotList$ =  this.http.get<Pilot[]>(this.url + '/pilots/all', requestOptions);
     this.teamList$ =  this.http.get<Team[]>(this.url + '/teams/all', requestOptions);
     this.carList$ =  this.http.get<Car[]>(this.url + '/cars/all', requestOptions);
