@@ -1,4 +1,4 @@
-package com.lemans24.Project.team;
+package com.lemans24.Project.car.team;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;

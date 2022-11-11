@@ -1,4 +1,4 @@
-package com.lemans24.Project.team;
+package com.lemans24.Project.car.team;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import com.lemans24.Project.car.Car;
