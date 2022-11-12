@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 import { Car } from 'src/app/models/car.model';
 import { Pilot } from 'src/app/models/pilot.model';
+import { PilotPhoto } from 'src/app/models/PilotPhoto';
 import { Team } from 'src/app/models/team.model';
 import { LeMan24Service } from 'src/app/shared/le-man24.service';
 
@@ -18,6 +19,7 @@ export class FormPilotComponent implements OnInit {
   id: number = 0;
   teamId:number = 0;
   textBtnSubmit: string = "Ajouter";
+  file !: File;
   
   constructor(
     private leMans24S: LeMan24Service,
@@ -42,11 +44,12 @@ export class FormPilotComponent implements OnInit {
     if (event.target.files){
       const reader = new FileReader();
       reader.readAsDataURL(event.target.files[0])
-     
+      this.file = event.target.files[0];
       reader.onload = (event: any) => {
         this.url = event.target.result;
   
-        this.pilot.photoList[0].urlPhoto = this.url;    
+       this.pilot.photoList.unshift(new PilotPhoto("/assets/" + this.file.name));   
+       this.leMans24S.uploadFile(this.file) 
 
       }  
     }
@@ -58,7 +61,7 @@ export class FormPilotComponent implements OnInit {
       this.pilot.team = this.leMans24S.getTeamById(this.teamId)
     }
 
-    let myString = JSON.stringify(this.pilot.team, null, '\n'); // tab
+    let myString = JSON.stringify(this.pilot, null, '\n'); // tab
      console.log(myString);
 
 
