@@ -17,7 +17,7 @@
         <button type="button" (click)="selectImage.click()" id="button-img">Ajouter image</button>
         <div id="ListImgCar">
             <div *ngFor="let img of car.carPhotoList" class="dimg">
-                <img [src]=img width="100px"  height="100px" alt=""> 
+                <img [src]=img.urlPhoto width="100px"  height="100px" alt=""> 
             </div> 
         </div>
     </fieldset>

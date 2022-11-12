@@ -1,4 +1,4 @@
-package com.lemans24.Project.car.team;
+package com.lemans24.Project.team;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

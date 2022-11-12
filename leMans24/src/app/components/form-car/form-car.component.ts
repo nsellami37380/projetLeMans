@@ -18,7 +18,7 @@ export class FormCarComponent implements OnInit {
   teamId:number = 0;
   textBtnSubmit: string = "Ajouter";
   url: string = '' ;
-
+  file !: File;
   constructor(  
     private leman24S: LeMan24Service,
     private route: ActivatedRoute) { }
@@ -40,11 +40,13 @@ export class FormCarComponent implements OnInit {
  selectfile(event: any): void{
   if (event.target.files){
     const reader = new FileReader();
-    reader.readAsDataURL(event.target.files[0])   
+    reader.readAsDataURL(event.target.files[0]) 
+    this.file = event.target.files[0];  
     reader.onload = (event: any) => {
       this.url = event.target.result;
       //this.car.pictureList[0] = this.url;  
-      this.car.carPhotoList.unshift(new CarPhoto (this.id,this.car,this.url));   
+      this.car.carPhotoList.unshift(new CarPhoto ("/assets/" + this.file.name));   
+       this.leman24S.uploadFile(this.file)
     }
   }
  }

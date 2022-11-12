@@ -3,7 +3,7 @@
         <p-carousel [value]="carPics" [autoplayInterval]="3000" class="caRousel" 
             [responsiveOptions]="responsiveOptions" [circular]="true">
             <ng-template let-carToDisplay pTemplate="item">
-                    <img [src]="carToDisplay" alt="">           
+                    <img [src]="carToDisplay.urlPhoto" alt="">           
             </ng-template>
         </p-carousel>
         <div class="model-name">
