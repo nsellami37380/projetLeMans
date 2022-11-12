@@ -9,7 +9,6 @@ import java.util.List;
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 @RestController
 @RequestMapping("/pilots")
-@CrossOrigin
 public class PilotController {
 
     private final PilotService pilotService;

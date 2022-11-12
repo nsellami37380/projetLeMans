@@ -44,7 +44,7 @@ file!: File;
       this.file = event.target.files[0];
       reader.onload = (event: any) => {
         this.url = event.target.result;
-        this.team.logoUrl = this.url;     
+        //this.team.logoUrl = event.target.files[0].name;     
       }  
     }
    }
@@ -54,7 +54,11 @@ file!: File;
     if (this.id != 0)
       this.leMans24S.updateTeam(this.team);
     else {
+      this.team.logoUrl = '/assets/'+this.file.name;
       this.leMans24S.addTeam(this.team);
+      console.log(this.team);
+      
+      
       this.leMans24S.uploadFile(this.file)
     }
   }

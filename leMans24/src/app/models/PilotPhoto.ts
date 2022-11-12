@@ -1,7 +1,11 @@
+import { Pilot } from "./pilot.model";
+
 export class PilotPhoto{
     constructor(
-        public id: number,
-        public urlPhoto: String
+        
+        public urlPhoto: String,
+        public id?: number,
+        public pilot?: Pilot
 
     ){}
 }

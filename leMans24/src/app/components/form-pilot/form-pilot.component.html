@@ -36,13 +36,26 @@
     </fieldset>
 
 
-    <fieldset>
+    <!-- <fieldset>
         <label for="picture">Image*</label>
         <div class="dimg">
             <input type="file" #selectImage (change)="selectfile($event)">
             <button type="button" (click)="selectImage.click()" id="button-img">Ajouter image</button>
             <img [src]="url" width="100px" (click)="selectImage.click()"  height="100px" alt="">
         </div>      
+    </fieldset> -->
+
+
+    <fieldset>
+
+        <label for="pictureselectImage">Image*</label>
+        <input type="file" #selectImage (change)="selectfile($event)">
+        <button type="button" (click)="selectImage.click()" id="button-img">Ajouter image</button>
+        <div id="ListImgCar">
+            <div *ngFor="let img of pilot.photoList" class="dimg">
+                <img [src]=img.urlPhoto width="100px"  height="100px" alt=""> 
+            </div> 
+        </div>
     </fieldset>
 
     <fieldset>
