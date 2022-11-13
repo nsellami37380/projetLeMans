@@ -26,6 +26,7 @@ public class Pilot {
     private List<PilotPhoto> photoList;
     private Date dateOfBirth;
     private String palmares;
+    @Column(name = "bio", length = 6000)
     private String bio;
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "car_id", referencedColumnName = "id")

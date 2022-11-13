@@ -20,6 +20,7 @@ public class Team {
     private String name;
     private String logoUrl;
     private float budget;
+    @Column(name = "bio", length = 6000)
     private String bio;
     @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "team_id", referencedColumnName = "id")
