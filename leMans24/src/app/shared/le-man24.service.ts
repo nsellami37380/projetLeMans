@@ -9,8 +9,6 @@ import { Car } from '../models/car.model';
 import { Pilot } from '../models/pilot.model';
 import { Team } from '../models/team.model';
 
-
-
 @Injectable({
   providedIn: 'root'
 })
@@ -23,8 +21,8 @@ export class LeMan24Service {
   private carList$ !: Observable<Car[]>;
 
   private carList !: Car[];
-  private PilotList !: Pilot[];
-  private TeamList !: Team[];
+  private pilotList !: Pilot[];
+  private teamList !: Team[];
 
   constructor(
     private http: HttpClient,
@@ -32,25 +30,23 @@ export class LeMan24Service {
     this.getData()
   }
 
-  private getData():  void{
+   headerDict = {
+    'Content-Type': 'application/json',
+    'Accept': 'application/json',
+    'Access-Control-Allow-Headers': 'Content-Type',
+  }
 
-    const headerDict = {
-      'Content-Type': 'application/json',
-      'Accept': 'application/json',
-      'Access-Control-Allow-Headers': 'Content-Type',
-    }
+   requestOptions = {                                                                                                                                                                                 
+    headers: new HttpHeaders(this.headerDict), 
+  };
 
-
-    const requestOptions = {                                                                                                                                                                                 
-      headers: new HttpHeaders(headerDict), 
-    };
-
-    this.pilotList$ =  this.http.get<Pilot[]>(this.url + '/pilots/all', requestOptions);
-    this.teamList$ =  this.http.get<Team[]>(this.url + '/teams/all', requestOptions);
-    this.carList$ =  this.http.get<Car[]>(this.url + '/cars/all', requestOptions);
+   private getData():  void{
+    this.pilotList$ =  this.http.get<Pilot[]>(this.url + '/pilots/all', this.requestOptions);
+    this.teamList$ =  this.http.get<Team[]>(this.url + '/teams/all', this.requestOptions);
+    this.carList$ =  this.http.get<Car[]>(this.url + '/cars/all', this.requestOptions);
     this.carList$.subscribe(cars => this.carList = cars);
-    this.pilotList$.subscribe(pilots => this.PilotList = pilots);
-    this.teamList$.subscribe(teams => this.TeamList = teams ); 
+    this.pilotList$.subscribe(pilots => this.pilotList = pilots);
+    this.teamList$.subscribe(teams => this.teamList = teams ); 
   }
 
   getPilots(): Observable<Pilot[]>{
@@ -69,7 +65,10 @@ export class LeMan24Service {
     if (car.id == 0)
     {
     this.http.post<Car>(this.url + '/cars/add',car).subscribe({
-      next: data => {this.router.navigate(['/container-list',"cars"]);},
+      next: data => {
+        this.carList$ =  this.http.get<Car[]>(this.url + '/cars/all', this.requestOptions);
+        this.carList$.subscribe(cars => this.carList = cars);
+        this.router.navigate(['/container-list',"cars"]);},
       error: error => {console.log("Erreur " + error)}      
     },);
     } else
@@ -82,17 +81,21 @@ export class LeMan24Service {
   }  
 
   addTeam(team: Team): void{
-
     this.http.post<Team>(this.url + '/teams/add',team).subscribe({
-      next: data => {this.router.navigate(['/container-list',"teams"]);},
+      next: data => {
+        this.teamList$ =  this.http.get<Team[]>(this.url + '/teams/all', this.requestOptions);
+        this.teamList$.subscribe(teams => this.teamList = teams );
+        this.router.navigate(['/container-list',"teams"]);},
       error: error => {alert("Erreur " + error.message);}      
     },);
   }
 
-  addPilot(pilot: Pilot): void{ 
-
+  addPilot(pilot: Pilot): void{
     this.http.post<Pilot>(this.url + '/pilots/add',pilot).subscribe({
-      next: data => {this.router.navigate(['/container-list',"pilots"]);},
+      next: data => {
+        this.pilotList$ =  this.http.get<Pilot[]>(this.url + '/pilots/all', this.requestOptions);
+        this.pilotList$.subscribe(pilots => this.pilotList = pilots);
+        this.router.navigate(['/container-list',"pilots"]);},
       error: error => {alert("Erreur " + error.message)}      
     },);
   }
@@ -101,13 +104,12 @@ export class LeMan24Service {
     return  this.carList.find(car => car.id == id) as Car;
   }
 
-
   getPilotById (id:number): Pilot{
-    return this.PilotList.find(pilot => pilot.id == id)as Pilot;
+    return this.pilotList.find(pilot => pilot.id == id)as Pilot;
   }
 
   getTeamById (id: number): Team{
-  return this.TeamList.find(team => team.id == id) as Team;
+  return this.teamList.find(team => team.id == id) as Team;
   }
  
   deleteCar(id: number): void{
@@ -175,5 +177,8 @@ export class LeMan24Service {
     this.http.get('http://localhost:8080/picture/all',   )
   }
 
-  
+  public getJsonObject(obj: object):string {
+    let myString = JSON.stringify(obj, null, '\t'); // tab
+    return myString;
+  }  
 }

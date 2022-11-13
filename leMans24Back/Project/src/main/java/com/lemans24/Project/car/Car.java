@@ -29,6 +29,7 @@ public class Car {
     private float power;
     private float maxSpeed;
     private float acceleration;
+    @Column(name = "bio", length = 6000)
     private String bio;
     @ManyToOne()
     private Team team;
