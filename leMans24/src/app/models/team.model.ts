@@ -10,9 +10,9 @@ export class Team{
         public logoUrl: string,
         public budget: number,
         public bio: string,
-        public pilotList: Pilot[],
-        public carList: Car[],
-        public sponsorList: Sponsor[],
+        public pilotList?: Pilot[],
+        public carList?: Car[],
+        public sponsorList?: Sponsor[],
     ) {        
     }
 }
