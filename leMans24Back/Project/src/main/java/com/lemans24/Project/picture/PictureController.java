@@ -28,16 +28,17 @@ public class PictureController {
     public void addPicture(@RequestParam("myFile")MultipartFile file) throws IOException{
         //String pathname  = "Images/Teams/" + file.getOriginalFilename();
        // projectPath : C:\Users\nourr\OneDrive\Bureau\projetLeMans\leMans24Back\Project
-        String projectPath = System.getProperty("user.dir");
+      /*  String projectPath = System.getProperty("user.dir");
         Path path = Paths.get(projectPath);
         Path parent = path.getParent().getParent() ;
 
         System.out.println("Parent :" + parent);
         String assetsPath = parent.toString() + ("/leMans24/src/assets/");
 
-        System.out.println("Existence du path : " + Files.exists(Paths.get(assetsPath)));
-        String pathname  = "C:/Users/nourr/OneDrive/Bureau/projetLeMans/leMans24/src/assets/" + file.getOriginalFilename();
+        System.out.println("Existence du path : " + Files.exists(Paths.get(assetsPath)));*/
+         String pathname  = System.getenv("assetsPath") + file.getOriginalFilename();
 
+         System.out.println("PathVariable" + System.getenv("assetsPath"));
 
         FileOutputStream fos = new FileOutputStream(pathname);
         fos.write(file.getBytes());
