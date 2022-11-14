@@ -20,9 +20,9 @@ export class LeMan24Service {
   private teamList$ !: Observable<Team[]>;
   private carList$ !: Observable<Car[]>;
 
-  private carList !: Car[];
-  private pilotList !: Pilot[];
-  private teamList !: Team[];
+  public carList : Car[] = [];
+  private pilotList : Pilot[] = [];
+  private teamList : Team[] = [];
 
   constructor(
     private http: HttpClient,
@@ -44,7 +44,18 @@ export class LeMan24Service {
     this.pilotList$ =  this.http.get<Pilot[]>(this.url + '/pilots/all', this.requestOptions);
     this.teamList$ =  this.http.get<Team[]>(this.url + '/teams/all', this.requestOptions);
     this.carList$ =  this.http.get<Car[]>(this.url + '/cars/all', this.requestOptions);
-    this.carList$.subscribe(cars => this.carList = cars);
+    this.carList$.subscribe(cars => 
+      {
+       
+        let car : Car = cars[0];
+        this.carList.push(car);
+        
+        let newCars: Car[] | undefined = car.team.carList;        
+        for (let index = 1; index < (newCars as Car[]).length; index++) {
+          this.carList.push((newCars as Car[])[index])          
+        }
+        console.log((this.getJsonObject(this.carList)));        
+      });
     this.pilotList$.subscribe(pilots => this.pilotList = pilots);
     this.teamList$.subscribe(teams => this.teamList = teams ); 
   }
@@ -54,7 +65,7 @@ export class LeMan24Service {
   }
 
   getCars(): Observable<Car[]>{
-    return this.carList$;
+    return this.http.get<Car[]>(this.url + '/cars/all', this.requestOptions);
   }
 
   getTeams(): Observable<Team[]>{
@@ -62,12 +73,20 @@ export class LeMan24Service {
   }
 
   addCar(car: Car): void{ 
+    console.log("MyCar    " + this.getJsonObject(car));
     if (car.id == 0)
     {
+      car.team.pilotList = undefined;
+    
+      car.team.carList = undefined;
+      car.team.sponsorList = undefined;
+
+      
     this.http.post<Car>(this.url + '/cars/add',car).subscribe({
       next: data => {
-        this.carList$ =  this.http.get<Car[]>(this.url + '/cars/all', this.requestOptions);
-        this.carList$.subscribe(cars => this.carList = cars);
+        // this.carList$ =  this.http.get<Car[]>(this.url + '/cars/all', this.requestOptions);
+        // this.carList$.subscribe(cars => this.carList = cars);
+        this.getData();
         this.router.navigate(['/container-list',"cars"]);},
       error: error => {console.log("Erreur " + error)}      
     },);
