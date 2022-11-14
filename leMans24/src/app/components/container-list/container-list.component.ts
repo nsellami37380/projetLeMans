@@ -14,6 +14,7 @@ export class ContainerListComponent implements OnInit {
 
   resultFilter: string = ''
   ptcList: Pilot[] | Team[] | Car[] = [];
+  carList: Car[] = [];
   title: string = "";
   newPtcList: Pilot[] | Team[] | Car[] = this.ptcList;
 
@@ -40,18 +41,28 @@ export class ContainerListComponent implements OnInit {
         
       } else
       if (this.url ==='cars'){
-         this.leMan24S.getCars().subscribe(cars  => {this.ptcList = cars, this.newPtcList = this.ptcList;})
+         this.leMan24S.getCars().subscribe(
+          cars  => {
+            if (cars.length > 0){           
+            let car : Car =cars[0];
+            this.carList.push(car);
+            let newCars: Car[] | undefined = car.team.carList;        
+            for (let index = 1; index < (newCars as Car[]).length; index++) {
+              this.carList.push((newCars as Car[])[index])          
+            }
+            this.ptcList = this.carList, this.newPtcList = this.ptcList;
+
+         }
+        })
+
+
         this.title = "Listes des voitures";  
      
       } else
       if (this.url ==='teams'){ 
         this.leMan24S.getTeams().subscribe(teams  => {this.ptcList = teams, this.newPtcList = this.ptcList;})       
-        this.title = "Listes des écuries";
-        
+        this.title = "Listes des écuries";        
       };
-
-
-
   }
 
   filterList(event: string): void {
