@@ -27,7 +27,7 @@ export class FormPilotComponent implements OnInit {
     ) { }
 
   ngOnInit(): void {
-    this.leMans24S.getTeams().subscribe(team => {this.teamList = team});
+    this.teamList = this.leMans24S.getTeamList();
     this.route.paramMap.subscribe((param: ParamMap)=>{
 
     if (param.get('id') != null)
@@ -60,10 +60,6 @@ export class FormPilotComponent implements OnInit {
 
       this.pilot.team = this.leMans24S.getTeamById(this.teamId)
     }
-
-    let myString = JSON.stringify(this.pilot, null, '\n'); // tab
-     console.log(myString);
-
 
     if (this.id != 0)
     {
