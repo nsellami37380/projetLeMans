@@ -12,7 +12,7 @@ import { LeMan24Service } from 'src/app/shared/le-man24.service';
 })
 export class CardComponent implements OnInit, OnChanges{
 
-  url: string = ' a '; 
+  url: string = ' '; 
 
   car : Car= new Car(0,[],'','',0,0,0,'',(new Team(0,'','',0,'',[],[],[])),(new Pilot(0,[],'','',(new Date),0,'','',undefined,undefined)));
   pilot: Pilot = new Pilot (0,[],'','',(new Date),0,'','',undefined,undefined);
@@ -28,6 +28,7 @@ export class CardComponent implements OnInit, OnChanges{
     private router: Router) { }
   
   ngOnChanges(changes: SimpleChanges): void {
+
     // todo url est vide ????
     if (this.getParam() === "pilots"){
       this.pilot = (this.ptc as Pilot);

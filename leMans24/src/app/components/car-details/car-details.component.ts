@@ -54,12 +54,7 @@ export class CarDetailsComponent implements OnInit {
      }    
     });
 
-    // this.leman24S.getCars().subscribe(carList =>{
-    //   this.carPics = carList
-    //   console.log(carList)
-    // });
     this.carPics = this.leman24S.getCarById(this.car.id).carPhotoList;
-    console.log("carPics " + this.carPics);
     
   }
 
