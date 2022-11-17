@@ -26,15 +26,15 @@ public class PilotController {
 
     @PostMapping("/add")
     public ResponseEntity<Pilot> addPilot(@RequestBody Pilot pilot){
-        Pilot newpilot = pilotService.addPilot(pilot);
-        return new ResponseEntity<>(newpilot, HttpStatus.CREATED);
+        Pilot newPilot = pilotService.addPilot(pilot);
+        return new ResponseEntity<>(newPilot, HttpStatus.CREATED);
     }
 
     @PutMapping("/update/{id}")
     public ResponseEntity<Pilot> updatePilot(@PathVariable("id") Long id,
                                              @RequestBody Pilot pilot){
-        Pilot updatedpilot = pilotService.updatePilotById(id, pilot);
-        return new ResponseEntity<>(updatedpilot, HttpStatus.OK);
+        Pilot updatedPilot = pilotService.updatePilotById(id, pilot);
+        return new ResponseEntity<>(updatedPilot, HttpStatus.OK);
     }
 
     @DeleteMapping("/delete/{id}")

@@ -25,15 +25,17 @@ public class Pilot {
     @JoinColumn(name = "pilot_id", referencedColumnName = "id")
     private List<PilotPhoto> photoList;
     private Date dateOfBirth;
+    private float height;
     private String palmares;
     @Column(name = "bio", length = 6000)
     private String bio;
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "car_id", referencedColumnName = "id")
     private Car car;
-    @ManyToOne()
+
+    @ManyToOne
     private Team team;
-    private float height;
+
 
     public Pilot(Long id, String firstName, String lastName,
                  List<PilotPhoto> photoList, Date dateOfBirth,
