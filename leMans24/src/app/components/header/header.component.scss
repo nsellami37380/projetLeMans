@@ -26,7 +26,6 @@ ul{
 }
 
 a{
-
     font-size: 24px;
     text-decoration: none;
     color: white;
@@ -51,7 +50,8 @@ a:hover{
     color: yellow;
 }
 
-:host ::ng-deep { 
+:host ::ng-deep {
+
     .p-menubar{
         border: none;
         width: 300%;
@@ -59,7 +59,7 @@ a:hover{
     .p-menubar .p-menubar-root-list  .p-menuitem  .p-menuitem-link .p-menuitem-text {
         color: white;
         font-family: 'Montserrat', sans-serif;
-        font-size: 24px;
+        font-size: 20px;
         }
     a.p-ripple.p-element.p-menuitem-link :hover{
         color: yellow;
@@ -79,6 +79,11 @@ a:hover{
     }
 
     @media screen and (max-width: 426px){
+
+        p-button{
+            left: 20px;
+
+        }
 
         .p-button.p-button-icon-only{
             padding: 1em;
@@ -104,7 +109,12 @@ a:hover{
     cursor: pointer;
 }
 
-@media screen and (max-width: 426px){
+@media screen and (max-width: 1024px){
+
+    .classic-bar{
+        display: none;
+    }
+
     .logo{
         width: 100px;
         height: 70px;
@@ -117,4 +127,38 @@ a:hover{
 }
 
 
+@media screen and (min-width: 1024px){
+    p-sidebar, p-button {
+        display: none;
+    }
 
+    p-menubar{
+        display: flex;
+        width: auto;
+    }
+
+    .classic-bar-container{
+        width: 100%;
+
+
+        .classic-bar{
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+    
+            .classic-button{
+                display: flex;
+            }
+        }
+    }
+
+    .logo{
+        width: 100px;
+        height: 70px;
+        margin-left: 1em;
+    }
+    
+    a{
+        font-size: 24px;
+    }
+}

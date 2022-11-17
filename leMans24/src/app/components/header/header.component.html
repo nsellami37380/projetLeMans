@@ -1,7 +1,7 @@
 <header>
 
         <img src="/assets/logo leMans.png" alt="Logo le Mans" class="logo" [routerLink]="['/home']" routerLinkActive="color-link-active">
-   
+
 
     <p-sidebar [(visible)]="visibleSidebar1" position="right" [baseZIndex]="10000">
         <nav>
@@ -29,7 +29,35 @@
     </p-sidebar>
     
     <p-button type="button" class="mr-2" (click)="visibleSidebar1 = true" icon="pi pi-bars"></p-button>
-</header>
 
 
+    <div class="classic-bar-container">
+    
+        <div class="classic-bar">
 
+                <li class="classic-button">
+                    <a [routerLink]="['/home']" routerLinkActive="color-link-active" >Accueil</a>
+                </li>
+
+                <li class="classic-button">
+                    <a><p-menubar [model]="menu"></p-menubar></a>
+                </li>
+
+                <li class="classic-button">
+                    <a [routerLink]="['/category', 'teams' ]" routerLinkActive="color-link-active">Écurie</a>
+                </li>
+
+                <li class="classic-button">
+                    <a [routerLink]="['/category', 'pilots']" routerLinkActive="color-link-active">Pilotes</a>
+                </li>
+
+                <li class="classic-button">
+                    <a [routerLink]="['/category', 'cars']" routerLinkActive="color-link-active">Voitures</a>
+                </li>
+
+                <li class="classic-button" id="classic-login">
+                    <a [routerLink]="['/login']" routerLinkActive="color-link-active">Se connecter</a>
+                </li>
+        </div>
+
+    </div>

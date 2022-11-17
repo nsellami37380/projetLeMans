@@ -20,13 +20,13 @@ export class HeaderComponent implements OnInit {
       {
         label: 'Ajouter',
         items:[{
-                label:'Ajouter une Voiture', "routerLink": '/addCar'                
+                label:'Ajouter une Écurie', "routerLink": '/addTeam'                
+              },
+              {
+                label:'Ajouter une Voiture', "routerLink": '/addCar'
               },
               {
                 label:'Ajouter un Pilote', "routerLink": '/addPilot'
-              },
-              {
-                label:'Ajouter une Écurie', "routerLink": '/addTeam'
               }],
        }
     ]
