@@ -40,6 +40,7 @@ export class LeMan24Service {
     this.http.get<Team[]>(this.url + '/teams/all', this.requestOptions)
       .subscribe(teams => {
         this.teamList = teams;
+
         teams.forEach(team => {
         team.carList?.forEach(car => {
           this.carList.push(car);
@@ -93,7 +94,6 @@ export class LeMan24Service {
   addPilot(pilot: Pilot): void {
 
     (pilot.team as Team).pilotList = undefined;
-
     (pilot.team as Team).carList = undefined;
     (pilot.team as Team).sponsorList = undefined;
     this.http.post<Pilot>(this.url + '/pilots/add', pilot).subscribe({
@@ -146,6 +146,13 @@ export class LeMan24Service {
   }
 
   updatePilote(pilot: Pilot): void {
+
+    (pilot.team as Team).pilotList = undefined;
+    (pilot.team as Team).carList = undefined;
+    (pilot.team as Team).sponsorList = undefined;
+    console.log(this.getJsonObject(pilot));
+    
+
     this.http.put<Pilot>(this.url + '/pilots/update/' + pilot.id, pilot).subscribe({
       next: () => { this.router.navigate(['/container-list', "pilots"]); },
       error: error => { console.log("Erreur " + error.message + "\n" + pilot.id) }
@@ -153,7 +160,11 @@ export class LeMan24Service {
   }
 
   updateTeam(team: Team): void {
-    this.http.patch(this.url + '/teams/update/' + team.id, team).subscribe({
+    console.log(team);
+    team.carList = undefined;
+    team.pilotList = undefined;
+    team.sponsorList = undefined;
+    this.http.put(this.url + '/teams/update/' + team.id, team).subscribe({
       next: (res) => {      
         this.router.navigate(['/container-list', "teams"]); },
       error: error => { console.log("Erreur " + error + team.name) }

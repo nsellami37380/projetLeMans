@@ -15,11 +15,12 @@ export class FormPilotComponent implements OnInit {
 
   url:String='';
   pilot: Pilot = new Pilot (0,[],'','',(new Date),0,'','',undefined, undefined);
-  teamList!:Team[];
+  teamList:Team[] = [];
   id: number = 0;
   teamId:number = 0;
   textBtnSubmit: string = "Ajouter";
   file !: File;
+  title : String = "Ajouter un pilote";
   
   constructor(
     private leMans24S: LeMan24Service,
@@ -32,6 +33,7 @@ export class FormPilotComponent implements OnInit {
 
     if (param.get('id') != null)
     {
+      this.title = "Modifier un pilote";
       this.id =  parseInt( param.get('id') as string);
       this.textBtnSubmit = "Modifier";
       this.pilot = this.leMans24S.getPilotById(this.id);
