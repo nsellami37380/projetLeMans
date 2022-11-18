@@ -26,9 +26,8 @@ public class TeamController {
 
     @PostMapping("/add")
     public ResponseEntity<Team> addTeam(@RequestBody Team team){
-        Team addTeamService = teamService.addTeam(team);
-        return new ResponseEntity<>(addTeamService, HttpStatus.CREATED);
-
+        Team newTeam = teamService.addTeam(team);
+        return new ResponseEntity<>(newTeam, HttpStatus.CREATED);
     }
 
     @PutMapping("/update/{id}")

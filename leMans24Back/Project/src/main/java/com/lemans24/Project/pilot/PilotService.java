@@ -38,6 +38,9 @@ public class PilotService {
         pilotFound.setPalmares(pilot.getPalmares());
         pilotFound.setBio(pilot.getBio());
         pilotFound.setHeight(pilot.getHeight());
+        pilotFound.setPhotoList(pilot.getPhotoList());
+        pilotFound.setCar(pilot.getCar());
+        pilotFound.setTeam(pilot.getTeam());
 
         return pilotRepository.save(pilotFound);
     }
