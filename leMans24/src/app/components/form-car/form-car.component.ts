@@ -14,7 +14,7 @@ import { LeMan24Service } from 'src/app/shared/le-man24.service';
 export class FormCarComponent implements OnInit {
   id: number= 0;
   car : Car = new Car(0,[],'','',0,0,0,'',{} as Team,undefined);
-  teamList!: Team[];
+  teamList : Team[] = [];
   teamId:number = 0;
   textBtnSubmit: string = "Ajouter";
   url: string = '' ;
@@ -24,9 +24,9 @@ export class FormCarComponent implements OnInit {
     private route: ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.leman24S.getTeams().subscribe(teams => {this.teamList = teams});
+  
     this.route.paramMap.subscribe((param: ParamMap)=>{
-
+      this.teamList = this.leman24S.getTeamList();
       if (param.get('id') != null)
       {
         this.id =  parseInt( param.get('id') as string);
@@ -57,8 +57,6 @@ export class FormCarComponent implements OnInit {
     {
       this.car.team = this.leman24S.getTeamById(this.teamId);
     }
-    let myString = JSON.stringify(this.car, null, '\t'); // tab
-    console.log(myString);
     if (this.id != 0)
      this.leman24S.updateCar(this.car);
     else

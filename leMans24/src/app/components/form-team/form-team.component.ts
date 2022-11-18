@@ -23,7 +23,7 @@ file!: File;
     private route: ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.leMans24S.getPilots().subscribe(pilot => {this.pilotList = pilot});
+    this.pilotList = this.leMans24S.getPilotList();
  
     this.route.paramMap.subscribe((param: ParamMap)=>{
 
@@ -43,22 +43,21 @@ file!: File;
       reader.readAsDataURL(event.target.files[0]);
       this.file = event.target.files[0];
       reader.onload = (event: any) => {
-        this.url = event.target.result;
-        //this.team.logoUrl = event.target.files[0].name;     
+        this.url = event.target.result;            
       }  
+      this.team.logoUrl = '/assets/'+this.file.name;
     }
    }
 
   addTeam(): void{
-    console.log(this.team);
-    if (this.id != 0)
+    if (this.id != 0){
       this.leMans24S.updateTeam(this.team);
+      // ne faire l'upload que si l'image a changé
+      this.leMans24S.uploadFile(this.file)
+    }
     else {
-      this.team.logoUrl = '/assets/'+this.file.name;
+      
       this.leMans24S.addTeam(this.team);
-      console.log(this.team);
-      
-      
       this.leMans24S.uploadFile(this.file)
     }
   }

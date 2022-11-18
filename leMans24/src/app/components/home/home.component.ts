@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { LeMan24Service } from 'src/app/shared/le-man24.service';
 
 @Component({
   selector: 'app-home',
@@ -7,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() {}
+  constructor(private leMans24S: LeMan24Service) {}
 
   ngOnInit(): void {}
 
