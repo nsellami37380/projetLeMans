@@ -21,7 +21,8 @@
 
     <fieldset>
         <label for="birthday">Date de naissance*</label>
-        <input type="date" name="birthday" id="birthday" [(ngModel)]="pilot.dateOfBirth" #birthday="ngModel" required>
+        <input type="date" name="birthday" id="birthday" [(ngModel)]="pilotBirth" 
+        #birthday="ngModel"  required>
         <div *ngIf="birthday.errors && myForm.submitted">
             <span *ngIf="birthday.errors?.['required']">La date de naissance du pilote est requise</span>
         </div>    
@@ -80,9 +81,9 @@
     <fieldset>
         <label for="team">Team*</label>
         <select name="team" id="team" [(ngModel)]="teamId" #team="ngModel">
-        <option *ngFor="let team of teamList" [value]="team.id">
-            {{team.name}}
-        </option>
+            <option *ngFor="let team of teamList" [value]="team.id" [selected]="team.id == teamId">
+                {{team.name}}
+            </option>
         </select>
         <div *ngIf="team.errors && myForm.submitted">
             <span *ngIf="team.errors?.['required']">Le nom du pilote est requis</span>

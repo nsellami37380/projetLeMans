@@ -5,6 +5,7 @@ import { Pilot } from 'src/app/models/pilot.model';
 import { PilotPhoto } from 'src/app/models/PilotPhoto';
 import { Team } from 'src/app/models/team.model';
 import { LeMan24Service } from 'src/app/shared/le-man24.service';
+import { DatePipe } from '@angular/common'
 
 @Component({
   selector: 'app-form-pilot',
@@ -21,10 +22,12 @@ export class FormPilotComponent implements OnInit {
   textBtnSubmit: string = "Ajouter";
   file !: File;
   title : String = "Ajouter un pilote";
+  pilotBirth: string = '';
   
   constructor(
     private leMans24S: LeMan24Service,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private datepipe: DatePipe
     ) { }
 
   ngOnInit(): void {
@@ -37,7 +40,9 @@ export class FormPilotComponent implements OnInit {
       this.id =  parseInt( param.get('id') as string);
       this.textBtnSubmit = "Modifier";
       this.pilot = this.leMans24S.getPilotById(this.id);
+      if (this.pilot.team) this.teamId = this.pilot.team.id;
       this.url = this.pilot.photoList[0].urlPhoto;
+      this.pilotBirth = this.datepipe.transform(this.pilot.dateOfBirth, 'yyyy-MM-dd') as string;
     }
   })
  }
