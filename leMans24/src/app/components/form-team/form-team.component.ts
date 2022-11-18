@@ -45,14 +45,18 @@ file!: File;
       reader.onload = (event: any) => {
         this.url = event.target.result;            
       }  
+      this.team.logoUrl = '/assets/'+this.file.name;
     }
    }
 
   addTeam(): void{
-    if (this.id != 0)
+    if (this.id != 0){
       this.leMans24S.updateTeam(this.team);
+      // ne faire l'upload que si l'image a changé
+      this.leMans24S.uploadFile(this.file)
+    }
     else {
-      this.team.logoUrl = '/assets/'+this.file.name;
+      
       this.leMans24S.addTeam(this.team);
       this.leMans24S.uploadFile(this.file)
     }
