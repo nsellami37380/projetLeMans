@@ -29,7 +29,7 @@ import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.com
 import { SponsorComponent } from './sponsor/sponsor.component';
 import { FormLoginComponent } from './components/form-login/form-login.component';
 import {InputTextModule} from 'primeng/inputtext';
-
+import {DatePipe} from '@angular/common';
 
 
 
@@ -68,7 +68,7 @@ import {InputTextModule} from 'primeng/inputtext';
     BrowserAnimationsModule,
     InputTextModule
   ],
-  providers: [],
+  providers: [DatePipe],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
