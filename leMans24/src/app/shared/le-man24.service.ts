@@ -159,12 +159,18 @@ export class LeMan24Service {
 
   updatePilote(pilot: Pilot): void {
 
-    (pilot.team as Team).pilotList = undefined;
-    (pilot.team as Team).carList = undefined;
-    (pilot.team as Team).sponsorList = undefined;
-    console.log(this.getJsonObject(pilot));    
+    let clonePilot = { ...pilot}
 
-    this.http.put<Pilot>(this.url + '/pilots/update/' + pilot.id, pilot).subscribe({
+    clonePilot.photoList.forEach(photo=> {
+      photo.id = undefined;
+      photo.pilot = undefined;
+    } )
+    let teamId = clonePilot.team?.id as number;
+    clonePilot.team = undefined;
+
+    clonePilot.team = undefined;   
+
+    this.http.put<Pilot>(this.url + '/pilots/update/' + pilot.id + '/' + teamId, clonePilot).subscribe({
       next: () => { this.router.navigate(['/container-list', "pilots"]); },
       error: error => { console.log("Erreur " + error.message + "\n" + pilot.id) }
     });
