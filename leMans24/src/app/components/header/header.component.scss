@@ -1,6 +1,8 @@
 nav{
     display: flex;
     position: fixed;
+    width: 95%;
+    max-width: 250px;
 }
 
 header{
@@ -11,6 +13,7 @@ header{
     padding: 2em;
     margin-bottom: 3em;
     width: 100%;
+    align-items: center;
     
 }
 
@@ -33,7 +36,13 @@ a{
     text-decoration: none;
     color: white;
     font-family: 'Montserrat', sans-serif;
+    min-width: 158px;
 }
+
+.classic-login a{
+    min-width: 158px;
+}
+
 
 li{
     transition: 0.3s ease-in-out;
@@ -52,12 +61,16 @@ a:hover{
     color: yellow;
 }
 
+.p-submenu-list{
+    width: 180%;
+}
 
 :host ::ng-deep {
 
     .p-menubar{
         border: none;
-        width: 300%;
+        background-color: transparent;
+        width: 500%;
     }
     .p-menubar .p-menubar-root-list  .p-menuitem  .p-menuitem-link .p-menuitem-text {
         color: white;
@@ -77,22 +90,39 @@ a:hover{
     }
 
     #login{
-        margin-top: 3em;
+        margin-top: 2em;
+        margin-left: 4px;
+        padding-top: 1em;
+        border-top: 1px solid rgb(50, 50, 50);
+        width: 130px;
+        text-align: center;
     }
 
+    .menu-ajouter{
+        margin-bottom: 1em;
+        border-bottom: 1px solid rgb(50, 50, 50);
+        width: 130px;
+    }
+
+    .p-menubar .p-submenu-list{
+        background-color: black;
+        width: 180%;
+        left: -36%;
+    }
+
+    
     @media screen and (max-width: 426px){
 
         .p-button.p-button-icon-only{
             padding: 1em;
             background-color: transparent;
         }
-    
         .pi-bars{
             font-size: 1em;
         }
         .p-menubar .p-menubar-root-list  .p-menuitem  .p-menuitem-link .p-menuitem-text {
             font-size: 18px;
-            }
+        }
     }
 }
 
@@ -131,6 +161,12 @@ a:hover{
         .pi-bars{
             color: yellow;
         }
+
+        .p-sidebar-right{
+            display: flex;
+            width: 22em;
+            background-color: black;
+        }
     }
 
 }
@@ -159,6 +195,29 @@ a:hover{
                 display: flex;
             }
         }
+    }
+
+    .home-button{
+        display: flex;
+        margin-left: 40px;
+    }
+
+    .first-list{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        width: 150%;
+        min-width: 400px;
+        max-width: 700px;
+    }
+
+    .second-list{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        width: 300%;
+        max-width: 400px;
+        margin-right: 40px;
     }
 
     .logo{

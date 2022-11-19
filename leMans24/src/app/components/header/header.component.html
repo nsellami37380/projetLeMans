@@ -6,7 +6,7 @@
     <p-sidebar [(visible)]="visibleSidebar1" position="right" [baseZIndex]="10000">
         <nav>
             <ul>
-                <li>
+                <li class="menu-ajouter">
                   <a><p-menubar [model]="menu"></p-menubar></a>
                 </li>
                 <li class="li-simple">
@@ -35,29 +35,34 @@
     
         <div class="classic-bar">
 
-                <li class="classic-button">
+                <li class="classic-button home-button">
                     <a [routerLink]="['/home']" routerLinkActive="color-link-active" >Accueil</a>
                 </li>
 
-                <li class="classic-button">
-                    <a><p-menubar [model]="menu"></p-menubar></a>
-                </li>
+                <ul class="first-list">
+                    <li class="classic-button">
+                        <a [routerLink]="['/category', 'teams' ]" routerLinkActive="color-link-active">Écurie</a>
+                    </li>
+    
+                    <li class="classic-button">
+                        <a [routerLink]="['/category', 'pilots']" routerLinkActive="color-link-active">Pilotes</a>
+                    </li>
+    
+                    <li class="classic-button">
+                        <a [routerLink]="['/category', 'cars']" routerLinkActive="color-link-active">Voitures</a>
+                    </li>
+                </ul>
 
-                <li class="classic-button">
-                    <a [routerLink]="['/category', 'teams' ]" routerLinkActive="color-link-active">Écurie</a>
-                </li>
-
-                <li class="classic-button">
-                    <a [routerLink]="['/category', 'pilots']" routerLinkActive="color-link-active">Pilotes</a>
-                </li>
-
-                <li class="classic-button">
-                    <a [routerLink]="['/category', 'cars']" routerLinkActive="color-link-active">Voitures</a>
-                </li>
-
-                <li class="classic-button" id="classic-login">
-                    <a [routerLink]="['/login']" routerLinkActive="color-link-active">Se connecter</a>
-                </li>
+                <ul class="second-list">
+                    <li class="classic-button">
+                        <a><p-menubar [model]="menu"></p-menubar></a>
+                    </li>
+    
+                    <li class="classic-button" id="classic-login">
+                        <a [routerLink]="['/login']" routerLinkActive="color-link-active">Se connecter</a>
+                    </li>
+                </ul>
+                
         </div>
 
     </div>
