@@ -85,6 +85,7 @@ export class LeMan24Service {
     this.http.post<Team>(this.url + '/teams/add', team).subscribe({
       next: data => { 
         this.teamList.push(data);
+
         this.router.navigate(['/container-list', "teams"]);
       },
       error: error => { alert("Erreur " + error.message); }
@@ -99,6 +100,7 @@ export class LeMan24Service {
     this.http.post<Pilot>(this.url + '/pilots/add', pilot).subscribe({
       next: data => {
         this.pilotList.push(data);
+
         this.router.navigate(['/container-list', "pilots"]);
       },
       error: error => { alert("Erreur " + error.message) }
@@ -139,7 +141,17 @@ export class LeMan24Service {
   }
 
   updateCar(car: Car): void {
-    this.http.patch(this.url + '/cars/update/' + car.id, car).subscribe({
+// On travaille sur une copy sinon l'original n'aura plus de team
+    let cloneCar = { ...car}
+
+    cloneCar.carPhotoList.forEach(photo=> {
+      photo.id = undefined;
+      photo.car = undefined;
+    } )
+    let teamId = cloneCar.team?.id as number;
+    cloneCar.team = undefined;
+
+    this.http.put(this.url + '/cars/update/' + car.id + '/' + teamId, cloneCar).subscribe({
       next: () => { this.router.navigate(['/container-list', "cars"]); },
       error: error => { console.log("Erreur " + error) }
     },);
