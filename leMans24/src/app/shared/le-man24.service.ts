@@ -66,9 +66,12 @@ export class LeMan24Service {
     return this.pilotList;
   }
   addCar(car: Car): void {
+    if(car.team)
+    {
       car.team.pilotList = undefined;
       car.team.carList = undefined;
       car.team.sponsorList = undefined;
+    }
       this.http.post<Car>(this.url + '/cars/add', car).subscribe({
         next: data => {
           this.carList.push(data);
