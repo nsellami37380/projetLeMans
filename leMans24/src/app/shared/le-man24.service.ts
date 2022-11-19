@@ -42,11 +42,15 @@ export class LeMan24Service {
         this.teamList = teams;
 
         teams.forEach(team => {
-        team.carList?.forEach(car => {
+        team.carList?.forEach(car => {          
+          let teamId: any = car.team;
+          car.team = this.getTeamById(teamId as number)
           this.carList.push(car);
         });
 
         team.pilotList?.forEach(pilot => {
+          let teamId: any = pilot.team;
+          pilot.team = this.getTeamById(teamId as number)
           this.pilotList.push(pilot);
         });
       });
@@ -62,7 +66,6 @@ export class LeMan24Service {
     return this.pilotList;
   }
   addCar(car: Car): void {
-      if (car.id == 0) {
       car.team.pilotList = undefined;
       car.team.carList = undefined;
       car.team.sponsorList = undefined;
@@ -72,13 +75,7 @@ export class LeMan24Service {
           this.router.navigate(['/container-list', "cars"]);
         },
         error: error => { console.log("Erreur " + error) }
-      },);
-    } else {
-      this.http.patch<Car>(this.url + '/cars', car).subscribe({
-        next: data => { this.router.navigate(['/container-list', "cars"]); },
-        error: error => { alert("Erreur " + error) }
-      },);
-    }
+      },);     
   }
 
   addTeam(team: Team): void {
@@ -150,8 +147,7 @@ export class LeMan24Service {
     (pilot.team as Team).pilotList = undefined;
     (pilot.team as Team).carList = undefined;
     (pilot.team as Team).sponsorList = undefined;
-    console.log(this.getJsonObject(pilot));
-    
+    console.log(this.getJsonObject(pilot));    
 
     this.http.put<Pilot>(this.url + '/pilots/update/' + pilot.id, pilot).subscribe({
       next: () => { this.router.navigate(['/container-list', "pilots"]); },
@@ -173,19 +169,9 @@ export class LeMan24Service {
 
   uploadFile(file: File): void {
     const uploadData = new FormData();
-    // let imgURL: any;
-    // let receivedImageData: any;
-    // let base64Data: any;
-    // let convertedimage: any;
-
     uploadData.append('myFile', file, file.name);
-
     this.http.post('http://localhost:8080/picture/add', uploadData)
       .subscribe(
-        // res => {console.log(res);
-        // receivedImageData = res;
-        // base64Data = receivedImageData.pic;
-        // convertedimage = 'data:image/jpeg;base64,'+base64Data;},
         err => { console.log('Error occured during saving: ' + err) }
       );
   }
