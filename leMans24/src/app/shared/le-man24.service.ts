@@ -42,11 +42,15 @@ export class LeMan24Service {
         this.teamList = teams;
 
         teams.forEach(team => {
-        team.carList?.forEach(car => {
+        team.carList?.forEach(car => {          
+          let teamId: any = car.team;
+          car.team = this.getTeamById(teamId as number)
           this.carList.push(car);
         });
 
         team.pilotList?.forEach(pilot => {
+          let teamId: any = pilot.team;
+          pilot.team = this.getTeamById(teamId as number)
           this.pilotList.push(pilot);
         });
       });
@@ -62,29 +66,26 @@ export class LeMan24Service {
     return this.pilotList;
   }
   addCar(car: Car): void {
-      if (car.id == 0) {
+    if(car.team)
+    {
       car.team.pilotList = undefined;
       car.team.carList = undefined;
       car.team.sponsorList = undefined;
+    }
       this.http.post<Car>(this.url + '/cars/add', car).subscribe({
         next: data => {
           this.carList.push(data);
           this.router.navigate(['/container-list', "cars"]);
         },
         error: error => { console.log("Erreur " + error) }
-      },);
-    } else {
-      this.http.patch<Car>(this.url + '/cars', car).subscribe({
-        next: data => { this.router.navigate(['/container-list', "cars"]); },
-        error: error => { alert("Erreur " + error) }
-      },);
-    }
+      },);     
   }
 
   addTeam(team: Team): void {
     this.http.post<Team>(this.url + '/teams/add', team).subscribe({
       next: data => { 
         this.teamList.push(data);
+
         this.router.navigate(['/container-list', "teams"]);
       },
       error: error => { alert("Erreur " + error.message); }
@@ -99,6 +100,7 @@ export class LeMan24Service {
     this.http.post<Pilot>(this.url + '/pilots/add', pilot).subscribe({
       next: data => {
         this.pilotList.push(data);
+
         this.router.navigate(['/container-list', "pilots"]);
       },
       error: error => { alert("Erreur " + error.message) }
@@ -139,7 +141,17 @@ export class LeMan24Service {
   }
 
   updateCar(car: Car): void {
-    this.http.patch(this.url + '/cars/update/' + car.id, car).subscribe({
+// On travaille sur une copy sinon l'original n'aura plus de team
+    let cloneCar = { ...car}
+
+    cloneCar.carPhotoList.forEach(photo=> {
+      photo.id = undefined;
+      photo.car = undefined;
+    } )
+    let teamId = cloneCar.team?.id as number;
+    cloneCar.team = undefined;
+
+    this.http.put(this.url + '/cars/update/' + car.id + '/' + teamId, cloneCar).subscribe({
       next: () => { this.router.navigate(['/container-list', "cars"]); },
       error: error => { console.log("Erreur " + error) }
     },);
@@ -147,13 +159,18 @@ export class LeMan24Service {
 
   updatePilote(pilot: Pilot): void {
 
-    (pilot.team as Team).pilotList = undefined;
-    (pilot.team as Team).carList = undefined;
-    (pilot.team as Team).sponsorList = undefined;
-    console.log(this.getJsonObject(pilot));
-    
+    let clonePilot = { ...pilot}
 
-    this.http.put<Pilot>(this.url + '/pilots/update/' + pilot.id, pilot).subscribe({
+    clonePilot.photoList.forEach(photo=> {
+      photo.id = undefined;
+      photo.pilot = undefined;
+    } )
+    let teamId = clonePilot.team?.id as number;
+    clonePilot.team = undefined;
+
+    clonePilot.team = undefined;   
+
+    this.http.put<Pilot>(this.url + '/pilots/update/' + pilot.id + '/' + teamId, clonePilot).subscribe({
       next: () => { this.router.navigate(['/container-list', "pilots"]); },
       error: error => { console.log("Erreur " + error.message + "\n" + pilot.id) }
     });
@@ -173,19 +190,9 @@ export class LeMan24Service {
 
   uploadFile(file: File): void {
     const uploadData = new FormData();
-    // let imgURL: any;
-    // let receivedImageData: any;
-    // let base64Data: any;
-    // let convertedimage: any;
-
     uploadData.append('myFile', file, file.name);
-
     this.http.post('http://localhost:8080/picture/add', uploadData)
       .subscribe(
-        // res => {console.log(res);
-        // receivedImageData = res;
-        // base64Data = receivedImageData.pic;
-        // convertedimage = 'data:image/jpeg;base64,'+base64Data;},
         err => { console.log('Error occured during saving: ' + err) }
       );
   }

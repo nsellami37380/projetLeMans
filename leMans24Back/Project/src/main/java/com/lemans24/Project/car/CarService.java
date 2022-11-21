@@ -1,5 +1,7 @@
 package com.lemans24.Project.car;
 
+import com.lemans24.Project.team.Team;
+import com.lemans24.Project.team.TeamRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -9,10 +11,12 @@ import java.util.List;
 public class CarService {
 
     private final CarRepository carRepository;
+    private final TeamRepository teamRepository;
 
     @Autowired
-    public CarService(CarRepository carRepository) {
+    public CarService(CarRepository carRepository, TeamRepository teamRepository) {
         this.carRepository = carRepository;
+        this.teamRepository = teamRepository;
     }
 
     //POST
@@ -27,7 +31,8 @@ public class CarService {
     }
 
     //PUT
-    public Car updateCarService(Long id, Car car) {
+    public Car updateCarService(Long id, Long teamId, Car car) {
+
         Car carFoundToUpdate = carRepository.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("id " + id + " not found"));
 
@@ -38,11 +43,14 @@ public class CarService {
         carFoundToUpdate.setMaxSpeed(car.getMaxSpeed());
         carFoundToUpdate.setAcceleration(car.getAcceleration());
         carFoundToUpdate.setBio(car.getBio());
-        carFoundToUpdate.setTeam(car.getTeam());
         carFoundToUpdate.setPilot(car.getPilot());
-
+        Team teamToSet = teamRepository.findById(teamId)
+                .orElseThrow(() -> new IllegalArgumentException("id of team " + teamId + " not found"));
+        carFoundToUpdate.setTeam(teamToSet);
         return carRepository.save(carFoundToUpdate);
     }
+
+
 
     //DELETE
     public void deleteCarService(Long id) {

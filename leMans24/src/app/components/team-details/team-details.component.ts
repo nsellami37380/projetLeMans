@@ -48,7 +48,7 @@ export class TeamDetailsComponent implements OnInit {
       }
 
 
-        this.carListFilteredByTeam = this.leMans24S.getCarList().filter(car=>car.team.id==this.team.id);
+        this.carListFilteredByTeam = this.leMans24S.getCarList().filter(car=>car.team?.id==this.team.id);
 
 
        this.pilotListFilteredByTeam = this.leMans24S.getPilotList().filter(pilot=>(pilot.team as Team).id==this.team.id);

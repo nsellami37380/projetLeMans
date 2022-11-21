@@ -30,10 +30,11 @@ public class PilotController {
         return new ResponseEntity<>(newPilot, HttpStatus.CREATED);
     }
 
-    @PutMapping("/update/{id}")
+    @PutMapping("/update/{id}/{teamId}")
     public ResponseEntity<Pilot> updatePilot(@PathVariable("id") Long id,
+                                             @PathVariable ("teamId") Long teamId,
                                              @RequestBody Pilot pilot){
-        Pilot updatedPilot = pilotService.updatePilotById(id, pilot);
+        Pilot updatedPilot = pilotService.updatePilotById(id, teamId, pilot);
         return new ResponseEntity<>(updatedPilot, HttpStatus.OK);
     }
 
