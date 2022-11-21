@@ -1,19 +1,22 @@
 package com.lemans24.Project.pilot;
 
+import com.lemans24.Project.team.Team;
+import com.lemans24.Project.team.TeamRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class PilotService {
 
     private final PilotRepository pilotRepository;
+    private final TeamRepository teamRepository;
 
     @Autowired
-    public PilotService(PilotRepository pilotRepository) {
+    public PilotService(PilotRepository pilotRepository, TeamRepository teamRepository) {
         this.pilotRepository = pilotRepository;
+        this.teamRepository = teamRepository;
     }
 
     public List<Pilot> findAllPilot(){
@@ -29,7 +32,7 @@ public class PilotService {
         return pilotRepository.save(pilot);
     }
 
-    public Pilot updatePilotById(Long id, Pilot pilot) {
+    public Pilot updatePilotById(Long id,Long teamId, Pilot pilot) {
         Pilot pilotFound = pilotRepository.findById(id)
                 .orElseThrow(() -> new IllegalStateException("No such"));
         pilotFound.setFirstName(pilot.getFirstName());
@@ -40,7 +43,9 @@ public class PilotService {
         pilotFound.setHeight(pilot.getHeight());
         pilotFound.setPhotoList(pilot.getPhotoList());
         pilotFound.setCar(pilot.getCar());
-        pilotFound.setTeam(pilot.getTeam());
+        Team teamToSet = teamRepository.findById(teamId)
+                .orElseThrow(() -> new IllegalArgumentException("id of team " + teamId + " not found"));
+        pilotFound.setTeam(teamToSet);
 
         return pilotRepository.save(pilotFound);
     }

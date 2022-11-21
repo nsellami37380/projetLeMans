@@ -33,7 +33,7 @@ export class FormCarComponent implements OnInit {
         this.textBtnSubmit = "Modifier"
         this.car = this.leman24S.getCarById(this.id);
         this.url = this.car.carPhotoList[0].urlPhoto;
-        this.teamId = this.car.team.id;
+        this.teamId = this.car.team?.id as number;
          }      
     })
   }

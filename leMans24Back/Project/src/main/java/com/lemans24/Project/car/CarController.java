@@ -34,11 +34,12 @@ public class CarController {
     }
 
     //PUT
-    @PutMapping("/update/{id}")
+    @PutMapping("/update/{id}/{teamId}")
     public Car updateCarController(
             @PathVariable ("id") Long id,
+            @PathVariable ("teamId") Long teamId,
             @RequestBody Car car) {
-        return carService.updateCarService(id, car);
+        return carService.updateCarService(id,teamId, car);
     }
 
     //DELETE

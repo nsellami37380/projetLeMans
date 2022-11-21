@@ -14,7 +14,7 @@ export class Car{
         public maxSpeed: number,
         public acceleration: number,
         public bio:string,
-        public team: Team,
+        public team?: Team,
         public pilot?: Pilot
     ) {
         
