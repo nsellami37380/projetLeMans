@@ -20,6 +20,12 @@ export class LeMan24Service {
   private pilotList: Pilot[] = [];
   private teamList: Team[] = [];
 
+  // peacepilou
+  pilotList$: BehaviorSubject<Pilot[]> = new BehaviorSubject<Pilot[]>([]);
+
+  private carObs: BehaviorSubject<any> = new BehaviorSubject<any>(null);
+
+
   constructor(
     private http: HttpClient,
     private router: Router) {
@@ -36,7 +42,7 @@ export class LeMan24Service {
     headers: new HttpHeaders(this.headerDict),
   };
 
-  private getData(): void {
+  public getData(): void {
     this.http.get<Team[]>(this.url + '/teams/all', this.requestOptions)
       .subscribe(teams => {
         this.teamList = teams;
@@ -53,7 +59,11 @@ export class LeMan24Service {
           pilot.team = this.getTeamById(teamId as number)
           this.pilotList.push(pilot);
         });
+        //peacepilou
+        this.pilotList$ = new BehaviorSubject<Pilot[]>([]);
+        this.pilotList$.next(this.pilotList);
       });
+
   })}
 
   getTeamList(){
