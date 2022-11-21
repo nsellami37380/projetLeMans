@@ -25,6 +25,7 @@ public class Pilot {
     @JoinColumn(name = "pilot_id", referencedColumnName = "id")
     private List<PilotPhoto> photoList;
     private Date dateOfBirth;
+    @Column(name = "palmares", length = 6000)
     private String palmares;
     @Column(name = "bio", length = 6000)
     private String bio;

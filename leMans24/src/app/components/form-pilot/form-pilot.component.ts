@@ -62,19 +62,15 @@ export class FormPilotComponent implements OnInit {
     }
    }
    
-   addPilot(){
-    if (this.teamId != 0){
-
+  addPilot() {
+    if (this.teamId != 0) {
       this.pilot.team = this.leMans24S.getTeamById(this.teamId)
+
+      if (this.id != 0) {
+        this.leMans24S.updatePilote(this.pilot);
+      }
+      else
+        this.leMans24S.addPilot(this.pilot);
     }
-
-    if (this.id != 0)
-    {
-      this.leMans24S.updatePilote(this.pilot);
-    }
-    else
-      this.leMans24S.addPilot(this.pilot);
-   }
-
-
+  }
 }
