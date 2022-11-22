@@ -36,24 +36,62 @@ export class LeMan24Service {
     headers: new HttpHeaders(this.headerDict),
   };
 
-  private getData(): void {
-    this.http.get<Team[]>(this.url + '/teams/all', this.requestOptions)
-      .subscribe(teams => {
-        //alert("Dans on subscribe de getData ! ")
-        this.teamList = teams;
+  // parcourir team
+  private browseTeam(team: Team){
 
-        teams.forEach(team => {
-        team.carList?.forEach(car => {          
-          let teamId: any = car.team;
-          car.team = this.getTeamById(teamId as number)
-          this.carList.push(car);
-        });
+    if (!team.id) return;
 
-        team.pilotList?.forEach(pilot => {
+    this.teamList.push(team);
+    if (team.pilotList) this.browsePilotList(team.pilotList);
+    if (team.carList) this.browseCarList(team.carList);
+
+  }
+
+  private browsePilotList(pilotList: Pilot[]): void{
+    pilotList.forEach(pilot => {
+      if (!pilot.id) return;
+      if (pilot.car) {
+        if (pilot.car.team){
+          this.browseTeam(pilot.car.team);
+        }
+        this.carList.push(pilot.car);
+      }
+      if (pilot.team) {
+        if (pilot.team.id){
+          this.pilotList.push(pilot);
+          this.browseTeam(pilot.team);
+        }
+        else{
           let teamId: any = pilot.team;
           pilot.team = this.getTeamById(teamId as number)
           this.pilotList.push(pilot);
-        });
+        }
+      }
+    })
+  }
+
+  private browseCarList(carList: Car[]): void{
+    carList.forEach(car => {
+      if (!car.id)  return;  
+      if (car.team){
+        if (car.team.id){
+          this.carList.push(car);
+          this.browseTeam(car.team);
+        } else{
+          let teamId: any = car.team;
+          car.team = this.getTeamById(teamId as number);
+          this.carList.push(car);
+        }
+      }
+    });
+  }
+
+  private getData(): void {
+    this.http.get<Team[]>(this.url + '/teams/all', this.requestOptions)
+      .subscribe(teams => {
+        console.log(this.getJsonObject(teams));
+        teams.forEach(team => {          
+          this.browseTeam(team);
       });
   })}
 
@@ -98,7 +136,11 @@ export class LeMan24Service {
     (pilot.team as Team).pilotList = undefined;
     (pilot.team as Team).carList = undefined;
     (pilot.team as Team).sponsorList = undefined;
-    this.http.post<Pilot>(this.url + '/pilots/add', pilot).subscribe({
+    let carId = 0;
+    if (pilot.car)  {carId = pilot.car.id;}
+    pilot.car = undefined;
+    console.log(this.getJsonObject(pilot));
+    this.http.post<Pilot>(this.url + '/pilots/add/' + carId, pilot).subscribe({
       next: data => {
         this.pilotList.push(data);
 
@@ -124,12 +166,14 @@ export class LeMan24Service {
     this.http.delete(this.url + '/cars/delete/' + id)
       .subscribe(() => {
        // window.location.reload();
+       this.removeObjectWithId(this.carList,id);
       })
   }
 
   deletePilot(id: number): void {
     this.http.delete<Pilot>(this.url + '/pilots/delete/' + id)
       .subscribe(() => {
+        this.removeObjectWithId(this.pilotList,id);
        // window.location.reload();
       })
   }
@@ -176,9 +220,12 @@ export class LeMan24Service {
     let teamId = clonePilot.team?.id as number;
     clonePilot.team = undefined;
 
-    clonePilot.team = undefined;   
+    clonePilot.team = undefined; 
+    let carId = 0;
+    if (clonePilot.car) carId = clonePilot.car.id;
+    clonePilot.car = undefined;  
 
-    this.http.put<Pilot>(this.url + '/pilots/update/' + pilot.id + '/' + teamId, clonePilot).subscribe({
+    this.http.put<Pilot>(this.url + '/pilots/update/' + pilot.id + '/' + teamId + '/' + carId, clonePilot).subscribe({
       next: () => { this.router.navigate(['/container-list', "pilots"]); },
       error: error => { console.log("Erreur " + error.message + "\n" + pilot.id) }
     });
@@ -208,6 +255,14 @@ export class LeMan24Service {
 
   getFile(nameFile: String): void {
     this.http.get('http://localhost:8080/picture/all',)
+  }
+
+  public getCarsAvailable(teamId: number = 0): Car[]{
+    let result: Car[] = this.getCarList();
+    if (teamId  > 0) result = result.filter(car => car.team?.id == teamId);
+    result = result.filter(car => car.pilot == undefined);
+    return result;
+
   }
 
   public getJsonObject(obj: object): string {

@@ -24,17 +24,19 @@ public class PilotController {
         return new ResponseEntity<>(pilotList, HttpStatus.OK);
     }
 
-    @PostMapping("/add")
-    public ResponseEntity<Pilot> addPilot(@RequestBody Pilot pilot){
-        Pilot newpilot = pilotService.addPilot(pilot);
+    @PostMapping("/add/{carId}")
+    public ResponseEntity<Pilot> addPilot(@RequestBody Pilot pilot,
+                                          @PathVariable ("carId") Long carId){
+        Pilot newpilot = pilotService.addPilot(pilot, carId);
         return new ResponseEntity<>(newpilot, HttpStatus.CREATED);
     }
 
-    @PutMapping("/update/{id}/{teamId}")
+    @PutMapping("/update/{id}/{teamId}/{carId}")
     public ResponseEntity<Pilot> updatePilot(@PathVariable("id") Long id,
                                              @PathVariable ("teamId") Long teamId,
+                                             @PathVariable ("carId") Long carId,
                                              @RequestBody Pilot pilot){
-        Pilot updatedPilot = pilotService.updatePilotById(id, teamId, pilot);
+        Pilot updatedPilot = pilotService.updatePilotById(id, teamId, carId, pilot);
         return new ResponseEntity<>(updatedPilot, HttpStatus.OK);
     }
 
