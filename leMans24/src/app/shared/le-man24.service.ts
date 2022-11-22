@@ -14,7 +14,7 @@ import { Team } from '../models/team.model';
 })
 export class LeMan24Service {
 
-  private url = "http://localhost:8080";
+  private url = "http://192.168.182.122:8080";
 
   private carList: Car[] = [];
   private pilotList: Pilot[] = [];
@@ -202,7 +202,8 @@ export class LeMan24Service {
     cloneCar.team = undefined;
 
     this.http.put(this.url + '/cars/update/' + car.id + '/' + teamId, cloneCar).subscribe({
-      next: () => { this.router.navigate(['/container-list', "cars"]); },
+      next: () => { 
+        this.router.navigate(['/container-list', "cars"]); },
       error: error => { console.log("Erreur " + error) }
     },);
   }
