@@ -1,92 +1,74 @@
 <h1>{{title}}</h1>
 
-<form #myForm="ngForm" (ngSubmit)="addPilot()">
+<form #myForm="ngForm" (ngSubmit)="myForm.valid && addPilot()">
     
     <div id="my_fieldset">
     <fieldset>
-        <label for="firstname">Prénom*</label>
+        <label for="firstname">Prénom *</label>
         <input type="text" name="firstname" id="firstname" [(ngModel)]="pilot.firstName" #firstname="ngModel" required>
         <div *ngIf="firstname.errors && myForm.submitted">
-            <span *ngIf="firstname.errors?.['required']">Le Prénom du pilote est requis</span>
+            <small *ngIf="firstname.errors?.['required']">Le prénom du pilote est requis</small>
         </div>    
     </fieldset>
 
     <fieldset>
-        <label for="lastname">Nom*</label>
+        <label for="lastname">Nom *</label>
         <input type="text" name="lastname" id="lastname" [(ngModel)]="pilot.lastName" #lastname="ngModel" required>
         <div *ngIf="lastname.errors && myForm.submitted">
-            <span *ngIf="lastname.errors?.['required']">Le Nom du pilote est requis</span>
+            <small *ngIf="lastname.errors?.['required']">Le nom du pilote est requis</small>
         </div>    
     </fieldset>
 
     <fieldset>
-        <label for="birthday">Date de naissance*</label>
+        <label for="birthday">Date de naissance *</label>
         <input type="date" name="birthday" id="birthday" [(ngModel)]="pilotBirth" 
         #birthday="ngModel"  required>
         <div *ngIf="birthday.errors && myForm.submitted">
-            <span *ngIf="birthday.errors?.['required']">La date de naissance du pilote est requise</span>
+            <small *ngIf="birthday.errors?.['required']">La date de naissance du pilote est requise</small>
         </div>    
     </fieldset>
 
     <fieldset>
-        <label for="height">Taille*</label>
-        <input type="number" name="height" id="height" [(ngModel)]="pilot.height" #height="ngModel" required>
-        <div *ngIf="height.errors && myForm.submitted">
-            <span *ngIf="height.errors?.['required']">La taille du pilote est requise</span>
-        </div>    
+        <label for="height">Taille</label>
+        <input type="number" name="height" id="height" [(ngModel)]="pilot.height" #height="ngModel" >
     </fieldset>
 
-
-    <!-- <fieldset>
-        <label for="picture">Image*</label>
-        <div class="dimg">
-            <input type="file" #selectImage (change)="selectfile($event)">
-            <button type="button" (click)="selectImage.click()" id="button-img">Ajouter image</button>
-            <img [src]="url" width="100px" (click)="selectImage.click()"  height="100px" alt="">
-        </div>      
-    </fieldset> -->
-
-
     <fieldset>
-
-        <label for="pictureselectImage">Image*</label>
-        <input type="file" #selectImage (change)="selectfile($event)">
+        <label for="pictureselectImage">Image *</label>
+        <input type="file" #selectImage (change)="selectfile($event)" accept=".jpg, .png">
         <button type="button" (click)="selectImage.click()" id="button-img">Ajouter image</button>
         <div id="ListImgCar">
             <div *ngFor="let img of pilot.photoList" class="dimg">
                 <img [src]=img.urlPhoto width="100px"  height="100px" alt=""> 
             </div> 
         </div>
+        <div *ngIf="myForm.submitted">
+            <small *ngIf="!pilot.photoList[0]">Au moins une image est requise</small>
+        </div>  
     </fieldset>
 
     <fieldset>
-        <label for="bio">Biographie*</label>
+        <label for="bio">Biographie *</label>
         <textarea name="bio" id="bio" cols="130" rows="10" [(ngModel)]="pilot.bio" #bio="ngModel" required></textarea>
-        <!-- <input type="text-area" cols="130" rows="10" name="bio" id="bio" [(ngModel)]="pilot.bio" #bio="ngModel" required> -->
         <div *ngIf="bio.errors && myForm.submitted">
-            <span *ngIf="bio.errors?.['required']">La biograpie du pilote est requise</span>
+            <small *ngIf="bio.errors?.['required']">La biograpie du pilote est requise</small>
         </div>    
     </fieldset>
 
     <fieldset>
-        <label for="palmares">Palmares*</label>
-        <!-- <input type="text-area" cols="130" rows="10" name="palmares" id="palmares" [(ngModel)]="pilot.palmares" #palmares="ngModel" required> -->
-        <textarea  name="palmares" id="palmares" cols="130" rows="10"  [(ngModel)]="pilot.palmares" #palmares="ngModel"  required></textarea>
-        
-        <div *ngIf="palmares.errors && myForm.submitted">
-            <span *ngIf="palmares.errors?.['required']">Le palmares du pilote est requis</span>
-        </div>    
+        <label for="palmares">Palmares</label>
+        <textarea  name="palmares" id="palmares" cols="130" rows="10"  [(ngModel)]="pilot.palmares" #palmares="ngModel"></textarea>
     </fieldset>
 
     <fieldset>
-        <label for="team">Team*</label>
+        <label for="team">Team *</label>
         <select name="team" id="team" [(ngModel)]="teamId" #team="ngModel">
             <option *ngFor="let team of teamList" [value]="team.id" [selected]="team.id == teamId">
                 {{team.name}}
             </option>
         </select>
-        <div *ngIf="team.errors && myForm.submitted">
-            <span *ngIf="team.errors?.['required']">Le nom du pilote est requis</span>
+        <div *ngIf="myForm.submitted">
+            <small *ngIf="teamId == 0">Le nom de l'écurie est requis</small>
         </div>    
     </fieldset>
 

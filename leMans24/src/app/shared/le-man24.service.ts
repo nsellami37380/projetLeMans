@@ -39,6 +39,7 @@ export class LeMan24Service {
   private getData(): void {
     this.http.get<Team[]>(this.url + '/teams/all', this.requestOptions)
       .subscribe(teams => {
+        //alert("Dans on subscribe de getData ! ")
         this.teamList = teams;
 
         teams.forEach(team => {
@@ -122,21 +123,28 @@ export class LeMan24Service {
   deleteCar(id: number): void {
     this.http.delete(this.url + '/cars/delete/' + id)
       .subscribe(() => {
-        window.location.reload();
+       // window.location.reload();
       })
   }
 
   deletePilot(id: number): void {
     this.http.delete<Pilot>(this.url + '/pilots/delete/' + id)
       .subscribe(() => {
-        window.location.reload();
+       // window.location.reload();
       })
   }
-
+  removeObjectWithId(arr : Array<any>, id: number) {
+    const objWithIdIndex = arr.findIndex((obj) => obj.id === id);
+    arr.splice(objWithIdIndex, 1);
+  
+    return arr;
+  }
   deleteTeam(id: number): void {
     this.http.delete(this.url + '/teams/delete/' + id)
-      .subscribe(() => {
-        window.location.reload();
+      .subscribe((data) => {
+      this.removeObjectWithId(this.teamList,id);
+      this.getData();
+        //window.location.reload();
       })
   }
 
@@ -189,6 +197,7 @@ export class LeMan24Service {
   }
 
   uploadFile(file: File): void {
+    if (file == undefined) return;
     const uploadData = new FormData();
     uploadData.append('myFile', file, file.name);
     this.http.post('http://localhost:8080/picture/add', uploadData)
