@@ -10,8 +10,8 @@
     </div>
 </div>
 
-<div class="car-container">
-    <div class="text">
+<div class="car-container" *ngIf="car">
+    <div class="text" >
         <h3>DESCRIPTION DE LA VOITURE : </h3>
         <p>{{car.modelName}}</p>
         <p>{{car.power}}</p>

@@ -26,8 +26,8 @@ public class PilotController {
 
     @PostMapping("/add")
     public ResponseEntity<Pilot> addPilot(@RequestBody Pilot pilot){
-        Pilot newpilot = pilotService.addPilot(pilot);
-        return new ResponseEntity<>(newpilot, HttpStatus.CREATED);
+        Pilot newPilot = pilotService.addPilot(pilot);
+        return new ResponseEntity<>(newPilot, HttpStatus.CREATED);
     }
 
     @PutMapping("/update/{id}/{teamId}")

@@ -30,7 +30,7 @@
             <label [for]="pilot.id" >{{pilot.firstName}} {{pilot.lastName}}</label>
         </div>
         <div class="idImg">
-            <img [id]="pilot.id" [src]="pilot.picture" alt="image pilot">   
+            <img [id]="pilot.id" [src]="pilot.photoList[0].urlPhoto" alt="image pilot">   
         </div>
     </ng-template>
 </p-carousel>
@@ -51,7 +51,7 @@
                 <label [for]="car.id" >{{car.modelName}}</label>
             </div>
             <div class="idImg">
-              <img id= "car.id" [src]="car.pictureList[0]" alt="">
+              <img id= "car.id" [src]="car.carPhotoList[0].urlPhoto" alt="">
             </div>  
         </ng-template>
     </p-carousel>
