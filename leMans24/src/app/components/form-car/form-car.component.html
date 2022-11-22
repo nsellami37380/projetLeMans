@@ -1,77 +1,68 @@
 <h1>Ajouter une voiture</h1>
 
-<form #myForm="ngForm" (ngSubmit)="addCar()">
+<form #myForm="ngForm" (ngSubmit)="myForm.valid && addCar()">
     <div id="my_fieldset">
     <fieldset>
-        <label for="modelName">Model*</label>
+        <label for="modelName">Model *</label>
         <input type="text" name="modelName" id="modelName" [(ngModel)]="car.modelName" #modelName="ngModel" required>
         <div *ngIf="modelName.errors && myForm.submitted">
-            <span *ngIf="modelName.errors?.['required']">Le nom du model est requis</span>
+            <small *ngIf="modelName.errors?.['required']">Le nom du model est requis</small>
         </div>    
     </fieldset>
 
     <fieldset>
 
-        <label for="pictureselectImage">Image*</label>
-        <input type="file" #selectImage (change)="selectfile($event)">
+        <label for="pictureselectImage">Image *</label>
+        <input type="file" #selectImage (change)="selectfile($event)" accept=".jpg, .png">
         <button type="button" (click)="selectImage.click()" id="button-img">Ajouter image</button>
         <div id="ListImgCar">
             <div *ngFor="let img of car.carPhotoList" class="dimg">
-                <img [src]=img.urlPhoto width="100px"  height="100px" alt=""> 
+                <img [src]=img.urlPhoto width="100px"  height="100px" alt="Image d'une voiture"> 
             </div> 
         </div>
+        <div *ngIf="myForm.submitted">
+            <small *ngIf="!car.carPhotoList[0]">Au moins une image est requise</small>
+        </div>  
     </fieldset>
 
     <fieldset>
-        <label for="engine">Moteur*</label>
-        <input type="text" name="engine" id="engine" [(ngModel)]="car.engine" #engine="ngModel" required>
-        <div *ngIf="engine.errors && myForm.submitted">
-            <span *ngIf="engine.errors?.['required']">Le nom du moteur est requis</span>
-        </div>    
+        <label for="engine">Moteur</label>
+        <input type="text" name="engine" id="engine" [(ngModel)]="car.engine" #engine="ngModel">
     </fieldset>
 
     <fieldset>
-        <label for="power">Puissance*</label>
-        <input type="number" name="power" id="power" [(ngModel)]="car.power" #power="ngModel" required>
-        <div *ngIf="power.errors && myForm.submitted">
-            <span *ngIf="power.errors?.['required']">La puissance est requise</span>
-        </div>    
+        <label for="power">Puissance</label>
+        <input type="number" name="power" id="power" [(ngModel)]="car.power" #power="ngModel">
     </fieldset>
 
     <fieldset>
-        <label for="maxSpeed">Vitesse maximum*</label>
-        <input type="number" name="maxSpeed" id="maxSpeed" [(ngModel)]="car.maxSpeed" #maxSpeed="ngModel" required>
-        <div *ngIf="maxSpeed.errors && myForm.submitted">
-            <span *ngIf="maxSpeed.errors?.['required']">La puissance est requise</span>
-        </div>    
+        <label for="maxSpeed">Vitesse maximum</label>
+        <input type="number" name="maxSpeed" id="maxSpeed" [(ngModel)]="car.maxSpeed" #maxSpeed="ngModel">
     </fieldset>
 
     <fieldset>
-        <label for="acceleration">Acceleration*</label>
-        <input type="number" name="acceleration" id="acceleration" [(ngModel)]="car.acceleration" #acceleration="ngModel" required>
-        <div *ngIf="acceleration.errors && myForm.submitted">
-            <span *ngIf="acceleration.errors?.['required']">L'acceleration est requise</span>
-        </div>    
+        <label for="acceleration">Acceleration</label>
+        <input type="number" name="acceleration" id="acceleration" [(ngModel)]="car.acceleration" #acceleration="ngModel">
     </fieldset>
 
     <fieldset>
-        <label for="description">Description*</label>
+        <label for="description">Description *</label>
         <textarea name="description" id="description" cols="130" rows="10" [(ngModel)]="car.bio" #description="ngModel" required></textarea>
         <div *ngIf="description.errors && myForm.submitted">
-            <span *ngIf="description.errors?.['required']">La description est requise</span>
+            <small *ngIf="description.errors?.['required']">La description est requise</small>
         </div>    
     </fieldset>
 
     <fieldset>
-        <label for="team">Ecurie*</label>
+        <label for="team">Ecurie *</label>
         <!-- <input type="number" name="team" id="team" [(ngModel)]="car.team" #team="ngModel" max=9 required> -->
         <select name="team" id="team" [(ngModel)]="teamId" #team="ngModel">
         <option *ngFor="let team of teamList" [value]="team.id" [selected]="team.id == teamId">
             {{team.name}}
         </option>
         </select>
-        <div *ngIf="team.errors && myForm.submitted">
-            <span *ngIf="team.errors?.['required']">Le nom de l'écurie est requise</span>
+        <div *ngIf="myForm.submitted">
+            <small *ngIf="teamId == 0">Le nom de l'écurie est requis</small>
         </div>    
     </fieldset>
 

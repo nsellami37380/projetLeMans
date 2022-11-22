@@ -26,6 +26,7 @@ public class Pilot {
     private List<PilotPhoto> photoList;
     private Date dateOfBirth;
     private float height;
+    @Column(name = "palmares", length = 6000)
     private String palmares;
     @Column(name = "bio", length = 6000)
     private String bio;
