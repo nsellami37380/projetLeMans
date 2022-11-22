@@ -19,6 +19,7 @@ export class FormCarComponent implements OnInit {
   textBtnSubmit: string = "Ajouter";
   url: string = '' ;
   file !: File;
+  title = "Ajouter une voiture";
   constructor(  
     private leman24S: LeMan24Service,
     private route: ActivatedRoute) { }
@@ -32,6 +33,7 @@ export class FormCarComponent implements OnInit {
         this.id =  parseInt( param.get('id') as string);
         this.textBtnSubmit = "Modifier"
         this.car = this.leman24S.getCarById(this.id);
+        this.title = "Modifier la voiture " + this.car.modelName;
         this.url = this.car.carPhotoList[0].urlPhoto;
         this.teamId = this.car.team?.id as number;
          }      

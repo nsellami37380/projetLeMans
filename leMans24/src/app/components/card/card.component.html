@@ -6,7 +6,7 @@
             <img class="logo-update-button" src="https://cdn-icons-png.flaticon.com/512/5973/5973787.png" alt="update button">
         </a>
         <div [routerLink]="['/car-detail',car.id ]" class="card">
-            <img [src]="car.carPhotoList[0].urlPhoto" onError="this.src ='assets/img-error404.jpg'" alt="car">
+            <img [src]="car.carPhotoList[0].urlPhoto" onError="this.src ='assets/404.jpg'" alt="car">
           
             <div class="card-text">
                 <p> Nom du modele : {{car.modelName}}</p>
@@ -23,7 +23,7 @@
             <img class="logo-update-button" src="https://cdn-icons-png.flaticon.com/512/5973/5973787.png" alt="update button">
         </a>
         <div class="card" [routerLink]="['/pilot-detail', pilot.id]">
-            <img [src]="pilot.photoList[0].urlPhoto" onError="this.src ='assets/img-error404.jpg'" alt="image pilot">
+            <img [src]="pilot.photoList[0].urlPhoto" onError="this.src ='assets/404.jpg'" alt="image pilot">
 
             <div class="card-text">
                 <p> Prénom : {{pilot.firstName}}</p>
@@ -39,7 +39,7 @@
             <img class="logo-update-button" src="https://cdn-icons-png.flaticon.com/512/5973/5973787.png" alt="update button">
         </a>
         <div class="card" [routerLink]="['/team-detail', team.id]">
-            <img [src]="team.logoUrl" onError="this.src ='assets/img-error404.jpg'" alt="team">
+            <img [src]="team.logoUrl" onError="this.src ='assets/404.jpg'" alt="team">
             <div class="card-text">
                 <p> Nom : {{team.name}}</p>
                 <p>{{team.budget}} Millions</p>

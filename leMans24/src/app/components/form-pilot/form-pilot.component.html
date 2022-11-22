@@ -61,8 +61,8 @@
     </fieldset>
 
     <fieldset>
-        <label for="team">Team *</label>
-        <select name="team" id="team" [(ngModel)]="teamId" #team="ngModel">
+        <label for="team">Ecurie *</label>
+        <select (change)="teamChange(team.value)" name="team" id="team" [(ngModel)]="teamId" #team="ngModel">
             <option *ngFor="let team of teamList" [value]="team.id" [selected]="team.id == teamId">
                 {{team.name}}
             </option>
@@ -71,6 +71,17 @@
             <small *ngIf="teamId == 0">Le nom de l'écurie est requis</small>
         </div>    
     </fieldset>
+
+    <fieldset>
+        <label for="car">Voiture </label>
+        <select name="car" id="car" [(ngModel)]="carId" #car="ngModel">
+            <option value="0">Aucune voiture</option>
+            <option *ngFor="let car of carList" [value]="car.id" [selected]="car.id == carId">
+                {{car.modelName}}
+            </option>
+        </select>
+    </fieldset>
+
 
     <div class = "btn">
         <button type="submit">{{textBtnSubmit}}</button>
