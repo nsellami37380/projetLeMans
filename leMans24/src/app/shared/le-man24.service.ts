@@ -89,7 +89,6 @@ export class LeMan24Service {
   private getData(): void {
     this.http.get<Team[]>(this.url + '/teams/all', this.requestOptions)
       .subscribe(teams => {
-        console.log(this.getJsonObject(teams));
         teams.forEach(team => {          
           this.browseTeam(team);
       });
@@ -139,7 +138,6 @@ export class LeMan24Service {
     let carId = 0;
     if (pilot.car)  {carId = pilot.car.id;}
     pilot.car = undefined;
-    console.log(this.getJsonObject(pilot));
     this.http.post<Pilot>(this.url + '/pilots/add/' + carId, pilot).subscribe({
       next: data => {
         this.pilotList.push(data);
@@ -231,8 +229,7 @@ export class LeMan24Service {
     });
   }
 
-  updateTeam(team: Team): void {
-    console.log(team);
+  updateTeam(team: Team): void {    
     team.carList = undefined;
     team.pilotList = undefined;
     team.sponsorList = undefined;

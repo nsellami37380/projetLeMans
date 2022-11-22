@@ -38,11 +38,12 @@ export class FormPilotComponent implements OnInit {
     this.carList = this.leMans24S.getCarsAvailable();
     this.route.paramMap.subscribe((param: ParamMap)=>{
       if (param.get('id') != null)
-      {
-        this.title = "Modifier un pilote";
+      {       
         this.id =  parseInt( param.get('id') as string);
         this.textBtnSubmit = "Modifier";
         this.pilot = this.leMans24S.getPilotById(this.id);
+        this.title = "Modifier le pilote " + this.pilot.firstName;
+        this.carList = this.leMans24S.getCarsAvailable(this.pilot.team?.id);
         if (this.pilot.car) this.carList.push(this.pilot.car);
         if (this.pilot.team) this.teamId = this.pilot.team.id;
         if (this.pilot.car) this.carId = this.pilot.car.id;
