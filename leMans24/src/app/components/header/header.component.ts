@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import {MenuItem} from 'primeng/api';
+import { ERole } from 'src/app/models/enum/ERole.enum';
+import { AuthService } from 'src/app/shared/auth.service';
 
 
 @Component({
@@ -12,10 +14,15 @@ export class HeaderComponent implements OnInit {
 
   menu: MenuItem[] = [];
   visibleSidebar1: boolean = false;
+  isAdmin: boolean = false;
 
-  constructor(private router: Router) {}
+  constructor(private router: Router,
+             private authS: AuthService) {}
 
   ngOnInit(): void {
+
+    this.isAdmin = this.authS.getAppUser().roleList.includes(ERole.ROLE_ADMIN)
+
     this.menu=[
       {
         label: 'Ajouter',

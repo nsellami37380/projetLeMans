@@ -5,7 +5,6 @@ import { Team } from "./team.model";
 export class Car{
 
     constructor(
-
         public id: number, 
         public carPhotoList: CarPhoto[],
         public modelName: string,
