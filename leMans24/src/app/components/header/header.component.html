@@ -22,7 +22,7 @@
                     <a [routerLink]="['/category', 'cars']" routerLinkActive="color-link-active">Voitures</a>
                 </li>
                 <li class="li-simple" id="login">
-                    <a [routerLink]="['/login']" routerLinkActive="color-link-active">Se connecter</a>
+                    <a [routerLink]="['/login']" routerLinkActive="color-link-active">{{button}}</a>
                 </li>
             </ul>
         </nav>
@@ -54,12 +54,12 @@
                 </ul>
 
                 <ul class="second-list">
-                    <li class="classic-button">
+                    <li *ngIf="isAdmin" class="classic-button">
                         <a><p-menubar [model]="menu"></p-menubar></a>
                     </li>
     
                     <li class="classic-button" id="classic-login">
-                        <a [routerLink]="['/login']" routerLinkActive="color-link-active">Se connecter</a>
+                        <a [routerLink]="['/login']" routerLinkActive="color-link-active">{{button}}</a>
                     </li>
                 </ul>
                 

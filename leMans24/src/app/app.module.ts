@@ -30,7 +30,7 @@ import { SponsorComponent } from './sponsor/sponsor.component';
 import { FormLoginComponent } from './components/form-login/form-login.component';
 import {InputTextModule} from 'primeng/inputtext';
 import {DatePipe} from '@angular/common';
-import { AuthInterceptor } from './core/interceptors/auth.interceptor';
+import { AuthInterceptor } from './core/auth.interceptor';
 
 
 
@@ -70,12 +70,12 @@ import { AuthInterceptor } from './core/interceptors/auth.interceptor';
     InputTextModule
   ],
   providers: [DatePipe,
+    
     {
       provide: HTTP_INTERCEPTORS,
-      useClass: AuthInterceptor,
-      multi: true
-    }
-  ],
+      useClass : AuthInterceptor,
+      multi : true
+    }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

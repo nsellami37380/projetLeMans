@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/shared/auth.service';
+import jwt_decode from 'jwt-decode';
+import { AppUser } from 'src/app/models/appUser.model';
 
 @Component({
   selector: 'app-form-login',
@@ -8,13 +10,31 @@ import { AuthService } from 'src/app/shared/auth.service';
 })
 export class FormLoginComponent implements OnInit {
 
-  username: string = "";
-  password: string = "";
+  username:string= "";
 
-  constructor(private authservice: AuthService) { }
+  password:string= "";
+
+  appUser: AppUser = new AppUser([], '',0)
+
+  userLoggedIn:boolean = false;
+
+  constructor(private authS:AuthService) { }
 
   ngOnInit(): void {
     
+  }
+
+  userLogin(){
+    this.authS.getAuth(this.username, this.password).subscribe((jwt) => {
+        localStorage.clear();
+        this.authS.assignAppuser(jwt.access_token);
+        localStorage.setItem("tokenId", jwt.access_token);
+     });
+  }
+
+
+  getUser(){
+    this.authS.getUserList().subscribe((data)=> console.log(data));
   }
 
 }
