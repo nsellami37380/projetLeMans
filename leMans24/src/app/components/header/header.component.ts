@@ -22,6 +22,11 @@ export class HeaderComponent implements OnInit {
   ngOnInit(): void {
 
     this.isAdmin = this.authS.getAppUser().roleList.includes(ERole.ROLE_ADMIN)
+    console.log(this.isAdmin);
+
+    this.authS.appUser$.subscribe(appuser => {
+      this.isAdmin = appuser.roleList.includes(ERole.ROLE_ADMIN)
+    })
 
     this.menu=[
       {

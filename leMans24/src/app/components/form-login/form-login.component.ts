@@ -24,13 +24,11 @@ export class FormLoginComponent implements OnInit {
   }
 
   userLogin(){
-    this.authS.getAuth(this.username, this.password).
-      subscribe((jwt)=>
-      {
-      this.authS.assignAppuser(jwt.access_token);
-      localStorage.clear();
-      localStorage.setItem("tokenId", jwt.access_token);
-  })
+    this.authS.getAuth(this.username, this.password).subscribe((jwt) => {
+        localStorage.clear();
+        this.authS.assignAppuser(jwt.access_token);
+        localStorage.setItem("tokenId", jwt.access_token);
+     });
   }
 
 
