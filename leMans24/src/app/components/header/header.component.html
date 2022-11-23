@@ -54,7 +54,7 @@
                 </ul>
 
                 <ul class="second-list">
-                    <li class="classic-button">
+                    <li *ngIf="isAdmin" class="classic-button">
                         <a><p-menubar [model]="menu"></p-menubar></a>
                     </li>
     
