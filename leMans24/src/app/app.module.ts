@@ -17,7 +17,7 @@ import { TeamDetailsComponent } from './components/team-details/team-details.com
 import { FormTeamComponent } from './components/form-team/form-team.component';
 import { FormPilotComponent } from './components/form-pilot/form-pilot.component';
 import { FormCarComponent } from './components/form-car/form-car.component';
-import {HttpClientModule} from '@angular/common/http';
+import {HttpClientModule, HTTP_INTERCEPTORS} from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import {DropdownModule} from 'primeng/dropdown';
 import {MenubarModule} from 'primeng/menubar';
@@ -30,6 +30,7 @@ import { SponsorComponent } from './sponsor/sponsor.component';
 import { FormLoginComponent } from './components/form-login/form-login.component';
 import {InputTextModule} from 'primeng/inputtext';
 import {DatePipe} from '@angular/common';
+import { AuthInterceptor } from './core/interceptors/auth.interceptor';
 
 
 
@@ -68,7 +69,13 @@ import {DatePipe} from '@angular/common';
     BrowserAnimationsModule,
     InputTextModule
   ],
-  providers: [DatePipe],
+  providers: [DatePipe,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
