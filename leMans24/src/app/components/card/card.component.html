@@ -1,9 +1,9 @@
 <div>
 
     <div *ngIf="url ==='cars'">
-        <img class="logo-delete-button" (click)="delete()" src="https://cdn-icons-png.flaticon.com/512/5974/5974771.png" alt="delete button">
+        <img *ngIf="isAdmin" class="logo-delete-button" (click)="delete()" src="https://cdn-icons-png.flaticon.com/512/5974/5974771.png" alt="delete button">
         <a [routerLink]="['/updateCar', car.id]">
-            <img class="logo-update-button" src="https://cdn-icons-png.flaticon.com/512/5973/5973787.png" alt="update button">
+            <img *ngIf="isAdmin" class="logo-update-button" src="https://cdn-icons-png.flaticon.com/512/5973/5973787.png" alt="update button">
         </a>
         <div [routerLink]="['/car-detail',car.id ]" class="card">
             <img [src]="car.carPhotoList[0].urlPhoto" onError="this.src ='assets/404.jpg'" alt="car">
@@ -18,9 +18,9 @@
     </div>
 
     <div *ngIf="url ==='pilots'">
-        <img class="logo-delete-button" (click)="delete()" src="https://cdn-icons-png.flaticon.com/512/5974/5974771.png" alt="delete button">
+        <img *ngIf="isAdmin" class="logo-delete-button" (click)="delete()" src="https://cdn-icons-png.flaticon.com/512/5974/5974771.png" alt="delete button">
         <a [routerLink]="['/updatePilot', pilot.id]">
-            <img class="logo-update-button" src="https://cdn-icons-png.flaticon.com/512/5973/5973787.png" alt="update button">
+            <img *ngIf="isAdmin" class="logo-update-button" src="https://cdn-icons-png.flaticon.com/512/5973/5973787.png" alt="update button">
         </a>
         <div class="card" [routerLink]="['/pilot-detail', pilot.id]">
             <img [src]="pilot.photoList[0].urlPhoto" onError="this.src ='assets/404.jpg'" alt="image pilot">
@@ -34,9 +34,9 @@
     </div>
 
     <div *ngIf="url ==='teams'">
-        <img class="logo-delete-button" (click)="delete()" src="https://cdn-icons-png.flaticon.com/512/5974/5974771.png" alt="delete button">
+        <img *ngIf="isAdmin" class="logo-delete-button" (click)="delete()" src="https://cdn-icons-png.flaticon.com/512/5974/5974771.png" alt="delete button">
         <a [routerLink]="['/updateTeam', team.id]">
-            <img class="logo-update-button" src="https://cdn-icons-png.flaticon.com/512/5973/5973787.png" alt="update button">
+            <img *ngIf="isAdmin" class="logo-update-button" src="https://cdn-icons-png.flaticon.com/512/5973/5973787.png" alt="update button">
         </a>
         <div class="card" [routerLink]="['/team-detail', team.id]">
             <img [src]="team.logoUrl" onError="this.src ='assets/404.jpg'" alt="team">

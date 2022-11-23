@@ -46,6 +46,12 @@ export class AuthService {
     localStorage.setItem("appUser", JSON.stringify(appUser))
   }
 
+  logOut(){
+    localStorage.clear();
+    let appUser = new AppUser([], '',0)
+    this.appUser$.next(appUser)
+  }
+
   getDecodedAccessToken(token: string): any {
     try {
       console.log(jwt_decode(token));
