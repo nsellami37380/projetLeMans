@@ -26,8 +26,6 @@ export class LeMan24Service {
     this.getData()
   }
 
-
-  // parcourir team
   private browseTeam(team: Team){
 
     if (!team.id) return;
@@ -131,8 +129,13 @@ export class LeMan24Service {
     pilot.car = undefined;
     this.http.post<Pilot>(this.url + '/pilots/add/' + carId, pilot).subscribe({
       next: data => {
-        this.pilotList.push(data);
 
+        if (!data.team?.id){
+          let teamId: any = data.team;
+          data.team = this.getTeamById(teamId);
+          this.pilotList.push(data);
+        }
+        
         this.router.navigate(['/container-list', "pilots"]);
       },
       error: error => { alert("Erreur " + error.message) }
@@ -163,7 +166,6 @@ export class LeMan24Service {
     this.http.delete<Pilot>(this.url + '/pilots/delete/' + id)
       .subscribe(() => {
         this.removeObjectWithId(this.pilotList,id);
-       // window.location.reload();
       })
   }
   removeObjectWithId(arr : Array<any>, id: number) {
