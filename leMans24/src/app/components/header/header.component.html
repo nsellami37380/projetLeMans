@@ -47,15 +47,15 @@
                 </li>
 
                 <ul class="first-list">
-                    <li class="classic-button">
+                    <li *ngIf="isConnected" class="classic-button">
                         <a [routerLink]="['/category', 'teams' ]" routerLinkActive="color-link-active">Écuries</a>
                     </li>
     
-                    <li class="classic-button">
+                    <li *ngIf="isConnected" class="classic-button">
                         <a [routerLink]="['/category', 'pilots']" routerLinkActive="color-link-active">Pilotes</a>
                     </li>
     
-                    <li class="classic-button">
+                    <li *ngIf="isConnected"  class="classic-button">
                         <a [routerLink]="['/category', 'cars']" routerLinkActive="color-link-active">Voitures</a>
                     </li>
                 </ul>
@@ -67,11 +67,11 @@
     
 
                     <li *ngIf="!isConnected" class="classic-button" id="classic-login">
-                        <a [routerLink]="['/login']" routerLinkActive="color-link-active">Se connecter</a>
+                        <a [routerLink]="['/login']" routerLinkActive="color-link-active">Connexion</a>
                     </li>
 
                     <li *ngIf="isConnected" class="classic-button" id="classic-logout">
-                        <a [routerLink]="['/home']" routerLinkActive="color-link-active" (click)="logOut()" >Se deconnecter</a>
+                        <a [routerLink]="['/home']" routerLinkActive="color-link-active" (click)="logOut()">Déconnexion</a>
                     </li>
                 </ul>
                 

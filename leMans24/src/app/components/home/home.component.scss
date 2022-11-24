@@ -177,3 +177,11 @@ p{
     }
 
 }
+.p-toast .p-toast-message.p-toast-message-warn {
+    background: #FFECB3;
+    border: solid #d9a300;
+    border-width: 0 0 0 6px;
+    color: #6d5100;
+    width: 150%;
+    height: 150px;
+}
