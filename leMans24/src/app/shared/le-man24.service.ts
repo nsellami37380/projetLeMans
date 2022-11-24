@@ -26,16 +26,6 @@ export class LeMan24Service {
     this.getData()
   }
 
-  headerDict = {
-    'Content-Type': 'application/json',
-    'Accept': 'application/json',
-    'Access-Control-Allow-Headers': 'Content-Type',
-  }
-
-  requestOptions = {
-    headers: new HttpHeaders(this.headerDict),
-  };
-
   // parcourir team
   private browseTeam(team: Team){
 
@@ -87,7 +77,7 @@ export class LeMan24Service {
   }
 
   private getData(): void {
-    this.http.get<Team[]>(this.url + '/teams/all', this.requestOptions)
+    this.http.get<Team[]>(this.url + '/teams/all')
       .subscribe(teams => {
         teams.forEach(team => {          
           this.browseTeam(team);
@@ -172,7 +162,6 @@ export class LeMan24Service {
     this.http.delete<Pilot>(this.url + '/pilots/delete/' + id)
       .subscribe(() => {
         this.removeObjectWithId(this.pilotList,id);
-       // window.location.reload();
       })
   }
   removeObjectWithId(arr : Array<any>, id: number) {
