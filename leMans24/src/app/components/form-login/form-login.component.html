@@ -5,7 +5,7 @@
     <label for="password">Mot de passe</label>
     <input type="text" name="password" id="password" [(ngModel)]="password">
 
-    <button type="submit"> Se connecter</button>
+    <button type="submit" (click)="userLogin()" [routerLink]="['/home']"> Se connecter</button>
     <button (click)="getUser()">Get user</button>
    </form>
    

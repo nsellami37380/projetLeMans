@@ -1,6 +1,6 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { AppUser } from '../models/appUser.model';
 import jwt_decode from 'jwt-decode';
 import { ERole } from '../models/enum/ERole.enum';
@@ -11,10 +11,17 @@ import { ERole } from '../models/enum/ERole.enum';
 export class AuthService {
 
   private readonly BASE_URL = "http://localhost:8080";
-
-  constructor(private http: HttpClient) { }
-
+  
   private appUser: AppUser = new AppUser([], '',0);
+  
+  appUser$: BehaviorSubject<AppUser> = new BehaviorSubject<AppUser>(new AppUser([], '',0));
+
+  constructor(private http: HttpClient) {
+    if(localStorage.getItem("appUser")){
+      const user = JSON.parse(localStorage.getItem("appUser") as string);
+      this.appUser$.next(user);
+    }
+   }
 
 
   getAuth(username: string, password:string): Observable<any>{
@@ -30,14 +37,24 @@ export class AuthService {
   }
 
   assignAppuser(token: string){
+    let appUser = new AppUser([], '',0)
     const jwtDecoded: any = jwt_decode(token);
-    this.appUser.roleList = [ERole.ROLE_ADMIN];
-    this.appUser.username = jwtDecoded.sub;
-    this.appUser.expiration = jwtDecoded.exp;
+    appUser.roleList = jwtDecoded.roles;
+    appUser.username = jwtDecoded.sub;
+    appUser.expiration = jwtDecoded.exp;
+    this.appUser$.next(appUser);
+    localStorage.setItem("appUser", JSON.stringify(appUser))
+  }
+
+  logOut(){
+    localStorage.clear();
+    let appUser = new AppUser([], '',0)
+    this.appUser$.next(appUser)
   }
 
   getDecodedAccessToken(token: string): any {
     try {
+      console.log(jwt_decode(token));
       return jwt_decode(token);
     } catch(Error) {
       return null;

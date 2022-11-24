@@ -1,8 +1,10 @@
 import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { Car } from 'src/app/models/car.model';
+import { ERole } from 'src/app/models/enum/ERole.enum';
 import { Pilot } from 'src/app/models/pilot.model';
 import { Team } from 'src/app/models/team.model';
+import { AuthService } from 'src/app/shared/auth.service';
 import { LeMan24Service } from 'src/app/shared/le-man24.service';
 
 @Component({
@@ -19,12 +21,15 @@ export class CardComponent implements OnInit, OnChanges{
 
   team: Team = new Team(0,'','',0,'',[],[],[]);
 
+  isAdmin: boolean = false;
+
   @Input()
   ptc : Car | Pilot | Team = this.car;
 
   constructor(
     private route: ActivatedRoute,
     private leMan24S: LeMan24Service,
+    private authS:AuthService,
     private router: Router) { }
   
   ngOnChanges(changes: SimpleChanges): void {
@@ -45,6 +50,10 @@ export class CardComponent implements OnInit, OnChanges{
     this.route.paramMap.subscribe((param: ParamMap)=>{
       this.url = param.get('var') as string;     
     })   
+
+    this.authS.appUser$.subscribe(appuser => {
+      this.isAdmin = appuser.roleList.includes(ERole.ROLE_ADMIN)
+    })
   }
 
   getParam(): string{
