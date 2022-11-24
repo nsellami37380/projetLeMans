@@ -15,22 +15,33 @@ export class HeaderComponent implements OnInit {
   menu: MenuItem[] = [];
   visibleSidebar1: boolean = false;
   isAdmin: boolean = false;
-  button: string = "Se Connecter";
+  isUser: boolean = false;
+  isManager: boolean = false;
+  username:string = "";
+  isConnected: boolean = false;
+  role:string ="";
 
   constructor(private router: Router,
              private authS: AuthService) {}
 
   ngOnInit(): void {
     this.isAdmin = this.authS.getAppUser().roleList.includes(ERole.ROLE_ADMIN)
-    console.log(this.isAdmin)
-    
-     
+    console.log(this.isAdmin);
+  
+
     this.authS.appUser$.subscribe(appuser => {
-      if(this.isAdmin = appuser.roleList.includes(ERole.ROLE_ADMIN))
-      {
-        this.button = "Se Déconnecter";
+      this.isAdmin = appuser.roleList.includes(ERole.ROLE_ADMIN)
+      this.isUser = appuser.roleList.includes(ERole.ROLE_USER)
+      this.isManager = appuser.roleList.includes(ERole.ROLE_MANAGER)
+      this.isConnected = appuser.username !='';
+      this.username = appuser.username;
+      if(this.isConnected && appuser.roleList.includes(ERole.ROLE_ADMIN)){
+        this.role = 'Administrateur';
+      }else if(this.isConnected && appuser.roleList.includes(ERole.ROLE_MANAGER)){
+        this.role = "Manager";
+      }else if(this.isConnected && appuser.roleList.includes(ERole.ROLE_USER)){
+        this.role = "";
       }
-      
     })
   
 
@@ -48,5 +59,11 @@ export class HeaderComponent implements OnInit {
               }],
        }
     ]
+
+ 
+  }
+
+  logOut(){
+    this.authS.logOut();
   }
 }
