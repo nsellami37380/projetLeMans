@@ -1,11 +1,21 @@
-   <form #myForm="ngForm" (ngSubmit)="myForm.valid && userLogin()">
-    <label for="username"> Nom d'utilisateur</label>
-    <input type="text" name="username" id="username" [(ngModel)]="username">
+<p-toast position="bottom-center">
+   <ng-template let-message pTemplate="message">
+      <div class="flex flex-column align-items-center" style="flex: 1" >
+         <p-progressSpinner [style]="{width: '50px', height: '50px'}"></p-progressSpinner>  
+          <div class="text-center">
+              <h4>{{message.summary}}</h4>
+              <p>{{message.detail}}</p>
+          </div>
+      </div>    
+  </ng-template>
+</p-toast>
 
-    <label for="password">Mot de passe</label>
-    <input type="text" name="password" id="password" [(ngModel)]="password">
+<form #myForm="ngForm" (ngSubmit)="myForm.valid && userLogin()">
+  <label for="username"> Nom d'utilisateur</label>
+  <input type="text" name="username" id="username" [(ngModel)]="username" />
 
-    <button type="submit" (click)="userLogin()" [routerLink]="['/home']"> Se connecter</button>
-    <button (click)="getUser()">Get user</button>
-   </form>
-   
+  <label for="password">Mot de passe</label>
+  <input type="text" name="password" id="password" [(ngModel)]="password" />
+  <button type="submit">Se Connecter</button>
+  <button (click)="getUser()">Get user</button>
+</form>

@@ -31,6 +31,9 @@ import { FormLoginComponent } from './components/form-login/form-login.component
 import {InputTextModule} from 'primeng/inputtext';
 import {DatePipe} from '@angular/common';
 import { AuthInterceptor } from './core/auth.interceptor';
+import {ToastModule} from 'primeng/toast';
+import {RippleModule} from 'primeng/ripple';
+import {ProgressSpinnerModule} from 'primeng/progressspinner';
 
 
 
@@ -67,7 +70,10 @@ import { AuthInterceptor } from './core/auth.interceptor';
     SidebarModule,
     ButtonModule,
     BrowserAnimationsModule,
-    InputTextModule
+    InputTextModule,
+    ToastModule,
+    RippleModule,
+    ProgressSpinnerModule,
   ],
   providers: [DatePipe,
     
