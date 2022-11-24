@@ -17,16 +17,41 @@ header{
     
 }
 
+.container-login-role{
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+}
 
+.login-role{
+    display: flex;
+    background-color: yellow;
+    justify-content: space-around;
+    padding: 0.8em;
+
+    position:relative;
+    width: 550px;
+    overflow:hidden;
+    background: yellow;
+    clip-path: polygon(
+      0 0%,
+      0% 0,
+      100% 0,
+      100% 0%,
+      100% 0%,
+      95% 100%,
+      5% 100%,
+      0% 0%,
+      0% 10%
+    )
+}
 
 .login-role p {
-    color: yellow;
+    color: black;
+    
     font-size: 20px;
     text-align:end;
     font-family: 'Montserrat', sans-serif;
-    margin-top: 1em;
-    margin-right: 2em;
-
 }
 
 .li-simple{
