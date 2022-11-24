@@ -15,6 +15,7 @@ export class AuthService {
   private appUser: AppUser = new AppUser([], '',0);
   
   appUser$: BehaviorSubject<AppUser> = new BehaviorSubject<AppUser>(new AppUser([], '',0));
+  isLoggedIn: boolean = false;
 
   constructor(private http: HttpClient) {
     if(localStorage.getItem("appUser")){
@@ -64,6 +65,8 @@ export class AuthService {
   getAppUser(): AppUser{
     return this.appUser;
   }
+
+  
 }
 
 

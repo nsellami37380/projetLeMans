@@ -26,7 +26,6 @@ export class LeMan24Service {
     this.getData()
   }
 
-  // parcourir team
   private browseTeam(team: Team){
 
     if (!team.id) return;

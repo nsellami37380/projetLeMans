@@ -81,3 +81,20 @@ button{
     margin-top: 1em;
     margin-bottom: 1em;
 }
+
+@keyframes p-progress-spinner-color {
+    100%,
+    0% {
+        stroke: #d62d20;
+    }
+    40% {
+        stroke: #0057e7;
+    }
+    66% {
+        stroke: #008744;
+    }
+    80%,
+    90% {
+        stroke: #ffa700;
+    }
+}
