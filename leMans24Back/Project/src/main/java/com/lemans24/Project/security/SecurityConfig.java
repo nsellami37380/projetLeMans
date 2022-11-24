@@ -50,9 +50,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/home").permitAll()
                 .antMatchers("/pilots/all").hasRole(ERole.USER.name())
                 .antMatchers("/pilots/**").hasRole(ERole.ADMIN.name())
-                /*.antMatchers("/pilots/update/{id}/{teamId}/{carId}").hasRole(ERole.ADMIN.name())
-                .antMatchers("/pilots/delete/{id}").hasRole(ERole.ADMIN.name())
-                .antMatchers("/pilots/add/{carId}").hasRole(ERole.ADMIN.name())*/
+                .antMatchers("/cars/all").hasRole(ERole.USER.name())
+                .antMatchers("/cars/**").hasRole(ERole.ADMIN.name())
+                .antMatchers("/teams/all").hasRole(ERole.USER.name())
+                .antMatchers("/teams/**").hasRole(ERole.ADMIN.name())
                 .antMatchers("/api/users/**").hasRole(ERole.USER.name())
                 .anyRequest()
                 .authenticated();
