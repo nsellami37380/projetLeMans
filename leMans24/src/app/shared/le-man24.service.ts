@@ -167,7 +167,6 @@ export class LeMan24Service {
     this.http.delete<Pilot>(this.url + '/pilots/delete/' + id)
       .subscribe(() => {
         this.removeObjectWithId(this.pilotList,id);
-       // window.location.reload();
       })
   }
   removeObjectWithId(arr : Array<any>, id: number) {

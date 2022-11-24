@@ -74,6 +74,8 @@ export class FormPilotComponent implements OnInit {
    }
    
   addPilot() {
+    this.pilot.firstName.trim()
+    
     if (this.teamId != 0) {
       this.pilot.team = this.leMans24S.getTeamById(this.teamId)
       if (this.carId > 0) {

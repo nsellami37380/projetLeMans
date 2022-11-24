@@ -30,7 +30,7 @@ public class Pilot {
     private String palmares;
     @Column(name = "bio", length = 6000)
     private String bio;
-    @OneToOne(cascade = CascadeType.ALL)
+    @OneToOne(cascade = CascadeType.DETACH)
     @JoinColumn(name = "car_id", referencedColumnName = "id")
     private Car car;
 
