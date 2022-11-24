@@ -2,8 +2,6 @@
     <p>Bienvenue {{username}}</p>
     <p>{{role}}</p>
 </div>
-
-
 <header>
 
         <img src="/assets/logo leMans.png" alt="Logo le Mans" class="logo" [routerLink]="['/home']" routerLinkActive="color-link-active">
@@ -28,14 +26,13 @@
                     <a [routerLink]="['/category', 'cars']" routerLinkActive="color-link-active">Voitures</a>
                 </li>
                 <li class="li-simple" id="login">
-                    <a [routerLink]="['/login']" routerLinkActive="color-link-active">Se connecter</a>
+                    <a [routerLink]="['/login']" routerLinkActive="color-link-active">Se Connecter</a>
                 </li>
             </ul>
         </nav>
     </p-sidebar>
     
     <p-button type="button" class="mr-2" (click)="visibleSidebar1 = true" icon="pi pi-bars"></p-button>
-
 
     <div class="classic-bar-container">
     
