@@ -34,6 +34,7 @@ import { AuthInterceptor } from './core/auth.interceptor';
 import {ToastModule} from 'primeng/toast';
 import {RippleModule} from 'primeng/ripple';
 import {ProgressSpinnerModule} from 'primeng/progressspinner';
+import { ContactComponent } from './contact/contact.component';
 
 
 
@@ -58,6 +59,7 @@ import {ProgressSpinnerModule} from 'primeng/progressspinner';
     PageNotFoundComponent,
     SponsorComponent,
     FormLoginComponent,
+    ContactComponent,
   ],
   imports: [
     BrowserModule,

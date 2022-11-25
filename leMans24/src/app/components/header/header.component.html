@@ -31,6 +31,9 @@
                 <li class="li-simple">
                     <a [routerLink]="['/category', 'cars']" routerLinkActive="color-link-active">Voitures</a>
                 </li>
+                <li *ngIf="!isAdmin" class="li-simple">
+                    <a [routerLink]="['/contact']" routerLinkActive="color-link-active"> Contact </a>
+                </li>
                 <li class="li-simple" id="login">
                     <a [routerLink]="['/login']" routerLinkActive="color-link-active">Se Connecter</a>
                 </li>
@@ -66,11 +69,14 @@
                 <ul class="second-list">
                     <li *ngIf="isAdmin" class="classic-button">
                         <a><p-menubar [model]="menu"></p-menubar></a>
+                    </li>    
+
+                    <li *ngIf="!isAdmin" class="classic-button" id="classic-logout">
+                        <a [routerLink]="['/contact']" routerLinkActive="color-link-active"> Contact </a>
                     </li>
-    
 
                     <li *ngIf="!isConnected" class="classic-button" id="classic-login">
-                        <a [routerLink]="['/login']" routerLinkActive="color-link-active">Connexion</a>
+                        <a [routerLink]="['/login']" routerLinkActive="color-link-active"> Connexion </a>
                     </li>
 
                     <li *ngIf="isConnected" class="classic-button" id="classic-logout">
