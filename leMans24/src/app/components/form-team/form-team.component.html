@@ -2,7 +2,6 @@
 
 <form #myForm="ngForm" (ngSubmit)="myForm.valid && addTeam()">
     <div id="my_fieldset">
-
         <fieldset>
             <label for="name"><span>*</span> Nom</label>
             <input type="text" name="name" id="name" [(ngModel)]="team.name" #name="ngModel" required>
@@ -46,6 +45,5 @@
         </div>
 
         <p><span>*</span> Champs obligatoire</p>
-
     </div>   
 </form>

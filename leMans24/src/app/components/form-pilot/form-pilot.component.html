@@ -26,18 +26,28 @@
         
         <!-- IMAGE -->
         <fieldset>
-            <label for="pictureselectImage"><span>*</span> Image</label>
+
+            <label for=""><span>*</span> Image principale</label>
+
+            <input type="file" #selectMainImage (change)="selectMainfile($event)" id="image-choice" accept=".jpg, .png">
+           <img [src]="urlList[0]" width="100px"   (click)="selectMainImage.click()"  height="100px" alt="image principale du pilote" required>
+
+
+            <label for="">Autres images</label>
             <input type="file" #selectImage (change)="selectfile($event)" accept=".jpg, .png">
             <button type="button" (click)="selectImage.click()" id="button-img">Ajouter image</button>
             <div id="ListImgCar">
-                <div *ngFor="let img of pilot.photoList" class="dimg">
-                    <img [src]=img.urlPhoto width="100px"  height="100px" alt=""> 
+                <div *ngFor="let url of urlList | slice:1" class="dimg">
+                    <img class="logo-delete-button" (click)=deleteImg(url) src="https://cdn-icons-png.flaticon.com/512/5974/5974771.png" alt="delete button">
+                    <img [src]=url width="100px"  height="100px" alt=""> 
+
                 </div> 
             </div>
             <div *ngIf="myForm.submitted">
                 <small *ngIf="!pilot.photoList[0]">Au moins une image est requise</small>
             </div>  
         </fieldset>
+
 
 
         <!-- DATE DE NAISSANCE -->

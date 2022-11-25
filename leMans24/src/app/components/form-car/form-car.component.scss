@@ -1,3 +1,15 @@
+#button-mainImg{
+    display: none;
+}
+.logo-delete-button{
+    position: relative;
+    width: 30px;
+    height: 30px;
+    left: 40%;
+    top: 50px;
+    z-index: 1;
+}
+
 h1{
     font-size: 50px;
     margin-bottom: 2em;
