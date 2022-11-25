@@ -1,1 +1,23 @@
-/* You can add global styles to this file, and also import other style files */
+@import "primeflex/primeflex.css";
+
+*{
+    margin: 0;
+}
+
+body{
+    background-color: black;
+}
+
+small{
+    color: red;
+    font-size: 1em;
+    font-family: 'Montserrat', sans-serif;
+}
+
+input, textarea, img, select, button{
+    margin-bottom: 0.5em;
+}
+
+span{
+    color: red;
+}

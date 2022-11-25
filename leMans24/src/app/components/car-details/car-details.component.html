@@ -1,1 +1,17 @@
-<p>car-details works!</p>
+    <h1>Détail de la voiture</h1>
+    <div class="car-title">
+        <p-carousel [value]="carPics" [autoplayInterval]="3000" class="caRousel" 
+            [responsiveOptions]="responsiveOptions" [circular]="true">
+            <ng-template let-carToDisplay pTemplate="item">
+                    <img [src]="carToDisplay.urlPhoto" alt="">           
+            </ng-template>
+        </p-carousel>
+        <div class="model-name">
+            <h2 id="idModelName">{{car.modelName}}</h2> 
+        </div> 
+    </div>
+    <div class="text-detail">
+        <h3>Description de la voiture</h3>
+        <p>{{car.bio}}</p>
+    </div>
+

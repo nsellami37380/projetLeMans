@@ -1,1 +1,49 @@
-<p>card works!</p>
+<div>
+
+    <div *ngIf="url ==='cars'">
+        <img *ngIf="isAdmin" class="logo-delete-button" (click)="delete()" src="https://cdn-icons-png.flaticon.com/512/5974/5974771.png" alt="delete button">
+        <a [routerLink]="['/updateCar', car.id]">
+            <img *ngIf="isAdmin" class="logo-update-button" src="https://cdn-icons-png.flaticon.com/512/5973/5973787.png" alt="update button">
+        </a>
+        <div [routerLink]="['/car-detail',car.id ]" class="card">
+            <img [src]="car.carPhotoList[0].urlPhoto" onError="this.src ='assets/404.jpg'" alt="car">
+          
+            <div class="card-text">
+                <p> Nom du modele : {{car.modelName}}</p>
+                <p> Puissance : {{car.power}} chevaux</p>
+                <p>Vitesse max : {{car.maxSpeed}} km/h</p>
+            </div>
+
+        </div>
+    </div>
+
+    <div *ngIf="url ==='pilots'">
+        <img *ngIf="isAdmin" class="logo-delete-button" (click)="delete()" src="https://cdn-icons-png.flaticon.com/512/5974/5974771.png" alt="delete button">
+        <a [routerLink]="['/updatePilot', pilot.id]">
+            <img *ngIf="isAdmin" class="logo-update-button" src="https://cdn-icons-png.flaticon.com/512/5973/5973787.png" alt="update button">
+        </a>
+        <div class="card" [routerLink]="['/pilot-detail', pilot.id]">
+            <img [src]="pilot.photoList[0].urlPhoto" onError="this.src ='assets/404.jpg'" alt="image pilot">
+
+            <div class="card-text">
+                <p> Prénom : {{pilot.firstName}}</p>
+                <p> Nom : {{pilot.lastName}}</p>
+                <p> Date de naissance : {{pilot.dateOfBirth}}</p>
+            </div>
+        </div>
+    </div>
+
+    <div *ngIf="url ==='teams'">
+        <img *ngIf="isAdmin" class="logo-delete-button" (click)="delete()" src="https://cdn-icons-png.flaticon.com/512/5974/5974771.png" alt="delete button">
+        <a [routerLink]="['/updateTeam', team.id]">
+            <img *ngIf="isAdmin" class="logo-update-button" src="https://cdn-icons-png.flaticon.com/512/5973/5973787.png" alt="update button">
+        </a>
+        <div class="card" [routerLink]="['/team-detail', team.id]">
+            <img [src]="team.logoUrl" onError="this.src ='assets/404.jpg'" alt="team">
+            <div class="card-text">
+                <p> Nom : {{team.name}}</p>
+                <p>{{team.budget}} Millions</p>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,1 +1,111 @@
-<p>form-pilot works!</p>
+<h1>{{title}}</h1>
+
+<form #myForm="ngForm" (ngSubmit)="myForm.valid && addPilot()">
+    
+    <div id="my_fieldset">
+
+        <!-- PRENOM -->
+        <fieldset>
+            <label for="firstname"><span>*</span> Prénom</label>
+            <input type="text" name="firstname" id="firstname" [(ngModel)]="pilot.firstName" #firstname="ngModel" required>
+            <div *ngIf="firstname.errors && myForm.submitted">
+                <small *ngIf="firstname.errors?.['required']">Le prénom du pilote est requis</small>
+            </div>    
+        </fieldset>
+
+
+        <!-- NOM -->
+        <fieldset>
+            <label for="lastname"><span>*</span> Nom</label>
+            <input type="text" name="lastname" id="lastname" [(ngModel)]="pilot.lastName" #lastname="ngModel" required>
+            <div *ngIf="lastname.errors && myForm.submitted">
+                <small *ngIf="lastname.errors?.['required']">Le nom du pilote est requis</small>
+            </div>    
+        </fieldset>
+
+        
+        <!-- IMAGE -->
+        <fieldset>
+            <label for="pictureselectImage"><span>*</span> Image</label>
+            <input type="file" #selectImage (change)="selectfile($event)" accept=".jpg, .png">
+            <button type="button" (click)="selectImage.click()" id="button-img">Ajouter image</button>
+            <div id="ListImgCar">
+                <div *ngFor="let img of pilot.photoList" class="dimg">
+                    <img [src]=img.urlPhoto width="100px"  height="100px" alt=""> 
+                </div> 
+            </div>
+            <div *ngIf="myForm.submitted">
+                <small *ngIf="!pilot.photoList[0]">Au moins une image est requise</small>
+            </div>  
+        </fieldset>
+
+
+        <!-- DATE DE NAISSANCE -->
+        <fieldset>
+            <label for="birthday"><span>*</span> Date de naissance</label>
+            <input type="date" name="birthday" id="birthday" [(ngModel)]="pilotBirth" 
+            #birthday="ngModel"  required>
+            <div *ngIf="birthday.errors && myForm.submitted">
+                <small *ngIf="birthday.errors?.['required']">La date de naissance du pilote est requise</small>
+            </div>    
+        </fieldset>
+
+
+        <!-- TAILLE -->
+        <fieldset>
+            <label for="height">Taille</label>
+            <input type="number" name="height" id="height" [(ngModel)]="pilot.height" #height="ngModel" >
+        </fieldset>
+
+
+        <!-- BIOGRAPHIE -->
+        <fieldset class="bio">
+            <label for="bio"><span>*</span> Biographie</label>
+            <textarea name="bio" id="bio" cols="130" rows="10" [(ngModel)]="pilot.bio" #bio="ngModel" required></textarea>
+            <div *ngIf="bio.errors && myForm.submitted">
+                <small *ngIf="bio.errors?.['required']">La biograpie du pilote est requise</small>
+            </div>    
+        </fieldset>
+
+
+        <!-- PALMARES -->
+        <fieldset class="palmares">
+            <label for="palmares">Palmares</label>
+            <textarea  name="palmares" id="palmares" cols="130" rows="10"  [(ngModel)]="pilot.palmares" #palmares="ngModel"></textarea>
+        </fieldset>
+
+
+        <!-- ÉCURIE -->
+        <fieldset>
+            <label for="team"><span>*</span> Écurie</label>
+            <select (change)="teamChange(team.value)" name="team" id="team" [(ngModel)]="teamId" #team="ngModel">
+                <option *ngFor="let team of teamList" [value]="team.id" [selected]="team.id == teamId">
+                    {{team.name}}
+                </option>
+            </select>
+            <div *ngIf="myForm.submitted">
+                <small *ngIf="teamId == 0">Le nom de l'écurie est requis</small>
+            </div>    
+        </fieldset>
+
+
+        <!-- VOITURE -->
+        <fieldset>
+            <label for="car">Voiture </label>
+            <select name="car" id="car" [(ngModel)]="carId" #car="ngModel">
+                <option value="0">Aucune voiture</option>
+                <option *ngFor="let car of carList" [value]="car.id" [selected]="car.id == carId">
+                    {{car.modelName}}
+                </option>
+            </select>
+        </fieldset>
+
+
+        <div class = "btn">
+            <button type="submit">{{textBtnSubmit}}</button>
+        </div>
+
+        <p><span>*</span> Champs obligatoire</p>
+
+    </div>   
+</form>

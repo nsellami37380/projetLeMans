@@ -1,1 +1,60 @@
-<p>team-details works!</p>
+<h1>Detail de l'écurie</h1>
+
+<section class="container-team">
+
+    <h2>{{team.name}}</h2>
+
+    <div class="content-team">
+
+        <img [src]="team.logoUrl" alt="logo team"> 
+
+        <div class="text-team">
+            <h3>Biographie de l'écurie :</h3>
+            <p>{{team.bio}}</p>
+
+            <h3>Budget :</h3>
+            <p>{{team.budget}} Millions €</p>
+        </div>
+
+    </div>
+</section>
+
+<section class="container-list-pilot">
+   <h2>Liste de pilotes</h2>
+   <!-- <div class="container-carousel">
+</div>  -->
+<p-carousel [value]="pilotListFilteredByTeam" [autoplayInterval]="3000" class="caRousel" 
+    [responsiveOptions]="responsiveOptions" [circular]="true">
+    <ng-template let-pilot pTemplate="item">
+        <div class="label">
+            <label [for]="pilot.id" >{{pilot.firstName}} {{pilot.lastName}}</label>
+        </div>
+        <div class="idImg">
+            <img [id]="pilot.id" [src]="pilot.photoList[0].urlPhoto" alt="image pilot">   
+        </div>
+    </ng-template>
+</p-carousel>
+   
+
+</section>
+
+<section class="container-list-car">
+    <h2>Liste de voitures</h2>
+
+    <!-- <div class="container-carousel">
+        
+    </div> -->
+    <p-carousel [value]="carListFilteredByTeam" [autoplayInterval]="3000" class="caRousel" 
+        [responsiveOptions]="responsiveOptions" [circular]="true">
+        <ng-template let-car pTemplate="item">
+            <div class="label">
+                <label [for]="car.id" >{{car.modelName}}</label>
+            </div>
+            <div class="idImg">
+              <img id= "car.id" [src]="car.carPhotoList[0].urlPhoto" alt="">
+            </div>  
+        </ng-template>
+    </p-carousel>
+   
+
+</section>

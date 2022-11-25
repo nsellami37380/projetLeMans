@@ -1,0 +1,23 @@
+h1{
+    font-size: 50px;
+    margin-bottom: 2em;
+    color: white;
+    text-align: center;
+    text-decoration: underline;
+    text-decoration-color: yellow;
+    text-underline-offset: 0.5em;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.container{
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+@media screen and (max-width: 426px){
+    h1{
+        font-size: 30px;
+        text-underline-offset: 0.3em; 
+    }
+}
