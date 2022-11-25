@@ -47,8 +47,14 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
         http.authorizeRequests()
                 .antMatchers("/login").permitAll()
-                .antMatchers("/api/users/**").hasRole(ERole.ADMIN.name())
-                .antMatchers("/api/roles/**").hasRole(ERole.USER.name())
+                .antMatchers("/home").permitAll()
+                .antMatchers("/pilots/all").hasRole(ERole.USER.name())
+                .antMatchers("/pilots/**").hasRole(ERole.ADMIN.name())
+                .antMatchers("/cars/all").hasRole(ERole.USER.name())
+                .antMatchers("/cars/**").hasRole(ERole.ADMIN.name())
+                .antMatchers("/teams/all").hasRole(ERole.USER.name())
+                .antMatchers("/teams/**").hasRole(ERole.ADMIN.name())
+                .antMatchers("/api/users/**").hasRole(ERole.USER.name())
                 .anyRequest()
                 .authenticated();
 

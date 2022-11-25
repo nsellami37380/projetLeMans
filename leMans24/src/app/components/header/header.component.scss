@@ -17,16 +17,41 @@ header{
     
 }
 
+.container-login-role{
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+}
 
+.login-role{
+    display: flex;
+    background-color: yellow;
+    justify-content: space-around;
+    padding: 0.8em;
+
+    position:relative;
+    width: 550px;
+    overflow:hidden;
+    background: yellow;
+    clip-path: polygon(
+      0 0%,
+      0% 0,
+      100% 0,
+      100% 0%,
+      100% 0%,
+      95% 100%,
+      5% 100%,
+      0% 0%,
+      0% 10%
+    )
+}
 
 .login-role p {
-    color: yellow;
+    color: black;
+    
     font-size: 20px;
     text-align:end;
     font-family: 'Montserrat', sans-serif;
-    margin-top: 1em;
-    margin-right: 2em;
-
 }
 
 .li-simple{
@@ -110,7 +135,7 @@ a:hover{
         text-align: center;
     }
 
-    .menu-ajouter{
+    .menu-add{
         margin-bottom: 1em;
         border-bottom: 1px solid rgb(50, 50, 50);
         width: 130px;
@@ -219,8 +244,7 @@ a:hover{
         flex-direction: row;
         justify-content: space-around;
         width: 150%;
-        min-width: 400px;
-        max-width: 700px;
+        max-width: 400px;
     }
 
     .second-list{
@@ -241,6 +265,20 @@ a:hover{
     a{
         font-size: 24px;
     }
+}
 
 
+@media screen and (max-width: 1320px){
+
+    a{
+        font-size: 18px;
+        min-width: 50px;
+        max-width: 200px;
+    }
+
+    .second-list{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+    }
 }

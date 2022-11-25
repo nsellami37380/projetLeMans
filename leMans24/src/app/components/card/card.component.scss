@@ -1,12 +1,16 @@
 img{
-    width: 300px;
+    width: 100%;
     height: 300px;
+    object-fit: contain;
 }
 
 .card{
     border: 4px solid yellow;
     border-radius: 10px;
     margin-bottom: 3em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 p{
@@ -21,6 +25,7 @@ p{
     border-top: 4px solid yellow;
     background-color: black;
     padding-bottom: 5px;
+    width: 100%;
 }
 
 .logo-delete-button{

@@ -9,22 +9,26 @@ h1{
     text-decoration: underline;
     text-decoration-color: yellow;
     text-underline-offset: 0.5em;
+    margin-bottom: 0.5em;
 }
 
-.container-connection{
+.container-contact{
     display: flex;
     justify-content: center;
     align-items: center;
 
     font-family: 'Montserrat', sans-serif;
     height: 600px;
+    
 }
 
-.connection{
+.contact{
     display: flex;
     width: 500px;
-    height: 450px;
+    height: 650px;
     border: 1px solid rgb(50,50,50);
+    margin-top: 5em;
+    padding-top: 1em;
 
     
     flex-direction: column;
@@ -80,21 +84,4 @@ button{
     padding: 0.25em;
     margin-top: 1em;
     margin-bottom: 1em;
-}
-
-@keyframes p-progress-spinner-color {
-    100%,
-    0% {
-        stroke: #d62d20;
-    }
-    40% {
-        stroke: #0057e7;
-    }
-    66% {
-        stroke: #008744;
-    }
-    80%,
-    90% {
-        stroke: #ffa700;
-    }
 }
