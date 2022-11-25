@@ -55,10 +55,6 @@ label{
     text-underline-offset: 0.5em;
 }
 
-span{
-    color: red;
-}
-
 img{
     width: 100%;
     height: 100%;
@@ -90,6 +86,10 @@ button{
     font-size: 18px;
     font-family: 'Montserrat', sans-serif;
     transition: 0.3s ease-in-out;
+}
+
+#button-img{
+    width: 100px;
 }
 
 button:hover{
@@ -124,9 +124,7 @@ textarea{
     align-items: center;
 }
 
-#button-img{
-    width: 100px;
-}
+
 
 
 @media screen and (max-width:480px){

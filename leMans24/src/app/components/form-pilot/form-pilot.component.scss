@@ -11,12 +11,17 @@ h1{
 
 #my_fieldset{
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    flex-wrap: wrap;
     align-items: center;
     border: 5px solid yellow;
+    justify-content: space-around;
+
+    padding: 3em;
     margin-left: 8em;
     margin-right: 8em;
 }
+
 fieldset{
     width: 50%;
     margin-bottom: 1em;
@@ -25,6 +30,15 @@ fieldset{
     display: flex;
     flex-direction: column;
     align-items: center;
+
+    width: 300px;
+    height: 100%;
+
+    margin: 20px;
+}
+
+.bio, .palmares{
+    width: 100%;
 }
 
 label{
@@ -48,18 +62,24 @@ img{
     background-position: center;
     background-size: cover;
 }
+
 textarea{
     width: 100%;
 }
 
+label{
+   min-width: 200px;
+}
+
 input{
    width: 50%;
+   min-width: 200px;
    height: 30px;
    font-size: 18px;
 }
 
 select{
-    width: 50%;
+    width: 70%;
     height: 30px;
     font-size: 18px;
 }
@@ -67,8 +87,11 @@ select{
 input[type=number]{
     width: 5em;
 }
+
 button{
     width: 30%;
+    min-width: 100px;
+    max-width: 200px;
     height: 70px;
     font-size: 18px;
     font-family: 'Montserrat', sans-serif;
@@ -100,10 +123,18 @@ input[type=file]{
     align-items: center;
 }
 
+@media screen and (max-width:330px){
 
-@media screen and (max-width:1024px){
-    #button-img{
-        width: 100px;
+    h1{
+        padding: 1em;
+    }
+
+    button{
+        width: 40%;
+    }
+
+    fieldset{
+        margin: 0;
     }
 }
 
@@ -111,7 +142,6 @@ input[type=file]{
     h1{
         font-size: 30px;
         text-underline-offset: 0.3em;
-    
     }
     
     #my_fieldset{
@@ -141,20 +171,69 @@ input[type=file]{
         width: 30%;
     }
     
+}
+
+@media screen and (max-width:620px){
+    h1{
+        font-size: 30px;
+        text-underline-offset: 0.3em;
+
     }
-    
-    @media screen and (max-width:780px){
-        label {
-            font-size: 20px;
-        }
-    
-        h1{
-            font-size: 30px;
-        }
+
+    #my_fieldset{
+        margin-left: 2em;
+        margin-right: 2em;
     }
-    
-    @media screen and (max-width:330px){
-        button{
-            width: 40%;
-        }
+
+    label{
+        font-size: 18px;
+        text-underline-offset: 0.3em;
     }
+
+    input{
+        width: 100%;
+    }
+
+    img{
+        margin: 0;
+    }
+
+    #ListImgCar{
+        display: flex;
+        flex-direction: column;
+    }
+
+    button{
+        width: 30%;
+    }
+
+}
+    
+@media screen and (max-width:780px){
+    label {
+        font-size: 20px;
+    }
+
+    h1{
+        font-size: 30px;
+    }
+}
+
+@media screen and (max-width:1px){
+    #button-img{
+        width: 100px;
+    }
+
+    fieldset{
+        margin: 0;
+    }
+}
+
+@media screen and (min-width:1122px) {
+    fieldset{
+        width: 300px;
+        height: 250px;
+
+        border: 1px solid rgb(50, 50, 50);
+    }
+}
