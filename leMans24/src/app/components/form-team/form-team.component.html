@@ -2,45 +2,50 @@
 
 <form #myForm="ngForm" (ngSubmit)="myForm.valid && addTeam()">
     <div id="my_fieldset">
-    <fieldset>
-        <label for="name">Nom *</label>
-        <input type="text" name="name" id="name" [(ngModel)]="team.name" #name="ngModel" required>
-        <div *ngIf="name.errors && myForm.submitted">
-            <small *ngIf="name.errors?.['required']">Le nom de l'écurie' est requis</small>
-        </div>    
-    </fieldset>
 
-     <fieldset>
-        <label for="picture">Image *</label>
-        <div class="dimg">
-            <input type="file" #selectImage (change)="selectfile($event)" id="image-choice" accept=".jpg, .png">
-            <button type="button" (click)="selectImage.click()" id="button-img">Ajouter image</button>
-            <img [src]="url" width="100px"   (click)="selectImage.click()"  height="100px" alt="image de l'écurie" required> 
-        </div>        
-        <div *ngIf="myForm.submitted">
-            <small *ngIf="!team.logoUrl">Une image est requise</small>
-        </div>        
-    </fieldset> 
+        <fieldset>
+            <label for="name"><span>*</span> Nom</label>
+            <input type="text" name="name" id="name" [(ngModel)]="team.name" #name="ngModel" required>
 
-    <fieldset>
-        <label for="budget">Budget *</label>
-        <input type="number" name="budget" id="budget" [(ngModel)]="team.budget" #budget="ngModel" required min="1">
-        <div *ngIf="budget.errors && myForm.submitted">
-            <small *ngIf="budget.errors?.['min']">Le Budget est requis</small>
-        </div>    
-    </fieldset>
+            <div *ngIf="name.errors && myForm.submitted">
+                <small *ngIf="name.errors?.['required']">Le nom de l'écurie' est requis</small>
+            </div>
+        </fieldset>
 
-    <fieldset>
-        <label for="story">Histoire *</label>
-        <textarea name="story" id="story" cols="130" rows="10" [(ngModel)]="team.bio" #story="ngModel" required></textarea>
-        <div *ngIf="story.errors && myForm.submitted">
-            <small *ngIf="story.errors?.['required']">L'histoire est requise'</small>
-        </div>    
-    </fieldset>
+        <fieldset class="image">
+            <label for="picture"><span>*</span> Image</label>
 
-    <div class = "btn">
-        <button type="submit">{{textBtnSubmit}}</button>
-    </div>
+            <div class="dimg">
+                <input type="file" #selectImage (change)="selectfile($event)" id="image-choice" accept=".jpg, .png">
+                <img [src]="url" width="100px"   (click)="selectImage.click()"  height="100px" alt="image de l'écurie" required> 
+            </div>   
+
+            <div *ngIf="myForm.submitted">
+                <small *ngIf="!team.logoUrl">Une image est requise</small>
+            </div>        
+        </fieldset>
+
+        <fieldset class="budget">
+            <label for="budget"><span>*</span> Budget</label>
+            <input type="number" name="budget" id="budget" [(ngModel)]="team.budget" #budget="ngModel" required min="1">
+            <div *ngIf="budget.errors && myForm.submitted">
+                <small *ngIf="budget.errors?.['min']">Le Budget est requis</small>
+            </div>    
+        </fieldset>
+
+        <fieldset class="bio">
+            <label for="story"><span>*</span> Histoire</label>
+            <textarea name="story" id="story" cols="130" rows="10" [(ngModel)]="team.bio" #story="ngModel" required></textarea>
+            <div *ngIf="story.errors && myForm.submitted">
+                <small *ngIf="story.errors?.['required']">L'histoire est requise'</small>
+            </div>    
+        </fieldset>
+
+        <div class = "btn">
+            <button type="submit">{{textBtnSubmit}}</button>
+        </div>
+
+        <p><span>*</span> Champs obligatoire</p>
 
     </div>   
 </form>
