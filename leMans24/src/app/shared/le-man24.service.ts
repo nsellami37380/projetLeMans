@@ -28,9 +28,7 @@ export class LeMan24Service {
 
   // parcourir team
   private browseTeam(team: Team){
-
     if (!team.id) return;
-
     this.teamList.push(team);
     if (team.pilotList) this.browsePilotList(team.pilotList);
     if (team.carList) this.browseCarList(team.carList);

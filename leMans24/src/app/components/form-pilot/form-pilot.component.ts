@@ -14,7 +14,6 @@ import { DatePipe } from '@angular/common'
 })
 export class FormPilotComponent implements OnInit {
 
-  url:String='';
   pilot: Pilot = new Pilot (0,[],'','',(new Date),0,'','',undefined, undefined);
   teamList:Team[] = [];
   carList: Car[] = [];
@@ -22,6 +21,7 @@ export class FormPilotComponent implements OnInit {
   teamId:number = 0;
   carId: number = 0;
   textBtnSubmit: string = "Ajouter";
+  urlList: string[] = [];
   file !: File;
   title : String = "Ajouter un pilote";
   pilotBirth: string = '';
@@ -34,7 +34,6 @@ export class FormPilotComponent implements OnInit {
 
   ngOnInit(): void {
     this.teamList = this.leMans24S.getTeamList();
-   // this.carList = this.leMans24S.getCarList();
     this.carList = this.leMans24S.getCarsAvailable();
     this.route.paramMap.subscribe((param: ParamMap)=>{
       if (param.get('id') != null)
@@ -46,9 +45,11 @@ export class FormPilotComponent implements OnInit {
         this.carList = this.leMans24S.getCarsAvailable(this.pilot.team?.id);
         if (this.pilot.car) this.carList.push(this.pilot.car);
         if (this.pilot.team) this.teamId = this.pilot.team.id;
-        if (this.pilot.car) this.carId = this.pilot.car.id;
-        
-        this.url = this.pilot.photoList[0].urlPhoto;
+        if (this.pilot.car) this.carId = this.pilot.car.id;        
+        this.pilot.photoList.forEach(pilotPhoto => {
+          this.urlList.push(pilotPhoto.urlPhoto);
+          
+        });
         this.pilotBirth = this.datepipe.transform(this.pilot.dateOfBirth, 'yyyy-MM-dd') as string;
       }
   })
@@ -64,14 +65,32 @@ export class FormPilotComponent implements OnInit {
       reader.readAsDataURL(event.target.files[0])
       this.file = event.target.files[0];
       reader.onload = (event: any) => {
-        this.url = event.target.result;
-  
-       this.pilot.photoList.unshift(new PilotPhoto("/assets/" + this.file.name));   
+       this.pilot.photoList.push(new PilotPhoto("/assets/" + this.file.name));   
+       this.urlList.push(event.target.result)  
        this.leMans24S.uploadFile(this.file) 
-
       }  
     }
    }
+
+   selectMainfile(event: any): void{
+    if (event.target.files){
+      const reader = new FileReader();
+      reader.readAsDataURL(event.target.files[0])
+      this.file = event.target.files[0];
+      reader.onload = (event: any) => {
+        this.urlList.unshift(event.target.result);  
+        this.pilot.photoList.unshift(new PilotPhoto("/assets/" + this.file.name));   
+        this.leMans24S.uploadFile(this.file) 
+      }  
+    }
+   }
+
+   deleteImg(img: string){
+    this.urlList = this.urlList.filter(url =>url != img);
+    this.pilot.photoList = this.pilot.photoList.filter(pilotPhoto =>pilotPhoto.urlPhoto != img);
+   
+  }
+
    
   addPilot() {
     this.pilot.firstName.trim()
