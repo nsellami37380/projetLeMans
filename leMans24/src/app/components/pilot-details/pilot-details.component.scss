@@ -34,17 +34,21 @@ img{
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    display: inline-block;
     color: white;
     font-family: 'Montserrat', sans-serif;
     border: 5px solid yellow;
     border-radius: 10px;
     background-color: black;
+    text-align: center;
+    vertical-align: auto;
 }
 
 p{
     margin-bottom: 1em;
     margin-left: 2em;
     margin-right: 2em;
+    word-break: break-all;
 }
 
 h3{
