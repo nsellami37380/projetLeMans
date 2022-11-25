@@ -1,8 +1,3 @@
-
-textarea{
-    width: 100%;
-}
-
 h1{
     font-size: 50px;
     margin-bottom: 2em;
@@ -16,12 +11,17 @@ h1{
 
 #my_fieldset{
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    flex-wrap: wrap;
     align-items: center;
     border: 5px solid yellow;
+    justify-content: space-around;
+
+    padding: 3em;
     margin-left: 8em;
     margin-right: 8em;
 }
+
 fieldset{
     width: 50%;
     margin-bottom: 1em;
@@ -30,7 +30,25 @@ fieldset{
     display: flex;
     flex-direction: column;
     align-items: center;
+
+    width: 300px;
+    height: 100%;
+
+    margin: 20px;
 }
+
+.bio{
+    width: 100%;
+
+    textarea{
+        width: 100%;
+    }
+}
+
+
+
+
+
 input[type=file][_ngcontent-nul-c55] {
     width: 100%;
     flex-wrap: wrap;
@@ -74,12 +92,14 @@ img{
 
 input{
    width: 50%;
+   min-width: 100px;
    height: 30px;
    font-size: 18px;
 }
 
 select{
     width: 50%;
+    min-width: 100px;
     height: 30px;
     font-size: 18px;
 }
@@ -89,6 +109,8 @@ input[type=number]{
 }
 button{
     width: 20%;
+    min-width: 100px;
+    max-width: 200px;
     height: 70px;
     font-size: 18px;
     font-family: 'Montserrat', sans-serif;
@@ -113,45 +135,54 @@ input[type=file]{
 }   
 
 
-@media screen and (max-width:1024px){
-    #button-img{
-        width: 100px;
+@media screen and (max-width:330px){
+
+    h1{
+        padding: 1em;
+    }
+
+    button{
+        width: 40%;
+    }
+
+    fieldset{
+        margin: 0;
     }
 }
 
-@media screen and (max-width:450px){
-h1{
-    font-size: 30px;
-    text-underline-offset: 0.3em;
+@media screen and (max-width:620px){
+    h1{
+        font-size: 30px;
+        text-underline-offset: 0.3em;
 
-}
+    }
 
-#my_fieldset{
-    margin-left: 2em;
-    margin-right: 2em;
-}
+    #my_fieldset{
+        margin-left: 2em;
+        margin-right: 2em;
+    }
 
-label{
-    font-size: 18px;
-    text-underline-offset: 0.3em;
-}
+    label{
+        font-size: 18px;
+        text-underline-offset: 0.3em;
+    }
 
-input{
-    width: 100%;
-}
+    input{
+        width: 100%;
+    }
 
-img{
-    margin: 0;
-}
+    img{
+        margin: 0;
+    }
 
-#ListImgCar{
-    display: flex;
-    flex-direction: column;
-}
+    #ListImgCar{
+        display: flex;
+        flex-direction: column;
+    }
 
-button{
-    width: 30%;
-}
+    button{
+        width: 30%;
+    }
 
 }
 
@@ -163,12 +194,22 @@ button{
     h1{
         font-size: 30px;
     }
-}
 
-@media screen and (max-width:330px){
-    button{
-        width: 40%;
+    #modelName{
+        width: 100%;
+    }
+
+    #button-img{
+        width: 100px;
     }
 }
 
+@media screen and (min-width:1122px) {
+    
+    fieldset{
+        width: 300px;
+        height: 250px;
 
+        border: 1px solid rgb(50, 50, 50);
+    }
+}
