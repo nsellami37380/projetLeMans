@@ -47,7 +47,7 @@
                         <div class="container-dimg">
                             <div *ngFor="let url of urlList | slice:1" class="dimg">
                                 <img class="logo-delete-button" (click)=deleteImg(url) src="https://cdn0.iconfinder.com/data/icons/flat-security-icons/512/close.png" alt="delete button">
-                                <img class="pilot-img" [src]=url width="100px"  height="100px" alt="image du pilote"> 
+                                <img class="pilot-img" [src]=url width="100px"  height="100px" alt="Image du pilote"> 
                             </div>
                         </div>
                     </div>
@@ -56,8 +56,6 @@
                         <small *ngIf="!pilot.photoList[0]">Au moins une image est requise</small>
                     </div>
                 </div>
-
-                
             </div>
         </fieldset>
 

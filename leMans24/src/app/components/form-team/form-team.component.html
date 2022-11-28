@@ -2,6 +2,8 @@
 
 <form #myForm="ngForm" (ngSubmit)="myForm.valid && addTeam()">
     <div id="my_fieldset">
+
+        <!-- NOM DE L'ÉCURIE -->
         <fieldset>
             <label for="name"><span>*</span> Nom</label>
             <input type="text" name="name" id="name" [(ngModel)]="team.name" #name="ngModel" required>
@@ -11,19 +13,26 @@
             </div>
         </fieldset>
 
-        <fieldset class="image">
+        <!-- IMAGES -->
+        <fieldset class="container-images">
+
             <label for="picture"><span>*</span> Image</label>
 
-            <div class="dimg">
-                <input type="file" #selectImage (change)="selectfile($event)" id="image-choice" accept=".jpg, .png">
-                <img [src]="url" width="100px"   (click)="selectImage.click()"  height="100px" alt="image de l'écurie" required> 
-            </div>   
+            <div class="images">
+                <div class="main-image">
+                    <input type="file" #selectImage (change)="selectfile($event)" id="image-choice" accept=".jpg, .png">
+                    <img id="image" [src]="url" width="100px"   (click)="selectImage.click()"  height="100px" alt="image de l'écurie" required (onerror)="hideImage()">
+                
+                    <div *ngIf="myForm.submitted">
+                        <small *ngIf="!team.logoUrl">Une image est requise</small>
+                    </div>
+                </div>
+            </div>
 
-            <div *ngIf="myForm.submitted">
-                <small *ngIf="!team.logoUrl">Une image est requise</small>
-            </div>        
         </fieldset>
 
+
+        <!-- BUDGET -->
         <fieldset class="budget">
             <label for="budget"><span>*</span> Budget</label>
             <input type="number" name="budget" id="budget" [(ngModel)]="team.budget" #budget="ngModel" required min="1">
@@ -32,6 +41,8 @@
             </div>    
         </fieldset>
 
+
+        <!-- BIOGRAPHIE -->
         <fieldset class="bio">
             <label for="story"><span>*</span> Histoire</label>
             <textarea name="story" id="story" cols="130" rows="10" [(ngModel)]="team.bio" #story="ngModel" required></textarea>

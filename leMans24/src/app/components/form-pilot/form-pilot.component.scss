@@ -64,7 +64,6 @@ h2{
     text-underline-offset: 0.5em;
 }
 
-
 .container-images{
     display: flex;
     width: 100%;
@@ -313,8 +312,6 @@ input[type=file]{
 @media screen and (min-width:1122px) {
     fieldset{
         width: 300px;
-        height: 400px;
-
         border: 1px solid rgb(50, 50, 50);
     }
 }

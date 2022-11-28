@@ -60,4 +60,8 @@ export class FormTeamComponent implements OnInit {
 
   }
 
+  hideImage() {
+    document.getElementById("image")!.style.display="none";
+  }
+
 }
