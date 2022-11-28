@@ -7,6 +7,8 @@ import {
   HttpErrorResponse
 } from '@angular/common/http';
 import { catchError, Observable, throwError } from 'rxjs';
+import { AuthService } from '../shared/auth.service';
+import { Router } from '@angular/router';
 
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
@@ -30,7 +32,9 @@ export class AuthInterceptor implements HttpInterceptor {
       .pipe(
         catchError((err:HttpErrorResponse) =>{
           if(err.status === 401){
-            return throwError(()=> new Error ("Pas autorisé"))
+            if(err.error.is_token_expired) {
+              return throwError(() => new Error("Vous avez été déconnecté"));
+            } 
           }
           if(err.status === 403){
             return throwError(()=> new Error ("Pas autorisé car il manque les infos de connexion"))

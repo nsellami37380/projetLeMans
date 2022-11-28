@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/shared/auth.service';
-import jwt_decode from 'jwt-decode';
 import { AppUser } from 'src/app/models/appUser.model';
 import { MessageService } from 'primeng/api';
 import { Router } from '@angular/router';
@@ -9,7 +8,6 @@ import { Router } from '@angular/router';
   selector: 'app-form-login',
   templateUrl: './form-login.component.html',
   styleUrls: ['./form-login.component.scss'],
-  providers: [MessageService],
 })
 export class FormLoginComponent implements OnInit {
   username: string = '';
