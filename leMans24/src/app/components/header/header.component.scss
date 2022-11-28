@@ -7,11 +7,8 @@ nav{
 
 header{
     display: flex;
-    background-color: black;
-    border-bottom: 1px solid rgb(50, 50, 50);
     justify-content: space-between;
-    padding: 2em;
-    margin-bottom: 3em;
+    padding: 0 2em;
     width: 100%;
     align-items: center;
     
@@ -54,6 +51,13 @@ header{
     font-family: 'Montserrat', sans-serif;
 }
 
+.login-role-swapped {
+    background: transparent;
+    p {
+        color: transparent;
+    }
+}
+
 .li-simple{
     padding-top: 1em;
 }
@@ -69,11 +73,10 @@ ul{
 }
 
 a{
-    font-size: 24px;
+    font-size: 18px;
     text-decoration: none;
     color: white;
-    font-family: 'Montserrat', sans-serif;
-    min-width: 158px;
+    margin: 0 1em;
 }
 
 .classic-login a{
@@ -86,7 +89,6 @@ li{
 }
 
 li:hover{
-    transform: scale(1.1);
     transition: 0.3s ease-in-out;
 }
 
@@ -155,7 +157,7 @@ a:hover{
             background-color: transparent;
         }
         .pi-bars{
-            font-size: 1em;
+            font-size: 2em;
         }
         .p-menubar .p-menubar-root-list  .p-menuitem  .p-menuitem-link .p-menuitem-text {
             font-size: 18px;
@@ -179,8 +181,9 @@ a:hover{
     }
 
     .logo{
-        width: 100px;
-        height: 70px;
+        width: 80px;
+        height: 50px;
+        margin: 1em 0;
     }
     
     a{
@@ -196,7 +199,7 @@ a:hover{
         }
 
         .pi-bars{
-            color: yellow;
+            color: white;
         }
 
         .p-sidebar-right{
@@ -225,9 +228,10 @@ a:hover{
 
         .classic-bar{
             display: flex;
-            justify-content: space-around;
+            justify-content: space-between;
             align-items: center;
-    
+            margin-left: 3em;
+        
             .classic-button{
                 display: flex;
             }
@@ -242,28 +246,26 @@ a:hover{
     .first-list{
         display: flex;
         flex-direction: row;
-        justify-content: space-around;
-        width: 150%;
-        max-width: 400px;
+        justify-content: unset;
+        padding-left: 0;
+        width: fit-content;
     }
 
     .second-list{
         display: flex;
         flex-direction: row;
-        justify-content: space-around;
+        justify-content:  flex-end;
         width: 300%;
         max-width: 400px;
-        margin-right: 40px;
     }
 
     .logo{
         width: 100px;
         height: 70px;
-        margin-left: 1em;
     }
     
-    a{
-        font-size: 24px;
+    #classic-login {
+        margin-left: 1em;
     }
 }
 
@@ -274,11 +276,16 @@ a:hover{
         font-size: 18px;
         min-width: 50px;
         max-width: 200px;
+        display: flex;
+        align-items: center;
+        i {
+            margin-left: .5em;
+        }
     }
 
     .second-list{
         display: flex;
         flex-direction: row;
-        justify-content: space-around;
+        justify-content: flex-end;
     }
 }
