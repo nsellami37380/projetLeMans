@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { MessageService } from 'primeng/api';
 import { ContactForm } from '../models/contactForm.model';
 import { EmailService } from '../shared/email.service';
 
@@ -13,7 +14,7 @@ export class ContactComponent implements OnInit {
   contactForm: ContactForm = new ContactForm('', '', '', '');
 
   constructor(private route: Router,
-    private emailS: EmailService) { }
+    private emailS: EmailService, private messageService: MessageService) { }
 
   ngOnInit(): void {
   }
@@ -22,9 +23,16 @@ export class ContactComponent implements OnInit {
     
     this.emailS.sendEmail(this.contactForm).subscribe((email) => {      
       // todo GB faire un toast 
-      alert(email.status)
-       this.route.navigate(["/home"]);
+      this.messageService.add({
+        severity: 'success',
+        summary: email.status,
+        detail: 'Redirection en cours...',
+      });
+
+       this.route.navigate(['/home']);
     });
+
+   
 
   }
 }
