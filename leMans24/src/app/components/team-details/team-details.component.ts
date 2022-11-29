@@ -44,7 +44,9 @@ export class TeamDetailsComponent implements OnInit {
     this.route.paramMap.subscribe((params: ParamMap ) => {
       this.teamId=parseInt(params.get("id")as string)
       if(this.teamId){
+        this.leMans24S.getData$().subscribe(()  =>  {
         this.team=this.leMans24S.getTeamById(this.teamId);
+        })
       }
 
 

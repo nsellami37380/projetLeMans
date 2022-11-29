@@ -109,4 +109,8 @@ export class FormPilotComponent implements OnInit {
         this.leMans24S.addPilot(this.pilot);
     }
   }
+
+  getPlaceholder(event: Event) {
+    (event.target as HTMLImageElement).src="/assets/pilot-img-main.png"
+   }
 }

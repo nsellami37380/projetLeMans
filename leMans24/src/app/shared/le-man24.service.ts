@@ -69,6 +69,10 @@ export class LeMan24Service {
     });
   }
 
+  public getData$(): Observable<Team[]>{
+    return this.http.get<Team[]>(this.url + '/teams/all')
+  } 
+
   public getData(): void {
 
     this.http.get<Team[]>(this.url + '/teams/all')

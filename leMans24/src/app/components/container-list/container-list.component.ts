@@ -28,7 +28,8 @@ export class ContainerListComponent implements OnInit {
     private leMan24S: LeMan24Service) { }
 
   ngOnInit(): void {
-    this.getList();
+    this.leMan24S.getData$().subscribe(()  =>  this.getList())
+    
   }
 
   getList(): void {

@@ -59,6 +59,10 @@ label{
 }
 input{
     width: 250px;
+    &:hover {
+        border: 1px solid yellow
+    }
+
 }
 
 span{
@@ -70,16 +74,26 @@ p{
 }
 
 button{
-    background-color: yellow;
-    color: #000;
+    background-color: rgb(0, 0, 0);
+    color: rgb(253, 253, 253);
     border: none;
     font-size: 25px;
-
     width: 100%;
-
     padding: 0.25em;
     margin-top: 1em;
     margin-bottom: 1em;
+    border: 1px solid yellow;
+    
+    &:hover {
+        cursor: pointer;
+        transition: all 0.3s ease-in-out;
+        background-color: yellow;
+        color: rgb(0, 0, 0);
+        transition: all 0.3s ease-in-out;
+        i {
+            transform: translateX(2px);
+        }
+    }
 }
 
 @keyframes p-progress-spinner-color {

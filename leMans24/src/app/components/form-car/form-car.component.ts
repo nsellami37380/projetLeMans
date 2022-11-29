@@ -91,4 +91,8 @@ export class FormCarComponent implements OnInit {
     else
       this.leman24S.addCar(this.car);
  }
+
+ getPlaceholder(event: Event) {
+  (event.target as HTMLImageElement).src="/assets/car-img-main.png"
+ }
 }
