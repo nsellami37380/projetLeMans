@@ -41,7 +41,6 @@ export class ContainerListComponent implements OnInit {
         } else if (this.url === 'cars') {
           this.title = "Listes des voitures";
           this.ptcList = this.leMan24S.getCarList();
-        //  this.leMan24S.getJsonObject(this.ptcList);
         } else if (this.url === 'teams') {
           this.title = "Listes des écuries";
           this.ptcList = this.leMan24S.getTeamList()

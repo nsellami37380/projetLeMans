@@ -12,7 +12,7 @@
 </div>
 <header>
 
-    <img src="/assets/logo leMans.png" alt="Logo le Mans" class="logo" [routerLink]="['/home']"
+    <img src="/assets/logoLemans24.png" alt="Logo le Mans" class="logo" [routerLink]="['/home']"
         routerLinkActive="color-link-active">
 
 
@@ -55,15 +55,15 @@
             <ul class="first-list">
                 <!-- TODO : Au click, si pas connecté, toast "veuillez vous connecter pour accéder" + redirection vers page login -->
                 <li class="classic-button">
-                    <a [routerLink]="['/category', 'teams' ]" routerLinkActive="color-link-active">Écuries</a>
+                    <a [routerLink]= " isConnected ? ['/category', 'teams' ] : null" routerLinkActive="color-link-active" (click)="ToastAndRedirectIsNotConnected()">Écuries</a>
                 </li>
 
                 <li class="classic-button">
-                    <a [routerLink]="['/category', 'pilots']" routerLinkActive="color-link-active">Pilotes</a>
+                    <a [routerLink]=" isConnected ? ['/category', 'pilots'] : null" routerLinkActive="color-link-active" (click)="ToastAndRedirectIsNotConnected()">Pilotes</a>
                 </li>
 
                 <li class="classic-button">
-                    <a [routerLink]="['/category', 'cars']" routerLinkActive="color-link-active">Voitures</a>
+                    <a [routerLink]="isConnected ? ['/category', 'cars'] : null" routerLinkActive="color-link-active" (click)="ToastAndRedirectIsNotConnected()">Voitures</a>
                 </li>
             </ul>
 

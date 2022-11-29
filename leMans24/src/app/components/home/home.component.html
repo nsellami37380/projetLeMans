@@ -40,19 +40,18 @@
         <div>
             <h3>Écuries</h3>
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure, accusamus dicta, nesciunt reprehenderit.</p>
-            <a [routerLink]="['/category', 'teams' ]">Accéder <i class="pi pi-arrow-circle-right"></i></a>
+            <a [routerLink]=" isConnected ? ['/category', 'teams' ] : null" (click)="ToastAndRedirectIsNotConnected()">Accéder <i class="pi pi-arrow-circle-right"></i></a>
         </div>
         <div>
             <h3>Pilotes</h3>
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure, accusamus dicta, nesciunt reprehenderit.</p>
-            <a [routerLink]="['/category', 'pilots' ]">Accéder <i class="pi pi-arrow-circle-right"></i></a>
+            <a [routerLink]=" isConnected ? ['/category', 'pilots' ] : null" (click)="ToastAndRedirectIsNotConnected()">Accéder <i class="pi pi-arrow-circle-right"></i></a>
         </div>
         <div>
             <h3>Voitures</h3>
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure, accusamus dicta, nesciunt reprehenderit.</p>
-            <a [routerLink]="['/category', 'cars' ]">Accéder <i class="pi pi-arrow-circle-right"></i></a>
+            <a [routerLink]="isConnected ? ['/category', 'cars' ] : null" (click)="ToastAndRedirectIsNotConnected()">Accéder <i class="pi pi-arrow-circle-right"></i></a>
         </div>
-        <!-- TODO : Au click, si pas connecté, toast "veuillez vous connecter pour accéder" + redirection vers page login -->
 
     </div>
 </section>

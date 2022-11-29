@@ -20,8 +20,7 @@ export class ContactComponent implements OnInit {
 
   emailSend() {
     
-    this.emailS.sendEmail(this.contactForm).subscribe((email) => {      
-      // todo GB faire un toast 
+    this.emailS.sendEmail(this.contactForm).subscribe((email) => {       
       alert(email.status)
        this.route.navigate(["/home"]);
     });

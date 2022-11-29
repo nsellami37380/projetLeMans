@@ -1,7 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { NavigationStart, Router } from '@angular/router';
-import { MenuItem } from 'primeng/api';
-import { filter } from 'rxjs';
+import { MenuItem} from 'primeng/api';
 import { ERole } from 'src/app/models/enum/ERole.enum';
 import { AuthService } from 'src/app/shared/auth.service';
 
@@ -82,4 +81,9 @@ export class HeaderComponent implements OnInit {
   logOut() {
     this.authS.logOut();
   }
+
+  ToastAndRedirectIsNotConnected(){
+    this.authS.ToastAndRedirectIsNotConnected();
+  }
+
 }

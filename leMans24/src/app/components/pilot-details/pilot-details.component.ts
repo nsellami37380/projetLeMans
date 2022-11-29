@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, ParamMap } from '@angular/router';
-import { iif } from 'rxjs';
 import { Car } from 'src/app/models/car.model';
 import { Pilot } from 'src/app/models/pilot.model';
 import { Team } from 'src/app/models/team.model';
@@ -37,12 +36,6 @@ export class PilotDetailsComponent implements OnInit {
         if(this.pilot.team) this.team = this.leMan24S.getTeamById(this.pilot.team?.id);
       }
     })
-
-    //this.leMan24S.getData();
-    //  this.leMan24S.pilotList$.subscribe(pilotListUpdated => {
-    //    console.log(pilotListUpdated);
-    // })
-
   }
 
 }
