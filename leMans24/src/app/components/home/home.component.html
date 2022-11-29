@@ -12,24 +12,92 @@
 <!-- SECTION 1 -->
 <section class="landing-section">
     <h2 id="anchor">Présentation du circuit</h2>
+
     <div>
         <img src="/assets/car-landing-1.png" alt="Voiture 1" class="landing-img">
-        <p>Le circuit des 24 Heures, en forme longue circuit des 24 Heures du Mans, parfois appelé « circuit de la Sarthe » de manière officieuse, situé au sud de la ville du Mans et sur la commune de Mulsanne, dans la Sarthe en France, est un circuit de course automobile non permanent utilisé par la plus célèbre des courses d'endurance, les 24 Heures du Mans, organisée par l'Automobile Club de l'Ouest (ACO) depuis 1923.</p>
+
+        <div class="text-circuit">
+
+            <div class="head-text">
+                Un circuit mythique, des voitures d’exceptions et un déchaînement d'adrénaline.
+            </div>
+
+            <p>
+                Fleuron du sport mécanique français, les 24h du Mans, représentent l’une des courses les plus emblématiques du sport auto, associant vitesse et endurance.
+            </p>
+
+            <div class="info">
+                60 voitures, 13,626 kilomètres, 24 heures
+            </div>
+
+            <p>
+                Construit sous sa forme actuelle en 1965, l’évènement existe depuis 1923. Empreint d’une notoriété internationale, les 24h du Mans accumulent records et légendes. L'un des circuits automobiles les plus longs du monde.
+            </p>
+
+            <div class="info">
+                La plus ancienne course d’endurance active au monde
+            </div>
+        </div>
     </div>
+
     <div class="flex-swapped">
-        <img src="assets/car-landing-2.png" alt="Voiture 2" class="landing-img">
-        <p>Il est aussi utilisé par les voitures de course anciennes lors du Mans Classic qui a lieu une fois tous les deux ans ainsi que par la Michelin Le Mans Cup. L'origine du circuit est lié au Grand Prix automobile de France 19062 et aux courses effectuées dès 1884 sur la célèbre ligne droite des Hunaudières par l'Union Vélocipédique de la Sarthe lors desquelles s'affrontaient les frères Bollée. Il partage avec le circuit Bugatti les stands et une brève portion de piste depuis le virage du raccordement jusqu'au virage de la chapelle.</p>
+
+        <div>
+            <img src="assets/car-landing-2.png" alt="Voiture 2" class="landing-img">
+
+            <div class="text-circuit"> 
+                
+                <p>
+                    Le Mans a vécu des hauts et des bas, il a vu des photos d’arrivée, de terribles incidents (dont l’accident de 1955), des records de vitesse battus à plusieurs reprises et de véritables mastodontes automobiles.
+                </p>
+
+                <div class="info">
+                    Vitesse moyen 225 km/h
+                    <br>
+                    Vitesse record de 407 km/h
+                </div>
+                
+                <p>
+                    Le Mans est aussi l’occasion pour les constructeurs de tester et confirmer diverses innovations technologiques. Freins à disques, antibrouillards, jantes, phares à LED/Laser et bien sûr l’aérodynamisme. Tout a été validé lors des 24h, a tel point que même les ponts et chaussés profitent du circuit pour confirmer de nouveaux revêtements.
+                </p>
+
+                <div class="info">
+                    Les trois quart du circuit utilisent des portions routières fermées pour l’occasion
+                </div>
+                
+                <p>
+                    Comprendre Le Mans, c’est d’abord comprendre l’histoire de la course automobile française et européen.
+                </p>
+
+            </div>
+        </div>
     </div> 
 </section>
 
 
 <!-- SECTION 2 -->
 <section class="landing-section">
-   <h2>Organisation de la course</h2>
-   <div>
-       <img src="https://www.bmc-moto.com/uploaded/circuits/circuits_trace17.svg" alt="circuit du mans">
-       <p>Lorsque Le Mans se met à l'heure de la course, c'est plus d'une semaine d'événements qui s’enchaînent. Cela commence avec l'élection de Miss 24 Heures du Mans, puis se poursuit par la journée test et les deux journées de vérifications administratives et techniques, dont le traditionnel pesage des véhicules sur la place de la République11. </p>
+    <h2>Organisation de la course</h2>
+
+    <div class="">
+        <img src="https://www.bmc-moto.com/uploaded/circuits/circuits_trace17.svg" alt="circuit du mans">
+
+        <div class="text-side-circuit" >
+            <p>
+                Lorsque Le Mans se met à l'heure de la course, c'est plus d'une semaine d'événements qui s’enchaînent. Cela commence avec l'élection de Miss 24 Heures du Mans, puis se poursuit par la journée test et les deux journées de vérifications administratives et techniques, dont le traditionnel pesage des véhicules sur la place de la République.
+            </p>
+
+            <div class="info">
+                Quelques chiffres : 
+                <br>
+                24h <br> 248 000 litres d’essence, 11 000 pneus, 1 000 journalistes, 70 jets d’affaire, 400 policiers et gendarmes, sans oublié 260 000 personnes
+            </div>
+        </div>
+
     </div>
+
+    
+
     <p>Une séance de signature d'autographes par les pilotes est organisée devant les stands, alors que les concurrents finissent la préparation des voitures qui sont exposées au public.</p>       
 </section>
 
@@ -39,17 +107,21 @@
     <div class="row">
         <div>
             <h3>Écuries</h3>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure, accusamus dicta, nesciunt reprehenderit.</p>
+            <p>Découvrez l'ensemble des écuries en course.
+                <br> Offrer les meilleurs conditions à vos pilotes pour arracher la victoire.  
+            </p>
             <a [routerLink]=" isConnected ? ['/category', 'teams' ] : null" (click)="ToastAndRedirectIsNotConnected()">Accéder <i class="pi pi-arrow-circle-right"></i></a>
         </div>
         <div>
             <h3>Pilotes</h3>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure, accusamus dicta, nesciunt reprehenderit.</p>
+            <p>Découvrer les différents pilotes sur la grille de départ. 
+                <br> Munissez vous des meilleurs pilotes et affronter ceux de vos concurrents.</p>
             <a [routerLink]=" isConnected ? ['/category', 'pilots' ] : null" (click)="ToastAndRedirectIsNotConnected()">Accéder <i class="pi pi-arrow-circle-right"></i></a>
         </div>
         <div>
             <h3>Voitures</h3>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure, accusamus dicta, nesciunt reprehenderit.</p>
+            <p>Découvrer les véhicules prêt à démarrer. 
+                <br> Booster vos engins, faites rugire les moteurs et brûler la gomme !</p>
             <a [routerLink]="isConnected ? ['/category', 'cars' ] : null" (click)="ToastAndRedirectIsNotConnected()">Accéder <i class="pi pi-arrow-circle-right"></i></a>
         </div>
 
