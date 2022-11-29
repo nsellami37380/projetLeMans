@@ -26,16 +26,17 @@ export class PilotDetailsComponent implements OnInit {
 
 
   ngOnInit(): void {
-
+ 
     this.route.paramMap.subscribe((param: ParamMap)=>{
       this.id = parseInt(param.get("id") as string);
-      if(this.id){ 
+      if(this.id){
+        this.leMan24S.getData$().subscribe(()  =>  {
         this.pilot = this.leMan24S.getPilotById(this.id);
       
          if(this.pilot.car)  this.car = this.leMan24S.getCarById(this.pilot.car?.id);
       
         if(this.pilot.team) this.team = this.leMan24S.getTeamById(this.pilot.team?.id);
-      }
+      })}
     })
 
     //this.leMan24S.getData();

@@ -49,11 +49,13 @@ export class CarDetailsComponent implements OnInit {
 
       this.id = parseInt(param.get('id') as string);
       if(this.id){
-        this.leman24S.getData();
+        this.leman24S.getData$().subscribe(()  =>  {
         this.car = this.leman24S.getCarById(this.id);
         this.carPics = this.leman24S.getCarById(this.car.id).carPhotoList;
         this.setFont();  
-     }    
+      })
+     
+      }    
     });
 
 
