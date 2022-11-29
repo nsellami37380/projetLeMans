@@ -1,5 +1,9 @@
-<app-header></app-header>
-<div>
-    <router-outlet></router-outlet>
-</div>
+<app-header 
+    [ngStyle]="{'background-color': percentageScrolled > threshold ? 'black' : ''}"
+    [percentageScrolled]="percentageScrolled"
+    [threshold]="threshold"
+></app-header>
+
+<router-outlet></router-outlet>
+
 <app-footer></app-footer>

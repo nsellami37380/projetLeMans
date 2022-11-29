@@ -1,7 +1,18 @@
 @import "primeflex/primeflex.css";
+@import url('https://fonts.googleapis.com/css2?family=Prompt:wght@100;400;700&display=swap');
 
+:root {
+    --border: rgb(50, 50, 50);
+}
 *{
-    margin: 0;
+    margin: 0;   
+}
+html {
+    scroll-behavior: smooth;
+}
+
+html, button {
+    font-family: 'Prompt', sans-serif;
 }
 
 body{
@@ -20,4 +31,8 @@ input, textarea, img, select, button{
 
 span{
     color: red;
+}
+
+.page-container {
+    padding-top: 150px;
 }

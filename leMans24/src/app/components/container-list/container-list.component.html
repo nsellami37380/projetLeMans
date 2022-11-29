@@ -1,9 +1,11 @@
-<h1>{{title}}</h1>
-<app-search-bar (sendSearchToParent)="filterList($event)"> </app-search-bar>
-<div >    
-    <div class="container">
-        <div *ngFor="let ptc of $any(newPtcList) ">
-            <app-card [ptc]="ptc"></app-card>
+<section class="page-container">
+    <h1>{{title}}</h1>
+    <app-search-bar (sendSearchToParent)="filterList($event)"> </app-search-bar>
+    <div>
+        <div class="container">
+            <div *ngFor="let ptc of $any(newPtcList) ">
+                <app-card [ptc]="ptc"></app-card>
+            </div>
         </div>
     </div>
-</div>
+</section>
