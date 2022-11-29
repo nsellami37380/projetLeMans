@@ -1,8 +1,10 @@
 <h1>{{title}}</h1>
 
 <form #myForm="ngForm" (ngSubmit)="myForm.valid && addCar()">
+
     <div id="my_fieldset">
 
+        <!-- MODEL -->
         <fieldset>
             <label for="modelName"><span>*</span> Modèle</label>
             <input type="text" name="modelName" id="modelName" [(ngModel)]="car.modelName" #modelName="ngModel" required>
@@ -11,48 +13,74 @@
             </div>    
         </fieldset>
 
-        <fieldset>
-            <label for=""><span>*</span> Image principale</label>
 
-            <input type="file" #selectMainImage (change)="selectMainfile($event)" id="image-choice" accept=".jpg, .png">
-            <img [src]="urlList[0]" width="100px"   (click)="selectMainImage.click()"  height="100px" alt="image principale du pilote" required>
+        <!-- IMAGES -->
+        <fieldset class="container-images">
 
+            <label for=""><span>*</span> Images</label>
 
-            <label for="">Autres images</label>
+            <div class="images">
+                <div class="main-image">
+                    <h2><span>*</span> Image principale</h2>
+                    <input type="file" #selectMainImage (change)="selectMainfile($event)" id="image-choice" accept=".jpg, .png">
+                    <img [src]="urlList[0]" width="100px"   (click)="selectMainImage.click()"  height="100px" alt="image principale du pilote" required>
+                </div>
 
-            <input type="file" #selectImage (change)="selectfile($event)" accept=".jpg, .png">
-            <button type="button" (click)="selectImage.click()" id="button-img">Ajouter image</button>
-            <div id="ListImgCar">
-                <div *ngFor="let url of urlList | slice:1" class="dimg">
-                    <img class="logo-delete-button" (click)=deleteImg(url) src="https://cdn-icons-png.flaticon.com/512/5974/5974771.png" alt="delete button">
-                    <img [src]=url width="100px"  height="100px" alt="Image d'une voiture"> 
-                </div> 
+                <div class="option-images">
+                    <h2>D'autres images ?</h2>
+
+                    <input type="file" #selectImage (change)="selectfile($event)" accept=".jpg, .png">
+
+                    <button type="button" (click)="selectImage.click()" id="button-img">Ajouter image</button>
+
+                    <div id="ListImgCar">
+                        <div class="container-dimg">
+                            <div *ngFor="let url of urlList | slice:1" class="dimg">
+                                <img class="car-img" [src]=url width="100px"  height="100px" alt="Image d'une voiture">
+                                <div class="container-delete">
+                                    <img class="logo-delete-button" (click)=deleteImg(url) src="https://cdn0.iconfinder.com/data/icons/flat-security-icons/512/close.png" alt="delete button">
+                                </div>
+                            </div> 
+                        </div>
+                    </div>
+
+                    <div *ngIf="myForm.submitted">
+                        <small *ngIf="!car.carPhotoList[0]">Au moins une image est requise</small>
+                    </div>
+                </div>
             </div>
-            <div *ngIf="myForm.submitted">
-                <small *ngIf="!car.carPhotoList[0]">Au moins une image est requise</small>
-            </div>  
         </fieldset>
 
+
+        <!-- MOTEUR -->
         <fieldset>
             <label for="engine">Moteur</label>
             <input type="text" name="engine" id="engine" [(ngModel)]="car.engine" #engine="ngModel">
         </fieldset>
 
+
+        <!-- PUISSANCE -->
         <fieldset>
             <label for="power">Puissance</label>
             <input type="number" name="power" id="power" [(ngModel)]="car.power" #power="ngModel">
         </fieldset>
 
+
+        <!-- VITESSE MAXIMUM -->
         <fieldset>
             <label for="maxSpeed">Vitesse maximum</label>
             <input type="number" name="maxSpeed" id="maxSpeed" [(ngModel)]="car.maxSpeed" #maxSpeed="ngModel">
         </fieldset>
 
+
+        <!-- ACCÉLÉRATION -->
         <fieldset>
             <label for="acceleration">Accélération</label>
             <input type="number" name="acceleration" id="acceleration" [(ngModel)]="car.acceleration" #acceleration="ngModel">
         </fieldset>
 
+
+        <!-- DESCRIPTION -->
         <fieldset class="bio">
             <label for="description"><span>*</span> Description</label>
             <textarea name="description" id="description" cols="130" rows="10" [(ngModel)]="car.bio" #description="ngModel" required></textarea>
@@ -61,6 +89,8 @@
             </div>    
         </fieldset>
 
+
+        <!-- ÉCURIE -->
         <fieldset>
             <label for="team"><span>*</span> Écurie</label>
             <!-- <input type="number" name="team" id="team" [(ngModel)]="car.team" #team="ngModel" max=9 required> -->

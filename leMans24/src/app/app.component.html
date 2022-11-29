@@ -1,8 +1,11 @@
-<app-header></app-header>
+<app-header 
+    [ngStyle]="{'background-color': percentageScrolled > threshold ? 'black' : ''}"
+    [percentageScrolled]="percentageScrolled"
+    [threshold]="threshold"
+></app-header>
 <div>
     <router-outlet></router-outlet>
 </div>
-<button (click)="logOut()">TEST</button>
 <app-footer></app-footer>
 
 

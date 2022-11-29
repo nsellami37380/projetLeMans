@@ -1,18 +1,30 @@
-import { Component } from '@angular/core';
-import { AuthService } from './shared/auth.service';
-import { LeMan24Service } from './shared/le-man24.service';
+import { Component, HostListener, OnInit } from '@angular/core';
+import { ScrollUtilService } from './shared/scroll-util.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
 
-  constructor(private authS: AuthService){
+export class AppComponent implements OnInit {
+
+  percentageScrolled: number = 0;
+  threshold: number = 0;
+
+  constructor(public scrollS: ScrollUtilService) {}
+
+  @HostListener('window:scroll', ['$event'])
+  getScroll() {
+    this.scrollS.getCurrentScroll();
   }
-  
-   logOut(){
-    this.authS.logOut();
-   }
+
+  ngOnInit(): void {
+    this.scrollS.percentageScrolled$.subscribe(scroll => {
+      this.percentageScrolled = scroll;
+    });
+    this.threshold = this.scrollS.threshold;
   }
+
+}
+
