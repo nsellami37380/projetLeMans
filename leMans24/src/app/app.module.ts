@@ -35,6 +35,7 @@ import {ToastModule} from 'primeng/toast';
 import {RippleModule} from 'primeng/ripple';
 import {ProgressSpinnerModule} from 'primeng/progressspinner';
 import { ContactComponent } from './contact/contact.component';
+import { MessageService } from 'primeng/api';
 
 
 
@@ -78,6 +79,7 @@ import { ContactComponent } from './contact/contact.component';
     ProgressSpinnerModule,
   ],
   providers: [DatePipe,
+    MessageService,
     
     {
       provide: HTTP_INTERCEPTORS,

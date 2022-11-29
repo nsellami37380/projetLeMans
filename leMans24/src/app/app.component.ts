@@ -6,6 +6,7 @@ import { ScrollUtilService } from './shared/scroll-util.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
+
 export class AppComponent implements OnInit {
 
   percentageScrolled: number = 0;
@@ -25,6 +26,5 @@ export class AppComponent implements OnInit {
     this.threshold = this.scrollS.threshold;
   }
 
-
-
 }
+

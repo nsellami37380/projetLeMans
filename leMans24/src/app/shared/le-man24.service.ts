@@ -2,9 +2,9 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { ConditionalExpr } from '@angular/compiler';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
+import { MessageService } from 'primeng/api';
 import { BehaviorSubject } from 'rxjs';
 import { Observable } from 'rxjs/internal/Observable';
-
 import { Car } from '../models/car.model';
 import { Pilot } from '../models/pilot.model';
 import { Team } from '../models/team.model';
@@ -117,7 +117,9 @@ export class LeMan24Service {
 
         this.router.navigate(['/container-list', "teams"]);
       },
-      error: error => { alert("Erreur " + error.message); }
+      error: error => { 
+        console.log(error);
+      }
     },);
   }
 

@@ -4,6 +4,10 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import { AppUser } from '../models/appUser.model';
 import jwt_decode from 'jwt-decode';
 import { ERole } from '../models/enum/ERole.enum';
+import { bootstrapApplication } from '@angular/platform-browser';
+import { LeMan24Service } from './le-man24.service';
+import { Router } from '@angular/router';
+import { MessageService } from 'primeng/api';
 
 @Injectable({
   providedIn: 'root'
@@ -11,34 +15,41 @@ import { ERole } from '../models/enum/ERole.enum';
 export class AuthService {
 
   private readonly BASE_URL = "http://localhost:8080";
-  
-  private appUser: AppUser = new AppUser([], '',0);
-  
-  appUser$: BehaviorSubject<AppUser> = new BehaviorSubject<AppUser>(new AppUser([], '',0));
+
+  private appUser: AppUser = new AppUser([], '', 0);
+
+  appUser$: BehaviorSubject<AppUser> = new BehaviorSubject<AppUser>(new AppUser([], '', 0));
+  tokenExpired$ : BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
+
   isLoggedIn: boolean = false;
 
-  constructor(private http: HttpClient) {
-    if(localStorage.getItem("appUser")){
+  constructor(
+    private http: HttpClient,
+    private router: Router,
+    private messageService: MessageService
+  ) {
+    if (localStorage.getItem("appUser")) {
       const user = JSON.parse(localStorage.getItem("appUser") as string);
       this.appUser$.next(user);
-    }
-   }
+    };
+    const intervalID =setInterval(()=> this.verifToken(), 1000);
+  }
 
 
-  getAuth(username: string, password:string): Observable<any>{
+  getAuth(username: string, password: string): Observable<any> {
     const userToLog: HttpParams = new HttpParams()
-    .set("username", username)
-    .set("password", password)
-    
+      .set("username", username)
+      .set("password", password)
+
     return this.http.post<HttpParams>(this.BASE_URL + "/login", userToLog);
   }
-  
-  getUserList(): Observable<any>{
+
+  getUserList(): Observable<any> {
     return this.http.get<any>(this.BASE_URL + "/api/users/all")
   }
 
-  assignAppuser(token: string){
-    let appUser = new AppUser([], '',0)
+  assignAppuser(token: string) {
+    let appUser = new AppUser([], '', 0)
     const jwtDecoded: any = jwt_decode(token);
     appUser.roleList = jwtDecoded.roles;
     appUser.username = jwtDecoded.sub;
@@ -47,26 +58,53 @@ export class AuthService {
     localStorage.setItem("appUser", JSON.stringify(appUser))
   }
 
-  logOut(){
+  logOut() {
     localStorage.clear();
-    let appUser = new AppUser([], '',0)
-    this.appUser$.next(appUser)
+    let appUser = new AppUser([], '', 0);
+    this.appUser$.next(appUser);
+    this.tokenExpired$.next(true);
+    this.displayOnLogoutToastAndRedirect();
+  }
+
+  displayOnLogoutToastAndRedirect() {
+    this.messageService.clear();
+    this.messageService.add({
+      severity: 'error',
+      summary: 'Déconnexion',
+      detail: 'Redirection en cours...',
+    });
+    setTimeout(() => {
+      this.router.navigate(['/login']);
+    }, 2000);
   }
 
   getDecodedAccessToken(token: string): any {
     try {
       console.log(jwt_decode(token));
       return jwt_decode(token);
-    } catch(Error) {
+    } catch (Error) {
       return null;
     }
   }
 
-  getAppUser(): AppUser{
+  getAppUser(): AppUser {
     return this.appUser;
   }
 
+  private verifToken(): void{
   
+    const tokenkId = localStorage.getItem("tokenId")
+    if (tokenkId)
+    {
+    const tokenDecode = this.getDecodedAccessToken(tokenkId);
+    let diff = Math.round(Date.now()/1000) - tokenDecode.exp;
+    console.log(diff);
+    if (diff > 0){
+       this.logOut();
+    }
+  }
+
+  }
 }
 
 
