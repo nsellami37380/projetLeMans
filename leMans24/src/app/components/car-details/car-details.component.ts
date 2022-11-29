@@ -48,13 +48,15 @@ export class CarDetailsComponent implements OnInit {
     this.route.paramMap.subscribe((param: ParamMap)=>{
 
       this.id = parseInt(param.get('id') as string);
-     if(this.id){
-      this.car = this.leman24S.getCarById(this.id);
-      this.setFont();  
+      if(this.id){
+        this.leman24S.getData();
+        this.car = this.leman24S.getCarById(this.id);
+        this.carPics = this.leman24S.getCarById(this.car.id).carPhotoList;
+        this.setFont();  
      }    
     });
 
-    this.carPics = this.leman24S.getCarById(this.car.id).carPhotoList;
+
     
   }
 

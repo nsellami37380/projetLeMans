@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ContactForm } from '../models/contactForm.model';
+import { EmailService } from '../shared/email.service';
 
 @Component({
   selector: 'app-contact',
@@ -9,15 +10,21 @@ import { ContactForm } from '../models/contactForm.model';
 })
 export class ContactComponent implements OnInit {
 
-  contactForm: ContactForm = new ContactForm('','','','');
+  contactForm: ContactForm = new ContactForm('', '', '', '');
 
-  constructor(private route: Router) { }
+  constructor(private route: Router,
+    private emailS: EmailService) { }
 
   ngOnInit(): void {
   }
 
-  emailSend(){
-    this.route.navigate(["/home"]);
-    return alert('Email envoyé')
+  emailSend() {
+    
+    this.emailS.sendEmail(this.contactForm).subscribe((email) => {      
+      // todo GB faire un toast 
+      alert(email.status)
+       this.route.navigate(["/home"]);
+    });
+
   }
 }

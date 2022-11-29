@@ -73,9 +73,13 @@ export class LeMan24Service {
     });
   }
 
-  private getData(): void {
+  public getData(): void {
+
     this.http.get<Team[]>(this.url + '/teams/all')
       .subscribe(teams => {
+        this.teamList = [];
+        this.carList = [];
+        this.pilotList = [];
         teams.forEach(team => {          
           this.browseTeam(team);
       });
@@ -132,7 +136,7 @@ export class LeMan24Service {
           let teamId: any = data.team;
           data.team = this.getTeamById(teamId);
           this.pilotList.push(data);
-        }
+        } else this.pilotList.push(data);
         
         this.router.navigate(['/container-list', "pilots"]);
       },
