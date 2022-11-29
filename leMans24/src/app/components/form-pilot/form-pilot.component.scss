@@ -7,8 +7,6 @@ h1{
     text-decoration-color: yellow;
     text-underline-offset: 0.5em;
     font-family: 'Montserrat', sans-serif;
-
-    margin-top: 4em;
 }
 
 #my_fieldset{
@@ -72,7 +70,9 @@ h2{
     height: 100%;
 
     .images{
-        justify-content: center;
+        display: flex;
+        justify-content: space-around;
+        flex-direction: row;
         flex-wrap: wrap;
         width: 100%;
 
@@ -81,71 +81,109 @@ h2{
             flex-direction: column;
             align-items: center;
             text-align: center;
-            width: 100%;
-            min-width: 400px;
+            min-width: 200px;
+            max-width: 400px;
 
             img{              
+                background-repeat: no-repeat;
+                background-position: center;
+                background-size: cover;
                 color: transparent;
-                background-image: url('/assets/pilot-img-main.png');
+                // background-image: url('/assets/car-img-main.png');
                 background-size: contain;
-                width: 100%;
-                min-width: 200px;
+                width: 200px;
+                height: 200px;
+                object-fit: contain;
             }
         }
 
         .option-images{
             display: flex;
-            flex-direction: column;
-            flex-wrap: wrap;
-            align-items: center;
-            width: 400px;
-            min-width: 100%;
             margin-top: 20px;
+            flex-wrap: wrap;
+            justify-content: center;
+
+            .title-option-images{
+                display: flex;
+                flex-wrap: wrap;
+                align-items: flex-start;
+                justify-content: center;
+                width: 100%;
+
+                #button-img{
+                    width: 100%;
+                    max-width: 200px;
+                    height: 50px;
+                    margin-left: 2em;
+                    margin-right: 2em;
+                }
+            }
 
        
             .container-dimg{
                 display: flex;
-                flex-wrap: wrap;
                 justify-content: center;
+                width: 100%;
+                flex-wrap: wrap;
+                margin: 2em;
 
                 .dimg{
-                    display: flex;
+                    position: relative;
+                    display: inline-block;
                     flex-wrap: wrap;
                     align-items: center;
                     margin: 1em;
+
+                    .pilot-img{
+                        object-fit: contain;
+                        width: 100%;
+                        min-width: 120px;
+                        max-width: 300px;
+                        min-height: 120px;
+                        max-height: 300px;
+                    }
+
+                    .delete{
+                        position: absolute;
+                        top: 5%;
+                        right: 5%;
+                        z-index: 10;
+                        background-color: red;
+                        color: white;
+                        padding: 4px 3px;
+
+                        font-weight: bold;
+                        cursor: pointer;
+
+                        text-align: center;
+                        font-size: 22px;
+                        line-height: 10px;
+                        border-radius: 50%;
+
+                        &:hover {
+                            opacity: 1;
+                        }
+                    }
     
                     .logo-delete-button{
-                        position: relative;
-                        background-color: transparent;
+                        display: flex;
+                        font-size: 18px;
+                        font-family: 'Montserrat', sans-serif;
+                        font-weight: bold;
+                        writing-mode: vertical-rl;
+                        align-items: center;
+                        justify-content: center;
+                        background-color: rgb(200, 0, 0);
                         width: 30px;
-                        height: 30px;
-                        
-                        left: 90%;
-                        top: 50px;
-                        z-index: 1;
+                        height: 200px;
+                        margin: 10px;
 
-                        .pilot-img{
-                            object-fit: contain;
-                            width: 100%;
-                        }
+                        z-index: 1;
                     }
                 }
             }
         }
     }
-}
-
-
-
-
-
-img{
-    object-fit: contain;
-    width: 400px;
-    height: 300px;
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
 }
 
 
@@ -177,14 +215,13 @@ input[type=number]{
 }
 
 button{
-    width: 30%;
+    width: 20%;
     min-width: 100px;
     max-width: 200px;
     height: 70px;
     font-size: 18px;
     font-family: 'Montserrat', sans-serif;
     transition: 0.3s ease-in-out;
-    margin-bottom: 1em;
 }
 
 button:hover{
@@ -205,6 +242,10 @@ input[type=file]{
     display: none;
 }
 
+p{
+    text-align: center;
+}
+
 @media screen and (max-width:330px){
 
     h1{
@@ -218,41 +259,15 @@ input[type=file]{
     fieldset{
         margin: 0;
     }
-}
 
-@media screen and (max-width:450px){
-    h1{
-        font-size: 30px;
-        text-underline-offset: 0.3em;
+    .car-img{
+        width: 100px;
     }
-    
-    #my_fieldset{
-        margin-left: 2em;
-        margin-right: 2em;
-    }
-    
-    label{
-        font-size: 18px;
-        text-underline-offset: 0.3em;
-    }
-    
-    input{
-        width: 100%;
-    }
-    
-    img{
+
+    .dimg{
         margin: 0;
+        padding: 0;
     }
-    
-    #ListImgCar{
-        display: flex;
-        flex-direction: column;
-    }
-    
-    button{
-        width: 30%;
-    }
-    
 }
 
 @media screen and (max-width:620px){
@@ -289,8 +304,13 @@ input[type=file]{
         width: 30%;
     }
 
+    .title-option-images{
+        display: flex;
+        flex-wrap: wrap;
+    }
+
 }
-    
+
 @media screen and (max-width:780px){
     label {
         font-size: 20px;
@@ -299,21 +319,22 @@ input[type=file]{
     h1{
         font-size: 30px;
     }
-}
 
-@media screen and (max-width:1px){
-    #button-img{
-        width: 100px;
+    #modelName{
+        width: 100%;
     }
 
-    fieldset{
-        margin: 0;
+    #button-img{
+        width: 100px;
     }
 }
 
 @media screen and (min-width:1122px) {
+    
     fieldset{
         width: 300px;
+        height: 250px;
+
         border: 1px solid rgb(50, 50, 50);
     }
 }

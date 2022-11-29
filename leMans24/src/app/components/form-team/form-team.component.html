@@ -1,6 +1,7 @@
-<h1>Ajouter une écurie</h1>
+<form class="page-container" #myForm="ngForm" (ngSubmit)="myForm.valid && addTeam()">
 
-<form #myForm="ngForm" (ngSubmit)="myForm.valid && addTeam()">
+    <h1>Ajouter une écurie</h1>
+
     <div id="my_fieldset">
 
         <!-- NOM DE L'ÉCURIE -->
@@ -21,7 +22,7 @@
             <div class="images">
                 <div class="main-image">
                     <input type="file" #selectImage (change)="selectfile($event)" id="image-choice" accept=".jpg, .png">
-                    <img id="image" [src]="url" width="100px"   (click)="selectImage.click()"  height="100px" alt="image de l'écurie" required (onerror)="hideImage()">
+                    <img id="image" [src]="url" (click)="selectImage.click()" alt="image de l'écurie" required (error)="getPlaceholder($event)">
                 
                     <div *ngIf="myForm.submitted">
                         <small *ngIf="!team.logoUrl">Une image est requise</small>

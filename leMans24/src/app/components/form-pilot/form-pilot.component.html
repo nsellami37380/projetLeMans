@@ -1,6 +1,6 @@
-<h1>{{title}}</h1>
+<form class="page-container" #myForm="ngForm" (ngSubmit)="myForm.valid && addPilot()">
 
-<form #myForm="ngForm" (ngSubmit)="myForm.valid && addPilot()">
+    <h1>{{title}}</h1>
     
     <div id="my_fieldset">
 
@@ -32,25 +32,35 @@
             <div class="images">
                 <div class="main-image">
                     <h2><span>*</span> Image principale</h2>
+
                     <input type="file" #selectMainImage (change)="selectMainfile($event)" id="image-choice" accept=".jpg, .png">
-                    <img [src]="urlList[0]" width="100px"   (click)="selectMainImage.click()"  height="100px" alt="image principale du pilote" required>
+
+                    <img [src]="urlList[0]"  (click)="selectMainImage.click()" alt="image principale du pilote" required (error)="getPlaceholder($event)">
                 </div>
 
                 <div class="option-images">
-                    <h2>D'autres images ?</h2>
 
-                    <input type="file" #selectImage (change)="selectfile($event)" accept=".jpg, .png">
+                    <div class="title-option-images">
+                        <h2>D'autres images ?</h2>
 
-                    <button type="button" (click)="selectImage.click()" id="button-img">Ajouter une image</button>
+                        <input type="file" #selectImage (change)="selectfile($event)" accept=".jpg, .png">
 
-                    <div id="ListImgCar">
-                        <div class="container-dimg">
-                            <div *ngFor="let url of urlList | slice:1" class="dimg">
-                                <img class="logo-delete-button" (click)=deleteImg(url) src="https://cdn0.iconfinder.com/data/icons/flat-security-icons/512/close.png" alt="delete button">
-                                <img class="pilot-img" [src]=url width="100px"  height="100px" alt="Image du pilote"> 
-                            </div>
+                        <button type="button" (click)="selectImage.click()" id="button-img">Ajouter une image</button>
+                    </div>
+
+                    <div class="container-dimg">
+                        <div *ngFor="let url of urlList | slice:1" class="dimg">
+
+                            <span class="delete" (click)=deleteImg(url) title="Delete">×</span>
+
+                            <img class="pilot-img" [src]=url alt="Image d'un pilote">
+
+                            <!-- <img class="logo-delete-button" (click)=deleteImg(url) src="https://cdn0.iconfinder.com/data/icons/flat-security-icons/512/close.png" alt="delete button">
+
+                            <img class="pilot-img" [src]=url alt="Image du pilote">  -->
                         </div>
                     </div>
+                    
 
                     <div *ngIf="myForm.submitted">
                         <small *ngIf="!pilot.photoList[0]">Au moins une image est requise</small>

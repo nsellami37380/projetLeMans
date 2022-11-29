@@ -64,4 +64,7 @@ export class FormTeamComponent implements OnInit {
     document.getElementById("image")!.style.display="none";
   }
 
+  getPlaceholder(event: Event) {
+    (event.target as HTMLImageElement).src="/assets/team-img-main.png"
+   }
 }
