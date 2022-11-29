@@ -103,17 +103,15 @@ h2{
             max-width: 400px;
 
             img{
-                object-fit: contain;
-           
                 background-repeat: no-repeat;
                 background-position: center;
                 background-size: cover;
                 color: transparent;
-                background-image: url('/assets/car-img-main.png');
+                // background-image: url('/assets/car-img-main.png');
                 background-size: contain;
-                min-width: 200px;
-                min-height: 200px;
-                width: 100%;
+                width: 200px;
+                height: 200px;
+                object-fit: contain;
             }
         }
 
@@ -123,23 +121,28 @@ h2{
             flex-wrap: wrap;
             justify-content: center;
 
-        
             .title-option-images{
                 display: flex;
                 flex-wrap: wrap;
-                align-items: center;
+                align-items: flex-start;
                 justify-content: center;
+                width: 100%;
 
                 #button-img{
                     width: 100%;
                     max-width: 200px;
+                    height: 50px;
+                    margin-left: 2em;
+                    margin-right: 2em;
                 }
             }
+            
         
             .container-dimg{
                 display: flex;
                 justify-content: center;
-                max-width: 200px;
+                width: 100%;
+                flex-wrap: wrap;
                 margin: 2em;
 
                 .dimg{
@@ -152,8 +155,10 @@ h2{
                     .car-img{
                         object-fit: contain;
                         width: 100%;
-                        min-width: 200px;
-                        min-height: 200px;
+                        min-width: 120px;
+                        max-width: 300px;
+                        min-height: 120px;
+                        max-height: 300px;
                     }
 
                     .delete{
@@ -173,23 +178,11 @@ h2{
                         line-height: 10px;
                         border-radius: 50%;
 
-                        :hover {
+                        &:hover {
                             opacity: 1;
                         }
 
                     }
-
-                    // .logo-delete-button{
-                    //     position: relative;
-                    //     background-color: transparent;
-                    //     width: 30px;
-                    //     height: 30px;
-
-                    //     top: -80px;
-                    //     left: -80px;
-                        
-                    //     z-index: 1;
-                    // }
 
                     .logo-delete-button{
                         display: flex;
@@ -213,11 +206,6 @@ h2{
 }
 
 
-
-#addIMage{
-    width: auto;
-    margin-bottom: 1em;
-}
 
 input{
    width: 50%;
@@ -276,7 +264,11 @@ button{
 }
 input[type=file]{
     display: none;
-}   
+}
+
+p{
+    text-align: center;
+}
 
 
 @media screen and (max-width:330px){

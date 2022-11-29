@@ -31,7 +31,7 @@ public class LeMans24Application {
 			roleService.saveRole(new Role(null, "ROLE_MANAGER"));
 			roleService.saveRole(new Role(null, "ROLE_ADMIN"));
 
-			/*appUserService.saveUser(new AppUser(null,"James","james-bond","007", new ArrayList<>()));
+			appUserService.saveUser(new AppUser(null,"James","james-bond","007", new ArrayList<>()));
 			appUserService.saveUser(new AppUser(null,"Calamity","calamity-jane","008", new ArrayList<>()));
 			appUserService.saveUser(new AppUser(null,"MarvinWizard","marvin-wizard","009", new ArrayList<>()));
 
@@ -42,7 +42,7 @@ public class LeMans24Application {
 			appUserService.addRoleToAppUser("calamity-jane","ROLE_USER");
 
 			appUserService.addRoleToAppUser("marvin-wizard","ROLE_USER");
-			appUserService.addRoleToAppUser("marvin-wizard","ROLE_MANAGER");*/
+			appUserService.addRoleToAppUser("marvin-wizard","ROLE_MANAGER");
 		};
 	}
 

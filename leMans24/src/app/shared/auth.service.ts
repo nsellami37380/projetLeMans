@@ -80,7 +80,6 @@ export class AuthService {
 
   getDecodedAccessToken(token: string): any {
     try {
-      console.log(jwt_decode(token));
       return jwt_decode(token);
     } catch (Error) {
       return null;
@@ -98,7 +97,6 @@ export class AuthService {
     {
     const tokenDecode = this.getDecodedAccessToken(tokenkId);
     let diff = Math.round(Date.now()/1000) - tokenDecode.exp;
-    console.log(diff);
     if (diff > 0){
        this.logOut();
     }
