@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-
 import { ActivatedRoute, ParamMap } from '@angular/router';
 import { Car } from 'src/app/models/car.model';
 import { CarPhoto } from 'src/app/models/carPhoto.model';
@@ -57,9 +56,6 @@ export class CarDetailsComponent implements OnInit {
      
       }    
     });
-
-
-    
   }
 
   setFont(): void{

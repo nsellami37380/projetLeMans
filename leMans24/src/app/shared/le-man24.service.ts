@@ -1,10 +1,6 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { ConditionalExpr } from '@angular/compiler';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { MessageService } from 'primeng/api';
-import { BehaviorSubject } from 'rxjs';
-import { Observable } from 'rxjs/internal/Observable';
 import { Car } from '../models/car.model';
 import { Pilot } from '../models/pilot.model';
 import { Team } from '../models/team.model';
@@ -165,7 +161,6 @@ export class LeMan24Service {
   deleteCar(id: number): void {
     this.http.delete(this.url + '/cars/delete/' + id)
       .subscribe(() => {
-       // window.location.reload();
        this.removeObjectWithId(this.carList,id);
       })
   }
@@ -187,7 +182,6 @@ export class LeMan24Service {
       .subscribe((data) => {
       this.removeObjectWithId(this.teamList,id);
       this.getData();
-        //window.location.reload();
       })
   }
 

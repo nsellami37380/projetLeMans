@@ -22,17 +22,12 @@ export class ContactComponent implements OnInit {
   emailSend() {
     
     this.emailS.sendEmail(this.contactForm).subscribe((email) => {      
-      // todo GB faire un toast 
       this.messageService.add({
         severity: 'success',
         summary: email.status,
         detail: 'Redirection en cours...',
       });
-
-       this.route.navigate(['/home']);
+      this.route.navigate(['/home']);
     });
-
-   
-
   }
 }

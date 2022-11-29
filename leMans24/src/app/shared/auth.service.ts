@@ -3,9 +3,6 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { AppUser } from '../models/appUser.model';
 import jwt_decode from 'jwt-decode';
-import { ERole } from '../models/enum/ERole.enum';
-import { bootstrapApplication } from '@angular/platform-browser';
-import { LeMan24Service } from './le-man24.service';
 import { Router } from '@angular/router';
 import { MessageService } from 'primeng/api';
 
@@ -22,6 +19,7 @@ export class AuthService {
   tokenExpired$ : BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
 
   isLoggedIn: boolean = false;
+  isConnected: boolean = false;
 
   constructor(
     private http: HttpClient,
@@ -32,7 +30,10 @@ export class AuthService {
       const user = JSON.parse(localStorage.getItem("appUser") as string);
       this.appUser$.next(user);
     };
-    const intervalID =setInterval(()=> this.verifToken(), 1000);
+    setInterval(()=> this.verifToken(), 1000);
+    this.appUser$.subscribe(appuser => {
+      this.isConnected = appuser.username != '';
+    })
   }
 
 
@@ -101,8 +102,30 @@ export class AuthService {
        this.logOut();
     }
   }
-
   }
+
+  ToastAndRedirectIsNotConnected() {
+    if(!this.isConnected){
+      setTimeout(() => {
+        this.router.navigate(['/login']);
+      }, 2000);
+      this.messageService.add({
+        severity: 'error',
+        summary: '',
+        detail: 'Veuillez vous connecter pour accéder a cette rubrique',
+      });
+    }else {
+      if(this.router.url == "category/teams"){
+        this.router.navigate(['/category', 'teams' ]);
+      }
+      if(this.router.url == "category/pilots"){
+        this.router.navigate(['/category', 'pilots' ]);
+      }
+      if(this.router.url == "category/cars"){
+        this.router.navigate(['/category', 'cars' ]);
+      }
+    } 
+    }
 }
 
 
