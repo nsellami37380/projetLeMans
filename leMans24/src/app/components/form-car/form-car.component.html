@@ -41,7 +41,7 @@
                     <div class="container-dimg">
                         <div *ngFor="let url of urlList | slice:1" class="dimg">
 
-                            <span class="delete" title="Delete">×</span>
+                            <span class="delete" (click)=deleteImg(url) title="Delete">×</span>
 
                             <img class="car-img" [src]=url alt="Image d'une voiture">
 
