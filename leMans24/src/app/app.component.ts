@@ -8,15 +8,11 @@ import { LeMan24Service } from './shared/le-man24.service';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'leMans24';
-  tokenExpired: boolean = false;
 
   constructor(private authS: AuthService){
   }
   
-   ngOnInit(): void {
-  this.authS.tokenExpired$.subscribe(boolean=>{
-    this.tokenExpired = boolean;
-  })
+   logOut(){
+    this.authS.logOut();
    }
   }
