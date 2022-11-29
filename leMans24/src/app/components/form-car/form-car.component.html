@@ -22,26 +22,37 @@
             <div class="images">
                 <div class="main-image">
                     <h2><span>*</span> Image principale</h2>
+                    
                     <input type="file" #selectMainImage (change)="selectMainfile($event)" id="image-choice" accept=".jpg, .png">
-                    <img [src]="urlList[0]" width="100px"   (click)="selectMainImage.click()"  height="100px" alt="image principale du pilote" required>
+
+                    <img [src]="urlList[0]"  (click)="selectMainImage.click()" alt="image principale du pilote" required>
                 </div>
 
                 <div class="option-images">
-                    <h2>D'autres images ?</h2>
 
-                    <input type="file" #selectImage (change)="selectfile($event)" accept=".jpg, .png">
+                    <div class="title-option-images">
+                        <h2>D'autres images ?</h2>
 
-                    <button type="button" (click)="selectImage.click()" id="button-img">Ajouter image</button>
+                        <input type="file" #selectImage (change)="selectfile($event)" accept=".jpg, .png">
 
-                    <div id="ListImgCar">
-                        <div class="container-dimg">
-                            <div *ngFor="let url of urlList | slice:1" class="dimg">
-                                <img class="car-img" [src]=url width="100px"  height="100px" alt="Image d'une voiture">
-                                <div class="container-delete">
-                                    <img class="logo-delete-button" (click)=deleteImg(url) src="https://cdn0.iconfinder.com/data/icons/flat-security-icons/512/close.png" alt="delete button">
-                                </div>
-                            </div> 
-                        </div>
+                        <button type="button" (click)="selectImage.click()" id="button-img">Ajouter une image</button>
+                    </div>
+
+                    <div class="container-dimg">
+                        <div *ngFor="let url of urlList | slice:1" class="dimg">
+
+                            <span class="delete" title="Delete">×</span>
+
+                            <img class="car-img" [src]=url alt="Image d'une voiture">
+
+
+
+                            <!-- <img class="logo-delete-button" (click)=deleteImg(url) src="https://cdn0.iconfinder.com/data/icons/flat-security-icons/512/close.png" alt="delete button"> -->
+
+                            <!-- <p class="logo-delete-button" (click)=deleteImg(url)>Supprimer</p> -->
+
+
+                        </div> 
                     </div>
 
                     <div *ngIf="myForm.submitted">
