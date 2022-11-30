@@ -1,4 +1,4 @@
-<h1>{{pilot.firstName}} {{pilot.lastName}}</h1>
+<!-- <h1 class="page-container">{{pilot.firstName}} {{pilot.lastName}}</h1>
 
 <div class="container">
 
@@ -30,4 +30,38 @@
         <p>{{team.budget}}</p>
         <p>{{team.bio}}</p>
     </div>
+    </div> -->
+
+    <div class="hero-container">
+        <img id="hero-img" [src]="pilot.photoList[0].urlPhoto" alt="image d'entrée">
+        <div class="absolute-container">
+            <h1>{{pilot.firstName}} {{pilot.lastName}}</h1>
+        </div>
     </div>
+
+    <div class="bio-pilot">
+        <h2>Biographie</h2>
+        <p>{{pilot.bio}}</p>
+    </div>
+
+<div class="container-pilot-detail">
+
+    <div class="car-pilot" *ngIf="car">
+        <div>
+            <img [src]="car.carPhotoList[0].urlPhoto" alt="image de la voiture">
+        </div>
+        <p>Voiture : {{car.modelName}}</p>
+        <p>{{car.bio}}</p>
+    </div>
+
+    
+    <div class="team-pilot">
+        <div>
+            <img [src]="team.logoUrl" alt="logo de l'écurie">
+        </div>
+        <p>Ecurie : {{team.name}}</p>
+        <p>{{team.bio}}</p>
+        
+    </div>
+
+</div>

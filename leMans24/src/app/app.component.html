@@ -1,7 +1,8 @@
 <app-header 
-    [ngStyle]="{'background-color': percentageScrolled > threshold ? 'black' : ''}"
+    [ngStyle]="{'background-color': !isHome || percentageScrolled > threshold ? 'rgba(0,0,0,' + opacity + ')' : ''}"
     [percentageScrolled]="percentageScrolled"
     [threshold]="threshold"
+    (emitIsHome)="isHomeReceived($event)"
 ></app-header>
 <div>
     <router-outlet></router-outlet>
