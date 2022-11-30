@@ -174,7 +174,8 @@ h2{
 .head-text{
     font-size: 30px;
     width: 100%;
-    margin-left: 2em;
+    padding: 1em;
+    text-align: center;
 }
 
 .info{
@@ -184,6 +185,7 @@ h2{
     border: 1px solid yellow;
     border-radius: 5px;
     text-align: center;
+    align-items: center;
     padding: 1em;
     margin: 1em;
     box-shadow: 5px 5px 5px rgb(50, 50, 50)
