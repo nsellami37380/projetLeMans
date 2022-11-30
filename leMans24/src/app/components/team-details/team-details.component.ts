@@ -46,15 +46,16 @@ export class TeamDetailsComponent implements OnInit {
       if(this.teamId){
         this.leMans24S.getData$().subscribe(()  =>  {
         this.team=this.leMans24S.getTeamById(this.teamId);
-        })
-      }
+       
+      
 
 
         this.carListFilteredByTeam = this.leMans24S.getCarList().filter(car=>car.team?.id==this.team.id);
 
 
        this.pilotListFilteredByTeam = this.leMans24S.getPilotList().filter(pilot=>(pilot.team as Team).id==this.team.id);
-
+      })
+      }
     });
     
   }
