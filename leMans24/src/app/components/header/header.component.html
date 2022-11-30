@@ -39,8 +39,13 @@
                 <li *ngIf="!isAdmin" class="li-simple">
                     <a [routerLink]="['/contact']" routerLinkActive="color-link-active"> Contact </a>
                 </li>
-                <li class="li-simple" id="login">
-                    <a [routerLink]="['/login']" routerLinkActive="color-link-active">Se Connecter</a>
+                <li *ngIf="!isConnected" class="li-simple" id="classic-login">
+                    <a [routerLink]="['/login']" routerLinkActive="color-link-active">Connexion <i
+                            class="pi pi-sign-in"></i></a>
+                </li>
+
+                <li *ngIf="isConnected" class="li-simple" id="classic-logout">
+                    <a [routerLink]="['/home']" routerLinkActive="color-link-active" (click)="logOut()">Déconnexion</a>
                 </li>
             </ul>
         </nav>

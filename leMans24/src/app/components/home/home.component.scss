@@ -83,7 +83,7 @@ h2{
     display: flex;
     flex-direction: column;
     p {
-        padding: 2em;
+        padding: 1em;
         font-weight: 100;
     }
     div {
@@ -97,9 +97,6 @@ h2{
     }
     .flex-swapped {
         margin-top: 200px;
-       p {
-        order: -1;
-       }
     }
 }
 .row {
@@ -147,12 +144,14 @@ h2{
 }
 
 .course p {
-    font-size: 18px;
+    font-size: 20px;
     margin-left: 2em;
     margin-right: 2em;
     margin-bottom: 2em;
     line-height: 1.5em;
 }
+
+
 
 .course img {
     width: 100%;
@@ -162,10 +161,51 @@ h2{
 
 }
 
+.landing-img{
+    margin: 2em;
+}
+
 .course h1 {
     margin-top: 1em;
 }
 
+.text-circuit{
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+}
+
+.swapped{
+    order: -1;
+}
+
+.head-text{
+    font-size: 30px;
+    width: 100%;
+    padding: 1em;
+    text-align: center;
+}
+
+.info{
+    display: flex;
+    width: 100%;
+    max-width: 400px;
+    color: yellow;
+    border-radius: 5px;
+    text-align: center;
+    align-items: center;
+}
+
+.stats{
+    max-width: 700px;
+}
+
+.text-side-circuit{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 
 @media screen and (max-width:1024px){
     .h1{
@@ -176,9 +216,13 @@ h2{
         width: 80%;
     }
 
+    .swapped{
+        order: 0;
+    }
+
     .landing-section {
         p {
-            padding: 1em 0 0;
+            padding: 1em 0 1em 0;
         } 
         div {
             flex-direction: column;
@@ -188,10 +232,8 @@ h2{
         }
         .flex-swapped {
             margin-top: 50px;
-            p {
-                order: 0;
-            }
         }
+
         .row div {
             width: 100%;
             max-width: none;
