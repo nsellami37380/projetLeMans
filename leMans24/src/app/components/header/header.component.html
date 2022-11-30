@@ -84,7 +84,8 @@
                 </li>
 
                 <li *ngIf="isConnected" class="classic-button" id="classic-logout">
-                    <a [routerLink]="['/home']" routerLinkActive="color-link-active" (click)="logOut()">Déconnexion</a>
+                    <a [routerLink]="['/home']" routerLinkActive="color-link-active" (click)="logOut()">Déconnexion <i
+                        class="pi pi-fw pi-sign-out"></i></a>
                 </li>
             </ul>
 
