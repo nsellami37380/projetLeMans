@@ -10,6 +10,7 @@
           
             <div class="card-text">
                 <p> {{car.modelName}}</p>
+                <p> {{car.team?.name}}</p>
             </div>
 
         </div>
@@ -24,8 +25,9 @@
             <img [src]="pilot.photoList[0].urlPhoto" onError="this.src ='assets/404.jpg'" alt="image pilot">
 
             <div class="card-text">
-                <p>{{pilot.firstName}}</p>
-                <p>{{pilot.lastName}}</p>
+                <p> {{pilot.firstName}} {{pilot.lastName}}</p>
+
+                <p> {{pilot.team?.name}}</p>
             </div>
         </div>
     </div>
@@ -38,7 +40,7 @@
         <div class="card" [routerLink]="['/team-detail', team.id]">
             <img [src]="team.logoUrl" onError="this.src ='assets/404.jpg'" alt="team">
             <div class="card-text">
-                <p>{{team.name}}</p>
+                <p> {{team.name}}</p>
                 <p>{{team.budget}} Millions</p>
             </div>
         </div>

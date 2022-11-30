@@ -7,7 +7,7 @@ import { BehaviorSubject } from 'rxjs';
 export class ScrollUtilService {
 
   percentageScrolled$: BehaviorSubject<number> = new BehaviorSubject<number>(0);
-  threshold: number = 10;
+  threshold: number = 25;
 
   constructor() { }
 
