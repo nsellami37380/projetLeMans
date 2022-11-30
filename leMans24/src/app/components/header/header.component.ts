@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { NavigationStart, Router } from '@angular/router';
 import { MenuItem} from 'primeng/api';
 import { ERole } from 'src/app/models/enum/ERole.enum';
@@ -15,8 +15,9 @@ export class HeaderComponent implements OnInit {
   @Input() percentageScrolled: number = 0;
   @Input() threshold: number = 0;
 
-  isHome: boolean = false;
+  @Output() emitIsHome: EventEmitter<boolean> = new EventEmitter<boolean>();
 
+  isHome: boolean = false;
   menu: MenuItem[] = [];
   visibleSidebar1: boolean = false;
   isAdmin: boolean = false;
@@ -33,12 +34,16 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit(): void {
     this.router.events.forEach((event) => {
+
+      
       if(event instanceof NavigationStart) {
+
         if(event.url === "/" || event.url === "/home") {
           this.isHome = true;
         } else {
           this.isHome = false;
         }
+        this.emitIsHome.emit(this.isHome);
       }
     });
 

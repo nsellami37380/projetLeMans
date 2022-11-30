@@ -11,6 +11,7 @@ export class AppComponent implements OnInit {
 
   percentageScrolled: number = 0;
   threshold: number = 0;
+  isHome: boolean = false;
 
   constructor(public scrollS: ScrollUtilService) {}
 
@@ -24,6 +25,11 @@ export class AppComponent implements OnInit {
       this.percentageScrolled = scroll;
     });
     this.threshold = this.scrollS.threshold;
+  }
+
+  isHomeReceived(newIsHome: boolean): void{
+
+  this.isHome = newIsHome;
   }
 
 }
