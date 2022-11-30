@@ -9,9 +9,7 @@
             <img [src]="car.carPhotoList[0].urlPhoto" onError="this.src ='assets/404.jpg'" alt="car">
           
             <div class="card-text">
-                <p> Nom du modele : {{car.modelName}}</p>
-                <p> Puissance : {{car.power}} chevaux</p>
-                <p>Vitesse max : {{car.maxSpeed}} km/h</p>
+                <p> {{car.modelName}}</p>
             </div>
 
         </div>
@@ -26,9 +24,8 @@
             <img [src]="pilot.photoList[0].urlPhoto" onError="this.src ='assets/404.jpg'" alt="image pilot">
 
             <div class="card-text">
-                <p> Prénom : {{pilot.firstName}}</p>
-                <p> Nom : {{pilot.lastName}}</p>
-                <p> Date de naissance : {{pilot.dateOfBirth}}</p>
+                <p>{{pilot.firstName}}</p>
+                <p>{{pilot.lastName}}</p>
             </div>
         </div>
     </div>
@@ -41,7 +38,7 @@
         <div class="card" [routerLink]="['/team-detail', team.id]">
             <img [src]="team.logoUrl" onError="this.src ='assets/404.jpg'" alt="team">
             <div class="card-text">
-                <p> Nom : {{team.name}}</p>
+                <p>{{team.name}}</p>
                 <p>{{team.budget}} Millions</p>
             </div>
         </div>
