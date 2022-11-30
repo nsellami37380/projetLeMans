@@ -45,14 +45,14 @@
         <div>
             <img src="assets/car-landing-2.png" alt="Voiture 2" class="landing-img">
 
-            <div class="text-circuit"> 
+            <div class="text-circuit swapped"> 
                 
                 <p>
                     Le Mans a vécu des hauts et des bas, il a vu des photos d’arrivée, de terribles incidents (dont l’accident de 1955), des records de vitesse battus à plusieurs reprises et de véritables mastodontes automobiles.
                 </p>
 
                 <div class="info">
-                    Vitesse moyen 225 km/h
+                    Vitesse moyenne 225 km/h
                     <br>
                     Vitesse record de 407 km/h
                 </div>
@@ -108,7 +108,7 @@
         <div>
             <h3>Écuries</h3>
             <p>Découvrez l'ensemble des écuries en course.
-                <br> Offrer les meilleurs conditions à vos pilotes pour arracher la victoire.  
+                <br> Offrez les meilleurs conditions à vos pilotes pour arracher la victoire.  
             </p>
             <a [routerLink]=" isConnected ? ['/category', 'teams' ] : null" (click)="ToastAndRedirectIsNotConnected()">Accéder <i class="pi pi-arrow-circle-right"></i></a>
         </div>
