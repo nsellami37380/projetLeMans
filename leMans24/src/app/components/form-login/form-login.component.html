@@ -1,0 +1,29 @@
+<section class="page-container">
+
+   <h1>Connexion</h1>
+
+   <div class="container-connection">
+      <div class="connection">
+         <form #myForm="ngForm" (ngSubmit)="myForm.valid && userLogin()">
+            
+            <fieldset>
+               <label for="username"> <span>*</span> Nom d'utilisateur : </label>
+               <input type="text" name="username" id="username" [(ngModel)]="username">
+            </fieldset>
+      
+            <fieldset>
+               <label for="password"><span>*</span> Mot de passe : </label>
+               <input type="password" name="password" id="password" [(ngModel)]="password">
+            </fieldset>
+
+            
+
+            <button type="submit"> Se connecter</button>
+            <!-- <button (click)="getUser()">Get user</button> -->
+
+         </form>
+         <p><span>*</span> Champs obligatoire</p>
+      </div>
+   </div>
+
+</section>

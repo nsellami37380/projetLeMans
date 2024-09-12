@@ -1,0 +1,25 @@
+h1{
+    font-size: 100px;
+    color: yellow;
+    font-family: 'Montserrat', sans-serif;
+    text-align: center;
+}
+
+p{
+    font-size: 50px;
+    color: yellow;
+    font-family: 'Montserrat', sans-serif;
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+div{
+    display: flex;
+    justify-content: center;
+}
+img{
+    display: flex;
+    justify-self: center;
+    width: 50%;
+    margin: 20px 0 20px 0;
+}

@@ -1,1 +1,38 @@
-/* You can add global styles to this file, and also import other style files */
+@import "primeflex/primeflex.css";
+@import url('https://fonts.googleapis.com/css2?family=Prompt:wght@100;400;700&display=swap');
+
+:root {
+    --border: rgb(50, 50, 50);
+}
+*{
+    margin: 0;   
+}
+html {
+    scroll-behavior: smooth;
+}
+
+html, button {
+    font-family: 'Prompt', sans-serif;
+}
+
+body{
+    background-color: black;
+}
+
+small{
+    color: red;
+    font-size: 1em;
+    font-family: 'Montserrat', sans-serif;
+}
+
+input, textarea, img, select, button{
+    margin-bottom: 0.5em;
+}
+
+span{
+    color: red;
+}
+
+.page-container {
+    padding-top: 150px;
+}

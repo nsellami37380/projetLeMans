@@ -1,0 +1,114 @@
+section{
+    font-family: 'Montserrat', sans-serif;
+}
+
+h1{
+    font-size: 50px;
+    color: white;
+    text-align: center;
+    text-decoration: underline;
+    text-decoration-color: yellow;
+    text-underline-offset: 0.5em;
+}
+
+.container-connection{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-family: 'Montserrat', sans-serif;
+    height: 600px;
+}
+
+.connection{
+    display: flex;
+    width: 500px;
+    height: 450px;
+    border: 1px solid rgb(50,50,50);
+
+    
+    flex-direction: column;
+
+    justify-content: center;
+    align-items: center;
+}
+
+form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+fieldset{
+    display: flex;
+    width: 200px;
+    border: none;
+
+    flex-direction: column;
+
+    margin-bottom: 1em;
+
+    justify-content: space-between;
+}
+
+label{
+    margin-bottom: 0.5em;
+    font-size: 20px;
+    width: 200px;
+
+}
+input{
+    width: 250px;
+    &:hover {
+        border: 1px solid yellow
+    }
+
+}
+
+span{
+    color: red;
+}
+
+p{
+    font-size: 14px;
+}
+
+button{
+    background-color: rgb(0, 0, 0);
+    color: rgb(253, 253, 253);
+    border: none;
+    font-size: 25px;
+    width: 100%;
+    padding: 0.25em;
+    margin-top: 1em;
+    margin-bottom: 1em;
+    border: 1px solid yellow;
+    
+    &:hover {
+        cursor: pointer;
+        transition: all 0.3s ease-in-out;
+        background-color: yellow;
+        color: rgb(0, 0, 0);
+        transition: all 0.3s ease-in-out;
+        i {
+            transform: translateX(2px);
+        }
+    }
+}
+
+@keyframes p-progress-spinner-color {
+    100%,
+    0% {
+        stroke: #d62d20;
+    }
+    40% {
+        stroke: #0057e7;
+    }
+    66% {
+        stroke: #008744;
+    }
+    80%,
+    90% {
+        stroke: #ffa700;
+    }
+}

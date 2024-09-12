@@ -1,0 +1,118 @@
+*{
+    margin: 0;
+}
+section{
+    font-family: 'Montserrat', sans-serif;      
+}
+
+
+h1{
+    font-size: 50px;
+    color: white;
+    text-align: center;
+    text-decoration: underline;
+    text-decoration-color: yellow;
+    text-underline-offset: 0.5em;
+    margin-bottom: 0;
+}
+
+.container-contact{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: "Montserrat", sans-serif;
+    /* height: auto; */
+    width: 80%;
+    max-width: 1250px;
+    padding: 1em 0;
+    margin: 30px auto;
+    
+}
+
+.contact{
+    display: flex;
+    
+    width: fit-content;
+    
+    height: fit-content;
+    border: 1px solid rgb(50, 50, 50);
+    margin-top: 0.5em;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+
+form{
+    display: flex;
+    width: fit-content;
+    flex-direction: column;
+    align-items: center;
+}
+
+fieldset{
+    display: flex;
+    border: none;
+    margin-bottom: 0;
+    padding: 0.75em;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+    height: 100%;
+
+}
+
+#claim{
+    width: inherit;
+    height: inherit;
+    &:hover {
+        border: 1px solid yellow;
+    }
+}
+
+label{
+    margin-bottom: 0.5em;
+    font-size: 20px;
+    width: 200px;
+
+}
+input{
+    width: 100%;
+    min-width: 300px;
+    height: 100%;
+    &:hover {
+        border: 1px solid yellow
+    }
+}
+
+
+span{
+    color: red;
+}
+
+p{
+    font-size: 14px;
+    margin-bottom: 1em;
+}
+
+button{
+    background-color: rgb(0, 0, 0);
+    color: rgb(253, 253, 253);
+    border: none;
+    font-size: 25px;
+    width: inherit;
+    margin: 1em 0;
+    padding: 0.5em 2em;
+    border: 1px solid yellow;
+    
+    &:hover {
+        cursor: pointer;
+        transition: all 0.3s ease-in-out;
+        background-color: yellow;
+        color: rgb(0, 0, 0);
+        transition: all 0.3s ease-in-out;
+        i {
+            transform: translateX(2px);
+        }
+    }
+}

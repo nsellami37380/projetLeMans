@@ -1,0 +1,79 @@
+<section class="page-container">
+  <h1>Contact</h1>
+
+  <div class="container-contact">
+    <div class="contact">
+      <form #myForm="ngForm" (ngSubmit)="myForm.valid && emailSend()">
+        <fieldset>
+          <label for="lastname"> <span>*</span> Nom : </label>
+          <input
+            type="text"
+            name="lastname"
+            id="lastname"
+            [(ngModel)]="contactForm.lastname"
+            #lastname="ngModel"
+            required
+          />
+        </fieldset>
+        <div *ngIf="lastname.errors && myForm.submitted">
+          <small *ngIf="lastname.errors?.['required']">Le nom est requis</small>
+        </div>
+
+        <fieldset>
+          <label for="firstname"> <span>*</span> Prénom : </label>
+          <input
+            type="text"
+            name="firstname"
+            id="firstname"
+            [(ngModel)]="contactForm.firstname"
+            #firstname="ngModel"
+            required
+          />
+        </fieldset>
+        <div *ngIf="firstname.errors && myForm.submitted">
+          <small *ngIf="firstname.errors?.['required']"
+            >Le prénom est requis</small
+          >
+        </div>
+
+        <fieldset>
+          <label for="email"> <span>*</span> Email : </label>
+          <input
+            type="email"
+            name="email"
+            id="email"
+            [(ngModel)]="contactForm.email"
+            #email="ngModel"
+            required
+            email
+          />
+        </fieldset>
+        <div *ngIf="email.errors && myForm.submitted">
+          <small *ngIf="email.errors?.['required']">L'email est requis</small>
+          <small *ngIf="email.errors?.['email']"
+            >L'email doit etre valide
+          </small>
+        </div>
+
+        <fieldset>
+          <label for="claim"> <span>*</span> Votre demande : </label>
+          <textarea
+            name="claim"
+            id="claim"
+            cols="30"
+            rows="10"
+            [(ngModel)]="contactForm.claim"
+            #claim="ngModel"
+            required
+          ></textarea>
+        </fieldset>
+        <div *ngIf="claim.errors && myForm.submitted">
+          <small *ngIf="claim.errors?.['required']">Plaignez vous !!!</small>
+        </div>
+
+        <button type="submit">Envoyer</button>
+        <p><span>*</span> Champs obligatoire</p>
+      </form>
+    </div>
+  </div>
+</section>
